@@ -21,7 +21,7 @@ export default function NavBar () {
         <OpenEPILogo/>
         <Typography variant={'h1'}  className="text-[38px]">| Developer Portal</Typography>
       </Box>
-      <Box className="flex flex-row text-[22px] gap-[8px]">
+      <Box className="flex flex-row text-[22px]">
         <Link href="/data-catalog" className={currentRoute === '/data-catalog/' ? "px-[24px] py-[8px] rounded-[40px] bg-[#D1E8D5]" : "px-[24px] py-[8px] rounded-[40px] hover:bg-[#1D1B20] hover:bg-opacity-[0.08]"}>Data catalog</Link>
         <Link href="/credentials" className={currentRoute === '/credentials/' ? "px-[24px] py-[8px] rounded-[40px] bg-[#D1E8D5]" : "px-[24px] py-[8px] rounded-[40px] hover:bg-[#1D1B20] hover:bg-opacity-[0.08]"}>Credentials</Link>
         <Link href="/resources" className={currentRoute === '/resources/' ? "px-[24px] py-[8px] rounded-[40px] bg-[#D1E8D5]" : "px-[24px] py-[8px] rounded-[40px] hover:bg-[#1D1B20] hover:bg-opacity-[0.08]"}>Resources</Link>
