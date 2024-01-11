@@ -11,10 +11,6 @@ import {useEffect} from "react";
 export default function NavBar () {
   const currentRoute = usePathname();
 
-  useEffect(() => {
-    console.log("Route: ", currentRoute)
-  }, [currentRoute]);
-
   return (
     <nav className="flex flex-row  items-center m-[48px] justify-between">
       <Box className="flex flex-row gap-[19px]" >
