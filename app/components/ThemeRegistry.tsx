@@ -14,9 +14,9 @@ interface ThemeRegistryProps {
 }
 
 export default function ThemeRegistry({
-                                        options,
-                                        children,
-                                      }: ThemeRegistryProps) {
+  options,
+  children,
+}: ThemeRegistryProps) {
   const [{ cache, flush }] = useState(() => {
     const cache = createCache(options);
     cache.compat = true;
