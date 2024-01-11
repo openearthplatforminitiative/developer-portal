@@ -4,6 +4,7 @@ import './globals.css';
 import NavBar from '@/app/components/NavBar';
 import { ReactNode } from 'react';
 import ThemeRegistry from '@/app/components/ThemeRegistry';
+import Footer from '@/app/components/Footer';
 
 const inter = Inter({
   weight: ['400', '500', '600'],
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <body>
           <NavBar />
           {children}
+          <Footer />
         </body>
       </ThemeRegistry>
     </html>

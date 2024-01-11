@@ -1,26 +1,25 @@
 'use client';
 
-import { OpenEPILogo } from '@/app/icons/OpenEPILogo';
+import { OpenEPILogoLarge } from '@/app/icons/OpenEPILogoLarge';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import Box from '@mui/material/Box';
 import { ExternalLinkIcon } from '@/app/icons/ExternalLinkIcon';
 import { usePathname } from 'next/navigation';
-import { palettes } from '@/app/theme/palettes';
 
-export default function NavBar() {
+const NavBar = () => {
   const currentRoute = usePathname();
   const baseStyle: string = 'px-6 py-2 rounded-full';
 
   const linkClassName = (path: string) =>
     currentRoute === path
-      ? baseStyle + ` bg-[${palettes.secondary['90']}]`
+      ? baseStyle + ' bg-secondary-90'
       : baseStyle + ' hover:bg-[#1d1b2014]';
 
   return (
-    <nav className='flex flex-row items-center m-12 justify-between'>
+    <nav className='flex flex-row items-center p-12 justify-between'>
       <Box className='flex flex-row gap-5 items-center'>
-        <OpenEPILogo />
+        <OpenEPILogoLarge />
         <Typography className='text-4xl'>| Developer Portal</Typography>
       </Box>
       <Box className='flex flex-row text-2xl'>
@@ -48,4 +47,6 @@ export default function NavBar() {
       </Box>
     </nav>
   );
-}
+};
+
+export default NavBar;
