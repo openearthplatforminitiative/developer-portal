@@ -18,10 +18,12 @@ const NavBar = () => {
 
   return (
     <nav className='flex flex-row items-center p-12 justify-between'>
-      <Box className='flex flex-row gap-5 items-center'>
-        <OpenEPILogoLarge />
-        <Typography className='text-4xl'>| Developer Portal</Typography>
-      </Box>
+      <Link href={'/'}>
+        <Box className='flex flex-row gap-5 items-center'>
+          <OpenEPILogoLarge />
+          <Typography className='text-4xl'>| Developer Portal</Typography>
+        </Box>
+      </Link>
       <Box className='flex flex-row text-2xl'>
         <Link href='/data-catalog' className={linkClassName('/data-catalog/')}>
           Data catalog
@@ -35,15 +37,16 @@ const NavBar = () => {
         <Link href='/contact' className={linkClassName('/contact/')}>
           Contact
         </Link>
-        <Link
-          href='/'
+        <a
+          href={'https://openepi.io'}
+          target={'_blank'}
           className={
             baseStyle +
             ' flex flex-row items-center gap-1.5 hover:bg-[#1d1b2014]'
           }
         >
           About the project <ExternalLinkIcon />
-        </Link>
+        </a>
       </Box>
     </nav>
   );

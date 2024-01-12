@@ -22,7 +22,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang='en' className={inter.className}>
       <ThemeRegistry options={{ key: 'mui' }}>
-        {' '}
         <body>
           <NavBar />
           {children}
