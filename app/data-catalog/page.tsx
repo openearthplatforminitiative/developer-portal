@@ -3,6 +3,9 @@ import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Link from 'next/link';
+import { InternalLinkIcon } from '@/app/icons/InternalLinkIcon';
+import { PythonLogo } from '@/app/icons/PythonLogo';
+import { JavascriptLogo } from '@/app/icons/JavascriptLogo';
 
 const Home = () => {
   return (
@@ -17,7 +20,10 @@ const Home = () => {
         <Link href={'/data-catalog/weather'}>
           <Card className={'gap-6 bg-[#F2F4EF] hover:bg-secondary-90'}>
             <CardContent className={'pt-8 pb-10'}>
-              <Typography className={'text-2xl'}>Weather</Typography>
+              <Box className={'flex flex-row justify-between'}>
+                <Typography className={'text-2xl'}>Weather</Typography>
+                <InternalLinkIcon />
+              </Box>
               <Typography className={'text-base'}>
                 This section provides access to real-time weather data.
               </Typography>
@@ -27,7 +33,10 @@ const Home = () => {
         <Link href={'/data-catalog/flood'}>
           <Card className={'gap-6 bg-[#F2F4EF] hover:bg-secondary-90'}>
             <CardContent className={'pt-8 pb-10'}>
-              <Typography className={'text-2xl'}>Flood</Typography>
+              <Box className={'flex flex-row justify-between'}>
+                <Typography className={'text-2xl'}>Flood</Typography>
+                <InternalLinkIcon />
+              </Box>
               <Typography className={'text-base'}>
                 This section offers geocoding and address lookup services.
               </Typography>
@@ -37,7 +46,10 @@ const Home = () => {
         <Link href={'/data-catalog/geocoding'}>
           <Card className={'gap-6 bg-[#F2F4EF] hover:bg-secondary-90'}>
             <CardContent className={'pt-8 pb-10'}>
-              <Typography className={'text-2xl'}>Geocoding</Typography>
+              <Box className={'flex flex-row justify-between'}>
+                <Typography className={'text-2xl'}>Geocoding</Typography>
+                <InternalLinkIcon />
+              </Box>{' '}
               <Typography className={'text-base'}>
                 This section offers geocoding and address lookup services.
               </Typography>
@@ -47,7 +59,10 @@ const Home = () => {
         <Link href={'/data-catalog/deforestation'}>
           <Card className={'gap-6 bg-[#F2F4EF] hover:bg-secondary-90'}>
             <CardContent className={'pt-8 pb-10'}>
-              <Typography className={'text-2xl'}>Deforestation</Typography>
+              <Box className={'flex flex-row justify-between'}>
+                <Typography className={'text-2xl'}>Deforestation</Typography>
+                <InternalLinkIcon />
+              </Box>{' '}
               <Typography className={'text-base'}>
                 This section provides data on deforestation and environmental
                 conservation efforts.
@@ -58,7 +73,10 @@ const Home = () => {
         <Link href={'/data-catalog/soil'}>
           <Card className={'gap-6 bg-[#F2F4EF] hover:bg-secondary-90'}>
             <CardContent className={'pt-8 pb-10'}>
-              <Typography className={'text-2xl'}>Soil</Typography>
+              <Box className={'flex flex-row justify-between'}>
+                <Typography className={'text-2xl'}>Soil</Typography>
+                <InternalLinkIcon />
+              </Box>{' '}
               <Typography className={'text-base'}>
                 Some descriptive text.
               </Typography>
@@ -68,7 +86,10 @@ const Home = () => {
         <Link href={'/data-catalog/ocean'}>
           <Card className={'gap-6 bg-[#F2F4EF] hover:bg-secondary-90'}>
             <CardContent className={'pt-8 pb-10'}>
-              <Typography className={'text-2xl'}>Ocean</Typography>
+              <Box className={'flex flex-row justify-between'}>
+                <Typography className={'text-2xl'}>Ocean</Typography>
+                <InternalLinkIcon />
+              </Box>{' '}
               <Typography className={'text-base'}>
                 Some descriptive text.
               </Typography>
@@ -78,7 +99,10 @@ const Home = () => {
         <Link href={'/data-catalog/biodiversity'}>
           <Card className={'gap-6 bg-[#F2F4EF] hover:bg-secondary-90'}>
             <CardContent className={'pt-8 pb-10'}>
-              <Typography className={'text-2xl'}>Biodiversity</Typography>
+              <Box className={'flex flex-row justify-between'}>
+                <Typography className={'text-2xl'}>Biodiversity</Typography>
+                <InternalLinkIcon />
+              </Box>{' '}
               <Typography className={'text-base'}>
                 Some descriptive text.
               </Typography>
@@ -88,7 +112,10 @@ const Home = () => {
         <Link href={'/data-catalog/air-quality'}>
           <Card className={'gap-6 bg-[#F2F4EF] hover:bg-secondary-90'}>
             <CardContent className={'pt-8 pb-10'}>
-              <Typography className={'text-2xl'}>Air Quality</Typography>
+              <Box className={'flex flex-row justify-between'}>
+                <Typography className={'text-2xl'}>Air Quality</Typography>
+                <InternalLinkIcon />
+              </Box>{' '}
               <Typography className={'text-base'}>
                 Some descriptive text.
               </Typography>
@@ -98,7 +125,10 @@ const Home = () => {
         <Link href={'/data-catalog/crop-health'}>
           <Card className={'gap-6 bg-[#F2F4EF] hover:bg-secondary-90'}>
             <CardContent className={'pt-8 pb-10'}>
-              <Typography className={'text-2xl'}>Crop Health</Typography>
+              <Box className={'flex flex-row justify-between'}>
+                <Typography className={'text-2xl'}>Crop Health</Typography>
+                <InternalLinkIcon />
+              </Box>{' '}
               <Typography className={'text-base'}>
                 Some descriptive text.
               </Typography>
@@ -112,26 +142,40 @@ const Home = () => {
           We provide two client libraries to make use of our data easier.
         </Typography>
         <Box className={'flex flex-row gap-6 mt-16 w-full'}>
-          <Box
+          <Link
+            href={'/'}
             className={
-              'flex flex-col gap-6 border rounded-xl px-6 pt-8 pb-10 w-full'
+              'flex flex-col gap-6 border rounded-xl px-6 pt-8 pb-10 w-full hover:bg-[#6750a414]'
             }
           >
-            <Typography className={'text-2xl'}>Javascript</Typography>
+            <Box className={'flex flex-row justify-between'}>
+              <Box className={'flex flex-row gap-2'}>
+                <JavascriptLogo />
+                <Typography className={'text-2xl'}>Javascript</Typography>
+              </Box>
+              <InternalLinkIcon />
+            </Box>
             <Typography className={'text-base'}>
               Some text about the JavaScript client library.
             </Typography>
-          </Box>
-          <Box
+          </Link>
+          <Link
+            href={'/'}
             className={
-              'flex flex-col gap-6 border rounded-xl px-6 pt-8 pb-10 w-full'
+              'flex flex-col gap-6 border rounded-xl px-6 pt-8 pb-10 w-full hover:bg-[#6750a414]'
             }
           >
-            <Typography className={'text-2xl'}>Python</Typography>
+            <Box className={'flex flex-row justify-between'}>
+              <Box className={'flex flex-row gap-2'}>
+                <PythonLogo />
+                <Typography className={'text-2xl'}>Python</Typography>
+              </Box>
+              <InternalLinkIcon />
+            </Box>{' '}
             <Typography className={'text-base'}>
               Some text about the Python client library.
             </Typography>
-          </Box>
+          </Link>
         </Box>
       </Box>
     </main>
