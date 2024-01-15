@@ -15,6 +15,8 @@ import { OceanIcon } from '@/app/icons/OceanIcon';
 import { BiodiversityIcon } from '@/app/icons/BiodiversityIcon';
 import { AirQualityIcon } from '@/app/icons/AirQualityIcon';
 import { CropHealthIcon } from '@/app/icons/CropHealthIcon';
+import Chip from '@mui/material/Chip';
+import { CheckIcon } from '@/app/icons/CheckIcon';
 
 const Home = () => {
   return (
@@ -25,7 +27,33 @@ const Home = () => {
         </Typography>
         <Typography className={'text-2xl'}>Sub header</Typography>
       </Box>
-      <Box className={'grid grid-cols-4 gap-14'}>
+      <Box className={'flex flex-col gap-4'}>
+        <Typography> Resource type </Typography>
+        <Box className={'flex flex-row gap-2'}>
+          <Chip
+            variant='outlined'
+            color='success'
+            icon={<CheckIcon />}
+            label={'Show all'}
+            clickable
+          />
+          <Chip
+            variant='outlined'
+            color='success'
+            icon={<CheckIcon />}
+            label={'API'}
+            clickable
+          />
+          <Chip
+            variant='outlined'
+            color='success'
+            icon={<CheckIcon />}
+            label={'Databank'}
+            clickable
+          />
+        </Box>
+      </Box>
+      <Box className={'grid grid-cols-4 gap-14 mt-16'}>
         <Link href={'/data-catalog/weather'}>
           <Card
             className={
