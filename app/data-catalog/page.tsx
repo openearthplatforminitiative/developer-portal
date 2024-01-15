@@ -6,6 +6,15 @@ import Link from 'next/link';
 import { InternalLinkIcon } from '@/app/icons/InternalLinkIcon';
 import { PythonLogo } from '@/app/icons/PythonLogo';
 import { JavascriptLogo } from '@/app/icons/JavascriptLogo';
+import { FloodIcon } from '@/app/icons/FloodIcon';
+import { WeatherIcon } from '@/app/icons/WeatherIcon';
+import { GeocodingIcon } from '@/app/icons/GeocodingIcon';
+import { DeforestationIcon } from '@/app/icons/DeforestationIcon';
+import { SoilIcon } from '@/app/icons/SoilIcon';
+import { OceanIcon } from '@/app/icons/OceanIcon';
+import { BiodiversityIcon } from '@/app/icons/BiodiversityIcon';
+import { AirQualityIcon } from '@/app/icons/AirQualityIcon';
+import { CropHealthIcon } from '@/app/icons/CropHealthIcon';
 
 const Home = () => {
   return (
@@ -16,9 +25,10 @@ const Home = () => {
         </Typography>
         <Typography className={'text-2xl'}>Sub header</Typography>
       </Box>
-      <Box className={'grid grid-cols-3 gap-14'}>
+      <Box className={'grid grid-cols-4 gap-14'}>
         <Link href={'/data-catalog/weather'}>
           <Card className={'gap-6 bg-[#F2F4EF] hover:bg-secondary-90'}>
+            <WeatherIcon />
             <CardContent className={'pt-8 pb-10'}>
               <Box className={'flex flex-row justify-between'}>
                 <Typography className={'text-2xl'}>Weather</Typography>
@@ -32,6 +42,7 @@ const Home = () => {
         </Link>
         <Link href={'/data-catalog/flood'}>
           <Card className={'gap-6 bg-[#F2F4EF] hover:bg-secondary-90'}>
+            <FloodIcon />
             <CardContent className={'pt-8 pb-10'}>
               <Box className={'flex flex-row justify-between'}>
                 <Typography className={'text-2xl'}>Flood</Typography>
@@ -45,6 +56,7 @@ const Home = () => {
         </Link>
         <Link href={'/data-catalog/geocoding'}>
           <Card className={'gap-6 bg-[#F2F4EF] hover:bg-secondary-90'}>
+            <GeocodingIcon />
             <CardContent className={'pt-8 pb-10'}>
               <Box className={'flex flex-row justify-between'}>
                 <Typography className={'text-2xl'}>Geocoding</Typography>
@@ -58,6 +70,7 @@ const Home = () => {
         </Link>
         <Link href={'/data-catalog/deforestation'}>
           <Card className={'gap-6 bg-[#F2F4EF] hover:bg-secondary-90'}>
+            <DeforestationIcon />
             <CardContent className={'pt-8 pb-10'}>
               <Box className={'flex flex-row justify-between'}>
                 <Typography className={'text-2xl'}>Deforestation</Typography>
@@ -72,6 +85,7 @@ const Home = () => {
         </Link>
         <Link href={'/data-catalog/soil'}>
           <Card className={'gap-6 bg-[#F2F4EF] hover:bg-secondary-90'}>
+            <SoilIcon />
             <CardContent className={'pt-8 pb-10'}>
               <Box className={'flex flex-row justify-between'}>
                 <Typography className={'text-2xl'}>Soil</Typography>
@@ -85,6 +99,7 @@ const Home = () => {
         </Link>
         <Link href={'/data-catalog/ocean'}>
           <Card className={'gap-6 bg-[#F2F4EF] hover:bg-secondary-90'}>
+            <OceanIcon />
             <CardContent className={'pt-8 pb-10'}>
               <Box className={'flex flex-row justify-between'}>
                 <Typography className={'text-2xl'}>Ocean</Typography>
@@ -98,6 +113,7 @@ const Home = () => {
         </Link>
         <Link href={'/data-catalog/biodiversity'}>
           <Card className={'gap-6 bg-[#F2F4EF] hover:bg-secondary-90'}>
+            <BiodiversityIcon />
             <CardContent className={'pt-8 pb-10'}>
               <Box className={'flex flex-row justify-between'}>
                 <Typography className={'text-2xl'}>Biodiversity</Typography>
@@ -111,6 +127,7 @@ const Home = () => {
         </Link>
         <Link href={'/data-catalog/air-quality'}>
           <Card className={'gap-6 bg-[#F2F4EF] hover:bg-secondary-90'}>
+            <AirQualityIcon />
             <CardContent className={'pt-8 pb-10'}>
               <Box className={'flex flex-row justify-between'}>
                 <Typography className={'text-2xl'}>Air Quality</Typography>
@@ -124,6 +141,7 @@ const Home = () => {
         </Link>
         <Link href={'/data-catalog/crop-health'}>
           <Card className={'gap-6 bg-[#F2F4EF] hover:bg-secondary-90'}>
+            <CropHealthIcon />
             <CardContent className={'pt-8 pb-10'}>
               <Box className={'flex flex-row justify-between'}>
                 <Typography className={'text-2xl'}>Crop Health</Typography>
