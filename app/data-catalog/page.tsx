@@ -138,18 +138,18 @@ const Home = () => {
         </Typography>
         <Box className={'flex flex-row gap-6 mt-16 w-full'}>
           <InfoCard
-            externalLink={false}
+            externalLink={true}
             header={'Javascript'}
             subHeader={'Some text about the JavaScript client library.'}
             CardIcon={JavascriptLogo}
-            href={'/'}
+            href={'https://www.npmjs.com/package/openepi-client'}
           />
           <InfoCard
-            externalLink={false}
+            externalLink={true}
             header={'Python'}
             subHeader={'Some text about the Python client library.'}
             CardIcon={PythonLogo}
-            href={'/'}
+            href={'https://pypi.org/project/openepi-client/'}
           />
         </Box>
       </Box>

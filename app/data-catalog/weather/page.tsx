@@ -29,14 +29,14 @@ const Home = () => {
           header={'OpenAPI Spec'}
           subHeader={'Some text about the OpenAPI spec.'}
           CardIcon={OpenApiIcon}
-          href={'/'}
+          href={'https://api-test.openepi.io/weather/redoc'}
         />
         <InfoCard
           externalLink={true}
           header={'Github'}
           subHeader={'Some text about the Github repository.'}
           CardIcon={GithubIcon}
-          href={'/'}
+          href={'https://github.com/openearthplatforminitiative/weather-api'}
         />
       </Box>
       <Box className={'flex flex-col mt-28'}>

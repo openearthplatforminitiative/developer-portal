@@ -19,6 +19,7 @@ const InfoCard = ({
   return (
     <Link
       href={href}
+      target={externalLink ? '_blank' : ''}
       className={
         'flex flex-col gap-6 border rounded-xl px-6 pt-8 pb-10 w-full hover:bg-[#6750a414] group'
       }
