@@ -19,19 +19,21 @@ const DataCard = ({ header, subHeader, CardIcon, href }: DataCardProps) => {
     <Link href={href}>
       <Card
         className={
-          'gap-6 bg-[#F2F4EF] hover:bg-secondary-90 relative overflow-visible'
+          'group gap-6 bg-[#F2F4EF] hover:bg-secondary-90 relative overflow-visible transition duration-300'
         }
       >
         <Box className={'absolute -left-6 -top-6'}>
           <CardIcon />
         </Box>
-        <CardContent className={'pt-8 pb-10'}>
-          <Box className={'flex flex-row justify-between'}>
+        <Box className={'flex flex-col pt-8 pb-10 pr-6 pl-6'}>
+          <Box className={'flex flex-row justify-between my-2'}>
             <Typography className={'text-2xl'}>{header}</Typography>
-            <InternalLinkIcon />
+            <Box className='transform transition-transform duration-300 group-hover:translate-x-2'>
+              <InternalLinkIcon />
+            </Box>
           </Box>
           <Typography className={'text-base'}>{subHeader}</Typography>
-        </CardContent>
+        </Box>
       </Card>
     </Link>
   );

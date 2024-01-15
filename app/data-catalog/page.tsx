@@ -141,7 +141,7 @@ const Home = () => {
           <Link
             href={'/'}
             className={
-              'flex flex-col gap-6 border rounded-xl px-6 pt-8 pb-10 w-full hover:bg-[#6750a414]'
+              'flex flex-col gap-6 border rounded-xl px-6 pt-8 pb-10 w-full hover:bg-[#6750a414] group'
             }
           >
             <Box className={'flex flex-row justify-between'}>
@@ -149,7 +149,9 @@ const Home = () => {
                 <JavascriptLogo />
                 <Typography className={'text-2xl'}>Javascript</Typography>
               </Box>
-              <InternalLinkIcon />
+              <Box className='transform transition-transform duration-300 group-hover:translate-x-2'>
+                <InternalLinkIcon />
+              </Box>{' '}
             </Box>
             <Typography className={'text-base'}>
               Some text about the JavaScript client library.
