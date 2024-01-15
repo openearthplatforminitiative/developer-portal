@@ -1,7 +1,5 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import Link from 'next/link';
 import { InternalLinkIcon } from '@/app/icons/InternalLinkIcon';
 import { PythonLogo } from '@/app/icons/PythonLogo';
@@ -17,9 +15,10 @@ import { AirQualityIcon } from '@/app/icons/AirQualityIcon';
 import { CropHealthIcon } from '@/app/icons/CropHealthIcon';
 import Chip from '@mui/material/Chip';
 import { CheckIcon } from '@/app/icons/CheckIcon';
-import DataCard, { DataCardProps } from '@/app/components/DataCard';
+import ApiCard, { CardProps } from '@/app/components/ApiCard';
+import InfoCard from '@/app/components/InfoCard';
 
-const cards: DataCardProps[] = [
+const cards: CardProps[] = [
   {
     id: 1,
     header: 'Weather',
@@ -123,7 +122,7 @@ const Home = () => {
       </Box>
       <Box className={'grid grid-cols-4 gap-14 mt-16'}>
         {cards.map((card) => (
-          <DataCard
+          <ApiCard
             key={card.id}
             header={card.header}
             subHeader={card.subHeader}
@@ -138,42 +137,20 @@ const Home = () => {
           We provide two client libraries to make use of our data easier.
         </Typography>
         <Box className={'flex flex-row gap-6 mt-16 w-full'}>
-          <Link
+          <InfoCard
+            externalLink={false}
+            header={'Javascript'}
+            subHeader={'Some text about the JavaScript client library.'}
+            CardIcon={JavascriptLogo}
             href={'/'}
-            className={
-              'flex flex-col gap-6 border rounded-xl px-6 pt-8 pb-10 w-full hover:bg-[#6750a414] group'
-            }
-          >
-            <Box className={'flex flex-row justify-between'}>
-              <Box className={'flex flex-row gap-2'}>
-                <JavascriptLogo />
-                <Typography className={'text-2xl'}>Javascript</Typography>
-              </Box>
-              <Box className='transform transition-transform duration-300 group-hover:translate-x-2'>
-                <InternalLinkIcon />
-              </Box>{' '}
-            </Box>
-            <Typography className={'text-base'}>
-              Some text about the JavaScript client library.
-            </Typography>
-          </Link>
-          <Link
+          />
+          <InfoCard
+            externalLink={false}
+            header={'Python'}
+            subHeader={'Some text about the Python client library.'}
+            CardIcon={PythonLogo}
             href={'/'}
-            className={
-              'flex flex-col gap-6 border rounded-xl px-6 pt-8 pb-10 w-full hover:bg-[#6750a414]'
-            }
-          >
-            <Box className={'flex flex-row justify-between'}>
-              <Box className={'flex flex-row gap-2'}>
-                <PythonLogo />
-                <Typography className={'text-2xl'}>Python</Typography>
-              </Box>
-              <InternalLinkIcon />
-            </Box>{' '}
-            <Typography className={'text-base'}>
-              Some text about the Python client library.
-            </Typography>
-          </Link>
+          />
         </Box>
       </Box>
     </main>

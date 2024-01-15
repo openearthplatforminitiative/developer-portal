@@ -6,7 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { InternalLinkIcon } from '@/app/icons/InternalLinkIcon';
 
-export interface DataCardProps {
+export interface CardProps {
   id?: number;
   header: string;
   subHeader: string;
@@ -14,7 +14,7 @@ export interface DataCardProps {
   href: string;
 }
 
-const DataCard = ({ header, subHeader, CardIcon, href }: DataCardProps) => {
+const ApiCard = ({ header, subHeader, CardIcon, href }: CardProps) => {
   return (
     <Link href={href}>
       <Card
@@ -39,4 +39,4 @@ const DataCard = ({ header, subHeader, CardIcon, href }: DataCardProps) => {
   );
 };
 
-export default DataCard;
+export default ApiCard;
