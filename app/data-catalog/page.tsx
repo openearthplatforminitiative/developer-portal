@@ -17,6 +17,74 @@ import { AirQualityIcon } from '@/app/icons/AirQualityIcon';
 import { CropHealthIcon } from '@/app/icons/CropHealthIcon';
 import Chip from '@mui/material/Chip';
 import { CheckIcon } from '@/app/icons/CheckIcon';
+import DataCard, { DataCardProps } from '@/app/components/DataCard';
+
+const cards: DataCardProps[] = [
+  {
+    id: 1,
+    header: 'Weather',
+    subHeader: 'This section provides access to real-time weather data.',
+    CardIcon: WeatherIcon,
+    href: '/data-catalog/weather',
+  },
+  {
+    id: 2,
+    header: 'Flood',
+    subHeader: 'This section offers geocoding and address lookup services.',
+    CardIcon: FloodIcon,
+    href: '/data-catalog/flood',
+  },
+  {
+    id: 3,
+    header: 'Geocoding',
+    subHeader: 'This section offers geocoding and address lookup services.',
+    CardIcon: GeocodingIcon,
+    href: '/data-catalog/geocoding',
+  },
+  {
+    id: 4,
+    header: 'Deforestation',
+    subHeader:
+      'This section provides data on deforestation and environmental conservation efforts.',
+    CardIcon: DeforestationIcon,
+    href: '/data-catalog/deforestation',
+  },
+  {
+    id: 5,
+    header: 'Soil',
+    subHeader: 'Some descriptive text.',
+    CardIcon: SoilIcon,
+    href: '/data-catalog/soil',
+  },
+  {
+    id: 6,
+    header: 'Ocean',
+    subHeader: 'Some descriptive text.',
+    CardIcon: OceanIcon,
+    href: '/data-catalog/ocean',
+  },
+  {
+    id: 7,
+    header: 'Biodiversity',
+    subHeader: 'Some descriptive text.',
+    CardIcon: BiodiversityIcon,
+    href: '/data-catalog/biodiversity',
+  },
+  {
+    id: 8,
+    header: 'Air Quality',
+    subHeader: 'Some descriptive text.',
+    CardIcon: AirQualityIcon,
+    href: '/data-catalog/air-quality',
+  },
+  {
+    id: 9,
+    header: 'Crop Health',
+    subHeader: 'Some descriptive text.',
+    CardIcon: CropHealthIcon,
+    href: '/data-catalog/crop-health',
+  },
+];
 
 const Home = () => {
   return (
@@ -54,187 +122,15 @@ const Home = () => {
         </Box>
       </Box>
       <Box className={'grid grid-cols-4 gap-14 mt-16'}>
-        <Link href={'/data-catalog/weather'}>
-          <Card
-            className={
-              'gap-6 bg-[#F2F4EF] hover:bg-secondary-90 relative overflow-visible'
-            }
-          >
-            <Box className={'absolute -left-6 -top-6'}>
-              <WeatherIcon />
-            </Box>
-            <CardContent className={'pt-8 pb-10'}>
-              <Box className={'flex flex-row justify-between'}>
-                <Typography className={'text-2xl'}>Weather</Typography>
-                <InternalLinkIcon />
-              </Box>
-              <Typography className={'text-base'}>
-                This section provides access to real-time weather data.
-              </Typography>
-            </CardContent>
-          </Card>
-        </Link>
-        <Link href={'/data-catalog/flood'}>
-          <Card
-            className={
-              'gap-6 bg-[#F2F4EF] hover:bg-secondary-90 relative overflow-visible'
-            }
-          >
-            <Box className={'absolute -left-6 -top-6'}>
-              <FloodIcon />
-            </Box>
-            <CardContent className={'pt-8 pb-10'}>
-              <Box className={'flex flex-row justify-between'}>
-                <Typography className={'text-2xl'}>Flood</Typography>
-                <InternalLinkIcon />
-              </Box>
-              <Typography className={'text-base'}>
-                This section offers geocoding and address lookup services.
-              </Typography>
-            </CardContent>
-          </Card>
-        </Link>
-        <Link href={'/data-catalog/geocoding'}>
-          <Card
-            className={
-              'gap-6 bg-[#F2F4EF] hover:bg-secondary-90 relative overflow-visible'
-            }
-          >
-            <Box className={'absolute -left-6 -top-6'}>
-              <GeocodingIcon />
-            </Box>
-            <CardContent className={'pt-8 pb-10'}>
-              <Box className={'flex flex-row justify-between'}>
-                <Typography className={'text-2xl'}>Geocoding</Typography>
-                <InternalLinkIcon />
-              </Box>
-              <Typography className={'text-base'}>
-                This section offers geocoding and address lookup services.
-              </Typography>
-            </CardContent>
-          </Card>
-        </Link>
-        <Link href={'/data-catalog/deforestation'}>
-          <Card
-            className={
-              'gap-6 bg-[#F2F4EF] hover:bg-secondary-90 relative overflow-visible'
-            }
-          >
-            <Box className={'absolute -left-6 -top-6'}>
-              <DeforestationIcon />
-            </Box>
-            <CardContent className={'pt-8 pb-10'}>
-              <Box className={'flex flex-row justify-between'}>
-                <Typography className={'text-2xl'}>Deforestation</Typography>
-                <InternalLinkIcon />
-              </Box>{' '}
-              <Typography className={'text-base'}>
-                This section provides data on deforestation and environmental
-                conservation efforts.
-              </Typography>
-            </CardContent>
-          </Card>
-        </Link>
-        <Link href={'/data-catalog/soil'}>
-          <Card
-            className={
-              'gap-6 bg-[#F2F4EF] hover:bg-secondary-90 relative overflow-visible'
-            }
-          >
-            <Box className={'absolute -left-6 -top-6'}>
-              <SoilIcon />
-            </Box>
-            <CardContent className={'pt-8 pb-10'}>
-              <Box className={'flex flex-row justify-between'}>
-                <Typography className={'text-2xl'}>Soil</Typography>
-                <InternalLinkIcon />
-              </Box>{' '}
-              <Typography className={'text-base'}>
-                Some descriptive text.
-              </Typography>
-            </CardContent>
-          </Card>
-        </Link>
-        <Link href={'/data-catalog/ocean'}>
-          <Card
-            className={
-              'gap-6 bg-[#F2F4EF] hover:bg-secondary-90 relative overflow-visible'
-            }
-          >
-            <Box className={'absolute -left-6 -top-6'}>
-              <OceanIcon />
-            </Box>
-            <CardContent className={'pt-8 pb-10'}>
-              <Box className={'flex flex-row justify-between'}>
-                <Typography className={'text-2xl'}>Ocean</Typography>
-                <InternalLinkIcon />
-              </Box>{' '}
-              <Typography className={'text-base'}>
-                Some descriptive text.
-              </Typography>
-            </CardContent>
-          </Card>
-        </Link>
-        <Link href={'/data-catalog/biodiversity'}>
-          <Card
-            className={
-              'gap-6 bg-[#F2F4EF] hover:bg-secondary-90 relative overflow-visible'
-            }
-          >
-            <Box className={'absolute -left-6 -top-6'}>
-              <BiodiversityIcon />
-            </Box>
-            <CardContent className={'pt-8 pb-10'}>
-              <Box className={'flex flex-row justify-between'}>
-                <Typography className={'text-2xl'}>Biodiversity</Typography>
-                <InternalLinkIcon />
-              </Box>{' '}
-              <Typography className={'text-base'}>
-                Some descriptive text.
-              </Typography>
-            </CardContent>
-          </Card>
-        </Link>
-        <Link href={'/data-catalog/air-quality'}>
-          <Card
-            className={
-              'gap-6 bg-[#F2F4EF] hover:bg-secondary-90 relative overflow-visible'
-            }
-          >
-            <Box className={'absolute -left-6 -top-6'}>
-              <AirQualityIcon />
-            </Box>
-            <CardContent className={'pt-8 pb-10'}>
-              <Box className={'flex flex-row justify-between'}>
-                <Typography className={'text-2xl'}>Air Quality</Typography>
-                <InternalLinkIcon />
-              </Box>{' '}
-              <Typography className={'text-base'}>
-                Some descriptive text.
-              </Typography>
-            </CardContent>
-          </Card>
-        </Link>
-        <Link href={'/data-catalog/crop-health'}>
-          <Card
-            className={
-              'gap-6 bg-[#F2F4EF] hover:bg-secondary-90 relative overflow-visible'
-            }
-          >
-            <Box className={'absolute -left-6 -top-6'}>
-              <CropHealthIcon />
-            </Box>
-            <CardContent className={'pt-8 pb-10'}>
-              <Box className={'flex flex-row justify-between'}>
-                <Typography className={'text-2xl'}>Crop Health</Typography>
-                <InternalLinkIcon />
-              </Box>{' '}
-              <Typography className={'text-base'}>
-                Some descriptive text.
-              </Typography>
-            </CardContent>
-          </Card>
-        </Link>
+        {cards.map((card) => (
+          <DataCard
+            key={card.id}
+            header={card.header}
+            subHeader={card.subHeader}
+            CardIcon={card.CardIcon}
+            href={card.href}
+          />
+        ))}
       </Box>
       <Box className={'flex flex-col gap-8 mt-28 w-full'}>
         <Typography className={'text-4xl'}>Client libraries</Typography>
