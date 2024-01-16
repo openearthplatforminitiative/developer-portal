@@ -33,9 +33,7 @@ const ResourceCard = ({
               <ExternalLinkIcon />
             </Box>
           </Box>
-          <Typography variant='body2' color='text.secondary'>
-            {subHeader}
-          </Typography>
+          <Typography variant='body2'>{subHeader}</Typography>
         </Box>
       </Card>
     </Link>

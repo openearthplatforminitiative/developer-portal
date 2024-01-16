@@ -32,9 +32,7 @@ const Home = () => {
                       <InternalLinkIcon />
                     </Box>
                   </Box>
-                  <Typography variant='body2' color='text.secondary'>
-                    Sub text
-                  </Typography>
+                  <Typography variant='body2'>Sub text</Typography>
                 </Box>
               </Card>
             </Link>
@@ -49,9 +47,7 @@ const Home = () => {
                       <InternalLinkIcon />
                     </Box>
                   </Box>
-                  <Typography variant='body2' color='text.secondary'>
-                    Sub text
-                  </Typography>
+                  <Typography variant='body2'>Sub text</Typography>
                 </Box>
               </Card>
             </Link>
@@ -66,9 +62,7 @@ const Home = () => {
                       <ExternalLinkIcon />
                     </Box>
                   </Box>
-                  <Typography variant='body2' color='text.secondary'>
-                    Sub text
-                  </Typography>
+                  <Typography variant='body2'>Sub text</Typography>
                 </Box>
               </Card>
             </Link>
