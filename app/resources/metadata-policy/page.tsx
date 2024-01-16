@@ -26,23 +26,25 @@ const Home = () => {
             <Typography className={'text-4xl'}>Background</Typography>
             <Typography className={'text-base'}>
               Begin your journey by creating a user account. This will be your
-              gateway to a world of data-driven possibilities. Click the "Sign
-              Up" button, fill in your details, and voila! You're one step
-              closer to unlocking the full potential of our platform.
+              gateway to a world of data-driven possibilities. Click the
+              &quot;Sign Up&quot; button, fill in your details, and voila!
+              You&apos;re one step closer to unlocking the full potential of our
+              platform.
             </Typography>
           </Box>
           <Box className={'flex flex-col gap-8'}>
             <Typography className={'text-3xl mt-14'}>Sub heading</Typography>
             <Typography className={'text-base'}>
               Begin your journey by creating a user account. This will be your
-              gateway to a world of data-driven possibilities. Click the "Sign
-              Up" button, fill in your details, and voila! You're one step
-              closer to unlocking the full potential of our platform. There is a
-              need for a robust and accessible digital infrastructure for open
-              data and algorithms on weather, water, earth, and vegetation,
-              across projects, sectors, and contexts – providing a base for the
-              necessary local technology innovation. The Open Earth Platform
-              (OpenEPI) is an initiative to prepare for such an infrastructure.
+              gateway to a world of data-driven possibilities. Click the
+              &quot;Sign Up&quot; button, fill in your details, and voila!
+              You&apos;re one step closer to unlocking the full potential of our
+              platform. There is a need for a robust and accessible digital
+              infrastructure for open data and algorithms on weather, water,
+              earth, and vegetation, across projects, sectors, and contexts –
+              providing a base for the necessary local technology innovation.
+              The Open Earth Platform (OpenEPI) is an initiative to prepare for
+              such an infrastructure.
             </Typography>
             <Typography className={'text-base'}>
               There is a need for a robust and accessible digital infrastructure
@@ -57,14 +59,15 @@ const Home = () => {
             <Typography className={'text-3xl'}>Sub heading</Typography>
             <Typography className={'text-base'}>
               Begin your journey by creating a user account. This will be your
-              gateway to a world of data-driven possibilities. Click the "Sign
-              Up" button, fill in your details, and voila! You're one step
-              closer to unlocking the full potential of our platform. There is a
-              need for a robust and accessible digital infrastructure for open
-              data and algorithms on weather, water, earth, and vegetation,
-              across projects, sectors, and contexts – providing a base for the
-              necessary local technology innovation. The Open Earth Platform
-              (OpenEPI) is an initiative to prepare for such an infrastructure.
+              gateway to a world of data-driven possibilities. Click the
+              &quot;Sign Up&quot; button, fill in your details, and voila!
+              You&apos;re one step closer to unlocking the full potential of our
+              platform. There is a need for a robust and accessible digital
+              infrastructure for open data and algorithms on weather, water,
+              earth, and vegetation, across projects, sectors, and contexts –
+              providing a base for the necessary local technology innovation.
+              The Open Earth Platform (OpenEPI) is an initiative to prepare for
+              such an infrastructure.
             </Typography>
             <Typography className={'text-base'}>
               There is a need for a robust and accessible digital infrastructure
