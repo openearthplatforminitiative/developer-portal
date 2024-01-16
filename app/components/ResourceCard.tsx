@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { ExternalLinkIcon } from '@/app/icons/ExternalLinkIcon';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface ResourceCardProps {
   header: string;
@@ -23,7 +24,7 @@ const ResourceCard = ({
       <Card
         className={'group rounded-xl w-fit bg-[#F2F4EF] hover:bg-secondary-90'}
       >
-        <img src={imageUrl} alt={alt} />
+        <Image src={imageUrl} alt={alt} width={331} height={188} />
         <Box className={'flex flex-col p-6'}>
           <Box className={'flex flex-row justify-between items-center'}>
             <Typography variant='h5' component='div'>
