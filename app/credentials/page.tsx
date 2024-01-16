@@ -21,11 +21,12 @@ export default function Home() {
           <Typography className={'text-4xl mb-8'}>
             1. Create user account
           </Typography>
-          <Typography>
+          <Typography className={'text-base'}>
             Begin your journey by creating a user account. This will be your
-            gateway to a world of data-driven possibilities. Click the "Sign Up"
-            button, fill in your details, and voila! You're one step closer to
-            unlocking the full potential of our platform.
+            gateway to a world of data-driven possibilities. Click the
+            &quot;Sign Up&quot; button, fill in your details, and voila!
+            You&apos;re one step closer to unlocking the full potential of our
+            platform.
           </Typography>
         </Box>
         <Box>
@@ -34,12 +35,8 @@ export default function Home() {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell className={'text-sm font-medium'}>
-                    Method
-                  </TableCell>
-                  <TableCell className={'text-sm font-medium'}>
-                    Action
-                  </TableCell>
+                  <TableCell className={'text-sm font-bold'}>Method</TableCell>
+                  <TableCell className={'text-sm font-bold'}>Action</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -74,6 +71,9 @@ export default function Home() {
         <Box>
           <Typography className={'text-4xl'}>
             3. Third and final step
+          </Typography>
+          <Typography className={'mt-20 text-base'}>
+            Code example coming soon
           </Typography>
         </Box>
       </Box>
