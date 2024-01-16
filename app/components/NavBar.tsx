@@ -12,7 +12,7 @@ const NavBar = () => {
   const baseStyle: string = 'px-6 py-2 rounded-full';
 
   const linkClassName = (path: string) =>
-    currentRoute.includes(path)
+    currentRoute.startsWith(path)
       ? baseStyle + ' bg-secondary-90'
       : baseStyle + ' hover:bg-[#1d1b2014]';
 
