@@ -2,7 +2,7 @@
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { Card, CardActions, CardContent } from '@mui/material';
+import { Card } from '@mui/material';
 import { ExternalLinkIcon } from '@/app/icons/ExternalLinkIcon';
 import { InternalLinkIcon } from '@/app/icons/InternalLinkIcon';
 import Link from 'next/link';

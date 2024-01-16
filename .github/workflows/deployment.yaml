@@ -1,0 +1,45 @@
+name: Deployment
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  # These permissions are needed to interact with GitHub's OIDC Token endpoint.
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy to S3-bucket
+    environment:
+      name: test
+      url: https://${{ vars.DOMAIN_NAME }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_CD_ROLE }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Export static website
+        run: npm run build
+
+      - name: Upload website to S3
+        run: aws s3 sync ./out s3://${{ vars.DOMAIN_NAME }} --delete
