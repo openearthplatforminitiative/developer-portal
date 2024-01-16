@@ -5,11 +5,11 @@ import Box from '@mui/material/Box';
 
 const Home = () => {
   return (
-    <main className={'ml-[300px] mr-[387px] mb-44 mt-24'}>
+    <Box>
       <Link
         href='/resources'
         className={
-          'flex flex-row items-center text-primary-main underline hover:no-underline'
+          'flex flex-row items-center text-primary-main underline hover:no-underline -mt-24'
         }
       >
         <BackIcon />
@@ -77,7 +77,7 @@ const Home = () => {
           </Box>
         </Box>
       </Box>
-    </main>
+    </Box>
   );
 };
 
