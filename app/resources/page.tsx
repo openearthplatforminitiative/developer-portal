@@ -23,64 +23,57 @@ const Home = () => {
           <Box className={'grid grid-cols-3 gap-6'}>
             <Link href={'/resources/open-policy'}>
               <Card className={'group bg-[#F2F4EF] hover:bg-secondary-90'}>
-                <CardContent
-                  className={'flex flex-row items-center justify-between'}
-                >
-                  <Box className={'flex flex-col'}>
+                <Box className={'flex flex-col p-6'}>
+                  <Box className={'flex flex-row justify-between items-center'}>
                     <Typography variant='h5' component='div'>
                       Our open policy
                     </Typography>
-                    <Typography variant='body2' color='text.secondary'>
-                      Sub text
-                    </Typography>
+                    <Box className='transform transition-transform duration-300 group-hover:translate-x-2'>
+                      <InternalLinkIcon />
+                    </Box>
                   </Box>
-                  <Box className='transform transition-transform duration-300 group-hover:translate-x-2'>
-                    <InternalLinkIcon />
-                  </Box>
-                </CardContent>
+                  <Typography variant='body2' color='text.secondary'>
+                    Sub text
+                  </Typography>
+                </Box>
               </Card>
             </Link>
             <Link href={'/resources/metadata-policy'}>
               <Card className={'group bg-[#F2F4EF] hover:bg-secondary-90'}>
-                <CardContent
-                  className={'flex flex-row items-center justify-between'}
-                >
-                  <Box className={'flex flex-col'}>
+                <Box className={'flex flex-col p-6'}>
+                  <Box className={'flex flex-row justify-between items-center'}>
                     <Typography variant='h5' component='div'>
                       Our metadata policy
                     </Typography>
-                    <Typography variant='body2' color='text.secondary'>
-                      Sub text
-                    </Typography>
+                    <Box className='transform transition-transform duration-300 group-hover:translate-x-2'>
+                      <InternalLinkIcon />
+                    </Box>
                   </Box>
-                  <Box className='transform transition-transform duration-300 group-hover:translate-x-2'>
-                    <InternalLinkIcon />
-                  </Box>
-                </CardContent>
+                  <Typography variant='body2' color='text.secondary'>
+                    Sub text
+                  </Typography>
+                </Box>
               </Card>
             </Link>
             <Link target={'_blank'} href={'https://api-test.openepi.io/'}>
               <Card className={'group bg-[#F2F4EF] hover:bg-secondary-90'}>
-                <CardContent
-                  className={'flex flex-row items-center justify-between'}
-                >
-                  <Box className={'flex flex-col'}>
+                <Box className={'flex flex-col p-6'}>
+                  <Box className={'flex flex-row justify-between items-center'}>
                     <Typography variant='h5' component='div'>
-                      OpenAPI specification
+                      OpenAPI Specification
                     </Typography>
-                    <Typography variant='body2' color='text.secondary'>
-                      Sub text
-                    </Typography>
+                    <Box className='transform transition-transform duration-300 group-hover:translate-x-2'>
+                      <ExternalLinkIcon />
+                    </Box>
                   </Box>
-                  <Box className='transform transition-transform duration-300 group-hover:translate-x-2'>
-                    <ExternalLinkIcon />
-                  </Box>
-                </CardContent>
+                  <Typography variant='body2' color='text.secondary'>
+                    Sub text
+                  </Typography>
+                </Box>
               </Card>
             </Link>
           </Box>
         </Box>
-
         <Box className={'flex flex-col gap-8'}>
           <Typography className={'text-4xl'}>Frontend</Typography>
           <Box className={'grid grid-cols-4 gap-6'}>
