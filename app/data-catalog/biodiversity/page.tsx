@@ -8,11 +8,11 @@ import { OpenApiIcon } from '@/app/icons/OpenApiIcon';
 
 const Home = () => {
   return (
-    <main className={'ml-[300px] mr-[387px] mb-44 mt-24'}>
+    <Box>
       <Link
         href='/data-catalog'
         className={
-          'flex flex-row items-center text-primary-main underline hover:no-underline'
+          'flex flex-row items-center text-primary-main underline hover:no-underline -mt-24'
         }
       >
         <BackIcon />
@@ -75,7 +75,7 @@ const Home = () => {
           (OpenEPI) is an initiative to prepare for such an infrastructure.
         </Typography>
       </Box>
-    </main>
+    </Box>
   );
 };
 

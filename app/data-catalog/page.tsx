@@ -87,7 +87,7 @@ const cards: CardProps[] = [
 
 const Home = () => {
   return (
-    <main className={'ml-[300px] mr-[387px] mt-44 mb-24'}>
+    <Box>
       <Box className={'flex flex-col gap-8 mb-20'}>
         <Typography className={'text-5xl'}>
           Data catalog of open data
@@ -153,7 +153,7 @@ const Home = () => {
           />
         </Box>
       </Box>
-    </main>
+    </Box>
   );
 };
 

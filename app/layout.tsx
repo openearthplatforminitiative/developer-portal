@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <ThemeRegistry options={{ key: 'mui' }}>
         <body>
           <NavBar />
-          {children}
+          <main className={'mx-auto my-44 max-w-7xl'}>{children}</main>
           <Footer />
         </body>
       </ThemeRegistry>
