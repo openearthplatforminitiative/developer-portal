@@ -20,7 +20,9 @@ const ResourceCard = ({
 }: ResourceCardProps) => {
   return (
     <Link target={'_blank'} href={href} className={'w-fit'}>
-      <Card className={'group w-fit bg-[#F2F4EF] hover:bg-secondary-90'}>
+      <Card
+        className={'group rounded-xl w-fit bg-[#F2F4EF] hover:bg-secondary-90'}
+      >
         <img src={imageUrl} alt={alt} />
         <Box className={'flex flex-col p-6'}>
           <Box className={'flex flex-row justify-between items-center'}>
