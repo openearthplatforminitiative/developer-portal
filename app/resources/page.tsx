@@ -10,7 +10,7 @@ import ResourceCard from '@/app/components/ResourceCard';
 
 const Home = () => {
   return (
-    <Box>
+    <Box className={'w-full h-full max-w-7xl'}>
       <Box className={'flex flex-col gap-8 mb-20'}>
         <Typography className={'text-5xl'}>Open source resources</Typography>
         <Typography className={'text-2xl'}>

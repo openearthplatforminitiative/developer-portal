@@ -5,6 +5,11 @@ import ApiCard from '@/app/components/ApiCard';
 import { WeatherIcon } from '@/app/icons/WeatherIcon';
 import { GeocodingIcon } from '@/app/icons/GeocodingIcon';
 import { FloodIcon } from '@/app/icons/FloodIcon';
+import InfoCard from '@/app/components/InfoCard';
+import { JavascriptLogo } from '@/app/icons/JavascriptLogo';
+import { PythonLogo } from '@/app/icons/PythonLogo';
+import Button from '@mui/material/Button';
+import Link from 'next/link';
 
 const Home = () => {
   return (
@@ -42,17 +47,17 @@ const Home = () => {
           Right side
         </Box>
       </Box>
-      <Box className={'w-full h-full max-w-7xl'}>
-        <Box>
-          <Box className={'flex flex-col gap-8 mb-6'}>
-            <Typography className={'text-5xl'}>
-              Data catalog of open data
-            </Typography>
-            <Typography className={'text-2xl'}>
-              We currently have 4 APIs available.
-            </Typography>
-          </Box>
-          <Box className={'flex flex-row'}>
+      <Box className={'flex flex-col w-full max-w-7xl mx-auto'}>
+        <Box className={'flex flex-col gap-8 mb-6'}>
+          <Typography className={'text-5xl'}>
+            Data catalog of open data
+          </Typography>
+          <Typography className={'text-2xl'}>
+            We currently have 4 APIs available.
+          </Typography>
+        </Box>
+        <Box className={'flex flex-col mt-24 gap-14 mb-48 items-end'}>
+          <Box className={'flex flex-row gap-14'}>
             <ApiCard
               header={'Weather'}
               subHeader={
@@ -76,6 +81,40 @@ const Home = () => {
               }
               CardIcon={GeocodingIcon}
               href={'/data-catalog/geocoding'}
+            />
+          </Box>
+          <Link href={'/data-catalog'}>
+            <Button
+              variant={'outlined'}
+              className={
+                'text-primary-main w-fit rounded-full border-neutralVariant-50 normal-case text-sm'
+              }
+            >
+              View all
+            </Button>
+          </Link>
+        </Box>
+        <Box className={'flex flex-col'}>
+          <Box className={'flex flex-col gap-8 mb-16'}>
+            <Typography className={'text-4xl'}>Client libraries</Typography>
+            <Typography className={'text-2xl'}>
+              We provide two client libraries to make use of our data easier
+            </Typography>
+          </Box>
+          <Box className={'flex flex-row gap-6 w-full'}>
+            <InfoCard
+              externalLink={true}
+              header={'Javascript'}
+              subHeader={'Some text about the JavaScript client library.'}
+              CardIcon={JavascriptLogo}
+              href={'https://www.npmjs.com/package/openepi-client'}
+            />
+            <InfoCard
+              externalLink={true}
+              header={'Python'}
+              subHeader={'Some text about the Python client library.'}
+              CardIcon={PythonLogo}
+              href={'https://pypi.org/project/openepi-client/'}
             />
           </Box>
         </Box>
