@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 const Home = () => {
   return (
-    <Box>
+    <Box className={'max-w-7xl'}>
       <Typography className={'text-5xl mb-20'}>
         Need help or want to get involved
       </Typography>

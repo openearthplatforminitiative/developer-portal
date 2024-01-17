@@ -8,7 +8,7 @@ import { OpenApiIcon } from '@/app/icons/OpenApiIcon';
 
 const Home = () => {
   return (
-    <Box>
+    <Box className={'max-w-7xl'}>
       <Link
         href='/data-catalog'
         className={
@@ -16,7 +16,7 @@ const Home = () => {
         }
       >
         <BackIcon />
-        <Typography className={'text-base'}> Back to resources </Typography>
+        <Typography className={'text-base'}> Back to data catalog</Typography>
       </Link>
 
       <Box className={'flex flex-col gap-8 mt-14'}>
