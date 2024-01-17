@@ -9,7 +9,7 @@ const Home = () => {
       <Link
         href='/resources'
         className={
-          'flex flex-row items-center text-primary-main underline hover:no-underline -mt-24'
+          'flex flex-row items-center text-primary-main underline hover:no-underline -mt-20'
         }
       >
         <BackIcon />

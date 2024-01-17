@@ -48,41 +48,6 @@ const cards: CardProps[] = [
     CardIcon: DeforestationIcon,
     href: '/data-catalog/deforestation',
   },
-  {
-    id: 5,
-    header: 'Soil',
-    subHeader: 'Some descriptive text.',
-    CardIcon: SoilIcon,
-    href: '/data-catalog/soil',
-  },
-  {
-    id: 6,
-    header: 'Ocean',
-    subHeader: 'Some descriptive text.',
-    CardIcon: OceanIcon,
-    href: '/data-catalog/ocean',
-  },
-  {
-    id: 7,
-    header: 'Biodiversity',
-    subHeader: 'Some descriptive text.',
-    CardIcon: BiodiversityIcon,
-    href: '/data-catalog/biodiversity',
-  },
-  {
-    id: 8,
-    header: 'Air Quality',
-    subHeader: 'Some descriptive text.',
-    CardIcon: AirQualityIcon,
-    href: '/data-catalog/air-quality',
-  },
-  {
-    id: 9,
-    header: 'Crop Health',
-    subHeader: 'Some descriptive text.',
-    CardIcon: CropHealthIcon,
-    href: '/data-catalog/crop-health',
-  },
 ];
 
 const Home = () => {
@@ -120,7 +85,7 @@ const Home = () => {
           />
         </Box>
       </Box>
-      <Box className={'grid grid-cols-4 gap-14 mt-16'}>
+      <Box className={'grid grid-cols-3 gap-14 mt-16'}>
         {cards.map((card) => (
           <ApiCard
             key={card.id}

@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Link from 'next/link';
 import { BackIcon } from '@/app/icons/BackIcon';
 import InfoCard from '@/app/components/InfoCard';
-import { GithubIcon } from '@/app/icons/GithubIcon';
+import { GithubIconBlack } from '@/app/icons/GithubIconBlack';
 import { OpenApiIcon } from '@/app/icons/OpenApiIcon';
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
       <Link
         href='/data-catalog'
         className={
-          'flex flex-row items-center text-primary-main underline hover:no-underline -mt-24'
+          'flex flex-row items-center text-primary-main underline hover:no-underline -mt-20'
         }
       >
         <BackIcon />
@@ -35,7 +35,7 @@ const Home = () => {
           externalLink={true}
           header={'Github'}
           subHeader={'Some text about the Github repository.'}
-          CardIcon={GithubIcon}
+          CardIcon={GithubIconBlack}
           href={'https://github.com/openearthplatforminitiative/weather-api'}
         />
       </Box>
