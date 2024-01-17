@@ -10,6 +10,9 @@ import { JavascriptLogo } from '@/app/icons/JavascriptLogo';
 import { PythonLogo } from '@/app/icons/PythonLogo';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
+import { OpenLockIcon } from '@/app/icons/OpenLockIcon';
+import { VerifiedIcon } from '@/app/icons/VerifiedIcon';
+import { LightBulbIcon } from '@/app/icons/LightBulbIcon';
 
 const Home = () => {
   return (
@@ -41,10 +44,25 @@ const Home = () => {
         </Box>
         <Box
           className={
-            'flex flex-col bg-neutral-95 w-1/2 items-center justify-center'
+            'flex flex-col bg-neutral-95 w-1/2 gap-10 justify-center pl-16'
           }
         >
-          Right side
+          <Box className={'flex flex-row gap-2'}>
+            <OpenLockIcon />{' '}
+            <Typography className={'text-3xl'}>Truly open source</Typography>
+          </Box>
+          <Box className={'flex flex-row gap-2'}>
+            <VerifiedIcon />
+            <Typography className={'text-3xl'}>
+              Verified and quality assured data
+            </Typography>
+          </Box>
+          <Box className={'flex flex-row gap-2'}>
+            <LightBulbIcon />
+            <Typography className={'text-3xl'}>
+              Unique factor about the platform
+            </Typography>
+          </Box>
         </Box>
       </Box>
       <Box className={'flex flex-col w-full max-w-7xl mx-auto'}>
