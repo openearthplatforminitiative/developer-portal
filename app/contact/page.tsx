@@ -5,6 +5,8 @@ import Divider from '@mui/material/Divider';
 import { GithubIconWhite } from '@/app/icons/GithubIconWhite';
 import { DiscordIcon } from '@/app/icons/DiscordIcon';
 import TextField from '@mui/material/TextField';
+import Checkbox from '@mui/material/Checkbox';
+import Link from 'next/link';
 
 const Home = () => {
   return (
@@ -22,15 +24,20 @@ const Home = () => {
             doesn&apos;t apply to any of the repositories we recommend you use
             our Discord or submit a general enquiry.
           </Typography>
-          <Button
-            variant={'contained'}
-            className={
-              'bg-primary-main rounded-full w-fit pr-6 pl-4 py-2.5 normal-case text-sm'
-            }
-            startIcon={<GithubIconWhite />}
+          <Link
+            href={'https://github.com/openearthplatforminitiative'}
+            target={'_blank'}
           >
-            To the Github project
-          </Button>
+            <Button
+              variant={'contained'}
+              className={
+                'bg-primary-main rounded-full w-fit pr-6 pl-4 py-2.5 normal-case text-sm'
+              }
+              startIcon={<GithubIconWhite />}
+            >
+              To the Github project
+            </Button>
+          </Link>
         </Box>
         <Box className={'flex flex-col gap-30 w-1/2'}>
           <Typography className={'text-3xl'}>
@@ -40,20 +47,22 @@ const Home = () => {
             See what’s going on, get help or start a conversation on our open
             Discord server.
           </Typography>
-          <Button
-            variant={'contained'}
-            className={
-              'bg-primary-main rounded-full w-fit pr-6 pl-4 py-2.5 normal-case text-sm'
-            }
-            startIcon={<DiscordIcon />}
-          >
-            Join on Discord
-          </Button>
+          <Link href={'https://discord.gg/HatbmfCY'} target={'_blank'}>
+            <Button
+              variant={'contained'}
+              className={
+                'bg-primary-main rounded-full w-fit pr-6 pl-4 py-2.5 normal-case text-sm'
+              }
+              startIcon={<DiscordIcon />}
+            >
+              Join on Discord
+            </Button>
+          </Link>
         </Box>
       </Box>
       <Divider className={'my-16'} />
       <Box className={'flex flex-row gap-28'}>
-        <Box>
+        <Box className={'w-1/2'}>
           <Typography className={'text-2xl mb-10'}>
             General enquiry about the project
           </Typography>
@@ -64,19 +73,37 @@ const Home = () => {
               placeholder={'Name'}
             />
             <TextField
-              className={'w-full'}
+              className={'w-full '}
               variant={'filled'}
               placeholder={'Email'}
             />
             <TextField
               className={'w-full h-36'}
               variant={'filled'}
+              rows={5}
               placeholder={'Message'}
               multiline={true}
             />
           </Box>
+          <Box className={'flex flex-col'}>
+            <Box className={'flex flex-row items-center '}>
+              <Checkbox />
+              <Typography className={'text-base'}>I agree to&nbsp;</Typography>
+              <Typography className={'text-base text-primary-main underline'}>
+                these terms
+              </Typography>
+            </Box>
+            <Button
+              variant={'contained'}
+              className={
+                'bg-primary-main rounded-full w-fit mt-8 px-6 py-2.5 normal-case text-sm'
+              }
+            >
+              Send message
+            </Button>
+          </Box>
         </Box>
-        <Box>
+        <Box className={'w-1/2'}>
           <Typography className={'text-2xl mb-8'}>Send us a line</Typography>
           <Typography className={'text-base'}>
             You may also contact us directly through email:

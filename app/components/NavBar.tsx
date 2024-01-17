@@ -28,9 +28,6 @@ const NavBar = () => {
         <Link href='/data-catalog' className={linkClassName('/data-catalog/')}>
           Data catalog
         </Link>
-        <Link href='/credentials' className={linkClassName('/credentials/')}>
-          Credentials
-        </Link>
         <Link href='/resources' className={linkClassName('/resources/')}>
           Resources
         </Link>
