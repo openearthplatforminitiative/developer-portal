@@ -27,9 +27,9 @@ const HelpButton = () => {
   const id = open ? 'simple-popover' : undefined;
 
   return (
-    <Box className={'fixed bottom-20 right-20 z-10 mr-12'}>
+    <Box className={'fixed bottom-20 right-20 z-10'}>
       <Fab
-        className={'w-fit rounded-2xl'}
+        className={'w-fit rounded-2xl mt-2'}
         aria-label='add'
         onClick={handleClick}
       >
@@ -45,6 +45,7 @@ const HelpButton = () => {
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}
+        disableScrollLock={true}
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',
@@ -53,11 +54,12 @@ const HelpButton = () => {
           vertical: 'bottom',
           horizontal: 'right',
         }}
+        className={'-mt-4 '}
       >
-        <Box className={'flex flex-col p-6'}>
+        <Box className={'flex flex-col p-6 w-64 '}>
           <Box className={'flex flex-col gap-2'}>
             <Typography className={'text-sm'}>
-              For technical issues or requests:{' '}
+              For technical issues or requests:
             </Typography>
             <Link
               href={'https://github.com/openearthplatforminitiative'}
