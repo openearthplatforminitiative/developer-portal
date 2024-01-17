@@ -47,11 +47,11 @@ const HelpButton = () => {
         onClose={handleClose}
         anchorOrigin={{
           vertical: 'top',
-          horizontal: 'center',
+          horizontal: 'right',
         }}
         transformOrigin={{
           vertical: 'bottom',
-          horizontal: 'center',
+          horizontal: 'right',
         }}
       >
         <Box className={'flex flex-col p-6'}>
