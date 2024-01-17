@@ -120,7 +120,7 @@ const Home = () => {
           />
         </Box>
       </Box>
-      <Box className={'grid grid-cols-4 gap-14 mt-16'}>
+      <Box className={'grid grid-cols-3 gap-14 mt-16'}>
         {cards.map((card) => (
           <ApiCard
             key={card.id}

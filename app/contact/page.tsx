@@ -1,6 +1,10 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
+import { GithubIconWhite } from '@/app/icons/GithubIconWhite';
+import { DiscordIcon } from '@/app/icons/DiscordIcon';
+import TextField from '@mui/material/TextField';
 
 const Home = () => {
   return (
@@ -8,8 +12,8 @@ const Home = () => {
       <Typography className={'text-5xl mb-20'}>
         Need help or want to get involved
       </Typography>
-      <Box className={'flex flex-row mb-16'}>
-        <Box className={'flex flex-col w-1/2 mr-30'}>
+      <Box className={'flex flex-row gap-28'}>
+        <Box className={'flex flex-col w-1/2'}>
           <Typography className={'text-3xl'}>
             Submit bugs, feature requests and more
           </Typography>
@@ -20,9 +24,12 @@ const Home = () => {
           </Typography>
           <Button
             variant={'contained'}
-            className={'bg-primary-main rounded-full w-1/2'}
+            className={
+              'bg-primary-main rounded-full w-fit pr-6 pl-4 py-2.5 normal-case text-sm'
+            }
+            startIcon={<GithubIconWhite />}
           >
-            To the Github Project
+            To the Github project
           </Button>
         </Box>
         <Box className={'flex flex-col gap-30 w-1/2'}>
@@ -35,10 +42,53 @@ const Home = () => {
           </Typography>
           <Button
             variant={'contained'}
-            className={'bg-primary-main rounded-full w-1/2'}
+            className={
+              'bg-primary-main rounded-full w-fit pr-6 pl-4 py-2.5 normal-case text-sm'
+            }
+            startIcon={<DiscordIcon />}
           >
             Join on Discord
           </Button>
+        </Box>
+      </Box>
+      <Divider className={'my-16'} />
+      <Box className={'flex flex-row gap-28'}>
+        <Box>
+          <Typography className={'text-2xl mb-10'}>
+            General enquiry about the project
+          </Typography>
+          <Box className={'flex flex-col w-full gap-3.5'}>
+            <TextField
+              className={'w-full'}
+              variant={'filled'}
+              placeholder={'Name'}
+            />
+            <TextField
+              className={'w-full'}
+              variant={'filled'}
+              placeholder={'Email'}
+            />
+            <TextField
+              className={'w-full h-36'}
+              variant={'filled'}
+              placeholder={'Message'}
+              multiline={true}
+            />
+          </Box>
+        </Box>
+        <Box>
+          <Typography className={'text-2xl mb-8'}>Send us a line</Typography>
+          <Typography className={'text-base'}>
+            You may also contact us directly through email:
+          </Typography>
+          <a
+            href='mailto:contact@openepi.io'
+            className={
+              'flex text-base text-primary-main underline hover:no-underline mt-4'
+            }
+          >
+            contact@openepi.io
+          </a>
         </Box>
       </Box>
     </Box>
