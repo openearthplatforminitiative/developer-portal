@@ -22,9 +22,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang='en' className={inter.className}>
       <ThemeRegistry options={{ key: 'mui' }}>
-        <body>
+        <body className='min-h-screen flex flex-col justify-between'>
           <NavBar />
-          <main className={'mx-auto my-44 max-w-7xl'}>{children}</main>
+          <main className='my-44 max-w-7xl w-full grow self-center'>{children}</main>
           <Footer />
         </body>
       </ThemeRegistry>
