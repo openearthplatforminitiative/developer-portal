@@ -131,6 +131,12 @@ const config: Config = {
       },
     },
     extend: {
+      keyframes: {
+        spinFrom90: {
+          '0%': { transform: 'rotate(90deg)' },
+          '100%': { transform: 'rotate(450deg)' }, // 360 + 90 degrees
+        },
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -138,6 +144,10 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-inter)'],
+      },
+      animation: {
+        spin: 'spin 40s linear infinite',
+        spinFrom90: 'spinFrom90 40s linear infinite',
       },
     },
   },
