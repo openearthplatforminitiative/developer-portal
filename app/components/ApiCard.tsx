@@ -19,7 +19,7 @@ const ApiCard = ({ header, subHeader, CardIcon, href }: CardProps) => {
     <Link href={href}>
       <Card
         className={
-          'group gap-6 bg-[#F2F4EF] hover:bg-secondary-90 relative overflow-visible transition duration-300 h-full'
+          'group gap-6 bg-[#F2F4EF] hover:bg-secondary-90 relative overflow-visible transition duration-300'
         }
       >
         <Box className={'absolute -left-6 -top-6'}>

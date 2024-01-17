@@ -12,7 +12,7 @@ const Home = () => {
       <Link
         href='/data-catalog'
         className={
-          'flex flex-row items-center text-primary-main underline hover:no-underline -mt-24'
+          'flex flex-row items-center text-primary-main underline hover:no-underline -mt-20'
         }
       >
         <BackIcon />
