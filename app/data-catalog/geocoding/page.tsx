@@ -8,7 +8,7 @@ import { OpenApiIcon } from '@/app/icons/OpenApiIcon';
 
 const Home = () => {
   return (
-    <Box>
+    <Box className={'max-w-7xl'}>
       <Link
         href='/data-catalog'
         className={
