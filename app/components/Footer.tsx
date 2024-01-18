@@ -8,12 +8,18 @@ import Link from 'next/link';
 const Footer = () => {
   return (
     <Box className={'flex w-full flex-col bg-neutralVariant-90'}>
-      <Box className={'flex flex-col items-center m-auto'}>
+      <Box className={'flex flex-col items-center lg:m-auto p-6'}>
         <Box className='flex flex-row gap-5 mb-6 mt-11 w-full'>
           <OpenEPILogoSmall />
-          <Typography className='text-2xl'>| Developer Portal</Typography>
+          <Typography className='lg:text-2xl text-xl'>
+            | Developer Portal
+          </Typography>
         </Box>
-        <Box className={'flex flex-row justify-between text-base w-full'}>
+        <Box
+          className={
+            'flex lg:flex-row flex-col justify-between lg:text-base text-lg w-full'
+          }
+        >
           <Box>
             <List className={'gap-4'}>
               <ListItem>
@@ -61,7 +67,7 @@ const Footer = () => {
               </ListItem>
             </List>
           </Box>
-          <Box>
+          <Box className={'lg:mt-0 mt-6'}>
             <List className={'gap-4 '}>
               <ListItem className={'text-secondary-main'}>
                 The OpenEPI project partners
