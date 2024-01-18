@@ -46,21 +46,27 @@ const Home = () => {
         </Box>
         <Box
           className={
-            'flex flex-col bg-neutral-95 lg:w-1/2 gap-10 justify-center lg:pl-16 p-16'
+            'flex flex-col bg-neutral-95 lg:w-1/2 gap-10 justify-center lg:pl-16 py-16 px-6'
           }
         >
           <Box className={'flex flex-row gap-2'}>
-            <OpenLockIcon />
+            <Box className={'w-fit h-fit'}>
+              <OpenLockIcon />
+            </Box>
             <Typography className={'text-3xl'}>Truly open source</Typography>
           </Box>
           <Box className={'flex flex-row gap-2'}>
-            <VerifiedIcon />
+            <Box className={'w-fit h-fit'}>
+              <VerifiedIcon />
+            </Box>
             <Typography className={'text-3xl'}>
               Verified and quality assured data
             </Typography>
           </Box>
           <Box className={'flex flex-row gap-2'}>
-            <LightBulbIcon />
+            <Box className={'w-fit h-fit'}>
+              <LightBulbIcon />
+            </Box>
             <Typography className={'text-3xl'}>
               Unique factor about the platform
             </Typography>
