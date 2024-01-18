@@ -8,22 +8,22 @@ import { OpenApiIcon } from '@/app/icons/OpenApiIcon';
 
 const Home = () => {
   return (
-    <Box className={'max-w-7xl'}>
+    <Box className={'lg:max-w-7xl p-6 lg:mt-0 -mt-24'}>
       <Link
         href='/data-catalog'
         className={
-          'flex flex-row items-center text-primary-main underline hover:no-underline -mt-20'
+          'flex flex-row items-center text-primary-main underline hover:no-underline -mt-20 gap-1'
         }
       >
         <BackIcon />
-        <Typography className={'text-base'}> Back to data catalog</Typography>
+        <Typography className={'text-xl'}> Back to data catalog</Typography>
       </Link>
 
       <Box className={'flex flex-col gap-8 mt-14'}>
         <Typography className={'text-5xl'}>Flood API</Typography>
         <Typography className={'text-2xl'}>Sub header</Typography>
       </Box>
-      <Box className={'flex flex-row gap-6 mt-20'}>
+      <Box className={'flex lg:flex-row flex-col gap-6 mt-20'}>
         <InfoCard
           externalLink={true}
           header={'OpenAPI Spec'}

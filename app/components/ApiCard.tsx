@@ -16,7 +16,7 @@ export interface CardProps {
 
 const ApiCard = ({ header, subHeader, CardIcon, href }: CardProps) => {
   return (
-    <Link href={href}>
+    <Link href={href} className={'w-fit'}>
       <Card
         className={
           'group gap-6 bg-[#F2F4EF] hover:bg-secondary-90 relative overflow-visible transition duration-300'

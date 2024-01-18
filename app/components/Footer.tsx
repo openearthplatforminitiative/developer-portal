@@ -33,14 +33,6 @@ const Footer = () => {
               <ListItem>
                 <Link
                   className={'underline hover:no-underline'}
-                  href={'/credentials'}
-                >
-                  Credentials
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link
-                  className={'underline hover:no-underline'}
                   href={'/resources'}
                 >
                   Resources

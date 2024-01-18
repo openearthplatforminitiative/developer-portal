@@ -52,40 +52,42 @@ const cards: CardProps[] = [
 
 const Home = () => {
   return (
-    <Box className={'w-full h-full max-w-7xl'}>
+    <Box className={'w-full h-full lg:max-w-7xl p-6 lg:mt-0 -mt-24'}>
       <Box className={'flex flex-col gap-8 mb-20'}>
         <Typography className={'text-5xl'}>
           Data catalog of open data
         </Typography>
         <Typography className={'text-2xl'}>Sub header</Typography>
       </Box>
-      <Box className={'flex flex-col gap-4'}>
-        <Typography> Resource type </Typography>
-        <Box className={'flex flex-row gap-2'}>
-          <Chip
-            variant='outlined'
-            color='success'
-            icon={<CheckIcon />}
-            label={'Show all'}
-            clickable
-          />
-          <Chip
-            variant='outlined'
-            color='success'
-            icon={<CheckIcon />}
-            label={'API'}
-            clickable
-          />
-          <Chip
-            variant='outlined'
-            color='success'
-            icon={<CheckIcon />}
-            label={'Databank'}
-            clickable
-          />
+      {/*
+        <Box className={'flex flex-col gap-4'}>
+          <Typography> Resource type </Typography>
+          <Box className={'flex flex-row gap-2'}>
+            <Chip
+              variant='outlined'
+              color='success'
+              icon={<CheckIcon />}
+              label={'Show all'}
+              clickable
+            />
+            <Chip
+              variant='outlined'
+              color='success'
+              icon={<CheckIcon />}
+              label={'API'}
+              clickable
+            />
+            <Chip
+              variant='outlined'
+              color='success'
+              icon={<CheckIcon />}
+              label={'Databank'}
+              clickable
+            />
+          </Box>
         </Box>
-      </Box>
-      <Box className={'grid grid-cols-3 gap-14 mt-16'}>
+      */}
+      <Box className={'grid lg:grid-cols-3 grid-flow-row gap-14 mt-16'}>
         {cards.map((card) => (
           <ApiCard
             key={card.id}
@@ -101,7 +103,7 @@ const Home = () => {
         <Typography className={'text-2xl'}>
           We provide two client libraries to make use of our data easier.
         </Typography>
-        <Box className={'flex flex-row gap-6 mt-16 w-full'}>
+        <Box className={'flex lg:flex-row flex-col gap-6 mt-16 w-full'}>
           <InfoCard
             externalLink={true}
             header={'Javascript'}
