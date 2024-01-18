@@ -78,22 +78,22 @@ const NavBar = () => {
           disableScrollLock={true}
           anchorEl={anchorEl}
         >
-          <MenuItem>
+          <MenuItem onClick={handleClose}>
             <Link href='/data-catalog' className={'p-2'}>
               <Typography className={'text-lg'}>Data catalog</Typography>
             </Link>
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={handleClose}>
             <Link href='/resources' className={'p-2'}>
               <Typography className={'text-lg'}>Resources </Typography>
             </Link>
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={handleClose}>
             <Link href='/contact' className={'p-2'}>
               <Typography className={'text-lg'}>Contact</Typography>
             </Link>
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={handleClose}>
             <Link
               href={'https://openepi.io'}
               target={'_blank'}
