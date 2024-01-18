@@ -18,7 +18,9 @@ const Home = () => {
 
       <Box>
         <Box className={'flex flex-col gap-8 mt-14 mb-20'}>
-          <Typography className={'text-5xl'}>Our metadata policy</Typography>
+          <Typography className={'text-5xl'}>
+            Our metadata specification
+          </Typography>
           <Typography className={'text-2xl'}>Lead paragraph</Typography>
         </Box>
         <Box>

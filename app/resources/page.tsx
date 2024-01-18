@@ -21,8 +21,10 @@ const Home = () => {
         <Box className={'flex flex-col gap-8'}>
           <Typography className={'text-4xl'}>Documents</Typography>
           <Box className={'grid lg:grid-cols-3 grid-flow-row gap-6'}>
-            <Link href={'/resources/open-policy'}>
-              <Card className={'group bg-[#F2F4EF] hover:bg-secondary-90'}>
+            <Link href={'/resources/open-policy'} className={'h-full'}>
+              <Card
+                className={'group bg-[#F2F4EF] hover:bg-secondary-90 h-full'}
+              >
                 <Box className={'flex flex-col p-6'}>
                   <Box className={'flex flex-row justify-between items-center'}>
                     <Typography variant='h5' component='div'>
@@ -36,12 +38,17 @@ const Home = () => {
                 </Box>
               </Card>
             </Link>
-            <Link href={'/resources/metadata-policy'}>
-              <Card className={'group bg-[#F2F4EF] hover:bg-secondary-90'}>
-                <Box className={'flex flex-col p-6'}>
+            <Link
+              href={'/resources/metadata-specification'}
+              className={'h-full'}
+            >
+              <Card
+                className={'group bg-[#F2F4EF] hover:bg-secondary-90 h-full'}
+              >
+                <Box className={'flex flex-col p-6 '}>
                   <Box className={'flex flex-row justify-between items-center'}>
                     <Typography variant='h5' component='div'>
-                      Our metadata policy
+                      Our metadata specification
                     </Typography>
                     <Box className='transform transition-transform duration-300 group-hover:translate-x-2'>
                       <InternalLinkIcon />
@@ -51,8 +58,14 @@ const Home = () => {
                 </Box>
               </Card>
             </Link>
-            <Link target={'_blank'} href={'https://api-test.openepi.io/'}>
-              <Card className={'group bg-[#F2F4EF] hover:bg-secondary-90'}>
+            <Link
+              target={'_blank'}
+              href={'https://api-test.openepi.io/'}
+              className={'h-full'}
+            >
+              <Card
+                className={'group bg-[#F2F4EF] hover:bg-secondary-90 h-full'}
+              >
                 <Box className={'flex flex-col p-6'}>
                   <Box className={'flex flex-row justify-between items-center'}>
                     <Typography variant='h5' component='div'>
