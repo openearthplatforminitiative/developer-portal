@@ -82,8 +82,12 @@ const Home = () => {
             We currently have 4 APIs available.
           </Typography>
         </Box>
-        <Box className={'flex flex-col mt-24 gap-14 lg:mb-48 mb-24 items-end'}>
-          <Box className={'flex lg:flex-row flex-col gap-14'}>
+        <Box
+          className={
+            'flex flex-col my-24 gap-14 lg:mb-48 lg:items-end lg:mx-0 mx-6'
+          }
+        >
+          <Box className={'flex lg:flex-row md:flex-2 flex-col gap-14'}>
             <ApiCard
               header={'Weather'}
               subHeader={
