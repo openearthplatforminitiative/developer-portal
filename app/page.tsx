@@ -109,7 +109,7 @@ const Home = () => {
               href={'/data-catalog/geocoding'}
             />
           </Box>
-          <Link href={'/data-catalog'} className={'lg:w-fit w-2/5'}>
+          <Link href={'/data-catalog'} className={'lg:w-fit w-full'}>
             <Button
               variant={'outlined'}
               className={
