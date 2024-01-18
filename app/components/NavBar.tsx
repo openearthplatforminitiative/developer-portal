@@ -36,7 +36,7 @@ const NavBar = () => {
       <Link href={'/'}>
         <Box className='flex lg:flex-row flex-col gap-5 items-center'>
           <OpenEPILogoLarge />
-          <Typography className='lg:text-4xl hidden'>
+          <Typography className='lg:text-4xl lg:inline hidden'>
             | Developer Portal
           </Typography>
         </Box>
