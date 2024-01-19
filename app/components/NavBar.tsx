@@ -36,12 +36,12 @@ const NavBar = () => {
       <Link href={'/'}>
         <Box className='flex lg:flex-row flex-col gap-5 items-center'>
           <OpenEPILogoLarge />
-          <Typography className='lg:text-4xl lg:inline hidden'>
+          <Typography className='lg:text-4xl 2xl:inline hidden'>
             | Developer Portal
           </Typography>
         </Box>
       </Link>
-      <Box className='lg:flex lg:flex-row lg:text-2xl hidden'>
+      <Box className='xl:flex xl:flex-row xl:text-2xl hidden'>
         <Link href='/data-catalog' className={linkClassName('/data-catalog/')}>
           Data catalog
         </Link>
@@ -62,7 +62,7 @@ const NavBar = () => {
           About the project <ExternalLinkIcon />
         </Link>
       </Box>
-      <Box className={'lg:hidden'}>
+      <Box className={'xl:hidden'}>
         <IconButton
           size='large'
           edge='start'

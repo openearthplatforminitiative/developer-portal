@@ -17,7 +17,7 @@ const Footer = () => {
         </Box>
         <Box
           className={
-            'flex lg:flex-row flex-col justify-between lg:text-base text-lg w-full'
+            'flex flex-wrap justify-between lg:text-base text-lg w-full'
           }
         >
           <Box>
@@ -59,7 +59,7 @@ const Footer = () => {
               </ListItem>
             </List>
           </Box>
-          <Box className={'lg:mt-0 mt-6'}>
+          <Box>
             <List className={'gap-4 '}>
               <ListItem className={'text-secondary-main'}>
                 The OpenEPI project partners

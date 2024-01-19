@@ -17,13 +17,13 @@ import { LightBulbIcon } from '@/app/icons/LightBulbIcon';
 const Home = () => {
   return (
     <Box className={'lg:mb-44 mb-16 w-full'}>
-      <Box className={'flex lg:flex-row flex-col mb-28'}>
+      <Box className={'flex xl:flex-row flex-col mb-28'}>
         <Box
           className={
-            'flex flex-col bg-primary-90 lg:w-1/2 py-48 overflow-hidden'
+            'flex flex-col bg-primary-90 xl:w-1/2 py-48 overflow-hidden'
           }
         >
-          <Box className={'relative lg:-left-60 -left-80 top-32'}>
+          <Box className={'relative xl:-left-60 sm:-left-44 -left-80 top-32'}>
             <Box
               className={
                 'absolute animate-spinFrom90 left-[31.5px] top-[31.5px]'
@@ -46,7 +46,7 @@ const Home = () => {
         </Box>
         <Box
           className={
-            'flex flex-col bg-neutral-95 lg:w-1/2 gap-10 justify-center lg:pl-16 py-16 p-6'
+            'flex flex-col bg-neutral-95 xl:w-1/2 gap-10 justify-center md:pl-32 xl:pl-16 py-16 p-6'
           }
         >
           <Box className={'flex flex-row gap-2'}>
@@ -73,7 +73,7 @@ const Home = () => {
           </Box>
         </Box>
       </Box>
-      <Box className={'flex flex-col sm:w-full sm:max-w-7xl sm:mx-auto p-6'}>
+      <Box className={'flex flex-col sm:w-full sm:max-w-7xl sm:mx-auto p-8'}>
         <Box className={'flex flex-col gap-8 mb-6'}>
           <Typography className={'text-5xl'}>
             Data catalog of open data
@@ -84,7 +84,7 @@ const Home = () => {
         </Box>
         <Box
           className={
-            'flex flex-col my-24 gap-14 sm:mb-48 sm:items-end sm:mx-0 w-fit'
+            'flex flex-col my-24 gap-14 sm:mb-48 2xl:items-end sm:mx-0 w-fit'
           }
         >
           <Box className={'flex flex-row flex-1 flex-wrap gap-14'}>
@@ -117,7 +117,7 @@ const Home = () => {
             <Button
               variant={'outlined'}
               className={
-                'text-primary-main lg:w-fit rounded-full border-neutralVariant-50 normal-case lg:text-sm text-lg w-full h-10'
+                'text-primary-main sm:w-fit rounded-full border-neutralVariant-50 normal-case lg:text-sm text-lg w-full h-10'
               }
             >
               View all
