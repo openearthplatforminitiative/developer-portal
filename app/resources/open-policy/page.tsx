@@ -5,15 +5,15 @@ import Box from '@mui/material/Box';
 
 const Home = () => {
   return (
-    <Box className={'w-full h-full max-w-7xl'}>
+    <Box className={'w-full h-full lg:max-w-7xl p-6 lg:my-44 my-20'}>
       <Link
         href='/resources'
         className={
-          'flex flex-row items-center text-primary-main underline hover:no-underline -mt-20'
+          'flex flex-row items-center text-primary-main underline hover:no-underline -mt-20 gap-1'
         }
       >
         <BackIcon />
-        <Typography className={'text-base'}> Back to resources </Typography>
+        <Typography className={'text-xl'}> Back to resources </Typography>
       </Link>
 
       <Box>

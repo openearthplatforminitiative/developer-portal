@@ -16,12 +16,14 @@ import { LightBulbIcon } from '@/app/icons/LightBulbIcon';
 
 const Home = () => {
   return (
-    <Box className={'-mt-44 mb-44 w-full'}>
-      <Box className={'flex flex-row mb-28'}>
+    <Box className={'lg:mb-44 mb-16 w-full'}>
+      <Box className={'flex xl:flex-row flex-col mb-28'}>
         <Box
-          className={'flex flex-col bg-primary-90 w-1/2 py-48 overflow-hidden'}
+          className={
+            'flex flex-col bg-primary-90 xl:w-1/2 py-48 overflow-hidden'
+          }
         >
-          <Box className={'relative -left-60 top-32'}>
+          <Box className={'relative xl:-left-60 sm:-left-44 -left-80 top-32'}>
             <Box
               className={
                 'absolute animate-spinFrom90 left-[31.5px] top-[31.5px]'
@@ -33,39 +35,45 @@ const Home = () => {
               <CircleSpinner width={460} height={460} />
             </Box>
           </Box>
-          <Box className={'flex flex-col ml-52 w-fit'}>
-            <Typography className={'text-6xl font-semibold'}>
+          <Box className={'flex flex-col sm:ml-52 ml-12 w-fit'}>
+            <Typography className={'lg:text-6xl text-4xl font-semibold'}>
               Global open source data
             </Typography>
-            <Typography className={'text-6xl font-normal'}>
+            <Typography className={'lg:text-6xl text-4xl font-normal'}>
               enabling local innovation
             </Typography>
           </Box>
         </Box>
         <Box
           className={
-            'flex flex-col bg-neutral-95 w-1/2 gap-10 justify-center pl-16'
+            'flex flex-col bg-neutral-95 xl:w-1/2 gap-10 justify-center md:pl-32 xl:pl-16 py-16 p-6'
           }
         >
           <Box className={'flex flex-row gap-2'}>
-            <OpenLockIcon />{' '}
+            <Box className={'w-fit h-fit'}>
+              <OpenLockIcon />
+            </Box>
             <Typography className={'text-3xl'}>Truly open source</Typography>
           </Box>
           <Box className={'flex flex-row gap-2'}>
-            <VerifiedIcon />
+            <Box className={'w-fit h-fit'}>
+              <VerifiedIcon />
+            </Box>
             <Typography className={'text-3xl'}>
               Verified and quality assured data
             </Typography>
           </Box>
           <Box className={'flex flex-row gap-2'}>
-            <LightBulbIcon />
+            <Box className={'w-fit h-fit'}>
+              <LightBulbIcon />
+            </Box>
             <Typography className={'text-3xl'}>
               Unique factor about the platform
             </Typography>
           </Box>
         </Box>
       </Box>
-      <Box className={'flex flex-col w-full max-w-7xl mx-auto'}>
+      <Box className={'flex flex-col sm:w-full sm:max-w-7xl sm:mx-auto p-8'}>
         <Box className={'flex flex-col gap-8 mb-6'}>
           <Typography className={'text-5xl'}>
             Data catalog of open data
@@ -74,8 +82,12 @@ const Home = () => {
             We currently have 4 APIs available.
           </Typography>
         </Box>
-        <Box className={'flex flex-col mt-24 gap-14 mb-48 items-end'}>
-          <Box className={'flex flex-row gap-14'}>
+        <Box
+          className={
+            'flex flex-col my-24 gap-14 sm:mb-48 2xl:items-end sm:mx-0 w-fit'
+          }
+        >
+          <Box className={'flex flex-row flex-1 flex-wrap gap-14'}>
             <ApiCard
               header={'Weather'}
               subHeader={
@@ -101,25 +113,25 @@ const Home = () => {
               href={'/data-catalog/geocoding'}
             />
           </Box>
-          <Link href={'/data-catalog'}>
+          <Link href={'/data-catalog'} className={'lg:w-fit w-full'}>
             <Button
               variant={'outlined'}
               className={
-                'text-primary-main w-fit rounded-full border-neutralVariant-50 normal-case text-sm'
+                'text-primary-main sm:w-fit rounded-full border-neutralVariant-50 normal-case lg:text-sm text-lg w-full h-10'
               }
             >
               View all
             </Button>
           </Link>
         </Box>
-        <Box className={'flex flex-col'}>
+        <Box className={'flex flex-col lg:mx-0 mx-2'}>
           <Box className={'flex flex-col gap-8 mb-16'}>
             <Typography className={'text-4xl'}>Client libraries</Typography>
             <Typography className={'text-2xl'}>
               We provide two client libraries to make use of our data easier
             </Typography>
           </Box>
-          <Box className={'flex flex-row gap-6 w-full'}>
+          <Box className={'flex lg:flex-row flex-col gap-6 w-full'}>
             <InfoCard
               externalLink={true}
               header={'Javascript'}

@@ -10,12 +10,12 @@ import Link from 'next/link';
 
 const Home = () => {
   return (
-    <Box className={'max-w-7xl'}>
+    <Box className={'w-full h-full lg:max-w-7xl p-6 lg:my-44 my-20'}>
       <Typography className={'text-5xl mb-20'}>
         Need help or want to get involved
       </Typography>
-      <Box className={'flex flex-row gap-28'}>
-        <Box className={'flex flex-col w-1/2'}>
+      <Box className={'flex sm:flex-row flex-col gap-28'}>
+        <Box className={'flex flex-col sm:w-1/2'}>
           <Typography className={'text-3xl'}>
             Submit bugs, feature requests and more
           </Typography>
@@ -31,7 +31,7 @@ const Home = () => {
             <Button
               variant={'contained'}
               className={
-                'bg-primary-main rounded-full w-fit pr-6 pl-4 py-2.5 normal-case text-sm'
+                'bg-primary-main rounded-full sm:w-fit pr-6 pl-4 py-2.5 normal-case sm:text-sm text-lg w-full h-10'
               }
               startIcon={<GithubIconWhite />}
             >
@@ -39,7 +39,7 @@ const Home = () => {
             </Button>
           </Link>
         </Box>
-        <Box className={'flex flex-col gap-30 w-1/2'}>
+        <Box className={'flex flex-col gap-30 sm:w-1/2'}>
           <Typography className={'text-3xl'}>
             Join the community and join the discussion
           </Typography>
@@ -51,7 +51,7 @@ const Home = () => {
             <Button
               variant={'contained'}
               className={
-                'bg-primary-main rounded-full w-fit pr-6 pl-4 py-2.5 normal-case text-sm'
+                'bg-primary-main rounded-full sm:w-fit pr-6 pl-4 py-2.5 normal-case sm:text-sm text-lg w-full h-10'
               }
               startIcon={<DiscordIcon />}
             >
@@ -61,8 +61,8 @@ const Home = () => {
         </Box>
       </Box>
       <Divider className={'my-16'} />
-      <Box className={'flex flex-row gap-28'}>
-        <Box className={'w-1/2'}>
+      <Box className={'flex sm:flex-row flex-col gap-28'}>
+        <Box className={'sm:w-1/2'}>
           <Typography className={'text-2xl mb-10'}>
             General enquiry about the project
           </Typography>
@@ -86,7 +86,7 @@ const Home = () => {
             />
           </Box>
           <Box className={'flex flex-col'}>
-            <Box className={'flex flex-row items-center '}>
+            <Box className={'flex flex-row items-center my-6'}>
               <Checkbox />
               <Typography className={'text-base'}>I agree to&nbsp;</Typography>
               <Typography className={'text-base text-primary-main underline'}>
@@ -96,22 +96,22 @@ const Home = () => {
             <Button
               variant={'contained'}
               className={
-                'bg-primary-main rounded-full w-fit mt-8 px-6 py-2.5 normal-case text-sm'
+                'bg-primary-main rounded-full sm:w-fit mt-8 px-6 py-2.5 normal-case sm:text-sm text-lg w-full h-10'
               }
             >
               Send message
             </Button>
           </Box>
         </Box>
-        <Box className={'w-1/2'}>
+        <Box className={'sm:w-1/2'}>
           <Typography className={'text-2xl mb-8'}>Send us a line</Typography>
-          <Typography className={'text-base'}>
+          <Typography className={'text-lg'}>
             You may also contact us directly through email:
           </Typography>
           <a
             href='mailto:contact@openepi.io'
             className={
-              'flex text-base text-primary-main underline hover:no-underline mt-4'
+              'flex sm:text-base text-xl text-primary-main underline hover:no-underline mt-4'
             }
           >
             contact@openepi.io
