@@ -90,7 +90,7 @@ const Home = () => {
                   },
                 }
               );
-
+                
               const data = await response.json();
             }
             `}

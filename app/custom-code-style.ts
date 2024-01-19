@@ -6,7 +6,7 @@ export const myCustomStyle: { [key: string]: React.CSSProperties } = {
     overflowX: 'auto',
     padding: '0.5em',
     background: '#282C34', // Semi-dark Background
-    color: '#8DC891', // Light and Green Text Color
+    color: '#f8f9f6', // Light and Green Text Color
   },
   'hljs::selection': {
     background: '#FAC863', // Light Selection Color

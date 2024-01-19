@@ -17,8 +17,8 @@ interface CodeBlockProps {
 }
 
 const CodeBlock = ({ codeString, language }: CodeBlockProps) => {
-  const [isCopied, setIsCopied] = useState(false);
-  const [openTooltip, setOpenTooltip] = useState(false); // State to control the tooltip open status
+  const [isCopied, setIsCopied] = useState<boolean>(false);
+  const [openTooltip, setOpenTooltip] = useState<boolean>(false); // State to control the tooltip open status
 
   const handleCopy = async () => {
     if ('clipboard' in navigator) {
@@ -35,7 +35,7 @@ const CodeBlock = ({ codeString, language }: CodeBlockProps) => {
   };
 
   return (
-    <Box className='relative'>
+    <Box className='relative mt-6'>
       <SyntaxHighlighter
         language={language}
         style={myCustomStyle}
@@ -47,12 +47,11 @@ const CodeBlock = ({ codeString, language }: CodeBlockProps) => {
       <Tooltip
         title={isCopied ? 'Copied!' : 'Copy'}
         placement='left'
-        open={openTooltip} // Controlled by state
-        disableHoverListener // Disable default hover behavior
+        open={openTooltip}
       >
         <IconButton
           onClick={handleCopy}
-          className='absolute top-2 right-2 text-gray-500 hover:text-gray-700'
+          className='absolute top-2 right-2 text-gray-500'
           size='small'
         >
           {isCopied ? <CheckIcon /> : <CopyIcon />}
