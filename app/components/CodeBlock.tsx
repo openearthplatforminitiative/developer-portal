@@ -1,12 +1,15 @@
 'use client';
 
 import React, { useState } from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
+import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { CopyIcon } from '@/app/icons/CopyIcon';
 import { IconButton, Tooltip } from '@mui/material';
 import { CheckIcon } from '@/app/icons/CheckIcon';
-import { hybrid } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import Box from '@mui/material/Box';
+import { myCustomStyle } from '@/app/custom-code-style';
+import js from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript';
+
+SyntaxHighlighter.registerLanguage('javascript', js);
 
 interface CodeBlockProps {
   codeString: string;
@@ -35,7 +38,7 @@ const CodeBlock = ({ codeString, language }: CodeBlockProps) => {
     <Box className='relative'>
       <SyntaxHighlighter
         language={language}
-        style={hybrid}
+        style={myCustomStyle}
         className={'p-4'}
         showLineNumbers={true}
       >
