@@ -9,7 +9,7 @@ import TableBody from '@mui/material/TableBody';
 
 export default function Home() {
   return (
-    <Box className={'max-w-7xl'}>
+    <Box className={'w-full h-full lg:max-w-7xl p-6 lg:my-44 my-20'}>
       <Box className={'flex flex-col gap-8 mb-20'}>
         <Typography className={'text-5xl'}>
           Get your credentials, start developing

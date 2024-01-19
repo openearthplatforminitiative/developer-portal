@@ -16,7 +16,7 @@ import { LightBulbIcon } from '@/app/icons/LightBulbIcon';
 
 const Home = () => {
   return (
-    <Box className={'-mt-44 lg:mb-44 mb-16 w-full'}>
+    <Box className={'lg:mb-44 mb-16 w-full'}>
       <Box className={'flex lg:flex-row flex-col mb-28'}>
         <Box
           className={

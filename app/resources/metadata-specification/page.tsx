@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 
 const Home = () => {
   return (
-    <Box className={'w-full h-full lg:max-w-7xl p-6 lg:mt-0 -mt-24'}>
+    <Box className={'w-full h-full lg:max-w-7xl p-6 lg:my-44 my-20'}>
       <Link
         href='/resources'
         className={
