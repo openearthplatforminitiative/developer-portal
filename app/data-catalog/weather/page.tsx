@@ -6,7 +6,7 @@ import InfoCard from '@/app/components/InfoCard';
 import { GithubIconBlack } from '@/app/icons/GithubIconBlack';
 import { OpenApiIcon } from '@/app/icons/OpenApiIcon';
 import CodeBlock from '@/app/components/CodeBlock';
-import { readFileSync } from 'fs';
+import { getFileContent } from '@/app/utils';
 
 const Home = () => {
   return (
@@ -78,9 +78,7 @@ const Home = () => {
         </Typography>
         <CodeBlock
           language={'javascript'}
-          codeString={readFileSync(
-            'app/code-examples/javascript-example.js'
-          ).toString()}
+          codeString={getFileContent('weather.js')}
         />
       </Box>
     </Box>

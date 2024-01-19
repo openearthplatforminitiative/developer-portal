@@ -6,6 +6,7 @@ import InfoCard from '@/app/components/InfoCard';
 import { GithubIconBlack } from '@/app/icons/GithubIconBlack';
 import { OpenApiIcon } from '@/app/icons/OpenApiIcon';
 import CodeBlock from '@/app/components/CodeBlock';
+import { getFileContent } from '@/app/utils';
 
 const Home = () => {
   return (
@@ -77,21 +78,7 @@ const Home = () => {
         </Typography>
         <CodeBlock
           language={'javascript'}
-          codeString={`async function getProfile(accessToken) {
-              let accessToken = localStorage.getItem('access_token');
-
-              const response = await fetch(
-                'https://developer.openepi.io/v1/me',
-                {
-                  headers: {
-                    Authorization: 'Bearer ' + accessToken,
-                  },
-                }
-              );
-                
-              const data = await response.json();
-            }
-            `}
+          codeString={getFileContent('flood.js')}
         />
       </Box>
     </Box>
