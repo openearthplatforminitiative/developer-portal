@@ -7,7 +7,6 @@ import Box from '@mui/material/Box';
 import { ExternalLinkIcon } from '@/app/icons/ExternalLinkIcon';
 import { usePathname } from 'next/navigation';
 import { IconButton, Menu, MenuItem } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 import { BurgerMenu } from '@/app/icons/BurgerMenu';
 
