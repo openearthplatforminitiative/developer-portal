@@ -35,7 +35,7 @@ const Home = () => {
               <CircleSpinner width={460} height={460} />
             </Box>
           </Box>
-          <Box className={'flex flex-col lg:ml-52 ml-24 w-fit'}>
+          <Box className={'flex flex-col sm:ml-52 ml-12 w-fit'}>
             <Typography className={'lg:text-6xl text-4xl font-semibold'}>
               Global open source data
             </Typography>
@@ -46,7 +46,7 @@ const Home = () => {
         </Box>
         <Box
           className={
-            'flex flex-col bg-neutral-95 lg:w-1/2 gap-10 justify-center lg:pl-16 py-16 px-6'
+            'flex flex-col bg-neutral-95 lg:w-1/2 gap-10 justify-center lg:pl-16 py-16 p-6'
           }
         >
           <Box className={'flex flex-row gap-2'}>
@@ -73,7 +73,7 @@ const Home = () => {
           </Box>
         </Box>
       </Box>
-      <Box className={'flex flex-col w-full max-w-7xl lg:mx-auto p-6'}>
+      <Box className={'flex flex-col sm:w-full sm:max-w-7xl sm:mx-auto p-6'}>
         <Box className={'flex flex-col gap-8 mb-6'}>
           <Typography className={'text-5xl'}>
             Data catalog of open data
@@ -84,10 +84,10 @@ const Home = () => {
         </Box>
         <Box
           className={
-            'flex flex-col my-24 gap-14 lg:mb-48 lg:items-end lg:mx-0 mx-6'
+            'flex flex-col my-24 gap-14 sm:mb-48 sm:items-end sm:mx-0 w-fit'
           }
         >
-          <Box className={'flex lg:flex-row md:flex-2 flex-col gap-14'}>
+          <Box className={'flex flex-row flex-1 flex-wrap gap-14'}>
             <ApiCard
               header={'Weather'}
               subHeader={

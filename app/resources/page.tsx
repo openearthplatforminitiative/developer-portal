@@ -19,9 +19,12 @@ const Home = () => {
       </Box>
       <Box className={'flex flex-col gap-32'}>
         <Box className={'flex flex-col gap-8'}>
-          <Typography className={'text-4xl'}>Documents</Typography>
-          <Box className={'grid lg:grid-cols-3 grid-flow-row gap-6'}>
-            <Link href={'/resources/open-policy'} className={'h-full'}>
+          <Typography className={'text-4xl w-fit'}>Documents</Typography>
+          <Box className={'flex flex-row flex-1 flex-wrap gap-6 w-fit'}>
+            <Link
+              href={'/resources/open-policy'}
+              className={'h-full lg:w-fit md:w-fit w-full'}
+            >
               <Card
                 className={'group bg-[#F2F4EF] hover:bg-secondary-90 h-full'}
               >
@@ -40,7 +43,7 @@ const Home = () => {
             </Link>
             <Link
               href={'/resources/metadata-specification'}
-              className={'h-full'}
+              className={'h-full lg:w-fit md:w-fit w-full'}
             >
               <Card
                 className={'group bg-[#F2F4EF] hover:bg-secondary-90 h-full'}
@@ -61,7 +64,7 @@ const Home = () => {
             <Link
               target={'_blank'}
               href={'https://api-test.openepi.io/'}
-              className={'h-full'}
+              className={'h-full lg:w-fit md:w-fit w-full'}
             >
               <Card
                 className={'group bg-[#F2F4EF] hover:bg-secondary-90 h-full'}
@@ -82,8 +85,8 @@ const Home = () => {
           </Box>
         </Box>
         <Box className={'flex flex-col gap-8'}>
-          <Typography className={'text-4xl'}>Frontend</Typography>
-          <Box className={'grid lg:grid-cols-4 grid-flow-row gap-6'}>
+          <Typography className={'text-4xl w-fit'}>Frontend</Typography>
+          <Box className={'flex flex-1 flex-wrap gap-6'}>
             <ResourceCard
               header={'Material UI'}
               subHeader={'Sub text'}
@@ -145,7 +148,7 @@ const Home = () => {
         </Box>
         <Box className={'flex flex-col gap-8'}>
           <Typography className={'text-4xl'}>Design</Typography>
-          <Box className={'grid lg:grid-cols-4 grid-flow-row gap-6'}>
+          <Box className={'flex flex-1 flex-wrap gap-6'}>
             <ResourceCard
               header={'Google fonts'}
               subHeader={'Sub text'}

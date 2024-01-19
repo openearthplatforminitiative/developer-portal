@@ -32,7 +32,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className='flex flex-row items-center p-12 justify-between'>
+    <nav className='flex flex-row items-center sm:p-12 p-6 justify-between'>
       <Link href={'/'}>
         <Box className='flex lg:flex-row flex-col gap-5 items-center'>
           <OpenEPILogoLarge />
