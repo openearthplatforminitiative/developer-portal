@@ -1,20 +1,11 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Link from 'next/link';
-import { InternalLinkIcon } from '@/app/icons/InternalLinkIcon';
 import { PythonLogo } from '@/app/icons/PythonLogo';
 import { JavascriptLogo } from '@/app/icons/JavascriptLogo';
 import { FloodIcon } from '@/app/icons/FloodIcon';
 import { WeatherIcon } from '@/app/icons/WeatherIcon';
 import { GeocodingIcon } from '@/app/icons/GeocodingIcon';
 import { DeforestationIcon } from '@/app/icons/DeforestationIcon';
-import { SoilIcon } from '@/app/icons/SoilIcon';
-import { OceanIcon } from '@/app/icons/OceanIcon';
-import { BiodiversityIcon } from '@/app/icons/BiodiversityIcon';
-import { AirQualityIcon } from '@/app/icons/AirQualityIcon';
-import { CropHealthIcon } from '@/app/icons/CropHealthIcon';
-import Chip from '@mui/material/Chip';
-import { CheckIcon } from '@/app/icons/CheckIcon';
 import ApiCard, { CardProps } from '@/app/components/ApiCard';
 import InfoCard from '@/app/components/InfoCard';
 

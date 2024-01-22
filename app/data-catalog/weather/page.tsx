@@ -5,6 +5,8 @@ import { BackIcon } from '@/app/icons/BackIcon';
 import InfoCard from '@/app/components/InfoCard';
 import { GithubIconBlack } from '@/app/icons/GithubIconBlack';
 import { OpenApiIcon } from '@/app/icons/OpenApiIcon';
+import CodeBlock from '@/app/components/CodeBlock';
+import { getCodeExample } from '@/app/utils';
 
 const Home = () => {
   return (
@@ -74,6 +76,10 @@ const Home = () => {
           necessary local technology innovation. The Open Earth Platform
           (OpenEPI) is an initiative to prepare for such an infrastructure.
         </Typography>
+        <CodeBlock
+          language={'javascript'}
+          codeString={getCodeExample('weather.js')}
+        />
       </Box>
     </Box>
   );
