@@ -39,8 +39,9 @@ const CodeBlock = ({ codeString, language }: CodeBlockProps) => {
       <SyntaxHighlighter
         language={language}
         style={myCustomStyle}
-        className={'p-4'}
+        className={'p-4 break-all'}
         showLineNumbers={true}
+        wrapLongLines={true}
       >
         {codeString}
       </SyntaxHighlighter>

@@ -6,7 +6,7 @@ import InfoCard from '@/app/components/InfoCard';
 import { GithubIconBlack } from '@/app/icons/GithubIconBlack';
 import { OpenApiIcon } from '@/app/icons/OpenApiIcon';
 import CodeBlock from '@/app/components/CodeBlock';
-import { getFileContent } from '@/app/utils';
+import { getCodeExample } from '@/app/utils';
 
 const Home = () => {
   return (
@@ -80,7 +80,7 @@ const Home = () => {
         </Typography>
         <CodeBlock
           language={'javascript'}
-          codeString={getFileContent('deforestation.js')}
+          codeString={getCodeExample('deforestation.js')}
         />
       </Box>
     </Box>

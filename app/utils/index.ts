@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
 
-export const getFileContent = (fileName: string) => {
+export const getCodeExample = (fileName: string) => {
   return readFileSync(`app/code-examples/${fileName}`).toString();
 };
