@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Builds the project
+    name: Build project
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project
@@ -24,3 +24,23 @@ jobs:
 
       - name: Build project
         run: npm run build
+
+  format-check:
+    name: Check formatting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check code formatting
+        run: npm run format:check
