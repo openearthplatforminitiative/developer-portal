@@ -23,20 +23,20 @@ const Home = () => {
 
       <Box className={'flex flex-col gap-8 mt-14'}>
         <Typography className={'text-5xl'}>Weather API</Typography>
-        <Typography className={'text-2xl'}>Sub header</Typography>
+        <Typography className={'text-2xl'}>Global weather forecasts and information about sunrise and sunset</Typography>
       </Box>
       <Box className={'flex lg:flex-row flex-col gap-6 mt-20'}>
         <InfoCard
           externalLink={true}
           header={'OpenAPI Spec'}
-          subHeader={'Some text about the OpenAPI spec.'}
+          subHeader={'Specification of all endpoints available in the weather api.'}
           CardIcon={OpenApiIcon}
           href={'https://api-test.openepi.io/weather/redoc'}
         />
         <InfoCard
           externalLink={true}
           header={'Github'}
-          subHeader={'Some text about the Github repository.'}
+          subHeader={'Explore the source code behind the weather api.'}
           CardIcon={GithubIconBlack}
           href={'https://github.com/openearthplatforminitiative/weather-api'}
         />
@@ -45,40 +45,31 @@ const Home = () => {
         <Typography className={'text-4xl'}>More info</Typography>
         <Typography className={'text-3xl mt-8'}>Data sources</Typography>
         <Typography className={'text-base mt-6'}>
-          There is a need for a robust and accessible digital infrastructure for
-          open data and algorithms on weather, water, earth, and vegetation,
-          across projects, sectors, and contexts – providing a base for the
-          necessary local technology innovation. The Open Earth Platform
-          (OpenEPI) is an initiative to prepare for such an infrastructure.
-        </Typography>
-        <Typography className={'text-3xl mt-14'}>Methods</Typography>
-        <Typography className={'text-base mt-6'}>
-          There is a need for a robust and accessible digital infrastructure for
-          open data and algorithms on weather, water, earth, and vegetation,
-          across projects, sectors, and contexts – providing a base for the
-          necessary local technology innovation. The Open Earth Platform
-          (OpenEPI) is an initiative to prepare for such an infrastructure.
+          The data for this Weather API is exclusively retrieved from <a href='https://api.met.no' className={
+              'underline hover:no-underline'
+            }>https://api.met.no</a>, renowned for its comprehensive and accurate meteorological data. 
+          This source provides users with dependable weather forecasts and precise information on sunrise and sunset times."
         </Typography>
         <Typography className={'text-3xl mt-14'}>Processing</Typography>
         <Typography className={'text-base mt-6'}>
-          There is a need for a robust and accessible digital infrastructure for
-          open data and algorithms on weather, water, earth, and vegetation,
-          across projects, sectors, and contexts – providing a base for the
-          necessary local technology innovation. The Open Earth Platform
-          (OpenEPI) is an initiative to prepare for such an infrastructure.
+          The data obtained from the Norwegian Meteorological Institute is presented as is, without any further processing or modification.
         </Typography>
         <Typography className={'text-4xl mt-16'}>Examples</Typography>
         <Typography className={'text-3xl mt-8'}>Example 1</Typography>
         <Typography className={'text-base mt-6'}>
-          There is a need for a robust and accessible digital infrastructure for
-          open data and algorithms on weather, water, earth, and vegetation,
-          across projects, sectors, and contexts – providing a base for the
-          necessary local technology innovation. The Open Earth Platform
-          (OpenEPI) is an initiative to prepare for such an infrastructure.
+          Retrieving weather forecast for a given location for the next 9 days using javascript.
         </Typography>
         <CodeBlock
           language={'javascript'}
           codeString={getCodeExample('weather.js')}
+        />
+        <Typography className={'text-3xl mt-8'}>Example 2</Typography>
+        <Typography className={'text-base mt-6'}>
+          Retrieving weather forecast for a given location for the next 9 days using python.
+        </Typography>
+        <CodeBlock
+          language={'python'}
+          codeString={getCodeExample('weather.py')}
         />
       </Box>
     </Box>

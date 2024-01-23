@@ -8,8 +8,10 @@ import { CheckIcon } from '@/app/icons/CheckIcon';
 import Box from '@mui/material/Box';
 import { myCustomStyle } from '@/app/custom-code-style';
 import js from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript';
+import python from 'react-syntax-highlighter/dist/cjs/languages/hljs/python';
 
 SyntaxHighlighter.registerLanguage('javascript', js);
+SyntaxHighlighter.registerLanguage('python', python);
 
 interface CodeBlockProps {
   codeString: string;

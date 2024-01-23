@@ -105,7 +105,7 @@ const Home = () => {
           <InfoCard
             externalLink={true}
             header={'Python'}
-            subHeader={'Some text about the Python client library.'}
+            subHeader={'A python client for accessing data from OpenEPI.'}
             CardIcon={PythonLogo}
             href={'https://pypi.org/project/openepi-client/'}
           />
