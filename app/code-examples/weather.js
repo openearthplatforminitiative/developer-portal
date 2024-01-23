@@ -1,11 +1,10 @@
-async function getProfile(accessToken) {
-  let accessToken = localStorage.getItem('access_token');
+const response = await fetch(
+  "https://api-test.openepi.io/weather/locationforecast?lat=52.520008&lon=13.404954"
+);
+const json = await response.json();
 
-  const response = await fetch('https://developer.openepi.io/v1/me', {
-    headers: {
-      Authorization: 'Bearer ' + accessToken,
-    },
-  });
+// Get the instant air temperature
+const airTemperature =
+  json.properties.timeseries[0].data.instant.details.air_temperature;
 
-  const data = await response.json();
-}
+console.log(`Air temperature: ${airTemperature}`);
