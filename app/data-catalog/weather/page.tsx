@@ -48,7 +48,7 @@ const Home = () => {
           The data for this Weather API is exclusively retrieved from <a href='https://api.met.no' className={
               'underline hover:no-underline'
             }>https://api.met.no</a>, renowned for its comprehensive and accurate meteorological data. 
-          This source provides users with dependable weather forecasts and precise information on sunrise and sunset times."
+          This source provides users with dependable weather forecasts and precise information on sunrise and sunset times.
         </Typography>
         <Typography className={'text-3xl mt-14'}>Processing</Typography>
         <Typography className={'text-base mt-6'}>
