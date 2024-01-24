@@ -1,11 +1,8 @@
-async function getProfile(accessToken) {
-  let accessToken = localStorage.getItem('access_token');
+const response = await fetch(
+  'https://api-test.openepi.io/geocoding/?' +
+    new URLSearchParams({ q: 'Berlin' })
+);
+const data = await response.json();
 
-  const response = await fetch('https://developer.openepi.io/v1/me', {
-    headers: {
-      Authorization: 'Bearer ' + accessToken,
-    },
-  });
-
-  const data = await response.json();
-}
+// prints the coordinates of the first result
+console.log(data.features[0].geometry.coordinates);

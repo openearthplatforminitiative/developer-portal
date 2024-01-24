@@ -23,7 +23,16 @@ const Home = () => {
 
       <Box className={'flex flex-col gap-8 mt-14'}>
         <Typography className={'text-5xl'}>Geocoding API</Typography>
-        <Typography className={'text-2xl'}>Sub header</Typography>
+        <Typography className={'text-2xl'}>
+          Geocoding and reverse-geocoding based on{' '}
+          <a
+            href={'https://www.openstreetmap.org'}
+            className={'underline hover:no-underline'}
+          >
+            OpenStreetMap®
+          </a>
+          -data
+        </Typography>
       </Box>
       <Box className={'flex lg:flex-row flex-col gap-6 mt-20'}>
         <InfoCard
@@ -45,40 +54,79 @@ const Home = () => {
         <Typography className={'text-4xl'}>More info</Typography>
         <Typography className={'text-3xl mt-8'}>Data sources</Typography>
         <Typography className={'text-base mt-6'}>
-          There is a need for a robust and accessible digital infrastructure for
-          open data and algorithms on weather, water, earth, and vegetation,
-          across projects, sectors, and contexts – providing a base for the
-          necessary local technology innovation. The Open Earth Platform
-          (OpenEPI) is an initiative to prepare for such an infrastructure.
-        </Typography>
-        <Typography className={'text-3xl mt-14'}>Methods</Typography>
-        <Typography className={'text-base mt-6'}>
-          There is a need for a robust and accessible digital infrastructure for
-          open data and algorithms on weather, water, earth, and vegetation,
-          across projects, sectors, and contexts – providing a base for the
-          necessary local technology innovation. The Open Earth Platform
-          (OpenEPI) is an initiative to prepare for such an infrastructure.
+          The API is exclusively fetching data from{' '}
+          <a
+            href={'https://photon.komoot.io'}
+            className={'underline hover:no-underline'}
+          >
+            https://photon.komoot.io
+          </a>
+          . The service is based on{' '}
+          <a
+            href={'https://www.openstreetmap.org/copyright'}
+            className={'underline hover:no-underline'}
+          >
+            OpenStreetMap®
+          </a>{' '}
+          data, which is licensed under the{' '}
+          <a
+            href={'https://opendatacommons.org/licenses/odbl'}
+            className={'underline hover:no-underline'}
+          >
+            Open Data Commons Open Database License (ODbL)
+          </a>
+          , by the{' '}
+          <a
+            href={'https://osmfoundation.org'}
+            className={'underline hover:no-underline'}
+          >
+            OpenStreetMap Foundation (OSMF)
+          </a>
+          .
         </Typography>
         <Typography className={'text-3xl mt-14'}>Processing</Typography>
         <Typography className={'text-base mt-6'}>
-          There is a need for a robust and accessible digital infrastructure for
-          open data and algorithms on weather, water, earth, and vegetation,
-          across projects, sectors, and contexts – providing a base for the
-          necessary local technology innovation. The Open Earth Platform
-          (OpenEPI) is an initiative to prepare for such an infrastructure.
+          The data obtained from{' '}
+          <a
+            href={'https://photon.komoot.io'}
+            className={'underline hover:no-underline'}
+          >
+            https://photon.komoot.io
+          </a>{' '}
+          is presented as is, without any further processing or modification.
         </Typography>
         <Typography className={'text-4xl mt-16'}>Examples</Typography>
         <Typography className={'text-3xl mt-8'}>Example 1</Typography>
         <Typography className={'text-base mt-6'}>
-          There is a need for a robust and accessible digital infrastructure for
-          open data and algorithms on weather, water, earth, and vegetation,
-          across projects, sectors, and contexts – providing a base for the
-          necessary local technology innovation. The Open Earth Platform
-          (OpenEPI) is an initiative to prepare for such an infrastructure.
+          Retrieving the coordinates of <q>Berlin</q> using JavaScript.
         </Typography>
         <CodeBlock
           language={'javascript'}
           codeString={getCodeExample('geocoding.js')}
+        />
+        <Typography className={'text-3xl mt-8'}>Example 2</Typography>
+        <Typography className={'text-base mt-6'}>
+          Retrieving the coordinates of <q>Berlin</q> using Python.
+        </Typography>
+        <CodeBlock
+          language={'python'}
+          codeString={getCodeExample('geocoding.py')}
+        />
+        <Typography className={'text-3xl mt-8'}>Example 3</Typography>
+        <Typography className={'text-base mt-6'}>
+          Retrieving a location near the given coordinate using JavaScript.
+        </Typography>
+        <CodeBlock
+          language={'javascript'}
+          codeString={getCodeExample('reverse-geocoding.js')}
+        />
+        <Typography className={'text-3xl mt-8'}>Example 4</Typography>
+        <Typography className={'text-base mt-6'}>
+          Retrieving a location near the given coordinate using Python.
+        </Typography>
+        <CodeBlock
+          language={'python'}
+          codeString={getCodeExample('reverse-geocoding.py')}
         />
       </Box>
     </Box>
