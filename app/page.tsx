@@ -42,7 +42,7 @@ const Home = () => {
 
           <Typography
             className={
-              'text-6xl font-normal w-full h-full xl:max-w-[37.5rem] pr-20 xl:ml-auto z-10 2xs:pl-8 xs:pl-32 xl:pl-16'
+              'text-6xl font-normal w-full h-full xl:max-w-[37.5rem] pr-20 xl:ml-auto z-10 2xs:pl-8 xs:pl-32 xl:pl-0'
             }
           >
             <b> Global open source data</b> enabling local innovation
@@ -50,7 +50,7 @@ const Home = () => {
         </Box>
         <Box
           className={
-            'flex flex-col bg-neutral-95 xl:w-1/2 gap-10 justify-center md:pl-32 xl:pl-16 py-16 p-6'
+            'flex flex-col bg-neutral-95 xl:w-1/2 gap-10 justify-center xs:pl-32 xl:pl-16 py-16 p-6'
           }
         >
           <Box className={'flex flex-row gap-2'}>
