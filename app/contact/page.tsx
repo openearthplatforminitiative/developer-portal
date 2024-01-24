@@ -71,18 +71,45 @@ const Home = () => {
               className={'w-full'}
               variant={'filled'}
               placeholder={'Name'}
+              label={'Name'}
+              sx={{
+                '& .MuiFilledInput-underline:after': {
+                  borderBottomColor: '#006D41',
+                },
+                '& label.Mui-focused': {
+                  color: '#006D41',
+                },
+              }}
             />
             <TextField
               className={'w-full '}
               variant={'filled'}
               placeholder={'Email'}
+              label={'Email'}
+              sx={{
+                '& .MuiFilledInput-underline:after': {
+                  borderBottomColor: '#006D41',
+                },
+                '& label.Mui-focused': {
+                  color: '#006D41',
+                },
+              }}
             />
             <TextField
               className={'w-full h-36'}
               variant={'filled'}
               rows={5}
               placeholder={'Message'}
+              label={'Message'}
               multiline={true}
+              sx={{
+                '& .MuiFilledInput-underline:after': {
+                  borderBottomColor: '#006D41',
+                },
+                '& label.Mui-focused': {
+                  color: '#006D41',
+                },
+              }}
             />
           </Box>
           <Box className={'flex flex-col'}>
