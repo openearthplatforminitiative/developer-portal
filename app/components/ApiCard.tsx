@@ -16,7 +16,12 @@ export interface CardProps {
 
 const ApiCard = ({ header, subHeader, CardIcon, href }: CardProps) => {
   return (
-    <Link href={href} className={'min-w-52 sm:w-80 max-w-80 h-48'}>
+    <Link
+      href={href}
+      className={
+        'flex flex-1 md:min-w-[280px] min-w-[230px] 2xs:max-w-[calc(100%-0.75rem)] sm:max-w-[calc(48%-0.75rem)] lg:max-w-[calc(31%-0.75rem)]'
+      }
+    >
       <Card
         className={
           'group gap-6 bg-[#F2F4EF] hover:bg-secondary-90 relative overflow-visible transition duration-300 w-full h-full'

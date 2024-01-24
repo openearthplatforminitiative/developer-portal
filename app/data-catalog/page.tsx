@@ -50,35 +50,7 @@ const Home = () => {
         </Typography>
         <Typography className={'text-2xl'}>Sub header</Typography>
       </Box>
-      {/*
-        <Box className={'flex flex-col gap-4'}>
-          <Typography> Resource type </Typography>
-          <Box className={'flex flex-row gap-2'}>
-            <Chip
-              variant='outlined'
-              color='success'
-              icon={<CheckIcon />}
-              label={'Show all'}
-              clickable
-            />
-            <Chip
-              variant='outlined'
-              color='success'
-              icon={<CheckIcon />}
-              label={'API'}
-              clickable
-            />
-            <Chip
-              variant='outlined'
-              color='success'
-              icon={<CheckIcon />}
-              label={'Databank'}
-              clickable
-            />
-          </Box>
-        </Box>
-      */}
-      <Box className={'flex flex-row flex-1 flex-wrap gap-14 mt-16'}>
+      <Box className={'flex flex-wrap gap-14 mt-16'}>
         {cards.map((card) => (
           <ApiCard
             key={card.id}

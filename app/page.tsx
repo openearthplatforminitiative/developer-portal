@@ -16,14 +16,18 @@ import { LightBulbIcon } from '@/app/icons/LightBulbIcon';
 
 const Home = () => {
   return (
-    <Box className={'lg:mb-44 mb-16 w-full'}>
+    <Box className={'lg:mb-28 mb-16 w-full'}>
       <Box className={'flex xl:flex-row flex-col mb-28'}>
         <Box
           className={
             'flex flex-col bg-primary-90 xl:w-1/2 py-48 overflow-hidden'
           }
         >
-          <Box className={'relative xl:-left-60 sm:-left-44 -left-80 top-32'}>
+          <Box
+            className={
+              'relative xl:-left-60 -left-64 2xs:top-96 xs:top-80 sm:top-40 lg:top-20 xl:top-32'
+            }
+          >
             <Box
               className={
                 'absolute animate-spinFrom90 left-[31.5px] top-[31.5px]'
@@ -35,14 +39,14 @@ const Home = () => {
               <CircleSpinner width={460} height={460} />
             </Box>
           </Box>
-          <Box className={'flex flex-col sm:ml-52 ml-12 w-fit'}>
-            <Typography className={'lg:text-6xl text-4xl font-semibold'}>
-              Global open source data
-            </Typography>
-            <Typography className={'lg:text-6xl text-4xl font-normal'}>
-              enabling local innovation
-            </Typography>
-          </Box>
+
+          <Typography
+            className={
+              'text-6xl font-normal w-full h-full xl:max-w-[37.5rem] pr-20 xl:ml-auto z-10 2xs:pl-8 xs:pl-32 xl:pl-16'
+            }
+          >
+            <b> Global open source data</b> enabling local innovation
+          </Typography>
         </Box>
         <Box
           className={
@@ -73,7 +77,7 @@ const Home = () => {
           </Box>
         </Box>
       </Box>
-      <Box className={'flex flex-col sm:w-full sm:max-w-7xl sm:mx-auto p-8'}>
+      <Box className={'flex flex-col sm:w-full sm:max-w-7xl sm:mx-auto px-8'}>
         <Box className={'flex flex-col gap-8 mb-6'}>
           <Typography className={'text-5xl'}>
             Data catalog of open data
@@ -84,7 +88,7 @@ const Home = () => {
         </Box>
         <Box
           className={
-            'flex flex-col my-24 gap-14 sm:mb-48 2xl:items-end sm:mx-0 w-fit'
+            'flex flex-col my-28 gap-14 sm:mb-48 2xl:items-end sm:mx-0 w-fit'
           }
         >
           <Box className={'flex flex-row flex-1 flex-wrap gap-14'}>
