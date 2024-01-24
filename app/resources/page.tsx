@@ -20,16 +20,22 @@ const Home = () => {
       <Box className={'flex flex-col gap-32'}>
         <Box className={'flex flex-col gap-8'}>
           <Typography className={'text-4xl w-fit'}>Documents</Typography>
-          <Box className={'flex flex-row flex-1 flex-wrap gap-6 w-fit'}>
+          <Box className={'flex flex-row flex-wrap gap-6 w-full'}>
             <Link
               href={'/resources/open-policy'}
-              className={'h-full lg:w-fit md:w-fit w-full'}
+              className={
+                'w-full flex flex-1 md:min-w-[300px] min-w-[250px] 2xs:max-w-[calc(100%-0.75rem)] xs:max-w-[calc(50%-0.75rem)] lg:max-w-[calc(33%-0.75rem)]'
+              }
             >
               <Card
-                className={'group bg-[#F2F4EF] hover:bg-secondary-90 h-full'}
+                className={
+                  'group bg-[#F2F4EF] hover:bg-secondary-90 h-full w-full'
+                }
               >
-                <Box className={'flex flex-col p-6'}>
-                  <Box className={'flex flex-row justify-between items-center'}>
+                <Box className={'flex flex-col p-6 gap-3'}>
+                  <Box
+                    className={'flex flex-row justify-between items-baseline'}
+                  >
                     <Typography variant='h5' component='div'>
                       Our open policy
                     </Typography>
@@ -43,13 +49,19 @@ const Home = () => {
             </Link>
             <Link
               href={'/resources/metadata-specification'}
-              className={'h-full lg:w-fit md:w-fit w-full'}
+              className={
+                'w-full flex flex-1 md:min-w-[300px] min-w-[250px] 2xs:max-w-[calc(100%-0.75rem)] xs:max-w-[calc(50%-0.75rem)] lg:max-w-[calc(33%-0.75rem)]'
+              }
             >
               <Card
-                className={'group bg-[#F2F4EF] hover:bg-secondary-90 h-full'}
+                className={
+                  'group bg-[#F2F4EF] hover:bg-secondary-90 h-full w-full'
+                }
               >
-                <Box className={'flex flex-col p-6 '}>
-                  <Box className={'flex flex-row justify-between items-center'}>
+                <Box className={'flex flex-col p-6 gap-3'}>
+                  <Box
+                    className={'flex flex-row justify-between items-baseline'}
+                  >
                     <Typography variant='h5' component='div'>
                       Our metadata specification
                     </Typography>
@@ -64,13 +76,19 @@ const Home = () => {
             <Link
               target={'_blank'}
               href={'https://api-test.openepi.io/'}
-              className={'h-full lg:w-fit md:w-fit w-full'}
+              className={
+                'w-full flex flex-1 md:min-w-[300px] min-w-[250px] 2xs:max-w-[calc(100%-0.75rem)] xs:max-w-[calc(50%-0.75rem)] lg:max-w-[calc(33%-0.75rem)]'
+              }
             >
               <Card
-                className={'group bg-[#F2F4EF] hover:bg-secondary-90 h-full'}
+                className={
+                  'group bg-[#F2F4EF] hover:bg-secondary-90 h-full w-full'
+                }
               >
-                <Box className={'flex flex-col p-6'}>
-                  <Box className={'flex flex-row justify-between items-center'}>
+                <Box className={'flex flex-col p-6 gap-3'}>
+                  <Box
+                    className={'flex flex-row justify-between items-baseline'}
+                  >
                     <Typography variant='h5' component='div'>
                       OpenAPI Specification
                     </Typography>
@@ -85,8 +103,8 @@ const Home = () => {
           </Box>
         </Box>
         <Box className={'flex flex-col gap-8'}>
-          <Typography className={'text-4xl w-fit'}>Frontend</Typography>
-          <Box className={'flex flex-1 flex-wrap gap-6'}>
+          <Typography className={'text-4xl w-full'}>Frontend</Typography>
+          <Box className={'flex flex-wrap gap-6'}>
             <ResourceCard
               header={'Material UI'}
               subHeader={'Sub text'}
@@ -114,35 +132,6 @@ const Home = () => {
               href={'https://tailwindcss.com/'}
               imageUrl={'/tailwind.png'}
               alt={'tailwind css logo'}
-            />
-
-            <ResourceCard
-              header={'Title'}
-              subHeader={'Sub text'}
-              href={''}
-              imageUrl={'/temp.png'}
-              alt={'placeholder logo'}
-            />
-            <ResourceCard
-              header={'Title'}
-              subHeader={'Sub text'}
-              href={''}
-              imageUrl={'/temp.png'}
-              alt={'placeholder logo'}
-            />
-            <ResourceCard
-              header={'Title'}
-              subHeader={'Sub text'}
-              href={''}
-              imageUrl={'/temp.png'}
-              alt={'placeholder logo'}
-            />
-            <ResourceCard
-              header={'Title'}
-              subHeader={'Sub text'}
-              href={''}
-              imageUrl={'/temp.png'}
-              alt={'placeholder logo'}
             />
           </Box>
         </Box>
@@ -178,34 +167,6 @@ const Home = () => {
               href={'https://fontawesome.com/'}
               imageUrl={'/font-awesome.png'}
               alt={'font awesome logo'}
-            />
-            <ResourceCard
-              header={'Title'}
-              subHeader={'Sub text'}
-              href={''}
-              imageUrl={'/temp.png'}
-              alt={'placeholder logo'}
-            />
-            <ResourceCard
-              header={'Title'}
-              subHeader={'Sub text'}
-              href={''}
-              imageUrl={'/temp.png'}
-              alt={'placeholder logo'}
-            />
-            <ResourceCard
-              header={'Title'}
-              subHeader={'Sub text'}
-              href={''}
-              imageUrl={'/temp.png'}
-              alt={'placeholder logo'}
-            />
-            <ResourceCard
-              header={'Title'}
-              subHeader={'Sub text'}
-              href={''}
-              imageUrl={'/temp.png'}
-              alt={'placeholder logo'}
             />
           </Box>
         </Box>
