@@ -29,22 +29,23 @@ const Home = () => {
           Deforestation API
         </Typography>
         <Typography variant={'h2'} className={'text-xl xs:text-2xl'}>
-          This section provides data on deforestation and environmental
-          conservation efforts.
+          Aggregated deforestation data on a global scale
         </Typography>
       </Box>
       <Box className={'flex lg:flex-row flex-col gap-6 mt-20'}>
         <InfoCard
           externalLink={true}
           header={'OpenAPI Spec'}
-          subHeader={'Some text about the OpenAPI spec.'}
+          subHeader={
+            'Specification of all endpoints available in the deforestation api.'
+          }
           CardIcon={OpenApiIcon}
           href={'https://api-test.openepi.io/deforestation/redoc'}
         />
         <InfoCard
           externalLink={true}
           header={'Github'}
-          subHeader={'Some text about the Github repository.'}
+          subHeader={'Explore the source code behind the deforestation api.'}
           CardIcon={GithubIconBlack}
           href={
             'https://github.com/openearthplatforminitiative/deforestation-api'
@@ -57,31 +58,53 @@ const Home = () => {
           Data sources
         </Typography>
         <Typography className={'text-base mt-6'}>
-          There is a need for a robust and accessible digital infrastructure for
-          open data and algorithms on weather, water, earth, and vegetation,
-          across projects, sectors, and contexts – providing a base for the
-          necessary local technology innovation. The Open Earth Platform
-          (OpenEPI) is an initiative to prepare for such an infrastructure.
-        </Typography>
-        <Typography className={'text-2xl xs:text-3xl mt-14'}>
-          Methods
-        </Typography>
-        <Typography className={'text-base mt-6'}>
-          There is a need for a robust and accessible digital infrastructure for
-          open data and algorithms on weather, water, earth, and vegetation,
-          across projects, sectors, and contexts – providing a base for the
-          necessary local technology innovation. The Open Earth Platform
-          (OpenEPI) is an initiative to prepare for such an infrastructure.
+          The deforestation data covers the period from 2001 to 2022 and is
+          provided by the{' '}
+          <a
+            href={'https://glad.umd.edu/'}
+            className={'underline hover:no-underline'}
+          >
+            Global Land Analysis and Discovery (GLAD)
+          </a>{' '}
+          laboratory at the University of Maryland, in partnership with{' '}
+          <a
+            href={'https://www.globalforestwatch.org/'}
+            className={'underline hover:no-underline'}
+          >
+            Global Forest Watch (GFW)
+          </a>
+          . The data are freely available for use under a{' '}
+          <a
+            href={'https://creativecommons.org/licenses/by/4.0/'}
+            className={'underline hover:no-underline'}
+          >
+            Creative Commons Attribution 4.0 International License
+          </a>
+          . River basin polygons data is provided by{' '}
+          <a
+            href={'https://www.hydrosheds.org/products/hydrobasins'}
+            className={'underline hover:no-underline'}
+          >
+            HydroSHEDS
+          </a>
+          . The basin data are feely available for both non-commercial and
+          commercial use under a licence agreement included in the{' '}
+          <a
+            href={
+              'https://data.hydrosheds.org/file/technical-documentation/HydroSHEDS_TechDoc_v1_4.pdf'
+            }
+            className={'underline hover:no-underline'}
+          >
+            HydroSHEDS Technical Documentation
+          </a>
+          .
         </Typography>
         <Typography className={'text-2xl xs:text-3xl mt-14'}>
           Processing
         </Typography>
         <Typography className={'text-base mt-6'}>
-          There is a need for a robust and accessible digital infrastructure for
-          open data and algorithms on weather, water, earth, and vegetation,
-          across projects, sectors, and contexts – providing a base for the
-          necessary local technology innovation. The Open Earth Platform
-          (OpenEPI) is an initiative to prepare for such an infrastructure.
+          Using the river basin polygons, the deforestation data are aggregated
+          per basin and year.
         </Typography>
         <Typography className={'text-3xl xs:text-4xl mt-16'}>
           Examples
@@ -90,11 +113,8 @@ const Home = () => {
           Example 1
         </Typography>
         <Typography className={'text-base mt-6'}>
-          There is a need for a robust and accessible digital infrastructure for
-          open data and algorithms on weather, water, earth, and vegetation,
-          across projects, sectors, and contexts – providing a base for the
-          necessary local technology innovation. The Open Earth Platform
-          (OpenEPI) is an initiative to prepare for such an infrastructure.
+          Get the total forest cover loss within the queried river basin over
+          the given time period using JavaScript.
         </Typography>
         <CodeBlock
           language={'javascript'}

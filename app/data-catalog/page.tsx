@@ -20,7 +20,7 @@ const cards: CardProps[] = [
   {
     id: 2,
     header: 'Flood',
-    subHeader: 'This section offers geocoding and address lookup services.',
+    subHeader: 'This section provides access to real-time flood forecasts.',
     CardIcon: FloodIcon,
     href: '/data-catalog/flood',
   },
