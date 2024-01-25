@@ -28,7 +28,7 @@ const Home = () => {
         >
           Deforestation API
         </Typography>
-        <Typography variant={'h2'} className={'text-2xl'}>
+        <Typography variant={'h2'} className={'text-xl xs:text-2xl'}>
           This section provides data on deforestation and environmental
           conservation efforts.
         </Typography>
@@ -52,8 +52,10 @@ const Home = () => {
         />
       </Box>
       <Box className={'flex flex-col mt-28'}>
-        <Typography className={'text-4xl'}>More info</Typography>
-        <Typography className={'text-3xl mt-8'}>Data sources</Typography>
+        <Typography className={'text-3xl xs:text-4xl'}>More info</Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-8'}>
+          Data sources
+        </Typography>
         <Typography className={'text-base mt-6'}>
           There is a need for a robust and accessible digital infrastructure for
           open data and algorithms on weather, water, earth, and vegetation,
@@ -61,7 +63,9 @@ const Home = () => {
           necessary local technology innovation. The Open Earth Platform
           (OpenEPI) is an initiative to prepare for such an infrastructure.
         </Typography>
-        <Typography className={'text-3xl mt-14'}>Methods</Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-14'}>
+          Methods
+        </Typography>
         <Typography className={'text-base mt-6'}>
           There is a need for a robust and accessible digital infrastructure for
           open data and algorithms on weather, water, earth, and vegetation,
@@ -69,7 +73,9 @@ const Home = () => {
           necessary local technology innovation. The Open Earth Platform
           (OpenEPI) is an initiative to prepare for such an infrastructure.
         </Typography>
-        <Typography className={'text-3xl mt-14'}>Processing</Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-14'}>
+          Processing
+        </Typography>
         <Typography className={'text-base mt-6'}>
           There is a need for a robust and accessible digital infrastructure for
           open data and algorithms on weather, water, earth, and vegetation,
@@ -77,8 +83,12 @@ const Home = () => {
           necessary local technology innovation. The Open Earth Platform
           (OpenEPI) is an initiative to prepare for such an infrastructure.
         </Typography>
-        <Typography className={'text-4xl mt-16'}>Examples</Typography>
-        <Typography className={'text-3xl mt-8'}>Example 1</Typography>
+        <Typography className={'text-3xl xs:text-4xl mt-16'}>
+          Examples
+        </Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-8'}>
+          Example 1
+        </Typography>
         <Typography className={'text-base mt-6'}>
           There is a need for a robust and accessible digital infrastructure for
           open data and algorithms on weather, water, earth, and vegetation,

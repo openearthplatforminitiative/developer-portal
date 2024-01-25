@@ -41,7 +41,7 @@ const ResourceCard = ({
         />
         <Box className={'flex flex-col p-6'}>
           <Box className={'flex flex-row justify-between items-center'}>
-            <Typography variant='h5' component='div'>
+            <Typography variant='h5' className={'text-xl xs:text-2xl'}>
               {header}
             </Typography>
             <Box className='transform transition-transform duration-300 group-hover:translate-x-2'>

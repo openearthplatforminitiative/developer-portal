@@ -58,13 +58,15 @@ const Home = () => {
             <Box className={'w-fit h-fit'}>
               <OpenLockIcon />
             </Box>
-            <Typography className={'text-3xl'}>Truly open source</Typography>
+            <Typography className={'text-2xl xs:text-3xl'}>
+              Truly open source
+            </Typography>
           </Box>
           <Box className={'flex flex-row gap-2'}>
             <Box className={'w-fit h-fit'}>
               <VerifiedIcon />
             </Box>
-            <Typography className={'text-3xl'}>
+            <Typography className={'text-2xl xs:text-3xl'}>
               Verified and quality assured data
             </Typography>
           </Box>
@@ -72,7 +74,7 @@ const Home = () => {
             <Box className={'w-fit h-fit'}>
               <LightBulbIcon />
             </Box>
-            <Typography className={'text-3xl'}>
+            <Typography className={'text-2xl xs:text-3xl'}>
               Unique factor about the platform
             </Typography>
           </Box>
@@ -83,7 +85,7 @@ const Home = () => {
           <Typography variant={'h2'} className={'text-3xl xs:text-4xl'}>
             Data catalog of open data
           </Typography>
-          <Typography className={'text-2xl'}>
+          <Typography className={'text-xl xs:text-2xl'}>
             We currently have 4 APIs available.
           </Typography>
         </Box>
@@ -134,7 +136,7 @@ const Home = () => {
             <Typography variant={'h2'} className={'text-3xl xs:text-4xl'}>
               Client libraries
             </Typography>
-            <Typography className={'text-2xl'}>
+            <Typography className={'text-xl xs:text-2xl'}>
               We provide two client libraries to make use of our data easier
             </Typography>
           </Box>

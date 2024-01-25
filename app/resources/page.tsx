@@ -14,13 +14,11 @@ const Home = () => {
       <Box className={'flex flex-col gap-8 mb-20'}>
         <Typography
           variant={'h1'}
-          className={
-            'leading-[48px] xs:leading-[64px] text-4xl leading-10 xs:text-6xl'
-          }
+          className={'leading-[48px] xs:leading-[64px] text-4xl xs:text-6xl'}
         >
           Open source resources
         </Typography>
-        <Typography className={'text-2xl'}>
+        <Typography className={'text-xl xs:text-2xl'}>
           Design and frontend resources, policies and specifications.
         </Typography>
       </Box>
@@ -31,7 +29,8 @@ const Home = () => {
           </Typography>
           <Box className={'flex flex-row flex-wrap gap-6 w-full'}>
             <Link
-              href={'/resources/open-policy'}
+              href={'https://www.openepi.io/'}
+              target={'_blank'}
               className={
                 'w-full flex flex-1 md:min-w-[300px] min-w-[250px] 2xs:max-w-[calc(100%-0.75rem)] xs:max-w-[calc(50%-0.75rem)] lg:max-w-[calc(33%-0.75rem)]'
               }
@@ -45,19 +44,22 @@ const Home = () => {
                   <Box
                     className={'flex flex-row justify-between items-baseline'}
                   >
-                    <Typography variant='h5' component='div'>
+                    <Typography variant='h5' className={'text-xl xs:text-2xl'}>
                       Our open policy
                     </Typography>
                     <Box className='transform transition-transform duration-300 group-hover:translate-x-2'>
-                      <InternalLinkIcon />
+                      <ExternalLinkIcon />
                     </Box>
                   </Box>
-                  <Typography variant='body2'>Sub text</Typography>
+                  {/*
+                    <Typography variant='body2'>Sub text</Typography>
+                  */}{' '}
                 </Box>
               </Card>
             </Link>
             <Link
-              href={'/resources/metadata-specification'}
+              href={'https://www.openepi.io/'}
+              target={'_blank'}
               className={
                 'w-full flex flex-1 md:min-w-[300px] min-w-[250px] 2xs:max-w-[calc(100%-0.75rem)] xs:max-w-[calc(50%-0.75rem)] lg:max-w-[calc(33%-0.75rem)]'
               }
@@ -71,14 +73,16 @@ const Home = () => {
                   <Box
                     className={'flex flex-row justify-between items-baseline'}
                   >
-                    <Typography variant='h5' component='div'>
+                    <Typography variant='h5' className={'text-xl xs:text-2xl'}>
                       Our metadata specification
                     </Typography>
                     <Box className='transform transition-transform duration-300 group-hover:translate-x-2'>
-                      <InternalLinkIcon />
+                      <ExternalLinkIcon />
                     </Box>
                   </Box>
-                  <Typography variant='body2'>Sub text</Typography>
+                  {/*
+                    <Typography variant='body2'>Sub text</Typography>
+                  */}
                 </Box>
               </Card>
             </Link>
@@ -98,14 +102,16 @@ const Home = () => {
                   <Box
                     className={'flex flex-row justify-between items-baseline'}
                   >
-                    <Typography variant='h5' component='div'>
+                    <Typography variant='h5' className={'text-xl xs:text-2xl'}>
                       OpenAPI Specification
                     </Typography>
                     <Box className='transform transition-transform duration-300 group-hover:translate-x-2'>
                       <ExternalLinkIcon />
                     </Box>
                   </Box>
-                  <Typography variant='body2'>Sub text</Typography>
+                  {/*
+                    <Typography variant='body2'>Sub text</Typography>
+                  */}
                 </Box>
               </Card>
             </Link>
@@ -173,13 +179,6 @@ const Home = () => {
               }
               imageUrl={'/material-symbols.png'}
               alt={'material symbols logo'}
-            />
-            <ResourceCard
-              header={'Font awesome'}
-              subHeader={'Sub text'}
-              href={'https://fontawesome.com/'}
-              imageUrl={'/font-awesome.png'}
-              alt={'font awesome logo'}
             />
           </Box>
         </Box>

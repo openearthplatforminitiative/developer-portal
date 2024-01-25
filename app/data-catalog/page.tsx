@@ -51,7 +51,7 @@ const Home = () => {
         >
           Data catalog of open data
         </Typography>
-        <Typography className={'text-2xl'}>
+        <Typography className={'text-xl xs:text-2xl'}>
           We currently have 4 APIs available.
         </Typography>
       </Box>
@@ -70,7 +70,7 @@ const Home = () => {
         <Typography variant={'h2'} className={'text-3xl xs:text-4xl'}>
           Client libraries
         </Typography>
-        <Typography className={'text-2xl'}>
+        <Typography className={'text-xl xs:text-2xl'}>
           We provide two client libraries to make use of our data easier.
         </Typography>
         <Box className={'flex lg:flex-row flex-col gap-6 mt-16 w-full'}>

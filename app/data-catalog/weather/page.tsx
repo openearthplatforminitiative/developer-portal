@@ -22,14 +22,23 @@ const Home = () => {
       </Link>
 
       <Box className={'flex flex-col gap-8 mt-14'}>
-        <Typography className={'text-5xl'}>Weather API</Typography>
-        <Typography className={'text-2xl'}>Global weather forecasts and information about sunrise and sunset</Typography>
+        <Typography
+          variant={'h1'}
+          className={'leading-[48px] xs:leading-[64px] text-4xl xs:text-6xl'}
+        >
+          Weather API
+        </Typography>
+        <Typography className={'text-xl xs:text-2xl'}>
+          Global weather forecasts and information about sunrise and sunset
+        </Typography>
       </Box>
       <Box className={'flex lg:flex-row flex-col gap-6 mt-20'}>
         <InfoCard
           externalLink={true}
           header={'OpenAPI Spec'}
-          subHeader={'Specification of all endpoints available in the weather api.'}
+          subHeader={
+            'Specification of all endpoints available in the weather api.'
+          }
           CardIcon={OpenApiIcon}
           href={'https://api-test.openepi.io/weather/redoc'}
         />
@@ -42,30 +51,49 @@ const Home = () => {
         />
       </Box>
       <Box className={'flex flex-col mt-28'}>
-        <Typography className={'text-4xl'}>More info</Typography>
-        <Typography className={'text-3xl mt-8'}>Data sources</Typography>
-        <Typography className={'text-base mt-6'}>
-          The data for this Weather API is exclusively retrieved from <a href='https://api.met.no' className={
-              'underline hover:no-underline'
-            }>https://api.met.no</a>, renowned for its comprehensive and accurate meteorological data. 
-          This source provides users with dependable weather forecasts and precise information on sunrise and sunset times.
+        <Typography className={'text-3xl xs:text-4xl'}>More info</Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-8'}>
+          Data sources
         </Typography>
-        <Typography className={'text-3xl mt-14'}>Processing</Typography>
         <Typography className={'text-base mt-6'}>
-          The data obtained from the Norwegian Meteorological Institute is presented as is, without any further processing or modification.
+          The data for this Weather API is exclusively retrieved from{' '}
+          <a
+            href='https://api.met.no'
+            className={'underline hover:no-underline'}
+          >
+            https://api.met.no
+          </a>
+          , renowned for its comprehensive and accurate meteorological data.
+          This source provides users with dependable weather forecasts and
+          precise information on sunrise and sunset times.
         </Typography>
-        <Typography className={'text-4xl mt-16'}>Examples</Typography>
-        <Typography className={'text-3xl mt-8'}>Example 1</Typography>
+        <Typography className={'text-xl xs:text-2xl xs:text-3xl mt-14'}>
+          Processing
+        </Typography>
         <Typography className={'text-base mt-6'}>
-          Retrieving weather forecast for a given location for the next 9 days using javascript.
+          The data obtained from the Norwegian Meteorological Institute is
+          presented as is, without any further processing or modification.
+        </Typography>
+        <Typography className={'text-3xl xs:text-4xl mt-16'}>
+          Examples
+        </Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-8'}>
+          Example 1
+        </Typography>
+        <Typography className={'text-base mt-6'}>
+          Retrieving weather forecast for a given location for the next 9 days
+          using javascript.
         </Typography>
         <CodeBlock
           language={'javascript'}
           codeString={getCodeExample('weather.js')}
         />
-        <Typography className={'text-3xl mt-8'}>Example 2</Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-8'}>
+          Example 2
+        </Typography>
         <Typography className={'text-base mt-6'}>
-          Retrieving weather forecast for a given location for the next 9 days using python.
+          Retrieving weather forecast for a given location for the next 9 days
+          using python.
         </Typography>
         <CodeBlock
           language={'python'}
