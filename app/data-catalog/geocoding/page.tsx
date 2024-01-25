@@ -23,7 +23,9 @@ const Home = () => {
 
       <Box className={'flex flex-col gap-8 mt-14'}>
         <Typography className={'text-5xl'}>Geocoding API</Typography>
-        <Typography className={'text-2xl'}>Sub header</Typography>
+        <Typography className={'text-2xl'}>
+          This section offers geocoding and address lookup services.
+        </Typography>
       </Box>
       <Box className={'flex lg:flex-row flex-col gap-6 mt-20'}>
         <InfoCard

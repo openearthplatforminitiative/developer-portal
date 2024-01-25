@@ -45,7 +45,10 @@ const Home = () => {
   return (
     <Box className={'w-full h-full lg:max-w-7xl p-8 lg:my-44 my-20'}>
       <Box className={'flex flex-col gap-8 mb-20'}>
-        <Typography variant={'h1'} className={'text-5xl'}>
+        <Typography
+          variant={'h1'}
+          className={'leading-[48px] xs:leading-[64px] text-4xl xs:text-6xl'}
+        >
           Data catalog of open data
         </Typography>
         <Typography className={'text-2xl'}>
@@ -64,7 +67,7 @@ const Home = () => {
         ))}
       </Box>
       <Box className={'flex flex-col gap-8 mt-28 w-full'}>
-        <Typography variant={'h2'} className={'text-4xl'}>
+        <Typography variant={'h2'} className={'text-3xl xs:text-4xl'}>
           Client libraries
         </Typography>
         <Typography className={'text-2xl'}>

@@ -43,7 +43,7 @@ const Home = () => {
           <Typography
             variant={'h1'}
             className={
-              'text-6xl font-normal w-full h-full xl:max-w-[37.5rem] pr-20 xl:ml-auto z-10 2xs:pl-8 xs:pl-32 xl:pl-0'
+              'leading-[48px] xs:leading-[64px] text-4xl xs:text-6xl font-normal w-full h-full xl:max-w-[37.5rem] pr-20 xl:ml-auto z-10 2xs:pl-8 xs:pl-32 xl:pl-0'
             }
           >
             <b> Global open source data</b> enabling local innovation
@@ -80,7 +80,7 @@ const Home = () => {
       </Box>
       <Box className={'flex flex-col sm:w-full sm:max-w-7xl sm:mx-auto px-8'}>
         <Box className={'flex flex-col gap-8 mb-6'}>
-          <Typography variant={'h2'} className={'text-5xl'}>
+          <Typography variant={'h2'} className={'text-3xl xs:text-4xl'}>
             Data catalog of open data
           </Typography>
           <Typography className={'text-2xl'}>
@@ -104,7 +104,7 @@ const Home = () => {
             <ApiCard
               header={'Flood'}
               subHeader={
-                'This section offers geocoding and address lookup services.'
+                'This section provides information on flood alerts and prevention.'
               }
               CardIcon={FloodIcon}
               href={'/data-catalog/flood'}
@@ -131,7 +131,7 @@ const Home = () => {
         </Box>
         <Box className={'flex flex-col lg:mx-0 mx-2'}>
           <Box className={'flex flex-col gap-8 mb-16'}>
-            <Typography variant={'h2'} className={'text-4xl'}>
+            <Typography variant={'h2'} className={'text-3xl xs:text-4xl'}>
               Client libraries
             </Typography>
             <Typography className={'text-2xl'}>

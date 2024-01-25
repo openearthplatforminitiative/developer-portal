@@ -11,7 +11,12 @@ import Link from 'next/link';
 const Home = () => {
   return (
     <Box className={'w-full h-full lg:max-w-7xl p-6 lg:my-44 my-20'}>
-      <Typography variant={'h1'} className={'text-5xl mb-20'}>
+      <Typography
+        variant={'h1'}
+        className={
+          'leading-[48px] xs:leading-[64px] text-4xl xs:text-6xl mb-20'
+        }
+      >
         Need help or want to get involved
       </Typography>
       <Box className={'flex sm:flex-row flex-col gap-28'}>

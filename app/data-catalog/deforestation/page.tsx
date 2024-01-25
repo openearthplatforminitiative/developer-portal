@@ -22,8 +22,16 @@ const Home = () => {
       </Link>
 
       <Box className={'flex flex-col gap-8 mt-14'}>
-        <Typography className={'text-5xl'}>Deforestation API</Typography>
-        <Typography className={'text-2xl'}>Sub header</Typography>
+        <Typography
+          variant={'h1'}
+          className={'leading-[48px] xs:leading-[64px] text-4xl xs:text-6xl'}
+        >
+          Deforestation API
+        </Typography>
+        <Typography variant={'h2'} className={'text-2xl'}>
+          This section provides data on deforestation and environmental
+          conservation efforts.
+        </Typography>
       </Box>
       <Box className={'flex lg:flex-row flex-col gap-6 mt-20'}>
         <InfoCard

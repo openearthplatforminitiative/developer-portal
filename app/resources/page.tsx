@@ -12,7 +12,12 @@ const Home = () => {
   return (
     <Box className={'w-full h-full lg:max-w-7xl p-6 lg:my-44 my-20'}>
       <Box className={'flex flex-col gap-8 mb-20'}>
-        <Typography variant={'h1'} className={'text-5xl'}>
+        <Typography
+          variant={'h1'}
+          className={
+            'leading-[48px] xs:leading-[64px] text-4xl leading-10 xs:text-6xl'
+          }
+        >
           Open source resources
         </Typography>
         <Typography className={'text-2xl'}>
@@ -21,7 +26,7 @@ const Home = () => {
       </Box>
       <Box className={'flex flex-col gap-32'}>
         <Box className={'flex flex-col gap-8'}>
-          <Typography variant={'h2'} className={'text-4xl w-fit'}>
+          <Typography variant={'h2'} className={'text-3xl xs:text-4xl w-fit'}>
             Documents
           </Typography>
           <Box className={'flex flex-row flex-wrap gap-6 w-full'}>
@@ -107,7 +112,7 @@ const Home = () => {
           </Box>
         </Box>
         <Box className={'flex flex-col gap-8'}>
-          <Typography variant={'h2'} className={'text-4xl w-full'}>
+          <Typography variant={'h2'} className={'text-3xl xs:text-4xl w-full'}>
             Frontend
           </Typography>
           <Box className={'flex flex-wrap gap-6'}>
@@ -142,7 +147,7 @@ const Home = () => {
           </Box>
         </Box>
         <Box className={'flex flex-col gap-8'}>
-          <Typography variant={'h2'} className={'text-4xl'}>
+          <Typography variant={'h2'} className={'text-3xl xs:text-4xl'}>
             Design
           </Typography>
           <Box className={'flex flex-1 flex-wrap gap-6'}>
