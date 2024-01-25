@@ -118,7 +118,9 @@ const Home = () => {
           compute the summary forecast by aggregating the detailed forecast data
           over the forecast horizon. Similarly to GloFAS, the upstream area data
           is used to filter out grid cells that have an upstream area smaller
-          than 250 km<sup>2</sup>.
+          than 250 km<sup>2</sup>. Currently, the region of interest is limited
+          to the following bounding box covering parts of Western, Central, and
+          Eastern Africa: -18.0° to 52.0° longitude and -6.0° to 17.0° latitude.
         </Typography>
         <Typography className={'text-4xl mt-16'}>Examples</Typography>
         <Typography className={'text-3xl mt-8'}>Example 1</Typography>
