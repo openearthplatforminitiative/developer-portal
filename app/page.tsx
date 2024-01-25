@@ -25,7 +25,7 @@ const Home = () => {
         >
           <Box
             className={
-              'relative xl:-left-60 -left-64 2xs:top-96 xs:top-80 sm:top-40 lg:top-20 xl:top-32'
+              'relative xl:-left-60 -left-64 2xs:top-44 xs:top-80 sm:top-40 lg:top-20 xl:top-32'
             }
           >
             <Box

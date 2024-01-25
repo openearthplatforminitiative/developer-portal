@@ -21,7 +21,7 @@ const Home = () => {
       </Typography>
       <Box className={'flex sm:flex-row flex-col gap-28'}>
         <Box className={'flex flex-col sm:w-1/2'}>
-          <Typography variant={'h2'} className={'text-3xl'}>
+          <Typography variant={'h2'} className={'text-3xl '}>
             Submit bugs, feature requests and more
           </Typography>
           <Typography className={'mt-8 mb-10 text-base'}>
