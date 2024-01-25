@@ -89,7 +89,7 @@ const Home = () => {
             className={'underline hover:no-underline'}
           >
             Reporting Point
-          </a>{' '}structure, which defines a flood's intensity,
+          </a>{' '}structure, which defines a flood&apos;s intensity,
           tendency, and peak timing over the 30-day forecast horizon for each grid cell.
           In GloFAS, each reporting point is associated with a discharge hydrograph, which
           makes up the detailed forecast provided by the API. The detailed forecast
