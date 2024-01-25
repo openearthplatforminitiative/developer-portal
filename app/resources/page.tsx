@@ -12,14 +12,18 @@ const Home = () => {
   return (
     <Box className={'w-full h-full lg:max-w-7xl p-6 lg:my-44 my-20'}>
       <Box className={'flex flex-col gap-8 mb-20'}>
-        <Typography className={'text-5xl'}>Open source resources</Typography>
+        <Typography variant={'h1'} className={'text-5xl'}>
+          Open source resources
+        </Typography>
         <Typography className={'text-2xl'}>
           Design and frontend resources, policies and specifications.
         </Typography>
       </Box>
       <Box className={'flex flex-col gap-32'}>
         <Box className={'flex flex-col gap-8'}>
-          <Typography className={'text-4xl w-fit'}>Documents</Typography>
+          <Typography variant={'h2'} className={'text-4xl w-fit'}>
+            Documents
+          </Typography>
           <Box className={'flex flex-row flex-wrap gap-6 w-full'}>
             <Link
               href={'/resources/open-policy'}
@@ -103,7 +107,9 @@ const Home = () => {
           </Box>
         </Box>
         <Box className={'flex flex-col gap-8'}>
-          <Typography className={'text-4xl w-full'}>Frontend</Typography>
+          <Typography variant={'h2'} className={'text-4xl w-full'}>
+            Frontend
+          </Typography>
           <Box className={'flex flex-wrap gap-6'}>
             <ResourceCard
               header={'Material UI'}
@@ -136,7 +142,9 @@ const Home = () => {
           </Box>
         </Box>
         <Box className={'flex flex-col gap-8'}>
-          <Typography className={'text-4xl'}>Design</Typography>
+          <Typography variant={'h2'} className={'text-4xl'}>
+            Design
+          </Typography>
           <Box className={'flex flex-1 flex-wrap gap-6'}>
             <ResourceCard
               header={'Google fonts'}

@@ -45,10 +45,12 @@ const Home = () => {
   return (
     <Box className={'w-full h-full lg:max-w-7xl p-8 lg:my-44 my-20'}>
       <Box className={'flex flex-col gap-8 mb-20'}>
-        <Typography className={'text-5xl'}>
+        <Typography variant={'h1'} className={'text-5xl'}>
           Data catalog of open data
         </Typography>
-        <Typography className={'text-2xl'}>Sub header</Typography>
+        <Typography className={'text-2xl'}>
+          We currently have 4 APIs available.
+        </Typography>
       </Box>
       <Box className={'flex flex-wrap gap-14 mt-16'}>
         {cards.map((card) => (
@@ -62,7 +64,9 @@ const Home = () => {
         ))}
       </Box>
       <Box className={'flex flex-col gap-8 mt-28 w-full'}>
-        <Typography className={'text-4xl'}>Client libraries</Typography>
+        <Typography variant={'h2'} className={'text-4xl'}>
+          Client libraries
+        </Typography>
         <Typography className={'text-2xl'}>
           We provide two client libraries to make use of our data easier.
         </Typography>

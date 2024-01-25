@@ -11,12 +11,12 @@ import Link from 'next/link';
 const Home = () => {
   return (
     <Box className={'w-full h-full lg:max-w-7xl p-6 lg:my-44 my-20'}>
-      <Typography className={'text-5xl mb-20'}>
+      <Typography variant={'h1'} className={'text-5xl mb-20'}>
         Need help or want to get involved
       </Typography>
       <Box className={'flex sm:flex-row flex-col gap-28'}>
         <Box className={'flex flex-col sm:w-1/2'}>
-          <Typography className={'text-3xl'}>
+          <Typography variant={'h2'} className={'text-3xl'}>
             Submit bugs, feature requests and more
           </Typography>
           <Typography className={'mt-8 mb-10 text-base'}>
@@ -40,7 +40,7 @@ const Home = () => {
           </Link>
         </Box>
         <Box className={'flex flex-col gap-30 sm:w-1/2'}>
-          <Typography className={'text-3xl'}>
+          <Typography variant={'h2'} className={'text-3xl'}>
             Join the community and join the discussion
           </Typography>
           <Typography className={'mt-8 mb-10 text-base'}>
@@ -63,7 +63,7 @@ const Home = () => {
       <Divider className={'my-16'} />
       <Box className={'flex sm:flex-row flex-col gap-28'}>
         <Box className={'sm:w-1/2'}>
-          <Typography className={'text-2xl mb-10'}>
+          <Typography variant={'h2'} className={'text-2xl mb-10'}>
             General enquiry about the project
           </Typography>
           <Box className={'flex flex-col w-full gap-3.5'}>
@@ -131,7 +131,9 @@ const Home = () => {
           </Box>
         </Box>
         <Box className={'sm:w-1/2'}>
-          <Typography className={'text-2xl mb-8'}>Send us a line</Typography>
+          <Typography variant={'h2'} className={'text-2xl mb-8'}>
+            Send us a line
+          </Typography>
           <Typography className={'text-lg'}>
             You may also contact us directly through email:
           </Typography>
