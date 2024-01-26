@@ -114,7 +114,7 @@ const Home = () => {
             <ApiCard
               header={'Geocoding'}
               subHeader={
-                'This section offers geocoding and address lookup services.'
+                'This section provides geocoding and address lookup services.'
               }
               CardIcon={GeocodingIcon}
               href={'/data-catalog/geocoding'}
