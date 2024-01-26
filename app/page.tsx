@@ -106,7 +106,7 @@ const Home = () => {
             <ApiCard
               header={'Flood'}
               subHeader={
-                'This section provides information on flood alerts and prevention.'
+                'This section provides access to real-time flood forecasts.'
               }
               CardIcon={FloodIcon}
               href={'/data-catalog/flood'}

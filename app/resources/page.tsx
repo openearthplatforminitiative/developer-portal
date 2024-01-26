@@ -124,28 +124,28 @@ const Home = () => {
           <Box className={'flex flex-wrap gap-6'}>
             <ResourceCard
               header={'Material UI'}
-              subHeader={'Sub text'}
+              subHeader={''}
               href={'https://mui.com'}
               imageUrl={'/mui.png'}
               alt={'mui logo'}
             />
             <ResourceCard
               header={'Next JS'}
-              subHeader={'Sub text'}
+              subHeader={''}
               href={'https://nextjs.org'}
               imageUrl={'/next.png'}
               alt={'next logo'}
             />
             <ResourceCard
               header={'Typescript'}
-              subHeader={'Sub text'}
+              subHeader={''}
               href={'https://www.typescriptlang.org/'}
               imageUrl={'/ts.png'}
               alt={'typescript logo'}
             />
             <ResourceCard
               header={'Tailwind CSS'}
-              subHeader={'Sub text'}
+              subHeader={''}
               href={'https://tailwindcss.com/'}
               imageUrl={'/tailwind.png'}
               alt={'tailwind css logo'}
@@ -159,21 +159,21 @@ const Home = () => {
           <Box className={'flex flex-1 flex-wrap gap-6'}>
             <ResourceCard
               header={'Google fonts'}
-              subHeader={'Sub text'}
+              subHeader={''}
               href={'https://fonts.google.com/'}
               imageUrl={'/google-fonts.png'}
               alt={'google fonts logo'}
             />
             <ResourceCard
               header={'Material design'}
-              subHeader={'Sub text'}
+              subHeader={''}
               href={'https://m3.material.io/'}
               imageUrl={'/material-design.png'}
               alt={'material design logo'}
             />
             <ResourceCard
               header={'Material symbols'}
-              subHeader={'Sub text'}
+              subHeader={''}
               href={
                 'https://fonts.google.com/icons?selected=Material+Symbols+Outlined:arrow_back:FILL@0;wght@400;GRAD@0;opsz@24'
               }
