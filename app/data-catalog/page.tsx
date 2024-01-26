@@ -27,7 +27,7 @@ const cards: CardProps[] = [
   {
     id: 3,
     header: 'Geocoding',
-    subHeader: 'This section offers geocoding and address lookup services.',
+    subHeader: 'This section provides geocoding and address lookup services.',
     CardIcon: GeocodingIcon,
     href: '/data-catalog/geocoding',
   },
@@ -77,7 +77,7 @@ const Home = () => {
           <InfoCard
             externalLink={true}
             header={'Javascript'}
-            subHeader={'Some text about the JavaScript client library.'}
+            subHeader={'A javascript client for accessing data from OpenEPI.'}
             CardIcon={JavascriptLogo}
             href={'https://www.npmjs.com/package/openepi-client'}
           />
