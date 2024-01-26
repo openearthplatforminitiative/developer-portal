@@ -144,14 +144,14 @@ const Home = () => {
             <InfoCard
               externalLink={true}
               header={'Javascript'}
-              subHeader={'Some text about the JavaScript client library.'}
+              subHeader={'A javascript client for accessing data from OpenEPI.'}
               CardIcon={JavascriptLogo}
               href={'https://www.npmjs.com/package/openepi-client'}
             />
             <InfoCard
               externalLink={true}
               header={'Python'}
-              subHeader={'Some text about the Python client library.'}
+              subHeader={'A python client for accessing data from OpenEPI.'}
               CardIcon={PythonLogo}
               href={'https://pypi.org/project/openepi-client/'}
             />
