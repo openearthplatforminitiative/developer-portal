@@ -67,7 +67,7 @@ const Home = () => {
           This source provides users with dependable weather forecasts and
           precise information on sunrise and sunset times.
         </Typography>
-        <Typography className={'text-xl xs:text-2xl xs:text-3xl mt-14'}>
+        <Typography className={'text-2xl xs:text-3xl mt-14'}>
           Processing
         </Typography>
         <Typography className={'text-base mt-6'}>
