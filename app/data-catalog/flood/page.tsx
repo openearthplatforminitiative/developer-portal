@@ -22,8 +22,13 @@ const Home = () => {
       </Link>
 
       <Box className={'flex flex-col gap-8 mt-14'}>
-        <Typography className={'text-5xl'}>Flood API</Typography>
-        <Typography className={'text-2xl'}>
+        <Typography
+          variant={'h1'}
+          className={'leading-[48px] xs:leading-[64px] text-4xl xs:text-6xl'}
+        >
+          Flood API
+        </Typography>
+        <Typography className={'text-xl xs:text-2xl'}>
           Flood forecasting based on the{' '}
           <a
             href={'https://www.globalfloods.eu/'}
@@ -52,8 +57,10 @@ const Home = () => {
         />
       </Box>
       <Box className={'flex flex-col mt-28'}>
-        <Typography className={'text-4xl'}>More info</Typography>
-        <Typography className={'text-3xl mt-8'}>Data sources</Typography>
+        <Typography className={'text-3xl xs:text-4xl'}>More info</Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-8'}>
+          Data sources
+        </Typography>
         <Typography className={'text-base mt-6'}>
           Part of the data for this Flood API consists of the 30-day forecasted
           river discharge data retrieved on a daily basis from the Copernicus{' '}
@@ -89,7 +96,9 @@ const Home = () => {
           </a>
           .
         </Typography>
-        <Typography className={'text-3xl mt-14'}>Processing</Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-14'}>
+          Processing
+        </Typography>
         <Typography className={'text-base mt-6'}>
           The forecasted river discharge data is processed in order to obtain
           the summary and detailed forecasts. The summary forecast corresponds
@@ -122,8 +131,12 @@ const Home = () => {
           to the following bounding box covering parts of Western, Central, and
           Eastern Africa: -18.0° to 52.0° longitude and -6.0° to 17.0° latitude.
         </Typography>
-        <Typography className={'text-4xl mt-16'}>Examples</Typography>
-        <Typography className={'text-3xl mt-8'}>Example 1</Typography>
+        <Typography className={'text-3xl xs:text-4xl mt-16'}>
+          Examples
+        </Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-8'}>
+          Example 1
+        </Typography>
         <Typography className={'text-base mt-6'}>
           Retrieving the peak day of the summary forecast for the 5° by 5° grid
           cell that the given coordinates fall into using JavaScript.
@@ -132,7 +145,9 @@ const Home = () => {
           language={'javascript'}
           codeString={getCodeExample('flood-summary.js')}
         />
-        <Typography className={'text-3xl mt-8'}>Example 2</Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-8'}>
+          Example 2
+        </Typography>
         <Typography className={'text-base mt-6'}>
           Retrieving the minimum forecasted discharge of the first day of the
           detailed forecast for the 5° by 5° grid cell that the given
@@ -142,7 +157,9 @@ const Home = () => {
           language={'javascript'}
           codeString={getCodeExample('flood-detailed.py')}
         />
-        <Typography className={'text-3xl mt-8'}>Example 3</Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-8'}>
+          Example 3
+        </Typography>
         <Typography className={'text-base mt-6'}>
           Retrieving the 2-year return period threshold for the 5° by 5° grid
           cell that the given coordinates fall into using JavaScript.

@@ -22,8 +22,13 @@ const Home = () => {
       </Link>
 
       <Box className={'flex flex-col gap-8 mt-14'}>
-        <Typography className={'text-5xl'}>Geocoding API</Typography>
-        <Typography className={'text-2xl'}>
+        <Typography
+          variant={'h1'}
+          className={'leading-[48px] xs:leading-[64px] text-4xl xs:text-6xl'}
+        >
+          Geocoding API
+        </Typography>
+        <Typography className={'text-xl xs:text-2xl'}>
           Geocoding and reverse-geocoding based on{' '}
           <a
             href={'https://www.openstreetmap.org'}
@@ -38,21 +43,25 @@ const Home = () => {
         <InfoCard
           externalLink={true}
           header={'OpenAPI Spec'}
-          subHeader={'Some text about the OpenAPI spec.'}
+          subHeader={
+            'Specification of all endpoints available in the geocoding api.'
+          }
           CardIcon={OpenApiIcon}
           href={'https://api-test.openepi.io/geocoding/redoc'}
         />
         <InfoCard
           externalLink={true}
           header={'Github'}
-          subHeader={'Some text about the Github repository.'}
+          subHeader={'Explore the source code behind the geocoding api.'}
           CardIcon={GithubIconBlack}
           href={'https://github.com/openearthplatforminitiative/geocoder-api'}
         />
       </Box>
       <Box className={'flex flex-col mt-28'}>
-        <Typography className={'text-4xl'}>More info</Typography>
-        <Typography className={'text-3xl mt-8'}>Data sources</Typography>
+        <Typography className={'text-3xl xs:text-4xl'}>More info</Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-8'}>
+          Data sources
+        </Typography>
         <Typography className={'text-base mt-6'}>
           The API is exclusively fetching data from{' '}
           <a
@@ -84,7 +93,9 @@ const Home = () => {
           </a>
           .
         </Typography>
-        <Typography className={'text-3xl mt-14'}>Processing</Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-14'}>
+          Processing
+        </Typography>
         <Typography className={'text-base mt-6'}>
           The data obtained from{' '}
           <a
@@ -95,8 +106,12 @@ const Home = () => {
           </a>{' '}
           is presented as is, without any further processing or modification.
         </Typography>
-        <Typography className={'text-4xl mt-16'}>Examples</Typography>
-        <Typography className={'text-3xl mt-8'}>Example 1</Typography>
+        <Typography className={'text-3xl xs:text-4xl mt-16'}>
+          Examples
+        </Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-8'}>
+          Example 1
+        </Typography>
         <Typography className={'text-base mt-6'}>
           Retrieving the coordinates of <q>Berlin</q> using JavaScript.
         </Typography>
@@ -104,7 +119,9 @@ const Home = () => {
           language={'javascript'}
           codeString={getCodeExample('geocoding.js')}
         />
-        <Typography className={'text-3xl mt-8'}>Example 2</Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-8'}>
+          Example 2
+        </Typography>
         <Typography className={'text-base mt-6'}>
           Retrieving the coordinates of <q>Berlin</q> using Python.
         </Typography>
@@ -112,7 +129,9 @@ const Home = () => {
           language={'python'}
           codeString={getCodeExample('geocoding.py')}
         />
-        <Typography className={'text-3xl mt-8'}>Example 3</Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-8'}>
+          Example 3
+        </Typography>
         <Typography className={'text-base mt-6'}>
           Retrieving a location near the given coordinate using JavaScript.
         </Typography>
@@ -120,7 +139,9 @@ const Home = () => {
           language={'javascript'}
           codeString={getCodeExample('reverse-geocoding.js')}
         />
-        <Typography className={'text-3xl mt-8'}>Example 4</Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-8'}>
+          Example 4
+        </Typography>
         <Typography className={'text-base mt-6'}>
           Retrieving a location near the given coordinate using Python.
         </Typography>

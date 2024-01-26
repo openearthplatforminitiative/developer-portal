@@ -12,81 +12,116 @@ const Home = () => {
   return (
     <Box className={'w-full h-full lg:max-w-7xl p-6 lg:my-44 my-20'}>
       <Box className={'flex flex-col gap-8 mb-20'}>
-        <Typography className={'text-5xl'}>Open source resources</Typography>
-        <Typography className={'text-2xl'}>
+        <Typography
+          variant={'h1'}
+          className={'leading-[48px] xs:leading-[64px] text-4xl xs:text-6xl'}
+        >
+          Open source resources
+        </Typography>
+        <Typography className={'text-xl xs:text-2xl'}>
           Design and frontend resources, policies and specifications.
         </Typography>
       </Box>
       <Box className={'flex flex-col gap-32'}>
         <Box className={'flex flex-col gap-8'}>
-          <Typography className={'text-4xl w-fit'}>Documents</Typography>
-          <Box className={'flex flex-row flex-1 flex-wrap gap-6 w-fit'}>
+          <Typography variant={'h2'} className={'text-3xl xs:text-4xl w-fit'}>
+            Documents
+          </Typography>
+          <Box className={'flex flex-row flex-wrap gap-6 w-full'}>
             <Link
-              href={'/resources/open-policy'}
-              className={'h-full lg:w-fit md:w-fit w-full'}
+              href={'https://www.openepi.io/'}
+              target={'_blank'}
+              className={
+                'w-full flex flex-1 md:min-w-[300px] min-w-[250px] 2xs:max-w-[calc(100%-0.75rem)] xs:max-w-[calc(50%-0.75rem)] lg:max-w-[calc(33%-0.75rem)]'
+              }
             >
               <Card
-                className={'group bg-[#F2F4EF] hover:bg-secondary-90 h-full'}
+                className={
+                  'group bg-[#F2F4EF] hover:bg-secondary-90 h-full w-full'
+                }
               >
-                <Box className={'flex flex-col p-6'}>
-                  <Box className={'flex flex-row justify-between items-center'}>
-                    <Typography variant='h5' component='div'>
+                <Box className={'flex flex-col p-6 gap-3'}>
+                  <Box
+                    className={'flex flex-row justify-between items-baseline'}
+                  >
+                    <Typography variant='h5' className={'text-xl xs:text-2xl'}>
                       Our open policy
                     </Typography>
                     <Box className='transform transition-transform duration-300 group-hover:translate-x-2'>
-                      <InternalLinkIcon />
+                      <ExternalLinkIcon />
                     </Box>
                   </Box>
-                  <Typography variant='body2'>Sub text</Typography>
+                  {/*
+                    <Typography variant='body2'>Sub text</Typography>
+                  */}{' '}
                 </Box>
               </Card>
             </Link>
             <Link
-              href={'/resources/metadata-specification'}
-              className={'h-full lg:w-fit md:w-fit w-full'}
+              href={'https://www.openepi.io/'}
+              target={'_blank'}
+              className={
+                'w-full flex flex-1 md:min-w-[300px] min-w-[250px] 2xs:max-w-[calc(100%-0.75rem)] xs:max-w-[calc(50%-0.75rem)] lg:max-w-[calc(33%-0.75rem)]'
+              }
             >
               <Card
-                className={'group bg-[#F2F4EF] hover:bg-secondary-90 h-full'}
+                className={
+                  'group bg-[#F2F4EF] hover:bg-secondary-90 h-full w-full'
+                }
               >
-                <Box className={'flex flex-col p-6 '}>
-                  <Box className={'flex flex-row justify-between items-center'}>
-                    <Typography variant='h5' component='div'>
+                <Box className={'flex flex-col p-6 gap-3'}>
+                  <Box
+                    className={'flex flex-row justify-between items-baseline'}
+                  >
+                    <Typography variant='h5' className={'text-xl xs:text-2xl'}>
                       Our metadata specification
                     </Typography>
                     <Box className='transform transition-transform duration-300 group-hover:translate-x-2'>
-                      <InternalLinkIcon />
+                      <ExternalLinkIcon />
                     </Box>
                   </Box>
-                  <Typography variant='body2'>Sub text</Typography>
+                  {/*
+                    <Typography variant='body2'>Sub text</Typography>
+                  */}
                 </Box>
               </Card>
             </Link>
             <Link
               target={'_blank'}
-              href={'https://api-test.openepi.io/'}
-              className={'h-full lg:w-fit md:w-fit w-full'}
+              href={'https://swagger.io/specification/'}
+              className={
+                'w-full flex flex-1 md:min-w-[300px] min-w-[250px] 2xs:max-w-[calc(100%-0.75rem)] xs:max-w-[calc(50%-0.75rem)] lg:max-w-[calc(33%-0.75rem)]'
+              }
             >
               <Card
-                className={'group bg-[#F2F4EF] hover:bg-secondary-90 h-full'}
+                className={
+                  'group bg-[#F2F4EF] hover:bg-secondary-90 h-full w-full'
+                }
               >
-                <Box className={'flex flex-col p-6'}>
-                  <Box className={'flex flex-row justify-between items-center'}>
-                    <Typography variant='h5' component='div'>
+                <Box className={'flex flex-col p-6 gap-3'}>
+                  <Box
+                    className={'flex flex-row justify-between items-baseline'}
+                  >
+                    <Typography variant='h5' className={'text-xl xs:text-2xl'}>
                       OpenAPI Specification
                     </Typography>
                     <Box className='transform transition-transform duration-300 group-hover:translate-x-2'>
                       <ExternalLinkIcon />
                     </Box>
                   </Box>
-                  <Typography variant='body2'>Sub text</Typography>
+                  {/*
+                    <Typography variant='body2'>Sub text</Typography>
+                  */}
                 </Box>
               </Card>
             </Link>
           </Box>
         </Box>
         <Box className={'flex flex-col gap-8'}>
-          <Typography className={'text-4xl w-fit'}>Frontend</Typography>
-          <Box className={'flex flex-1 flex-wrap gap-6'}>
+          <Typography variant={'h2'} className={'text-3xl xs:text-4xl w-full'}>
+            Frontend
+          </Typography>
+          <Box className={'flex flex-wrap gap-6'}>
             <ResourceCard
               header={'Material UI'}
               subHeader={'Sub text'}
@@ -115,39 +150,12 @@ const Home = () => {
               imageUrl={'/tailwind.png'}
               alt={'tailwind css logo'}
             />
-
-            <ResourceCard
-              header={'Title'}
-              subHeader={'Sub text'}
-              href={''}
-              imageUrl={'/temp.png'}
-              alt={'placeholder logo'}
-            />
-            <ResourceCard
-              header={'Title'}
-              subHeader={'Sub text'}
-              href={''}
-              imageUrl={'/temp.png'}
-              alt={'placeholder logo'}
-            />
-            <ResourceCard
-              header={'Title'}
-              subHeader={'Sub text'}
-              href={''}
-              imageUrl={'/temp.png'}
-              alt={'placeholder logo'}
-            />
-            <ResourceCard
-              header={'Title'}
-              subHeader={'Sub text'}
-              href={''}
-              imageUrl={'/temp.png'}
-              alt={'placeholder logo'}
-            />
           </Box>
         </Box>
         <Box className={'flex flex-col gap-8'}>
-          <Typography className={'text-4xl'}>Design</Typography>
+          <Typography variant={'h2'} className={'text-3xl xs:text-4xl'}>
+            Design
+          </Typography>
           <Box className={'flex flex-1 flex-wrap gap-6'}>
             <ResourceCard
               header={'Google fonts'}
@@ -171,41 +179,6 @@ const Home = () => {
               }
               imageUrl={'/material-symbols.png'}
               alt={'material symbols logo'}
-            />
-            <ResourceCard
-              header={'Font awesome'}
-              subHeader={'Sub text'}
-              href={'https://fontawesome.com/'}
-              imageUrl={'/font-awesome.png'}
-              alt={'font awesome logo'}
-            />
-            <ResourceCard
-              header={'Title'}
-              subHeader={'Sub text'}
-              href={''}
-              imageUrl={'/temp.png'}
-              alt={'placeholder logo'}
-            />
-            <ResourceCard
-              header={'Title'}
-              subHeader={'Sub text'}
-              href={''}
-              imageUrl={'/temp.png'}
-              alt={'placeholder logo'}
-            />
-            <ResourceCard
-              header={'Title'}
-              subHeader={'Sub text'}
-              href={''}
-              imageUrl={'/temp.png'}
-              alt={'placeholder logo'}
-            />
-            <ResourceCard
-              header={'Title'}
-              subHeader={'Sub text'}
-              href={''}
-              imageUrl={'/temp.png'}
-              alt={'placeholder logo'}
             />
           </Box>
         </Box>

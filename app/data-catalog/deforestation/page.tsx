@@ -22,8 +22,13 @@ const Home = () => {
       </Link>
 
       <Box className={'flex flex-col gap-8 mt-14'}>
-        <Typography className={'text-5xl'}>Deforestation API</Typography>
-        <Typography className={'text-2xl'}>
+        <Typography
+          variant={'h1'}
+          className={'leading-[48px] xs:leading-[64px] text-4xl xs:text-6xl'}
+        >
+          Deforestation API
+        </Typography>
+        <Typography variant={'h2'} className={'text-xl xs:text-2xl'}>
           Aggregated deforestation data on a global scale
         </Typography>
       </Box>
@@ -48,8 +53,10 @@ const Home = () => {
         />
       </Box>
       <Box className={'flex flex-col mt-28'}>
-        <Typography className={'text-4xl'}>More info</Typography>
-        <Typography className={'text-3xl mt-8'}>Data sources</Typography>
+        <Typography className={'text-3xl xs:text-4xl'}>More info</Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-8'}>
+          Data sources
+        </Typography>
         <Typography className={'text-base mt-6'}>
           The deforestation data covers the period from 2001 to 2022 and is
           provided by the{' '}
@@ -92,13 +99,19 @@ const Home = () => {
           </a>
           .
         </Typography>
-        <Typography className={'text-3xl mt-14'}>Processing</Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-14'}>
+          Processing
+        </Typography>
         <Typography className={'text-base mt-6'}>
           Using the river basin polygons, the deforestation data are aggregated
           per basin and year.
         </Typography>
-        <Typography className={'text-4xl mt-16'}>Examples</Typography>
-        <Typography className={'text-3xl mt-8'}>Example 1</Typography>
+        <Typography className={'text-3xl xs:text-4xl mt-16'}>
+          Examples
+        </Typography>
+        <Typography className={'text-2xl xs:text-3xl mt-8'}>
+          Example 1
+        </Typography>
         <Typography className={'text-base mt-6'}>
           Get the total forest cover loss within the queried river basin over
           the given time period using JavaScript.

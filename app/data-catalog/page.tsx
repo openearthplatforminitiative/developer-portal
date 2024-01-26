@@ -27,7 +27,7 @@ const cards: CardProps[] = [
   {
     id: 3,
     header: 'Geocoding',
-    subHeader: 'This section offers geocoding and address lookup services.',
+    subHeader: 'This section provides geocoding and address lookup services.',
     CardIcon: GeocodingIcon,
     href: '/data-catalog/geocoding',
   },
@@ -45,40 +45,17 @@ const Home = () => {
   return (
     <Box className={'w-full h-full lg:max-w-7xl p-8 lg:my-44 my-20'}>
       <Box className={'flex flex-col gap-8 mb-20'}>
-        <Typography className={'text-5xl'}>
+        <Typography
+          variant={'h1'}
+          className={'leading-[48px] xs:leading-[64px] text-4xl xs:text-6xl'}
+        >
           Data catalog of open data
         </Typography>
-        <Typography className={'text-2xl'}>Sub header</Typography>
+        <Typography className={'text-xl xs:text-2xl'}>
+          We currently have 4 APIs available.
+        </Typography>
       </Box>
-      {/*
-        <Box className={'flex flex-col gap-4'}>
-          <Typography> Resource type </Typography>
-          <Box className={'flex flex-row gap-2'}>
-            <Chip
-              variant='outlined'
-              color='success'
-              icon={<CheckIcon />}
-              label={'Show all'}
-              clickable
-            />
-            <Chip
-              variant='outlined'
-              color='success'
-              icon={<CheckIcon />}
-              label={'API'}
-              clickable
-            />
-            <Chip
-              variant='outlined'
-              color='success'
-              icon={<CheckIcon />}
-              label={'Databank'}
-              clickable
-            />
-          </Box>
-        </Box>
-      */}
-      <Box className={'flex flex-row flex-1 flex-wrap gap-14 mt-16'}>
+      <Box className={'flex flex-wrap gap-14 mt-16'}>
         {cards.map((card) => (
           <ApiCard
             key={card.id}
@@ -90,15 +67,17 @@ const Home = () => {
         ))}
       </Box>
       <Box className={'flex flex-col gap-8 mt-28 w-full'}>
-        <Typography className={'text-4xl'}>Client libraries</Typography>
-        <Typography className={'text-2xl'}>
+        <Typography variant={'h2'} className={'text-3xl xs:text-4xl'}>
+          Client libraries
+        </Typography>
+        <Typography className={'text-xl xs:text-2xl'}>
           We provide two client libraries to make use of our data easier.
         </Typography>
         <Box className={'flex lg:flex-row flex-col gap-6 mt-16 w-full'}>
           <InfoCard
             externalLink={true}
             header={'Javascript'}
-            subHeader={'Some text about the JavaScript client library.'}
+            subHeader={'A javascript client for accessing data from OpenEPI.'}
             CardIcon={JavascriptLogo}
             href={'https://www.npmjs.com/package/openepi-client'}
           />
