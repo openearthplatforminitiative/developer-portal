@@ -154,7 +154,7 @@ const Home = () => {
           coordinates fall into using Python.
         </Typography>
         <CodeBlock
-          language={'javascript'}
+          language={'python'}
           codeString={getCodeExample('flood-detailed.py')}
         />
         <Typography className={'text-2xl xs:text-3xl mt-8'}>
