@@ -4,6 +4,7 @@ import { OpenEPILogoSmall } from '@/app/icons/OpenEPILogoSmall';
 import { Divider, List, ListItem } from '@mui/material';
 import { ExternalLinkIcon } from '@/app/icons/ExternalLinkIcon';
 import Link from 'next/link';
+import { ExternalLinkIconSmall } from '@/app/icons/ExternalLinkIconSmall';
 
 const Footer = () => {
   return (
@@ -57,7 +58,7 @@ const Footer = () => {
                     }
                     href={'https://openepi.io'}
                   >
-                    About the project <ExternalLinkIcon />
+                    About the project <ExternalLinkIconSmall />
                   </a>
                 </ListItem>
               </List>
@@ -75,7 +76,10 @@ const Footer = () => {
                       'flex flex-row gap-1 underline hover:no-underline items-center'
                     }
                   >
-                    Knowit <ExternalLinkIcon />
+                    Knowit{' '}
+                    <Box className={'w-[10px] h-[10px]'}>
+                      <ExternalLinkIconSmall />
+                    </Box>
                   </a>
                 </ListItem>
                 <ListItem>
@@ -87,7 +91,7 @@ const Footer = () => {
                     }
                   >
                     Capto
-                    <ExternalLinkIcon />
+                    <ExternalLinkIconSmall />
                   </a>
                 </ListItem>
                 <ListItem>
@@ -99,7 +103,7 @@ const Footer = () => {
                     }
                   >
                     Creative Commons
-                    <ExternalLinkIcon />
+                    <ExternalLinkIconSmall />
                   </a>
                 </ListItem>
                 <ListItem>
@@ -111,7 +115,7 @@ const Footer = () => {
                     }
                   >
                     Open Future
-                    <ExternalLinkIcon />
+                    <ExternalLinkIconSmall />
                   </a>
                 </ListItem>
               </List>
