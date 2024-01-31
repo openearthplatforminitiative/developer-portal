@@ -65,7 +65,21 @@ const Home = () => {
           </a>
           , renowned for its comprehensive and accurate meteorological data.
           This source provides users with dependable weather forecasts and
-          precise information on sunrise and sunset times.
+          precise information on sunrise and sunset times. Unless specified
+          otherwise, all data and products are licensed under the{' '}
+          <a
+            href='https://data.norge.no/nlod/en/2.0/'
+            className={'underline hover:no-underline'}
+          >
+            Norwegian Licence for Open Government Data (NLOD) 2.0
+          </a>{' '}
+          and{' '}
+          <a
+            href='http://creativecommons.org/licenses/by/4.0'
+            className={'underline hover:no-underline'}
+          >
+            Creative Commons 4.0 BY International licences.
+          </a>
         </Typography>
         <Typography className={'text-2xl xs:text-3xl mt-14'}>
           Processing
