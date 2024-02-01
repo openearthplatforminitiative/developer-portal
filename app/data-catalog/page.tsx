@@ -39,6 +39,14 @@ const cards: CardProps[] = [
     CardIcon: DeforestationIcon,
     href: '/data-catalog/deforestation',
   },
+  {
+    id: 5,
+    header: 'Soil',
+    subHeader:
+      'This section provides precise soil data on a global scale.',
+    CardIcon: GeocodingIcon,
+    href: '/data-catalog/soil',
+  },
 ];
 
 const Home = () => {
