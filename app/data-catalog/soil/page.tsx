@@ -63,7 +63,8 @@ const Home = () => {
           Data sources
         </Typography>
         <Typography className={'text-base mt-6'}>
-          The API is exclusively fetching data from ISRIC (International Soil Reference and Information Centre) - World Soil Information's{' '}
+          The API is exclusively fetching data from ISRIC (International Soil
+          Reference and Information Centre) - World Soil Information's{' '}
           <a
             href={'https://files.isric.org/soilgrids/latest/data/'}
             className={'underline hover:no-underline'}
@@ -99,7 +100,8 @@ const Home = () => {
           Processing
         </Typography>
         <Typography className={'text-base mt-6'}>
-          The data is provided as is, without any further processing or modification.
+          The data is provided as is, without any further processing or
+          modification.
         </Typography>
         <Typography className={'text-3xl xs:text-4xl mt-16'}>
           Examples
@@ -128,7 +130,8 @@ const Home = () => {
           Example 3
         </Typography>
         <Typography className={'text-base mt-6'}>
-          Retrieveing the value of the soil property at the queried location and depth using JavaScript.
+          Retrieveing the value of the soil property at the queried location and
+          depth using JavaScript.
         </Typography>
         <CodeBlock
           language={'javascript'}
@@ -138,7 +141,8 @@ const Home = () => {
           Example 4
         </Typography>
         <Typography className={'text-base mt-6'}>
-          Retrieveing the value of the soil property at the queried location and depth using Python.
+          Retrieveing the value of the soil property at the queried location and
+          depth using Python.
         </Typography>
         <CodeBlock
           language={'python'}
