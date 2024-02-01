@@ -64,7 +64,7 @@ const Home = () => {
         </Typography>
         <Typography className={'text-base mt-6'}>
           The API is exclusively fetching data from ISRIC (International Soil
-          Reference and Information Centre) - World Soil Information's{' '}
+          Reference and Information Centre) - World Soil Information&apos;s{' '}
           <a
             href={'https://files.isric.org/soilgrids/latest/data/'}
             className={'underline hover:no-underline'}
