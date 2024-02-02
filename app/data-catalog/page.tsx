@@ -6,6 +6,7 @@ import { FloodIcon } from '@/app/icons/FloodIcon';
 import { WeatherIcon } from '@/app/icons/WeatherIcon';
 import { GeocodingIcon } from '@/app/icons/GeocodingIcon';
 import { DeforestationIcon } from '@/app/icons/DeforestationIcon';
+import { SoilIcon } from '@/app/icons/SoilIcon';
 import ApiCard, { CardProps } from '@/app/components/ApiCard';
 import InfoCard from '@/app/components/InfoCard';
 
@@ -39,6 +40,13 @@ const cards: CardProps[] = [
     CardIcon: DeforestationIcon,
     href: '/data-catalog/deforestation',
   },
+  {
+    id: 5,
+    header: 'Soil',
+    subHeader: 'This section provides precise soil data on a global scale.',
+    CardIcon: SoilIcon,
+    href: '/data-catalog/soil',
+  },
 ];
 
 const Home = () => {
@@ -52,7 +60,7 @@ const Home = () => {
           Data catalog of open data
         </Typography>
         <Typography className={'text-xl xs:text-2xl'}>
-          We currently have 4 APIs available.
+          We currently have 5 APIs available.
         </Typography>
       </Box>
       <Box className={'flex flex-wrap gap-14 mt-16'}>
