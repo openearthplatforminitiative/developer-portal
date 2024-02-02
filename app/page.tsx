@@ -86,7 +86,7 @@ const Home = () => {
             Data catalog of open data
           </Typography>
           <Typography className={'text-xl xs:text-2xl'}>
-            We currently have 4 APIs available.
+            We currently have 5 APIs available.
           </Typography>
         </Box>
         <Box
