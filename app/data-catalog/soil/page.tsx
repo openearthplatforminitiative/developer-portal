@@ -96,23 +96,26 @@ const Home = () => {
           Cryosols, Durisols, Ferralsols, Fluvisols, Gleysols, Gypsisols,
           Histosols, Kastanozems, Leptosols, Lixisols, Luvisols, Nitisols,
           Phaeozems, Planosols, Plinthosols, Podzols, Regosols, Solonchaks,
-          Solonetz, Stagnosols, Umbrisols, and Vertisols. More information
-          about the soil types can be found{' '}
+          Solonetz, Stagnosols, Umbrisols, and Vertisols. More information about
+          the soil types can be found{' '}
           <a
-            href={'https://www.fao.org/soils-portal/data-hub/soil-classification/world-reference-base/en/'}
+            href={
+              'https://www.fao.org/soils-portal/data-hub/soil-classification/world-reference-base/en/'
+            }
             className={'underline hover:no-underline'}
           >
             here
-          </a>.
+          </a>
+          .
           <br />
           <br />
-          Soil property data is continuous and represents the value of a specific
-          soil property at the queried location and depth.
-          The available soil properties are: Bulk density (bdod), Cation exchange
-          capacity (cec), Coarse fragments (cfvo), Clay (clay), Nitrogen (nitrogen),
-          Organic carbon density (ocd), Organic carbon stocks (ocs), pH water (phh2o),
-          Sand (sand), Silt (silt), and Soil organic carbon (soc).
-          For more information about the data, please visit the{' '}
+          Soil property data is continuous and represents the value of a
+          specific soil property at the queried location and depth. The
+          available soil properties are: Bulk density (bdod), Cation exchange
+          capacity (cec), Coarse fragments (cfvo), Clay (clay), Nitrogen
+          (nitrogen), Organic carbon density (ocd), Organic carbon stocks (ocs),
+          pH water (phh2o), Sand (sand), Silt (silt), and Soil organic carbon
+          (soc). For more information about the data, please visit the{' '}
           <a
             href={'https://www.isric.org/explore/soilgrids/faq-soilgrids'}
             className={'underline hover:no-underline'}
@@ -125,12 +128,11 @@ const Home = () => {
           Processing
         </Typography>
         <Typography className={'text-base mt-6'}>
-          The data is retrieved from the ISRIC WebDAV service through
-          various raster files and processed to be served through the API.
-          For example, soil types are mapped from integer values to the
-          corresponding soil type names. Additionally, the units of the
-          soil properties are added to the responses.
-
+          The data is retrieved from the ISRIC WebDAV service through various
+          raster files and processed to be served through the API. For example,
+          soil types are mapped from integer values to the corresponding soil
+          type names. Additionally, the units of the soil properties are added
+          to the responses.
         </Typography>
         <Typography className={'text-3xl xs:text-4xl mt-16'}>
           Examples
