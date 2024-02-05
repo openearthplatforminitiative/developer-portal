@@ -86,8 +86,8 @@ const Home = () => {
             CC BY 4.0
           </a>{' '}
           license. The data are available at 250 meter resolution.
-          <br />
-          <br />
+        </Typography>
+        <Typography className={'text-base mt-6'}>
           The nature of the available soil data can be separated into two
           categories: soil type and soil properties. Soil type data is
           categorical and represents the dominant soil type at the queried
@@ -107,8 +107,8 @@ const Home = () => {
             here
           </a>
           .
-          <br />
-          <br />
+        </Typography>
+        <Typography className={'text-base mt-6'}>
           Soil property data is continuous and represents the value of a
           specific soil property at the queried location and depth. The
           available soil properties are: Bulk density (bdod), Cation exchange
