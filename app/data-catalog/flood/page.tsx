@@ -119,8 +119,8 @@ const Home = () => {
           as the five-number summary of the discharge distribution, as well as
           the probabilities of exceeding the 2-, 5-, and 20-year return period
           thresholds.
-          <br />
-          <br />
+        </Typography>
+        <Typography className={'text-base mt-6'}>
           In our processing pipeline, we first determine the detailed forecast
           by computing simple statistics at each day of the forecasted discharge
           data, making use of the GloFAS return period threshold data. Then, we

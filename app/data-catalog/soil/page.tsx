@@ -85,9 +85,37 @@ const Home = () => {
           >
             CC BY 4.0
           </a>{' '}
-          license. Both soil type and various soil property data are available.
-          <br />
-          For more information about the data, please visit the{' '}
+          license. The data are available at 250 meter resolution.
+        </Typography>
+        <Typography className={'text-base mt-6'}>
+          The nature of the available soil data can be separated into two
+          categories: soil type and soil properties. Soil type data is
+          categorical and represents the dominant soil type at the queried
+          location. The 30 available soil types are: Acrisols, Albeluvisols,
+          Alisols, Andosols, Arenosols, Calcisols, Cambisols, Chernozems,
+          Cryosols, Durisols, Ferralsols, Fluvisols, Gleysols, Gypsisols,
+          Histosols, Kastanozems, Leptosols, Lixisols, Luvisols, Nitisols,
+          Phaeozems, Planosols, Plinthosols, Podzols, Regosols, Solonchaks,
+          Solonetz, Stagnosols, Umbrisols, and Vertisols. More information about
+          the soil types can be found{' '}
+          <a
+            href={
+              'https://www.fao.org/soils-portal/data-hub/soil-classification/world-reference-base/en/'
+            }
+            className={'underline hover:no-underline'}
+          >
+            here
+          </a>
+          .
+        </Typography>
+        <Typography className={'text-base mt-6'}>
+          Soil property data is continuous and represents the value of a
+          specific soil property at the queried location and depth. The
+          available soil properties are: Bulk density (bdod), Cation exchange
+          capacity (cec), Coarse fragments (cfvo), Clay (clay), Nitrogen
+          (nitrogen), Organic carbon density (ocd), Organic carbon stocks (ocs),
+          pH water (phh2o), Sand (sand), Silt (silt), and Soil organic carbon
+          (soc). For more information about the data, please visit the{' '}
           <a
             href={'https://www.isric.org/explore/soilgrids/faq-soilgrids'}
             className={'underline hover:no-underline'}
@@ -100,8 +128,11 @@ const Home = () => {
           Processing
         </Typography>
         <Typography className={'text-base mt-6'}>
-          The data is provided as is, without any further processing or
-          modification.
+          The data is retrieved from the ISRIC WebDAV service through various
+          raster files and processed to be served through the API. For example,
+          soil types are mapped from integer values to the corresponding soil
+          type names. Additionally, the units of the soil properties are added
+          to the responses.
         </Typography>
         <Typography className={'text-3xl xs:text-4xl mt-16'}>
           Examples
@@ -110,7 +141,7 @@ const Home = () => {
           Example 1
         </Typography>
         <Typography className={'text-base mt-6'}>
-          Retrieveing the soil type at the queried location using JavaScript.
+          Retrieving the soil type at the queried location using JavaScript.
         </Typography>
         <CodeBlock
           language={'javascript'}
@@ -120,7 +151,7 @@ const Home = () => {
           Example 2
         </Typography>
         <Typography className={'text-base mt-6'}>
-          Retrieveing the soil type at the queried location using Python.
+          Retrieving the soil type at the queried location using Python.
         </Typography>
         <CodeBlock
           language={'python'}
@@ -130,7 +161,7 @@ const Home = () => {
           Example 3
         </Typography>
         <Typography className={'text-base mt-6'}>
-          Retrieveing the value of the soil property at the queried location and
+          Retrieving the value of the soil property at the queried location and
           depth using JavaScript.
         </Typography>
         <CodeBlock
@@ -141,7 +172,7 @@ const Home = () => {
           Example 4
         </Typography>
         <Typography className={'text-base mt-6'}>
-          Retrieveing the value of the soil property at the queried location and
+          Retrieving the value of the soil property at the queried location and
           depth using Python.
         </Typography>
         <CodeBlock
