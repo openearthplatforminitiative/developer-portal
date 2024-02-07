@@ -1,14 +1,15 @@
-// Get the soil type at the queried location
+// Get the most probable soil type at the queried location
 const response = await fetch(
-  'https://api-test.openepi.io/soil/type?' +
-    new URLSearchParams({
-      lon: '9.58',
-      lat: '60.1',
-    })
+  "https://api-test.openepi.io/soil/type?" + new URLSearchParams({
+        lon: "9.58", 
+        lat: "60.1",
+  })
 );
 const json = await response.json();
 
-// Get the soil type
-const soilType = json.properties.soil_type;
+// Get the most probable soil type
+const mostProbableSoilType =
+  json.properties.most_probable_soil_type;
 
-console.log(`Soil type: ${soilType}`);
+console.log(`Most probable soil type: ${mostProbableSoilType}`);
+
