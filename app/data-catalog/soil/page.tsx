@@ -137,10 +137,11 @@ const Home = () => {
           The data is retrieved from the ISRIC WebDAV service through various
           raster files and processed to be served through the API. For example,
           soil types are mapped from integer values to the corresponding soil
-          type names, and the units of the soil properties are added
-          to responses. Additionally, some aggregation is performed to produce
-          a summary of the soil types, which, given a bounding box, provides a mapping
-          of each soil type to its number of occurrences in the bounding box.
+          type names, and the units of the soil properties are added to
+          responses. Additionally, some aggregation is performed to produce a
+          summary of the soil types, which, given a bounding box, provides a
+          mapping of each soil type to its number of occurrences in the bounding
+          box.
         </Typography>
         <Typography className={'text-3xl xs:text-4xl mt-16'}>
           Examples
@@ -149,7 +150,8 @@ const Home = () => {
           Example 1
         </Typography>
         <Typography className={'text-base mt-6'}>
-          Retrieving the most probable soil type at the queried location using JavaScript.
+          Retrieving the most probable soil type at the queried location using
+          JavaScript.
         </Typography>
         <CodeBlock
           language={'javascript'}
@@ -159,8 +161,9 @@ const Home = () => {
           Example 2
         </Typography>
         <Typography className={'text-base mt-6'}>
-          Retrieving the most probable soil type at the queried location as well as the
-          probabilities of the top 3 most probable soil types using Python.
+          Retrieving the most probable soil type at the queried location as well
+          as the probabilities of the top 3 most probable soil types using
+          Python.
         </Typography>
         <CodeBlock
           language={'python'}
@@ -192,7 +195,8 @@ const Home = () => {
           Example 5
         </Typography>
         <Typography className={'text-base mt-6'}>
-          Get a summary of the soil types in the queried bounding box using JavaScript.
+          Get a summary of the soil types in the queried bounding box using
+          JavaScript.
         </Typography>
         <CodeBlock
           language={'javascript'}
@@ -202,14 +206,15 @@ const Home = () => {
           Example 6
         </Typography>
         <Typography className={'text-base mt-6'}>
-          Get a summary of the soil types in the queried bounding box using Python.
+          Get a summary of the soil types in the queried bounding box using
+          Python.
         </Typography>
         <CodeBlock
           language={'python'}
           codeString={getCodeExample('soil-type-summary.py')}
         />
       </Box>
-    </Box >
+    </Box>
   );
 };
 
