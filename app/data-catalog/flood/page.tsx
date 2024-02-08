@@ -84,17 +84,16 @@ const Home = () => {
           of the Copernicus Emergency Management Service (CEMS). Additionally,
           return period threshold data was obtained directly from the GloFAS
           team, but this will soon be made available through the CDS as well.
-          All the data is on a global scale with resolution 5° by 5° and is
-          licensed under the{' '}
+          All the data is on a global scale with resolution 5° by 5°. Please
+          note that these datasets are licensed the{' '}
           <a
-            href={
-              'https://cds.climate.copernicus.eu/api/v2/terms/static/cems-floods.pdf'
-            }
+            href={'https://www.globalfloods.eu/terms-of-service/'}
             className={'underline hover:no-underline'}
           >
             CEMS-FLOODS datasets licence
           </a>
-          .
+          , which is not a standard open license. We use it in our pre-project
+          to explore relevant data.
         </Typography>
         <Typography className={'text-2xl xs:text-3xl mt-14'}>
           Processing
