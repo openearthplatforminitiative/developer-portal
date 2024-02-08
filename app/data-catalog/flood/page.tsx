@@ -85,14 +85,14 @@ const Home = () => {
           return period threshold data was obtained directly from the GloFAS
           team, but this will soon be made available through the CDS as well.
           All the data is on a global scale with resolution 5° by 5°. Please
-          note that these datasets are licensed the{' '}
+          note that these datasets are licensed under the{' '}
           <a
             href={'https://www.globalfloods.eu/terms-of-service/'}
             className={'underline hover:no-underline'}
           >
             CEMS-FLOODS datasets licence
           </a>
-          , which is not a standard open license. We use it in our pre-project
+          , which is not a standard open license. We use them in our pre-project
           to explore relevant data.
         </Typography>
         <Typography className={'text-2xl xs:text-3xl mt-14'}>
