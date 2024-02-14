@@ -29,7 +29,7 @@ const Home = () => {
           </Typography>
           <Box className={'flex flex-row flex-wrap gap-6 w-full'}>
             <Link
-              href={'https://www.openepi.io/'}
+              href={'https://www.openepi.io/resources/open-policy'}
               target={'_blank'}
               className={
                 'w-full flex flex-1 md:min-w-[300px] min-w-[250px] 2xs:max-w-[calc(100%-0.75rem)] xs:max-w-[calc(50%-0.75rem)] lg:max-w-[calc(33%-0.75rem)]'
@@ -58,7 +58,7 @@ const Home = () => {
               </Card>
             </Link>
             <Link
-              href={'https://www.openepi.io/'}
+              href={'https://www.openepi.io/resources/metadata-specification'}
               target={'_blank'}
               className={
                 'w-full flex flex-1 md:min-w-[300px] min-w-[250px] 2xs:max-w-[calc(100%-0.75rem)] xs:max-w-[calc(50%-0.75rem)] lg:max-w-[calc(33%-0.75rem)]'
