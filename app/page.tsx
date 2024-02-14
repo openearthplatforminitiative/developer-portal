@@ -75,7 +75,7 @@ const Home = () => {
               <LightBulbIcon />
             </Box>
             <Typography className={'text-2xl xs:text-3xl'}>
-              Unique factor about the platform
+              Built to support innovation
             </Typography>
           </Box>
         </Box>
