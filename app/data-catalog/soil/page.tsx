@@ -115,7 +115,13 @@ const Home = () => {
           capacity (cec), Coarse fragments (cfvo), Clay (clay), Nitrogen
           (nitrogen), Organic carbon density (ocd), Organic carbon stocks (ocs),
           pH water (phh2o), Sand (sand), Silt (silt), and Soil organic carbon
-          (soc). For more information about the data, please visit the{' '}
+          (soc). The available depths are: 0-5cm, 5-15cm, 15-30cm, 30-60cm,
+          60-100cm, 100-200cm, and 0-30cm (the ocs property is only available
+          for the 0-30cm depth and vice versa.) The available values are: mean,
+          0.05 quantile, median, 0.95 quantile, and uncertainty.
+        </Typography>
+        <Typography className={'text-base mt-6'}>
+          For more information about the data, please visit the{' '}
           <a
             href={'https://www.isric.org/explore/soilgrids/faq-soilgrids'}
             className={'underline hover:no-underline'}
@@ -131,8 +137,11 @@ const Home = () => {
           The data is retrieved from the ISRIC WebDAV service through various
           raster files and processed to be served through the API. For example,
           soil types are mapped from integer values to the corresponding soil
-          type names. Additionally, the units of the soil properties are added
-          to the responses.
+          type names, and the units of the soil properties are added to
+          responses. Additionally, some aggregation is performed to produce a
+          summary of the soil types, which, given a bounding box, provides a
+          mapping of each soil type to its number of occurrences in the bounding
+          box.
         </Typography>
         <Typography className={'text-3xl xs:text-4xl mt-16'}>
           Examples
@@ -141,7 +150,8 @@ const Home = () => {
           Example 1
         </Typography>
         <Typography className={'text-base mt-6'}>
-          Retrieving the soil type at the queried location using JavaScript.
+          Retrieving the most probable soil type at the queried location using
+          JavaScript.
         </Typography>
         <CodeBlock
           language={'javascript'}
@@ -151,7 +161,9 @@ const Home = () => {
           Example 2
         </Typography>
         <Typography className={'text-base mt-6'}>
-          Retrieving the soil type at the queried location using Python.
+          Retrieving the most probable soil type at the queried location as well
+          as the probabilities of the top 3 most probable soil types using
+          Python.
         </Typography>
         <CodeBlock
           language={'python'}
@@ -161,7 +173,7 @@ const Home = () => {
           Example 3
         </Typography>
         <Typography className={'text-base mt-6'}>
-          Retrieving the value of the soil property at the queried location and
+          Retrieving the mean of the soil property at the queried location and
           depth using JavaScript.
         </Typography>
         <CodeBlock
@@ -172,12 +184,34 @@ const Home = () => {
           Example 4
         </Typography>
         <Typography className={'text-base mt-6'}>
-          Retrieving the value of the soil property at the queried location and
-          depth using Python.
+          Retrieving the mean and the 0.05 quantile of the soil property at the
+          queried location and depth using Python.
         </Typography>
         <CodeBlock
           language={'python'}
           codeString={getCodeExample('soil-property.py')}
+        />
+        <Typography className={'text-2xl xs:text-3xl mt-8'}>
+          Example 5
+        </Typography>
+        <Typography className={'text-base mt-6'}>
+          Get a summary of the soil types in the queried bounding box using
+          JavaScript.
+        </Typography>
+        <CodeBlock
+          language={'javascript'}
+          codeString={getCodeExample('soil-type-summary.js')}
+        />
+        <Typography className={'text-2xl xs:text-3xl mt-8'}>
+          Example 6
+        </Typography>
+        <Typography className={'text-base mt-6'}>
+          Get a summary of the soil types in the queried bounding box using
+          Python.
+        </Typography>
+        <CodeBlock
+          language={'python'}
+          codeString={getCodeExample('soil-type-summary.py')}
         />
       </Box>
     </Box>
