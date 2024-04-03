@@ -100,7 +100,7 @@ const Home = () => {
               subHeader={
                 'This section provides access to real-time weather data.'
               }
-              CardIcon={WeatherIcon}
+              cardIcon={<WeatherIcon />}
               href={'/data-catalog/weather'}
             />
             <ApiCard
@@ -108,7 +108,7 @@ const Home = () => {
               subHeader={
                 'This section provides access to real-time flood forecasts.'
               }
-              CardIcon={FloodIcon}
+              cardIcon={<FloodIcon />}
               href={'/data-catalog/flood'}
             />
             <ApiCard
@@ -116,7 +116,7 @@ const Home = () => {
               subHeader={
                 'This section provides geocoding and address lookup services.'
               }
-              CardIcon={GeocodingIcon}
+              cardIcon={<GeocodingIcon />}
               href={'/data-catalog/geocoding'}
             />
           </Box>
@@ -145,14 +145,14 @@ const Home = () => {
               externalLink={true}
               header={'Javascript'}
               subHeader={'A javascript client for accessing data from OpenEPI.'}
-              CardIcon={JavascriptLogo}
+              cardIcon={<JavascriptLogo />}
               href={'https://www.npmjs.com/package/openepi-client'}
             />
             <InfoCard
               externalLink={true}
               header={'Python'}
               subHeader={'A python client for accessing data from OpenEPI.'}
-              CardIcon={PythonLogo}
+              cardIcon={<PythonLogo />}
               href={'https://pypi.org/project/openepi-client/'}
             />
           </Box>

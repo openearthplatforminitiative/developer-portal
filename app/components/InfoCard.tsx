@@ -12,7 +12,7 @@ interface InfoCardProps extends CardProps {
 const InfoCard = ({
   header,
   subHeader,
-  CardIcon,
+  cardIcon,
   href,
   externalLink,
 }: InfoCardProps) => {
@@ -26,7 +26,7 @@ const InfoCard = ({
     >
       <Box className={' flex flex-row justify-between px-2 items-center'}>
         <Box className={'flex flex-row gap-2'}>
-          <CardIcon />
+          {cardIcon}
           <Typography className={'text-xl xs:text-2xl'}>{header}</Typography>
         </Box>
         <Box className='transform transition-transform duration-300 group-hover:translate-x-2'>

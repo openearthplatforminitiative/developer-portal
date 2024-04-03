@@ -46,14 +46,14 @@ const Home = () => {
           subHeader={
             'Specification of all endpoints available in the soil api.'
           }
-          CardIcon={OpenApiIcon}
+          cardIcon={<OpenApiIcon />}
           href={'https://api-test.openepi.io/soil/redoc'}
         />
         <InfoCard
           externalLink={true}
           header={'Github'}
           subHeader={'Explore the source code behind the soil api.'}
-          CardIcon={GithubIconBlack}
+          cardIcon={<GithubIconBlack />}
           href={'https://github.com/openearthplatforminitiative/soil-api'}
         />
       </Box>

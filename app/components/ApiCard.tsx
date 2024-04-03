@@ -1,8 +1,7 @@
 import Box from '@mui/material/Box';
-import { ComponentType } from 'react';
+import { ReactNode } from 'react';
 import Link from 'next/link';
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { InternalLinkIcon } from '@/app/icons/InternalLinkIcon';
 
@@ -10,11 +9,11 @@ export interface CardProps {
   id?: number;
   header: string;
   subHeader: string;
-  CardIcon: ComponentType;
+  cardIcon: ReactNode;
   href: string;
 }
 
-const ApiCard = ({ header, subHeader, CardIcon, href }: CardProps) => {
+const ApiCard = ({ header, subHeader, cardIcon, href }: CardProps) => {
   return (
     <Link
       href={href}
@@ -27,9 +26,7 @@ const ApiCard = ({ header, subHeader, CardIcon, href }: CardProps) => {
           'group gap-6 bg-[#F2F4EF] hover:bg-secondary-90 relative overflow-visible transition duration-300 w-full h-full'
         }
       >
-        <Box className={'absolute -left-6 -top-6'}>
-          <CardIcon />
-        </Box>
+        <Box className={'absolute -left-6 -top-6'}>{cardIcon}</Box>
         <Box className={'flex flex-col pt-8 pb-10 pr-6 pl-6'}>
           <Box className={'flex flex-row justify-between my-2'}>
             <Typography className={'text-2xl'}>{header}</Typography>

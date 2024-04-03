@@ -45,14 +45,14 @@ const Home = () => {
           subHeader={
             'Specification of all endpoints available in the flood api.'
           }
-          CardIcon={OpenApiIcon}
+          cardIcon={<OpenApiIcon />}
           href={'https://api-test.openepi.io/flood/redoc'}
         />
         <InfoCard
           externalLink={true}
           header={'Github'}
           subHeader={'Explore the source code behind the flood api.'}
-          CardIcon={GithubIconBlack}
+          cardIcon={<GithubIconBlack />}
           href={'https://github.com/openearthplatforminitiative/flood-api'}
         />
       </Box>

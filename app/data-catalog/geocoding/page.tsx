@@ -46,14 +46,14 @@ const Home = () => {
           subHeader={
             'Specification of all endpoints available in the geocoding api.'
           }
-          CardIcon={OpenApiIcon}
+          cardIcon={<OpenApiIcon />}
           href={'https://api-test.openepi.io/geocoding/redoc'}
         />
         <InfoCard
           externalLink={true}
           header={'Github'}
           subHeader={'Explore the source code behind the geocoding api.'}
-          CardIcon={GithubIconBlack}
+          cardIcon={<GithubIconBlack />}
           href={'https://github.com/openearthplatforminitiative/geocoder-api'}
         />
       </Box>

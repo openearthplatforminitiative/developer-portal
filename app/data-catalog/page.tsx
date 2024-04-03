@@ -15,21 +15,21 @@ const cards: CardProps[] = [
     id: 1,
     header: 'Weather',
     subHeader: 'This section provides access to real-time weather data.',
-    CardIcon: WeatherIcon,
+    cardIcon: <WeatherIcon />,
     href: '/data-catalog/weather',
   },
   {
     id: 2,
     header: 'Flood',
     subHeader: 'This section provides access to real-time flood forecasts.',
-    CardIcon: FloodIcon,
+    cardIcon: <FloodIcon />,
     href: '/data-catalog/flood',
   },
   {
     id: 3,
     header: 'Geocoding',
     subHeader: 'This section provides geocoding and address lookup services.',
-    CardIcon: GeocodingIcon,
+    cardIcon: <GeocodingIcon />,
     href: '/data-catalog/geocoding',
   },
   {
@@ -37,14 +37,14 @@ const cards: CardProps[] = [
     header: 'Deforestation',
     subHeader:
       'This section provides data on deforestation and environmental conservation efforts.',
-    CardIcon: DeforestationIcon,
+    cardIcon: <DeforestationIcon />,
     href: '/data-catalog/deforestation',
   },
   {
     id: 5,
     header: 'Soil',
     subHeader: 'This section provides precise soil data on a global scale.',
-    CardIcon: SoilIcon,
+    cardIcon: <SoilIcon />,
     href: '/data-catalog/soil',
   },
 ];
@@ -69,7 +69,7 @@ const Home = () => {
             key={card.id}
             header={card.header}
             subHeader={card.subHeader}
-            CardIcon={card.CardIcon}
+            cardIcon={card.cardIcon}
             href={card.href}
           />
         ))}
@@ -86,14 +86,14 @@ const Home = () => {
             externalLink={true}
             header={'Javascript'}
             subHeader={'A javascript client for accessing data from OpenEPI.'}
-            CardIcon={JavascriptLogo}
+            cardIcon={<JavascriptLogo />}
             href={'https://www.npmjs.com/package/openepi-client'}
           />
           <InfoCard
             externalLink={true}
             header={'Python'}
             subHeader={'A python client for accessing data from OpenEPI.'}
-            CardIcon={PythonLogo}
+            cardIcon={<PythonLogo />}
             href={'https://pypi.org/project/openepi-client/'}
           />
         </Box>

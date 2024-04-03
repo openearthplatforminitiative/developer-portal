@@ -39,14 +39,14 @@ const Home = () => {
           subHeader={
             'Specification of all endpoints available in the deforestation api.'
           }
-          CardIcon={OpenApiIcon}
+          cardIcon={<OpenApiIcon />}
           href={'https://api-test.openepi.io/deforestation/redoc'}
         />
         <InfoCard
           externalLink={true}
           header={'Github'}
           subHeader={'Explore the source code behind the deforestation api.'}
-          CardIcon={GithubIconBlack}
+          cardIcon={<GithubIconBlack />}
           href={
             'https://github.com/openearthplatforminitiative/deforestation-api'
           }
