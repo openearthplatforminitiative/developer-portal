@@ -2,7 +2,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { OpenEPILogoSmall } from '@/app/icons/OpenEPILogoSmall';
 import { Divider, List, ListItem } from '@mui/material';
-import { ExternalLinkIcon } from '@/app/icons/ExternalLinkIcon';
 import Link from 'next/link';
 import { ExternalLinkIconSmall } from '@/app/icons/ExternalLinkIconSmall';
 
@@ -13,9 +12,9 @@ const Footer = () => {
     >
       <Box className={'lg:max-w-7xl w-full'}>
         <Box className={'flex  flex-col items-center p-6'}>
-          <Box className='flex flex-row gap-5 mb-6 mt-11 w-full'>
+          <Box className='flex gap-5 mb-6 mt-11 w-full'>
             <OpenEPILogoSmall />
-            <Typography className='md:text-2xl sm:text-xl sm:contents hidden'>
+            <Typography className='md:text-2xl sm:text-xl hidden sm:block'>
               | Developer Portal
             </Typography>
           </Box>
