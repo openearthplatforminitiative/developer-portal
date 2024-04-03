@@ -18,14 +18,11 @@ const Home = () => {
         }
       >
         <BackIcon />
-        <Typography className={'text-xl'}> Back to data catalog</Typography>
+        <Typography className={'text-xl'}>Back to data catalog</Typography>
       </Link>
 
       <Box className={'flex flex-col gap-8 mt-14'}>
-        <Typography
-          variant={'h1'}
-          className={'leading-[48px] xs:leading-[64px] text-4xl xs:text-6xl'}
-        >
+        <Typography variant={'h1'} className={'text-4xl xs:text-5xl'}>
           Flood API
         </Typography>
         <Typography className={'text-xl xs:text-2xl'}>
