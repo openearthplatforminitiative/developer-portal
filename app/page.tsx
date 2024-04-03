@@ -91,7 +91,7 @@ const Home = () => {
         </Box>
         <Box
           className={
-            'flex flex-col my-28 gap-14 sm:mb-48 2xl:items-end sm:mx-0 w-fit'
+            'flex flex-col my-28 gap-14 sm:mt-16 sm:mb-28 2xl:items-end sm:mx-0 w-fit'
           }
         >
           <Box className={'flex flex-row flex-1 flex-wrap gap-14'}>
