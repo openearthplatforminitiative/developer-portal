@@ -1,7 +1,9 @@
 {
 	"extends": ["next", "prettier", "next/core-web-vitals"],
 	"ignorePatterns": ["/app/code-examples/*"],
+	"plugins": ["unused-imports"],
 	"rules": {
+		"unused-imports/no-unused-imports": "error",
 		"react/jsx-curly-brace-presence": [
 			"warn",
 			{
