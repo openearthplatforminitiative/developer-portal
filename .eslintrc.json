@@ -1,4 +1,13 @@
 {
-  "extends": ["next", "prettier", "next/core-web-vitals"],
-  "ignorePatterns": ["/app/code-examples/*"]
+	"extends": ["next", "prettier", "next/core-web-vitals"],
+	"ignorePatterns": ["/app/code-examples/*"],
+	"rules": {
+		"react/jsx-curly-brace-presence": [
+			"warn",
+			{
+				"props": "never",
+				"children": "never"
+			}
+		]
+	}
 }
