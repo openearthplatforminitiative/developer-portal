@@ -27,15 +27,15 @@ const HelpButton = () => {
   const id = open ? 'simple-popover' : undefined;
 
   return (
-    <Box className={'fixed bottom-20 right-20 z-10'}>
+    <Box className={'fixed bottom-20 right-4 xs:right-20 z-10'}>
       <Fab
         className={'w-fit rounded-2xl mt-2'}
         aria-label='add'
         onClick={handleClick}
       >
-        <Box className={'flex flex-row gap-3 p-4'}>
+        <Box className={'flex flex-row gap-3 p-4 items-center'}>
           <MessageIcon />
-          <Typography className={'text-primary-main text-sm normal-case'}>
+          <Typography className={'text-primary-main text-sm normal-case h-fit'}>
             Need help?
           </Typography>
         </Box>
@@ -71,6 +71,7 @@ const HelpButton = () => {
                   'bg-primary-main rounded-full w-fit pr-6 pl-4 py-2.5 normal-case text-sm mt-2'
                 }
                 startIcon={<GithubIconWhite />}
+                sx={{ '& .MuiButton-startIcon': { marginLeft: '0' } }}
               >
                 To the Github project
               </Button>
@@ -88,6 +89,7 @@ const HelpButton = () => {
                   'bg-primary-main rounded-full w-fit pr-6 pl-4 py-2.5 normal-case text-sm'
                 }
                 startIcon={<DiscordIcon />}
+                sx={{ '& .MuiButton-startIcon': { marginLeft: '0' } }}
               >
                 Join on Discord
               </Button>
@@ -95,9 +97,7 @@ const HelpButton = () => {
           </Box>
           <Divider className={'my-6'} />
           <Box className={'flex flex-col gap-2 w-4/5'}>
-            <Typography>
-              For general enquiries use the contact form:{' '}
-            </Typography>
+            <Typography>For general enquiries use the contact form:</Typography>
             <Link
               href={'/contact'}
               className={

@@ -37,7 +37,7 @@ const Home = () => {
             >
               <Card
                 className={
-                  'group bg-[#F2F4EF] hover:bg-secondary-90 h-full w-full'
+                  'group bg-card hover:bg-secondary-90 h-full w-full shadow-none rounded-xl'
                 }
               >
                 <Box className={'flex flex-col p-6 gap-3'}>
@@ -66,7 +66,7 @@ const Home = () => {
             >
               <Card
                 className={
-                  'group bg-[#F2F4EF] hover:bg-secondary-90 h-full w-full'
+                  'group bg-card hover:bg-secondary-90 h-full w-full shadow-none rounded-xl'
                 }
               >
                 <Box className={'flex flex-col p-6 gap-3'}>
@@ -80,9 +80,6 @@ const Home = () => {
                       <ExternalLinkIcon />
                     </Box>
                   </Box>
-                  {/*
-                    <Typography variant='body2'>Sub text</Typography>
-                  */}
                 </Box>
               </Card>
             </Link>
@@ -95,7 +92,7 @@ const Home = () => {
             >
               <Card
                 className={
-                  'group bg-[#F2F4EF] hover:bg-secondary-90 h-full w-full'
+                  'group bg-card hover:bg-secondary-90 h-full w-full shadow-none rounded-xl'
                 }
               >
                 <Box className={'flex flex-col p-6 gap-3'}>

@@ -29,14 +29,14 @@ const ResourceCard = ({
     >
       <Card
         className={
-          'group rounded-xl bg-[#F2F4EF] hover:bg-secondary-90 w-full h-full'
+          'group rounded-xl bg-card hover:bg-secondary-90 w-full h-full shadow-none'
         }
       >
         <Image
           src={imageUrl}
           alt={alt}
-          width={0}
-          height={0}
+          width={350}
+          height={250}
           className={'h-full w-full'}
         />
         <Box className={'flex flex-col p-6'}>
