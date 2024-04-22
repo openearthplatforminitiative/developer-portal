@@ -1,5 +1,3 @@
-"use client"
-
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import { Card } from "@mui/material"
@@ -42,6 +40,9 @@ const ResourcesPage = () => {
 											<ExternalLinkIcon />
 										</Box>
 									</Box>
+									{/*
+                    <Typography variant='body2'>Sub text</Typography>
+                  */}{" "}
 								</Box>
 							</Card>
 						</Link>
