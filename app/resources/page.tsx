@@ -7,9 +7,9 @@ import { ExternalLinkIcon } from "@/app/icons/ExternalLinkIcon"
 import Link from "next/link"
 import ResourceCard from "@/app/components/ResourceCard"
 
-const Home = () => {
+const ResourcesPage = () => {
 	return (
-		<Box className="w-full h-full lg:max-w-7xl p-6 lg:my-44 my-20">
+		<Box className="w-full h-full lg:max-w-7xl px-8 lg:my-44 my-20">
 			<Box className="flex flex-col gap-8 mb-20">
 				<Typography
 					variant="h1"
@@ -42,9 +42,6 @@ const Home = () => {
 											<ExternalLinkIcon />
 										</Box>
 									</Box>
-									{/*
-                    <Typography variant='body2'>Sub text</Typography>
-                  */}{" "}
 								</Box>
 							</Card>
 						</Link>
@@ -81,9 +78,6 @@ const Home = () => {
 											<ExternalLinkIcon />
 										</Box>
 									</Box>
-									{/*
-                    <Typography variant='body2'>Sub text</Typography>
-                  */}
 								</Box>
 							</Card>
 						</Link>
@@ -157,4 +151,4 @@ const Home = () => {
 	)
 }
 
-export default Home
+export default ResourcesPage

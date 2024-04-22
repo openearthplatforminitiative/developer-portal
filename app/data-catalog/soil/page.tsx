@@ -8,9 +8,9 @@ import { OpenApiIcon } from "@/app/icons/OpenApiIcon"
 import CodeBlock from "@/app/components/CodeBlock"
 import { getCodeExample } from "@/app/utils"
 
-const Home = () => {
+const SoilPage = () => {
 	return (
-		<Box className="lg:max-w-7xl p-6 lg:my-44 my-20">
+		<Box className="lg:max-w-7xl px-8 lg:my-44 my-20">
 			<Link
 				href="/data-catalog"
 				className="flex flex-row items-center text-primary-main underline hover:no-underline -mt-20 gap-1"
@@ -195,4 +195,4 @@ const Home = () => {
 	)
 }
 
-export default Home
+export default SoilPage

@@ -49,9 +49,9 @@ const cards: CardProps[] = [
 	},
 ]
 
-const Home = () => {
+const DataCatalogPage = () => {
 	return (
-		<Box className="w-full h-full lg:max-w-7xl p-8 lg:my-44 my-20">
+		<Box className="w-full h-full lg:max-w-7xl px-8 lg:my-44 my-20">
 			<Box className="flex flex-col gap-8 mb-20">
 				<Typography
 					variant="h1"
@@ -102,4 +102,4 @@ const Home = () => {
 	)
 }
 
-export default Home
+export default DataCatalogPage

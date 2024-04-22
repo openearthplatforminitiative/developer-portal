@@ -7,9 +7,9 @@ import TableCell from "@mui/material/TableCell"
 import TableHead from "@mui/material/TableHead"
 import TableBody from "@mui/material/TableBody"
 
-export default function Home() {
+const CredentialsPage = () => {
 	return (
-		<Box className="w-full h-full lg:max-w-7xl p-6 lg:my-44 my-20">
+		<Box className="w-full h-full lg:max-w-7xl px-8 lg:my-44 my-20">
 			<Box className="flex flex-col gap-8 mb-20">
 				<Typography className="text-5xl">
 					Get your credentials, start developing
@@ -74,3 +74,5 @@ export default function Home() {
 		</Box>
 	)
 }
+
+export default CredentialsPage

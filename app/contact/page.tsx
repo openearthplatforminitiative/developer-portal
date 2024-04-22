@@ -6,9 +6,9 @@ import { GithubIconWhite } from "@/app/icons/GithubIconWhite"
 import { DiscordIcon } from "@/app/icons/DiscordIcon"
 import Link from "next/link"
 
-const Home = () => {
+const ContactPage = () => {
 	return (
-		<Box className="w-full h-full lg:max-w-7xl p-6 lg:my-44 my-20">
+		<Box className="w-full h-full lg:max-w-7xl px-8 lg:my-44 my-20">
 			<Typography
 				variant="h1"
 				className="leading-[48px] xs:leading-[64px] text-4xl xs:text-6xl mb-20"
@@ -83,4 +83,4 @@ const Home = () => {
 	)
 }
 
-export default Home
+export default ContactPage
