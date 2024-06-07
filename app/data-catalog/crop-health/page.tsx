@@ -60,9 +60,9 @@ const CropHealthPage = () => {
 					</a>
 					. These images cover a diverse range of crops such as maize, cassava,
 					beans, cocoa, and bananas, pivotal for agricultural activities in
-					sub-Saharan Africa. The label for an image is either &quot;healthy&quot; or one
-					of several diseases. In total, approximately 120,000 labeled images
-					were used for training.
+					sub-Saharan Africa. The label for an image is either
+					&quot;healthy&quot; or one of several diseases. In total,
+					approximately 120,000 labeled images were used for training.
 				</Typography>
 				<Typography className="text-base mt-6">
 					The nine specific datasets used can be found at the following URLs:{" "}
@@ -209,8 +209,8 @@ const CropHealthPage = () => {
 				/>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 2</Typography>
 				<Typography className="text-base mt-6">
-					Retrieving the single-HLT model&apos;s crop health prediction for a given
-					image.
+					Retrieving the single-HLT model&apos;s crop health prediction for a
+					given image.
 				</Typography>
 				<CodeBlock
 					language="javascript"
@@ -218,8 +218,8 @@ const CropHealthPage = () => {
 				/>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 3</Typography>
 				<Typography className="text-base mt-6">
-					Retrieving the multi-HLT model&apos;s crop health prediction for a given
-					image.
+					Retrieving the multi-HLT model&apos;s crop health prediction for a
+					given image.
 				</Typography>
 				<CodeBlock
 					language="javascript"
