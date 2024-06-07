@@ -52,7 +52,8 @@ const cards: CardProps[] = [
 	{
 		id: 6,
 		header: "Crop Health",
-		subHeader: "This section provides early disease detection in crops using machine learning.",
+		subHeader:
+			"This section provides early disease detection in crops using machine learning.",
 		cardIcon: <CropHealthIcon />,
 		href: "/data-catalog/crop-health",
 	},
