@@ -68,7 +68,7 @@ const Home = () => {
 						Data catalog of open data
 					</Typography>
 					<Typography className="text-xl xs:text-2xl">
-						We currently have 5 APIs available.
+						We currently have 6 APIs available.
 					</Typography>
 				</Box>
 				<Box className="flex flex-col my-28 gap-14 sm:mt-16 sm:mb-28 2xl:items-end sm:mx-0 w-fit">

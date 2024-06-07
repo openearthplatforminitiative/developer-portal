@@ -69,7 +69,7 @@ const DataCatalogPage = () => {
 					Data catalog of open data
 				</Typography>
 				<Typography className="text-xl xs:text-2xl">
-					We currently have 5 APIs available.
+					We currently have 6 APIs available.
 				</Typography>
 			</Box>
 			<Box className="flex flex-wrap gap-14 mt-16">
