@@ -166,19 +166,14 @@ const CropHealthPage = () => {
 							of crops into multiple healthy (HLT) classes and several diseases.</li>
 					</ul>
 				</Typography>
-				<Typography className="text-base mt-6">
+				<Typography component="div" className="text-base mt-6">
 					The key difference between the single-HLT and multi-HLT models is that 
 					only the multi-HLT model has a healthy class for each crop type. The different
 					classes for each model are as follows:
 					<ul className="list-decimal list-inside mt-4">
-						<li>Binary model: HLT, NOT_HLT</li>
-						<li>Single-HLT model: healthy, cassava brown streak disease, cassava mosaic 
-							disease, maize gray leaf spot, maize common rust, maize healthy, beans 
-							common bacterial blight, beans healthy, cocoa black pod disease, cocoa 
-							healthy, banana black sigatoka, banana healthy</li>
-						<li>Multi-HLT model: healthy, cassava brown streak disease, cassava mosaic 
-							disease, maize gray leaf spot, maize common rust, beans common bacterial 
-							blight, cocoa black pod disease, banana black sigatoka</li>
+						<li>Binary model (2): HLT (healthy), NOT_HLT</li>
+						<li>Single-HLT model (13): HLT, CBSD (Cassava Brown Streak Disease), CMD (Cassava Mosaic Disease), MLN (Maize Lethal Necrosis), MSV (Maize Streak Virus), FAW (Fall Armyworm), MLB (Maize Leaf Blight), BR (Bean Rust), ALS (Angular Leaf Spot), BS (Black Sigatoka), FW (Fusarium Wilt Race 1), ANT (Anthracnose), CSSVD (Cocoa Swollen Shoot Virus Disease)</li>
+						<li>Multi-HLT model (17): HLT_cassava, CBSD_cassava, CMD_cassava, MLN_maize, HLT_maize, MSV_maize, FAW_maize, MLB_maize, HLT_beans, BR_beans, ALS_beans, HLT_bananas, BS_bananas, FW_bananas, HLT_cocoa, ANT_cocoa, CSSVD_cocoa</li>
 					</ul>
 				</Typography>
 				<Typography className="text-3xl xs:text-4xl mt-16">Examples</Typography>
