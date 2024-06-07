@@ -7,6 +7,8 @@ import { WeatherIcon } from "@/app/icons/WeatherIcon"
 import { GeocodingIcon } from "@/app/icons/GeocodingIcon"
 import { DeforestationIcon } from "@/app/icons/DeforestationIcon"
 import { SoilIcon } from "@/app/icons/SoilIcon"
+import { CropHealthIcon } from "@/app/icons/CropHealthIcon"
+
 import ApiCard, { CardProps } from "@/app/components/ApiCard"
 import InfoCard from "@/app/components/InfoCard"
 
@@ -46,6 +48,13 @@ const cards: CardProps[] = [
 		subHeader: "This section provides precise soil data on a global scale.",
 		cardIcon: <SoilIcon />,
 		href: "/data-catalog/soil",
+	},
+	{
+		id: 6,
+		header: "Crop Health",
+		subHeader: "This section provides early disease detection in crops using machine learning.",
+		cardIcon: <CropHealthIcon />,
+		href: "/data-catalog/crop-health",
 	},
 ]
 
