@@ -60,7 +60,7 @@ const CropHealthPage = () => {
 					</a>
 					. These images cover a diverse range of crops such as maize, cassava,
 					beans, cocoa, and bananas, pivotal for agricultural activities in
-					sub-Saharan Africa. The label for an image is either "healthy" or one
+					sub-Saharan Africa. The label for an image is either &quot;healthy&quot; or one
 					of several diseases. In total, approximately 120,000 labeled images
 					were used for training.
 				</Typography>
@@ -200,7 +200,7 @@ const CropHealthPage = () => {
 				<Typography className="text-3xl xs:text-4xl mt-16">Examples</Typography>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 1</Typography>
 				<Typography className="text-base mt-6">
-					Retrieving the binary model's crop health prediction for a given
+					Retrieving the binary model&apos;s crop health prediction for a given
 					image.
 				</Typography>
 				<CodeBlock
@@ -209,7 +209,7 @@ const CropHealthPage = () => {
 				/>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 2</Typography>
 				<Typography className="text-base mt-6">
-					Retrieving the single-HLT model's crop health prediction for a given
+					Retrieving the single-HLT model&apos;s crop health prediction for a given
 					image.
 				</Typography>
 				<CodeBlock
@@ -218,7 +218,7 @@ const CropHealthPage = () => {
 				/>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 3</Typography>
 				<Typography className="text-base mt-6">
-					Retrieving the multi-HLT model's crop health prediction for a given
+					Retrieving the multi-HLT model&apos;s crop health prediction for a given
 					image.
 				</Typography>
 				<CodeBlock
