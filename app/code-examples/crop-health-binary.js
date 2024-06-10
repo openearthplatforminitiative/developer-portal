@@ -1,6 +1,6 @@
 const imageData = fs.readFileSync("cocoa.jpg")
 
-// Get the binary model prediction for image cocoa.jpg 
+// Get the binary model prediction for image cocoa.jpg
 // passed as a binary file in the request body
 fetch.then(async (fetch) => {
 	const response_binary = await fetch(
