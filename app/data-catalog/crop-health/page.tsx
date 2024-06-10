@@ -198,8 +198,8 @@ const CropHealthPage = () => {
 					</ul>
 				</Typography>
 				<Typography className="text-base mt-6">
-					The response from the binary model is a JSON object with both the 
-					HLT and NOT_HLT classes, while the response from the single-HLT and
+					The response from the binary model is a JSON object with both the HLT
+					and NOT_HLT classes, while the response from the single-HLT and
 					multi-HLT models is a JSON object with the top five classes and their
 					confidence scores. The confidence score is a value between 0 and 1
 					indicating the model&apos;s confidence in the prediction. All scores
