@@ -155,6 +155,7 @@ const CropHealthPage = () => {
 					labels from the CSV file, and then fine-tuning a pre-trained ResNet
 					model in PyTorch.
 				</Typography>
+				<Typography className="text-2xl xs:text-3xl mt-14">Models</Typography>
 				<Typography component="div" className="text-base mt-6">
 					Three different models are provided by the API. The models differ in
 					the number of classes they predict. The models are:
@@ -204,6 +205,13 @@ const CropHealthPage = () => {
 					confidence scores. The confidence score is a value between 0 and 1
 					indicating the model&apos;s confidence in the prediction. All scores
 					are normalized to sum to 1.
+				</Typography>
+				<Typography className="text-base mt-6">
+					Note that the models only accept images in the JPEG format. Before
+					being passed to the model, the images undergo bilinear interpolation
+					to resize them to 256x256 pixels. The images are then center cropped
+					to 224x224 pixels and normalized using mean=&#91;0.485, 0.456,
+					0.406&#93; and std=&#91;0.229, 0.224, 0.225&#93;.
 				</Typography>
 				<Typography className="text-3xl xs:text-4xl mt-16">Examples</Typography>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 1</Typography>
