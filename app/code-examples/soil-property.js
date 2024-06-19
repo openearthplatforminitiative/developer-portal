@@ -15,7 +15,7 @@ const json = await response.json()
 const bdod = json.properties.layers[0]
 
 // Get the soil property unit and name
-const bdodUnit = bdod.unit
+const bdodUnit = bdod.unit_measure.mapped_units
 const bdodName = bdod.name
 
 // Get the soil property mean value at depth 0-5cm
