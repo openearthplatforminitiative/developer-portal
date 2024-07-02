@@ -11,6 +11,6 @@ fetch.then(async (fetch) => {
 		}
 	)
 	const data_multi = await response_multi.json()
-	// Print the top 5 predictions
-	console.log(data_multi)
+	// Print the prediction for the MLN_maize class
+	console.log(data_multi.MLN_maize)
 })

@@ -209,12 +209,11 @@ const CropHealthPage = () => {
 					</ul>
 				</Typography>
 				<Typography className="text-base mt-6">
-					The response from the binary model is a JSON object with both the HLT
-					and NOT_HLT classes, while the response from the single-HLT and
-					multi-HLT models is a JSON object with the top five classes and their
-					confidence scores. The confidence score is a value between 0 and 1
-					indicating the model&apos;s confidence in the prediction. All scores
-					are normalized to sum to 1.
+					The response from all three models is a JSON object with each
+					model&apos;s respective classes paired with the confidence scores. The
+					confidence score is a value between 0 and 1 indicating the
+					model&apos;s confidence in the specific class. All scores are
+					normalized to sum to 1.
 				</Typography>
 				<Typography className="text-base mt-6">
 					Note that the models only accept images with three channels (RGB) and
@@ -228,7 +227,7 @@ const CropHealthPage = () => {
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 1</Typography>
 				<Typography className="text-base mt-6">
 					Retrieving the binary model&apos;s crop health prediction for a given
-					image.
+					image using JavaScript.
 				</Typography>
 				<CodeBlock
 					language="javascript"
@@ -237,16 +236,16 @@ const CropHealthPage = () => {
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 2</Typography>
 				<Typography className="text-base mt-6">
 					Retrieving the single-HLT model&apos;s crop health prediction for a
-					given image.
+					given image using Python.
 				</Typography>
 				<CodeBlock
-					language="javascript"
-					codeString={getCodeExample("crop-health-single-HLT.js")}
+					language="python"
+					codeString={getCodeExample("crop-health-single-HLT.py")}
 				/>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 3</Typography>
 				<Typography className="text-base mt-6">
 					Retrieving the multi-HLT model&apos;s crop health prediction for a
-					given image.
+					given image using JavaScript.
 				</Typography>
 				<CodeBlock
 					language="javascript"
