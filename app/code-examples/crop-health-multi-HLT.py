@@ -8,6 +8,6 @@ with Client() as client:
         data=open("cocoa.jpg", "rb").read(),
     )
 
-    data_multi= response_multi.json()
-    # Print top 5 predictions
-    print(data_multi["HLT"])
+    data_multi = response_multi.json()
+    # Print the prediction for the MLN_maize class
+    print(data_multi["MLN_maize"])

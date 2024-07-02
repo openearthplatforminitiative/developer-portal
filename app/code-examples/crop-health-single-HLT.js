@@ -11,6 +11,6 @@ fetch.then(async (fetch) => {
 		}
 	)
 	const data_single = await response_single.json()
-	// Print the top 5 predictions
-	console.log(data_single)
+	// Print the prediction for the CBSD class
+	console.log(data_single.CBSD)
 })
