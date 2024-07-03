@@ -5,7 +5,7 @@ with Client() as client:
     # passed as a binary file in the request body
     response_binary = client.post(
         url="https://api-test.openepi.io/crop-health/predictions/binary",
-        data=open("cocoa.jpg", "rb").read(),
+        content=open("cocoa.jpg", "rb").read(),
     )
 
     data_binary = response_binary.json()
