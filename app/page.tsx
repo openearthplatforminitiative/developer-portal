@@ -13,6 +13,7 @@ import Link from "next/link"
 import { OpenLockIcon } from "@/app/icons/OpenLockIcon"
 import { VerifiedIcon } from "@/app/icons/VerifiedIcon"
 import { LightBulbIcon } from "@/app/icons/LightBulbIcon"
+import { JavaLogo } from "./icons/JavaLogo"
 
 const Home = () => {
 	return (
@@ -124,6 +125,13 @@ const Home = () => {
 							subHeader="A python client for accessing data from OpenEPI."
 							cardIcon={<PythonLogo />}
 							href="https://pypi.org/project/openepi-client/"
+						/>
+						<InfoCard
+							externalLink={true}
+							header="Java"
+							subHeader="A java client for accessing data from OpenEPI."
+							cardIcon={<JavaLogo />}
+							href="https://central.sonatype.com/artifact/io.openepi/openepi-client"
 						/>
 					</Box>
 				</Box>
