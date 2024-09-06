@@ -125,9 +125,18 @@ const FloodPage = () => {
 				</Typography>
 				<CodeBlockWrapper
 					codeBlocks={[
-						{ language: "javascript", codeString: getCodeExample("flood", "flood-summary.js")},
-						{ language: "python", codeString: getCodeExample("flood", "flood-summary.py")},
-						{ language: "java", codeString: getCodeExample("flood", "flood-summary.java")}
+						{
+							language: "javascript",
+							codeString: getCodeExample("flood", "flood-summary.js"),
+						},
+						{
+							language: "python",
+							codeString: getCodeExample("flood", "flood-summary.py"),
+						},
+						{
+							language: "java",
+							codeString: getCodeExample("flood", "flood-summary.java"),
+						},
 					]}
 				/>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 2</Typography>
@@ -138,11 +147,19 @@ const FloodPage = () => {
 				</Typography>
 				<CodeBlockWrapper
 					codeBlocks={[
-						{ language: "javascript", codeString: getCodeExample("flood", "flood-detailed.js")},
-						{ language: "python", codeString: getCodeExample("flood", "flood-detailed.py")},
-						{ language: "java", codeString: getCodeExample("flood", "flood-detailed.java")},
+						{
+							language: "javascript",
+							codeString: getCodeExample("flood", "flood-detailed.js"),
+						},
+						{
+							language: "python",
+							codeString: getCodeExample("flood", "flood-detailed.py"),
+						},
+						{
+							language: "java",
+							codeString: getCodeExample("flood", "flood-detailed.java"),
+						},
 					]}
-
 				/>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 3</Typography>
 				<Typography className="text-base mt-6">
@@ -151,9 +168,18 @@ const FloodPage = () => {
 				</Typography>
 				<CodeBlockWrapper
 					codeBlocks={[
-						{ language: "javascript", codeString: getCodeExample("flood", "flood-threshold.js")},
-						{ language: "python", codeString: getCodeExample("flood", "flood-threshold.py")},
-						{ language: "java", codeString: getCodeExample("flood", "flood-threshold.java")},
+						{
+							language: "javascript",
+							codeString: getCodeExample("flood", "flood-threshold.js"),
+						},
+						{
+							language: "python",
+							codeString: getCodeExample("flood", "flood-threshold.py"),
+						},
+						{
+							language: "java",
+							codeString: getCodeExample("flood", "flood-threshold.java"),
+						},
 					]}
 				/>
 			</Box>

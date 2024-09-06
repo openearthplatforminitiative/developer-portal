@@ -85,9 +85,18 @@ const WeatherPage = () => {
 				</Typography>
 				<CodeBlockWrapper
 					codeBlocks={[
-						{ language: "javascript", codeString: getCodeExample("weather", "weather.js") },
-						{ language: "python", codeString: getCodeExample("weather", "weather.py") },
-						{ language: "java", codeString: getCodeExample("weather", "weather.java") },
+						{
+							language: "javascript",
+							codeString: getCodeExample("weather", "weather.js"),
+						},
+						{
+							language: "python",
+							codeString: getCodeExample("weather", "weather.py"),
+						},
+						{
+							language: "java",
+							codeString: getCodeExample("weather", "weather.java"),
+						},
 					]}
 				/>
 			</Box>

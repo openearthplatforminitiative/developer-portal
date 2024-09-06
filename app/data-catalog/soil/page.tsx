@@ -141,9 +141,18 @@ const SoilPage = () => {
 				</Typography>
 				<CodeBlockWrapper
 					codeBlocks={[
-						{ language: "javascript", codeString: getCodeExample("soil", "soil-type.js") },
-						{ language: "python", codeString: getCodeExample("soil", "soil-type.py") },
-						{ language: "java", codeString: getCodeExample("soil", "soil-type.java") },
+						{
+							language: "javascript",
+							codeString: getCodeExample("soil", "soil-type.js"),
+						},
+						{
+							language: "python",
+							codeString: getCodeExample("soil", "soil-type.py"),
+						},
+						{
+							language: "java",
+							codeString: getCodeExample("soil", "soil-type.java"),
+						},
 					]}
 				/>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 2</Typography>
@@ -153,9 +162,18 @@ const SoilPage = () => {
 				</Typography>
 				<CodeBlockWrapper
 					codeBlocks={[
-						{ language: "javascript", codeString: getCodeExample("soil", "soil-property.js") },
-						{ language: "python", codeString: getCodeExample("soil", "soil-property.py") },
-						{ language: "java", codeString: getCodeExample("soil", "soil-property.java") },
+						{
+							language: "javascript",
+							codeString: getCodeExample("soil", "soil-property.js"),
+						},
+						{
+							language: "python",
+							codeString: getCodeExample("soil", "soil-property.py"),
+						},
+						{
+							language: "java",
+							codeString: getCodeExample("soil", "soil-property.java"),
+						},
 					]}
 				/>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 3</Typography>
@@ -164,9 +182,18 @@ const SoilPage = () => {
 				</Typography>
 				<CodeBlockWrapper
 					codeBlocks={[
-						{ language: "javascript", codeString: getCodeExample("soil", "soil-type-summary.js") },
-						{ language: "python", codeString: getCodeExample("soil", "soil-type-summary.py") },
-						{ language: "java", codeString: getCodeExample("soil", "soil-type-summary.java") },
+						{
+							language: "javascript",
+							codeString: getCodeExample("soil", "soil-type-summary.js"),
+						},
+						{
+							language: "python",
+							codeString: getCodeExample("soil", "soil-type-summary.py"),
+						},
+						{
+							language: "java",
+							codeString: getCodeExample("soil", "soil-type-summary.java"),
+						},
 					]}
 				/>
 			</Box>

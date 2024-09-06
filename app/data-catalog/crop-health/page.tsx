@@ -231,9 +231,27 @@ const CropHealthPage = () => {
 				</Typography>
 				<CodeBlockWrapper
 					codeBlocks={[
-						{ language: "javascript", codeString: getCodeExample("crop-health", "crop-health-binary.js") },
-						{ language: "python", codeString: getCodeExample("crop-health", "crop-health-binary.py") },
-						{ language: "java", codeString: getCodeExample("crop-health", "crop-health-binary.java") },
+						{
+							language: "javascript",
+							codeString: getCodeExample(
+								"crop-health",
+								"crop-health-binary.js"
+							),
+						},
+						{
+							language: "python",
+							codeString: getCodeExample(
+								"crop-health",
+								"crop-health-binary.py"
+							),
+						},
+						{
+							language: "java",
+							codeString: getCodeExample(
+								"crop-health",
+								"crop-health-binary.java"
+							),
+						},
 					]}
 				/>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 2</Typography>
@@ -243,9 +261,27 @@ const CropHealthPage = () => {
 				</Typography>
 				<CodeBlockWrapper
 					codeBlocks={[
-						{ language: "javascript", codeString: getCodeExample("crop-health", "crop-health-single-HLT.js")},
-						{ language: "python", codeString: getCodeExample("crop-health", "crop-health-single-HLT.py") },
-						{ language: "java", codeString: getCodeExample("crop-health", "crop-health-single-HLT.java") },
+						{
+							language: "javascript",
+							codeString: getCodeExample(
+								"crop-health",
+								"crop-health-single-HLT.js"
+							),
+						},
+						{
+							language: "python",
+							codeString: getCodeExample(
+								"crop-health",
+								"crop-health-single-HLT.py"
+							),
+						},
+						{
+							language: "java",
+							codeString: getCodeExample(
+								"crop-health",
+								"crop-health-single-HLT.java"
+							),
+						},
 					]}
 				/>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 3</Typography>
@@ -255,9 +291,27 @@ const CropHealthPage = () => {
 				</Typography>
 				<CodeBlockWrapper
 					codeBlocks={[
-						{ language: "javascript", codeString: getCodeExample("crop-health", "crop-health-multi-HLT.js")},
-						{ language: "python", codeString: getCodeExample("crop-health", "crop-health-multi-HLT.py") },
-						{ language: "java", codeString: getCodeExample("crop-health", "crop-health-multi-HLT.java") },
+						{
+							language: "javascript",
+							codeString: getCodeExample(
+								"crop-health",
+								"crop-health-multi-HLT.js"
+							),
+						},
+						{
+							language: "python",
+							codeString: getCodeExample(
+								"crop-health",
+								"crop-health-multi-HLT.py"
+							),
+						},
+						{
+							language: "java",
+							codeString: getCodeExample(
+								"crop-health",
+								"crop-health-multi-HLT.java"
+							),
+						},
 					]}
 				/>
 			</Box>

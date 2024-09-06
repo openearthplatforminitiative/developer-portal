@@ -103,9 +103,18 @@ const DeforestationPage = () => {
 				</Typography>
 				<CodeBlockWrapper
 					codeBlocks={[
-						{ language: "javascript", codeString: getCodeExample("deforestation", "deforestation.js")},
-						{ language: "python", codeString: getCodeExample("deforestation", "deforestation.py") },
-						{ language: "java", codeString: getCodeExample("deforestation", "deforestation.java") },
+						{
+							language: "javascript",
+							codeString: getCodeExample("deforestation", "deforestation.js"),
+						},
+						{
+							language: "python",
+							codeString: getCodeExample("deforestation", "deforestation.py"),
+						},
+						{
+							language: "java",
+							codeString: getCodeExample("deforestation", "deforestation.java"),
+						},
 					]}
 				/>
 			</Box>

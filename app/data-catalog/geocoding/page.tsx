@@ -106,9 +106,18 @@ const GeocodingPage = () => {
 				</Typography>
 				<CodeBlockWrapper
 					codeBlocks={[
-						{ language: "javascript", codeString: getCodeExample("geocoding", "geocoding.js") },
-						{ language: "python", codeString: getCodeExample("geocoding", "geocoding.py") },
-						{ language: "java", codeString: getCodeExample("geocoding", "geocoding.java") },
+						{
+							language: "javascript",
+							codeString: getCodeExample("geocoding", "geocoding.js"),
+						},
+						{
+							language: "python",
+							codeString: getCodeExample("geocoding", "geocoding.py"),
+						},
+						{
+							language: "java",
+							codeString: getCodeExample("geocoding", "geocoding.java"),
+						},
 					]}
 				/>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 2</Typography>
@@ -117,9 +126,18 @@ const GeocodingPage = () => {
 				</Typography>
 				<CodeBlockWrapper
 					codeBlocks={[
-						{ language: "javascript", codeString: getCodeExample("geocoding", "reverse-geocoding.js") },
-						{ language: "python", codeString: getCodeExample("geocoding", "reverse-geocoding.py") },
-						{ language: "java", codeString: getCodeExample("geocoding", "reverse-geocoding.java") },
+						{
+							language: "javascript",
+							codeString: getCodeExample("geocoding", "reverse-geocoding.js"),
+						},
+						{
+							language: "python",
+							codeString: getCodeExample("geocoding", "reverse-geocoding.py"),
+						},
+						{
+							language: "java",
+							codeString: getCodeExample("geocoding", "reverse-geocoding.java"),
+						},
 					]}
 				/>
 			</Box>
