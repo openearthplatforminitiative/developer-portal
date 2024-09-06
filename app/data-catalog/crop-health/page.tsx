@@ -5,8 +5,8 @@ import { BackIcon } from "@/app/icons/BackIcon"
 import InfoCard from "@/app/components/InfoCard"
 import { GithubIconBlack } from "@/app/icons/GithubIconBlack"
 import { OpenApiIcon } from "@/app/icons/OpenApiIcon"
-import CodeBlock from "@/app/components/CodeBlock"
 import { getCodeExample } from "@/app/utils"
+import CodeBlockWrapper from "@/app/components/CodeBlockWrapper"
 
 const CropHealthPage = () => {
 	return (
@@ -227,29 +227,38 @@ const CropHealthPage = () => {
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 1</Typography>
 				<Typography className="text-base mt-6">
 					Retrieving the binary model&apos;s crop health prediction for a given
-					image using JavaScript.
+					image.
 				</Typography>
-				<CodeBlock
-					language="javascript"
-					codeString={getCodeExample("crop-health-binary.js")}
+				<CodeBlockWrapper
+					codeBlocks={[
+						{ language: "javascript", codeString: getCodeExample("crop-health", "crop-health-binary.js") },
+						{ language: "python", codeString: getCodeExample("crop-health", "crop-health-binary.py") },
+						{ language: "java", codeString: getCodeExample("crop-health", "crop-health-binary.java") },
+					]}
 				/>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 2</Typography>
 				<Typography className="text-base mt-6">
 					Retrieving the single-HLT model&apos;s crop health prediction for a
-					given image using Python.
+					given image.
 				</Typography>
-				<CodeBlock
-					language="python"
-					codeString={getCodeExample("crop-health-single-HLT.py")}
+				<CodeBlockWrapper
+					codeBlocks={[
+						{ language: "javascript", codeString: getCodeExample("crop-health", "crop-health-single-HLT.js")},
+						{ language: "python", codeString: getCodeExample("crop-health", "crop-health-single-HLT.py") },
+						{ language: "java", codeString: getCodeExample("crop-health", "crop-health-single-HLT.java") },
+					]}
 				/>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 3</Typography>
 				<Typography className="text-base mt-6">
 					Retrieving the multi-HLT model&apos;s crop health prediction for a
-					given image using JavaScript.
+					given image.
 				</Typography>
-				<CodeBlock
-					language="javascript"
-					codeString={getCodeExample("crop-health-multi-HLT.js")}
+				<CodeBlockWrapper
+					codeBlocks={[
+						{ language: "javascript", codeString: getCodeExample("crop-health", "crop-health-multi-HLT.js")},
+						{ language: "python", codeString: getCodeExample("crop-health", "crop-health-multi-HLT.py") },
+						{ language: "java", codeString: getCodeExample("crop-health", "crop-health-multi-HLT.java") },
+					]}
 				/>
 			</Box>
 		</Box>

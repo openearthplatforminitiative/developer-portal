@@ -9,9 +9,11 @@ import Box from "@mui/material/Box"
 import { myCustomStyle } from "@/app/custom-code-style"
 import js from "react-syntax-highlighter/dist/esm/languages/hljs/javascript"
 import python from "react-syntax-highlighter/dist/cjs/languages/hljs/python"
+import java from "react-syntax-highlighter/dist/cjs/languages/hljs/java"
 
 SyntaxHighlighter.registerLanguage("javascript", js)
 SyntaxHighlighter.registerLanguage("python", python)
+SyntaxHighlighter.registerLanguage("java", java)
 
 interface CodeBlockProps {
 	codeString: string
@@ -37,13 +39,13 @@ const CodeBlock = ({ codeString, language }: CodeBlockProps) => {
 	}
 
 	return (
-		<Box className="relative mt-6">
+		<Box className="relative">
 			<SyntaxHighlighter
 				language={language}
 				style={myCustomStyle}
 				className="p-6 break-all"
 				showLineNumbers={false} // see https://github.com/react-syntax-highlighter/react-syntax-highlighter/issues/376
-				wrapLongLines={true}
+				wrapLongLines={false}
 			>
 				{codeString}
 			</SyntaxHighlighter>

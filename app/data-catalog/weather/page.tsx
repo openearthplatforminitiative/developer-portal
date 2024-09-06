@@ -5,8 +5,8 @@ import { BackIcon } from "@/app/icons/BackIcon"
 import InfoCard from "@/app/components/InfoCard"
 import { GithubIconBlack } from "@/app/icons/GithubIconBlack"
 import { OpenApiIcon } from "@/app/icons/OpenApiIcon"
-import CodeBlock from "@/app/components/CodeBlock"
 import { getCodeExample } from "@/app/utils"
+import CodeBlockWrapper from "@/app/components/CodeBlockWrapper"
 
 const WeatherPage = () => {
 	return (
@@ -81,21 +81,14 @@ const WeatherPage = () => {
 				<Typography className="text-3xl xs:text-4xl mt-16">Examples</Typography>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 1</Typography>
 				<Typography className="text-base mt-6">
-					Retrieving weather forecast for a given location for the next 9 days
-					using javascript.
+					Retrieving weather forecast for a given location for the next 9 days.
 				</Typography>
-				<CodeBlock
-					language="javascript"
-					codeString={getCodeExample("weather.js")}
-				/>
-				<Typography className="text-2xl xs:text-3xl mt-8">Example 2</Typography>
-				<Typography className="text-base mt-6">
-					Retrieving weather forecast for a given location for the next 9 days
-					using python.
-				</Typography>
-				<CodeBlock
-					language="python"
-					codeString={getCodeExample("weather.py")}
+				<CodeBlockWrapper
+					codeBlocks={[
+						{ language: "javascript", codeString: getCodeExample("weather", "weather.js") },
+						{ language: "python", codeString: getCodeExample("weather", "weather.py") },
+						{ language: "java", codeString: getCodeExample("weather", "weather.java") },
+					]}
 				/>
 			</Box>
 		</Box>

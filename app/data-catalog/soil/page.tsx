@@ -5,8 +5,8 @@ import { BackIcon } from "@/app/icons/BackIcon"
 import InfoCard from "@/app/components/InfoCard"
 import { GithubIconBlack } from "@/app/icons/GithubIconBlack"
 import { OpenApiIcon } from "@/app/icons/OpenApiIcon"
-import CodeBlock from "@/app/components/CodeBlock"
 import { getCodeExample } from "@/app/utils"
+import CodeBlockWrapper from "@/app/components/CodeBlockWrapper"
 
 const SoilPage = () => {
 	return (
@@ -137,58 +137,37 @@ const SoilPage = () => {
 				<Typography className="text-3xl xs:text-4xl mt-16">Examples</Typography>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 1</Typography>
 				<Typography className="text-base mt-6">
-					Retrieving the most probable soil type at the queried location using
-					JavaScript.
+					Retrieving the most probable soil type at the queried location.
 				</Typography>
-				<CodeBlock
-					language="javascript"
-					codeString={getCodeExample("soil-type.js")}
+				<CodeBlockWrapper
+					codeBlocks={[
+						{ language: "javascript", codeString: getCodeExample("soil", "soil-type.js") },
+						{ language: "python", codeString: getCodeExample("soil", "soil-type.py") },
+						{ language: "java", codeString: getCodeExample("soil", "soil-type.java") },
+					]}
 				/>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 2</Typography>
 				<Typography className="text-base mt-6">
-					Retrieving the most probable soil type at the queried location as well
-					as the probabilities of the top 3 most probable soil types using
-					Python.
+					Retrieving the mean of the soil property at the queried location and
+					depth.
 				</Typography>
-				<CodeBlock
-					language="python"
-					codeString={getCodeExample("soil-type.py")}
+				<CodeBlockWrapper
+					codeBlocks={[
+						{ language: "javascript", codeString: getCodeExample("soil", "soil-property.js") },
+						{ language: "python", codeString: getCodeExample("soil", "soil-property.py") },
+						{ language: "java", codeString: getCodeExample("soil", "soil-property.java") },
+					]}
 				/>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 3</Typography>
 				<Typography className="text-base mt-6">
-					Retrieving the mean of the soil property at the queried location and
-					depth using JavaScript.
+					Get a summary of the soil types in the queried bounding box.
 				</Typography>
-				<CodeBlock
-					language="javascript"
-					codeString={getCodeExample("soil-property.js")}
-				/>
-				<Typography className="text-2xl xs:text-3xl mt-8">Example 4</Typography>
-				<Typography className="text-base mt-6">
-					Retrieving the mean and the 0.05 quantile of the soil property at the
-					queried location and depth using Python.
-				</Typography>
-				<CodeBlock
-					language="python"
-					codeString={getCodeExample("soil-property.py")}
-				/>
-				<Typography className="text-2xl xs:text-3xl mt-8">Example 5</Typography>
-				<Typography className="text-base mt-6">
-					Get a summary of the soil types in the queried bounding box using
-					JavaScript.
-				</Typography>
-				<CodeBlock
-					language="javascript"
-					codeString={getCodeExample("soil-type-summary.js")}
-				/>
-				<Typography className="text-2xl xs:text-3xl mt-8">Example 6</Typography>
-				<Typography className="text-base mt-6">
-					Get a summary of the soil types in the queried bounding box using
-					Python.
-				</Typography>
-				<CodeBlock
-					language="python"
-					codeString={getCodeExample("soil-type-summary.py")}
+				<CodeBlockWrapper
+					codeBlocks={[
+						{ language: "javascript", codeString: getCodeExample("soil", "soil-type-summary.js") },
+						{ language: "python", codeString: getCodeExample("soil", "soil-type-summary.py") },
+						{ language: "java", codeString: getCodeExample("soil", "soil-type-summary.java") },
+					]}
 				/>
 			</Box>
 		</Box>
