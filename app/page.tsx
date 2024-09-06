@@ -13,7 +13,7 @@ import Link from "next/link"
 import { OpenLockIcon } from "@/app/icons/OpenLockIcon"
 import { VerifiedIcon } from "@/app/icons/VerifiedIcon"
 import { LightBulbIcon } from "@/app/icons/LightBulbIcon"
-import { JavaLogo } from "./icons/JavaLogo"
+import { JavaLogo } from "@/app/icons/JavaLogo"
 
 const Home = () => {
 	return (

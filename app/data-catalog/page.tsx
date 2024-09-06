@@ -11,6 +11,7 @@ import { CropHealthIcon } from "@/app/icons/CropHealthIcon"
 
 import ApiCard, { CardProps } from "@/app/components/ApiCard"
 import InfoCard from "@/app/components/InfoCard"
+import { JavaLogo } from "@/app/icons/JavaLogo"
 
 const cards: CardProps[] = [
 	{
@@ -105,6 +106,13 @@ const DataCatalogPage = () => {
 						subHeader="A python client for accessing data from OpenEPI."
 						cardIcon={<PythonLogo />}
 						href="https://pypi.org/project/openepi-client/"
+					/>
+					<InfoCard
+						externalLink={true}
+						header="Java"
+						subHeader="A java client for accessing data from OpenEPI."
+						cardIcon={<JavaLogo />}
+						href="https://central.sonatype.com/artifact/io.openepi/openepi-client"
 					/>
 				</Box>
 			</Box>
