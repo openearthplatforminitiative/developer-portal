@@ -1,5 +1,5 @@
 const response = await fetch(
-	"https://api-test.openepi.io/deforestation/basin?" +
+	"https://api.openepi.io/deforestation/basin?" +
 		new URLSearchParams({
 			lon: "30.0619",
 			lat: "-1.9441",

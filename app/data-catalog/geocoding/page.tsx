@@ -40,7 +40,7 @@ const GeocodingPage = () => {
 					header="OpenAPI Spec"
 					subHeader="Specification of all endpoints available in the geocoding api."
 					cardIcon={<OpenApiIcon />}
-					href="https://api-test.openepi.io/geocoding/redoc"
+					href="https://api.openepi.io/geocoding/redoc"
 				/>
 				<InfoCard
 					externalLink={true}

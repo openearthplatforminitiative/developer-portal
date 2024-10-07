@@ -40,7 +40,7 @@ const SoilPage = () => {
 					header="OpenAPI Spec"
 					subHeader="Specification of all endpoints available in the soil api."
 					cardIcon={<OpenApiIcon />}
-					href="https://api-test.openepi.io/soil/redoc"
+					href="https://api.openepi.io/soil/redoc"
 				/>
 				<InfoCard
 					externalLink={true}

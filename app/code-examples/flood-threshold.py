@@ -2,7 +2,7 @@ from httpx import Client
 
 with Client() as client:
     response = client.get(
-        url="https://api-test.openepi.io/flood/threshold",
+        url="https://api.openepi.io/flood/threshold",
         params={"lon": 33.575897, "lat": -1.375532},
     )
 

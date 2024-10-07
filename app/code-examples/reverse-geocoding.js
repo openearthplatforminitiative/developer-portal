@@ -1,5 +1,5 @@
 const response = await fetch(
-	"https://api-test.openepi.io/geocoding/reverse?" +
+	"https://api.openepi.io/geocoding/reverse?" +
 		new URLSearchParams({
 			lon: "13.438596",
 			lat: "52.519854",

@@ -1,6 +1,6 @@
 // Get the mean value of the soil property at the queried location and depth
 const response = await fetch(
-	"https://api-test.openepi.io/soil/property?" +
+	"https://api.openepi.io/soil/property?" +
 		new URLSearchParams({
 			lon: "9.58",
 			lat: "60.1",

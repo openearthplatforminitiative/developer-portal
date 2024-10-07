@@ -1,7 +1,7 @@
 // Get a summary of the soil types in the queried bounding box, represented
 // by a mapping of each soil type to the number of occurrences in the bounding box
 const response = await fetch(
-	"https://api-test.openepi.io/soil/type/summary?" +
+	"https://api.openepi.io/soil/type/summary?" +
 		new URLSearchParams({
 			min_lon: "9.5",
 			max_lon: "9.6",

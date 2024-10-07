@@ -2,7 +2,7 @@ from httpx import Client
 
 with Client() as client:
     response = client.get(
-        url="https://api-test.openepi.io/weather/locationforecast",
+        url="https://api.openepi.io/weather/locationforecast",
         params={"lat": 52.520008, "lon": 13.404954},
     )
 

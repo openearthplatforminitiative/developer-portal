@@ -33,7 +33,7 @@ const WeatherPage = () => {
 					header="OpenAPI Spec"
 					subHeader="Specification of all endpoints available in the weather api."
 					cardIcon={<OpenApiIcon />}
-					href="https://api-test.openepi.io/weather/redoc"
+					href="https://api.openepi.io/weather/redoc"
 				/>
 				<InfoCard
 					externalLink={true}

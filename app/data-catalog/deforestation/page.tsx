@@ -33,7 +33,7 @@ const DeforestationPage = () => {
 					header="OpenAPI Spec"
 					subHeader="Specification of all endpoints available in the deforestation api."
 					cardIcon={<OpenApiIcon />}
-					href="https://api-test.openepi.io/deforestation/redoc"
+					href="https://api.openepi.io/deforestation/redoc"
 				/>
 				<InfoCard
 					externalLink={true}

@@ -3,7 +3,7 @@ from httpx import Client
 with Client() as client:
     # Get the mean and the 0.05 quantile of the soil properties at the queried location and depths
     response_multi = client.get(
-        url="https://api-test.openepi.io/soil/property",
+        url="https://api.openepi.io/soil/property",
         params={
             "lat": 60.1,
             "lon": 9.58,

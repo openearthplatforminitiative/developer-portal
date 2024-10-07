@@ -2,8 +2,8 @@ from httpx import Client
 
 with Client() as client:
     response = client.get(
-        url="https://api-test.openepi.io/geocoding/reverse",
-        params={"lon": 13.438596, "lat": 52.519854}
+        url="https://api.openepi.io/geocoding/reverse",
+        params={"lon": 13.438596, "lat": 52.519854},
     )
 
     data = response.json()

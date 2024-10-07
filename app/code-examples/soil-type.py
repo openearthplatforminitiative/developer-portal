@@ -4,7 +4,7 @@ with Client() as client:
     # Get the soil type at the queried location
     # and the probability of the top 3 most probable soil types
     response = client.get(
-        url="https://api-test.openepi.io/soil/type",
+        url="https://api.openepi.io/soil/type",
         params={"lat": 60.1, "lon": 9.58, "top_k": 3},
     )
 

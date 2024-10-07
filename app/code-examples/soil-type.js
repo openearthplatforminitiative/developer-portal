@@ -1,6 +1,6 @@
 // Get the most probable soil type at the queried location
 const response = await fetch(
-	"https://api-test.openepi.io/soil/type?" +
+	"https://api.openepi.io/soil/type?" +
 		new URLSearchParams({
 			lon: "9.58",
 			lat: "60.1",

@@ -1,5 +1,5 @@
 const response = await fetch(
-	"https://api-test.openepi.io/flood/summary?" +
+	"https://api.openepi.io/flood/summary?" +
 		new URLSearchParams({
 			lon: "33.575897",
 			lat: "-1.375532",

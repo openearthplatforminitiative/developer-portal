@@ -33,7 +33,7 @@ const CropHealthPage = () => {
 					header="OpenAPI Spec"
 					subHeader="Specification of all endpoints available in the crop health api."
 					cardIcon={<OpenApiIcon />}
-					href="https://api-test.openepi.io/crop-health/redoc"
+					href="https://api.openepi.io/crop-health/redoc"
 				/>
 				<InfoCard
 					externalLink={true}

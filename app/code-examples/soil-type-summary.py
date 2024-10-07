@@ -4,7 +4,7 @@ with Client() as client:
     # Get a summary of the soil types in the queried bounding box, represented
     # by a mapping of each soil type to the number of occurrences in the bounding box
     response = client.get(
-        url="https://api-test.openepi.io/soil/type/summary",
+        url="https://api.openepi.io/soil/type/summary",
         params={"min_lon": 9.5, "max_lon": 9.6, "min_lat": 60.1, "max_lat": 60.12},
     )
 

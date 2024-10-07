@@ -39,7 +39,7 @@ const FloodPage = () => {
 					header="OpenAPI Spec"
 					subHeader="Specification of all endpoints available in the flood api."
 					cardIcon={<OpenApiIcon />}
-					href="https://api-test.openepi.io/flood/redoc"
+					href="https://api.openepi.io/flood/redoc"
 				/>
 				<InfoCard
 					externalLink={true}
