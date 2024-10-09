@@ -1,6 +1,5 @@
 const response = await fetch(
-	"https://api.openepi.io/geocoding/?" +
-		new URLSearchParams({ q: "Berlin" })
+	"https://api.openepi.io/geocoding/?" + new URLSearchParams({ q: "Berlin" })
 )
 const data = await response.json()
 

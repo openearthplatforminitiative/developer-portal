@@ -5,8 +5,8 @@ import { BackIcon } from "@/app/icons/BackIcon"
 import InfoCard from "@/app/components/InfoCard"
 import { GithubIconBlack } from "@/app/icons/GithubIconBlack"
 import { OpenApiIcon } from "@/app/icons/OpenApiIcon"
-import CodeBlock from "@/app/components/CodeBlock"
 import { getCodeExample } from "@/app/utils"
+import CodeBlockWrapper from "@/app/components/CodeBlockWrapper"
 
 const GeocodingPage = () => {
 	return (
@@ -102,35 +102,43 @@ const GeocodingPage = () => {
 				<Typography className="text-3xl xs:text-4xl mt-16">Examples</Typography>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 1</Typography>
 				<Typography className="text-base mt-6">
-					Retrieving the coordinates of <q>Berlin</q> using JavaScript.
+					Retrieving the coordinates of <q>Berlin</q>.
 				</Typography>
-				<CodeBlock
-					language="javascript"
-					codeString={getCodeExample("geocoding.js")}
+				<CodeBlockWrapper
+					codeBlocks={[
+						{
+							language: "javascript",
+							codeString: getCodeExample("geocoding", "geocoding.js"),
+						},
+						{
+							language: "python",
+							codeString: getCodeExample("geocoding", "geocoding.py"),
+						},
+						{
+							language: "java",
+							codeString: getCodeExample("geocoding", "geocoding.java"),
+						},
+					]}
 				/>
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 2</Typography>
 				<Typography className="text-base mt-6">
-					Retrieving the coordinates of <q>Berlin</q> using Python.
+					Retrieving a location near the given coordinate.
 				</Typography>
-				<CodeBlock
-					language="python"
-					codeString={getCodeExample("geocoding.py")}
-				/>
-				<Typography className="text-2xl xs:text-3xl mt-8">Example 3</Typography>
-				<Typography className="text-base mt-6">
-					Retrieving a location near the given coordinate using JavaScript.
-				</Typography>
-				<CodeBlock
-					language="javascript"
-					codeString={getCodeExample("reverse-geocoding.js")}
-				/>
-				<Typography className="text-2xl xs:text-3xl mt-8">Example 4</Typography>
-				<Typography className="text-base mt-6">
-					Retrieving a location near the given coordinate using Python.
-				</Typography>
-				<CodeBlock
-					language="python"
-					codeString={getCodeExample("reverse-geocoding.py")}
+				<CodeBlockWrapper
+					codeBlocks={[
+						{
+							language: "javascript",
+							codeString: getCodeExample("geocoding", "reverse-geocoding.js"),
+						},
+						{
+							language: "python",
+							codeString: getCodeExample("geocoding", "reverse-geocoding.py"),
+						},
+						{
+							language: "java",
+							codeString: getCodeExample("geocoding", "reverse-geocoding.java"),
+						},
+					]}
 				/>
 			</Box>
 		</Box>
