@@ -10,7 +10,7 @@ import CodeBlockWrapper from "@/app/components/CodeBlockWrapper"
 
 const WeatherPage = () => {
 	return (
-		<Box className="lg:max-w-7xl px-8 lg:my-44 my-20">
+		<Box className="w-full lg:max-w-7xl px-8 lg:my-44 my-20">
 			<Link
 				href="/data-catalog"
 				className="flex flex-row items-center text-primary-main underline hover:no-underline -mt-20 gap-1"
