@@ -4,18 +4,19 @@ import { OpenEPILogoLarge } from "@/app/icons/OpenEPILogoLarge"
 import Typography from "@mui/material/Typography"
 import Link from "next/link"
 import Box from "@mui/material/Box"
-import { ExternalLinkIcon } from "@/app/icons/ExternalLinkIcon"
 import { usePathname } from "next/navigation"
 import { IconButton, Menu, MenuItem } from "@mui/material"
 import { useState } from "react"
 import { BurgerMenu } from "@/app/icons/BurgerMenu"
+import { ArrowOutward, Person } from "@mui/icons-material"
 
 const NavBar = () => {
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
 	const currentRoute = usePathname()
-	const baseStyle: string = "px-6 py-2 rounded-full"
+	const baseStyle: string =
+		"px-6 py-2 rounded-full flex flex-row items-center gap-1.5"
 
 	const linkClassName = (path: string) =>
 		currentRoute.startsWith(path)
@@ -28,6 +29,10 @@ const NavBar = () => {
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorEl(event.currentTarget)
 		setIsOpen(true)
+	}
+
+	const isLoggedIn = () => {
+		return localStorage.getItem("login") === "true"
 	}
 
 	return (
@@ -53,13 +58,22 @@ const NavBar = () => {
 				<Link
 					href="https://openepi.io"
 					target="_blank"
-					className={
-						baseStyle +
-						" flex flex-row items-center gap-1.5 hover:bg-[#1d1b2014]"
-					}
+					className={baseStyle + " hover:bg-[#1d1b2014]"}
 				>
-					About the project <ExternalLinkIcon />
+					About the project <ArrowOutward />
 				</Link>
+				{isLoggedIn() ? (
+					<Link
+						href="/my-page"
+						className={linkClassName("/my-page") + " bg-primary-90"}
+					>
+						My Page <Person />
+					</Link>
+				) : (
+					<Link href="/sign-in" className={baseStyle + " bg-primary-90"}>
+						Sign in / Sign up <ArrowOutward />
+					</Link>
+				)}
 			</Box>
 			<Box className="xl:hidden">
 				<IconButton
@@ -99,8 +113,27 @@ const NavBar = () => {
 							className="flex flex-row gap-2 items-center p-2"
 						>
 							<Typography className="text-lg">About the project</Typography>
-							<ExternalLinkIcon />
+							<ArrowOutward />
 						</Link>
+					</MenuItem>
+					<MenuItem onClick={handleClose} className="bg-primary-90 mb-[-8px]">
+						{isLoggedIn() ? (
+							<Link
+								href="/my-page"
+								className="flex flex-row gap-2 items-center p-2"
+							>
+								<Typography className="text-lg">My Page</Typography>
+								<Person />
+							</Link>
+						) : (
+							<Link
+								href="/sign-in"
+								className="flex flex-row gap-2 items-center p-2"
+							>
+								<Typography className="text-lg">Sign in / Sign up</Typography>
+								<ArrowOutward />
+							</Link>
+						)}
 					</MenuItem>
 				</Menu>
 			</Box>
