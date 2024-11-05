@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html lang="en" className={inter.className}>
 			<ThemeRegistry options={{ key: "mui" }}>
-				<body className="min-h-screen flex flex-col justify-between">
+				<body className="bg-[#FBFDF8] min-h-screen flex flex-col justify-between">
 					<NavBar />
 					<main className="flex-1 flex flex-col items-center">{children}</main>
 					<HelpButton />
