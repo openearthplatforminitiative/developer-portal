@@ -11,7 +11,7 @@ local hostMatch = std.extVar('hostMatch');
     entryPoints: ['websecure'],
     routes: [{
       kind: 'Rule',
-      match: 'Host(`' + hostMatch + '`) && PathPrefix(`/dagster`)',
+      match: 'Host(`' + hostMatch + '`)',
       services: [{
         kind: 'Service',
         name: 'developer-portal',
