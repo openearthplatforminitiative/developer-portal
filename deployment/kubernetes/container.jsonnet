@@ -23,7 +23,7 @@
           name: 'developer-portal',
           image: 'ghcr.io/openearthplatforminitiative/developer-portal:test',
           ports: [{
-            containerPort: 80,
+            containerPort: 3000,
           }],
           env: [
             {
