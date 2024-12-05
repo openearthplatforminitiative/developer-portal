@@ -15,6 +15,7 @@ export const ClientRegistrationForm = (props: ClientRegistrationFormProps) => {
 		>
 			<FormControl>
 				<TextField
+					color="primary"
 					variant="outlined"
 					label="Name"
 					name="name"

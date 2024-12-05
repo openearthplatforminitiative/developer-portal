@@ -1,28 +1,11 @@
 "use client"
 
-import { Add, Delete, Visibility, VisibilityOff } from "@mui/icons-material"
-import {
-	Box,
-	Button,
-	Card,
-	FormControl,
-	IconButton,
-	InputLabel,
-	Modal,
-	Tab,
-	Table,
-	TableBody,
-	TableCell,
-	TableHead,
-	TableRow,
-	TextField,
-	Typography,
-} from "@mui/material"
+import { Add } from "@mui/icons-material"
+import { Box, Button, Modal, Typography } from "@mui/material"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
-import { ClientRegistrationForm } from "../components/ClientRegistrationForm"
-import { ClientsTable } from "../components/ClientsTable"
-import { deleteAppClientCache } from "next/dist/server/lib/render-server"
+import { ClientRegistrationForm } from "../components/ApplicationRegistrationForm"
+import { ApplicationsTable } from "../components/ApplicationsTable"
 
 const Page = () => {
 	const router = useRouter()
@@ -31,25 +14,33 @@ const Page = () => {
 		return localStorage.getItem("login") === "true"
 	}
 
-	const signOut = () => {
-		localStorage.removeItem("login")
-		router.push("..")
-	}
-
 	useEffect(() => {
 		if (!isLoggedIn()) {
 			router.push("..")
 		}
 	}, [router])
 
-	type Client = {
+	type Application = {
 		name: string
 		clientId: string
 		clientSecret: string
-		showSecret?: boolean
 	}
 
-	const [clients, setClients] = useState<Client[]>([])
+	const applicationsMockup = [
+		{
+			name: "Test",
+			clientId: "87654321",
+			clientSecret: "ahj71jda91233jf191239jdo91",
+		},
+		{
+			name: "Test",
+			clientId: "12345678",
+			clientSecret: "gahiojr32h31471fni1h199028",
+		},
+	]
+
+	const [applications, setApplications] =
+		useState<Application[]>(applicationsMockup)
 	const [open, setOpen] = useState(false)
 	const handleOpen = () => setOpen(true)
 	const handleClose = () => setOpen(false)
@@ -63,12 +54,14 @@ const Page = () => {
 		const clientId = Math.random().toString().slice(2, 10)
 		// generate a client secret randomly, using digits and letters
 		const clientSecret = Math.random().toString(36).slice(2, 10)
-		setClients([...clients, { name, clientId, clientSecret }])
+		setApplications([...applications, { name, clientId, clientSecret }])
 		handleClose()
 	}
 
 	const deleteClient = (clientId: string) => {
-		setClients(clients.filter((client) => client.clientId !== clientId))
+		setApplications(
+			applications.filter((client) => client.clientId !== clientId)
+		)
 	}
 
 	return (
@@ -78,40 +71,43 @@ const Page = () => {
 					variant="h1"
 					className="leading-[48px] xs:leading-[64px] text-4xl xs:text-6xl"
 				>
-					Welcome Firstname Lastname
+					Dashboard
 				</Typography>
-				<Typography className="text-xl xs:text-2xl mb-20">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-					eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-					minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-					aliquip ex ea commodo consequat.
+				<Typography className="text-xl xs:text-2xl mb-10">
+					To avoid rate limits, you can register your application here. The
+					client id and client secret will be generated for you. These can be
+					used to generate a token to authenticate your requests in the
+					authorization header. See examples below.
 				</Typography>
-				<Typography variant="h2" className="text-3xl xs:text-4xl w-fit">
-					Clients
-				</Typography>
+				<Box className="flex w-full justify-between items-center">
+					<Typography variant="h2" className="text-3xl xs:text-4xl w-fit">
+						Applications
+					</Typography>
+					<Button
+						variant="contained"
+						className="flex gap-2 bg-primary-main rounded-full border-neutralVariant-50 normal-case shadow-none text-xl px-8 py-4"
+						onClick={handleOpen}
+					>
+						Register Application <Add />
+					</Button>
+				</Box>
 				<Box className="w-full">
-					{clients.length == 0 ? (
+					{applications.length == 0 ? (
 						<Typography className="text-xl xs:text-2xl bg-neutralVariant-95 p-4 my-4">
 							No registered clients yet. Click the button below to register a
 							new client.
 						</Typography>
 					) : (
-						<ClientsTable clients={clients} onDelete={deleteClient} />
+						<ApplicationsTable
+							applications={applications}
+							onDelete={deleteClient}
+						/>
 					)}
 				</Box>
-				<Button
-					variant="contained"
-					className="flex gap-2 bg-primary-main rounded-full border-neutralVariant-50 normal-case shadow-none text-xl px-8 py-4"
-					onClick={handleOpen}
-				>
-					Register Client <Add />
-				</Button>
 				<Modal
 					open={open}
 					onClose={handleClose}
 					className="flex items-center justify-center"
-					aria-labelledby="modal-modal-title"
-					aria-describedby="modal-modal-description"
 				>
 					<Box className="bg-neutral-100 max-w-[500px] w-[90%] p-4 rounded-2xl flex flex-col gap-5">
 						<Typography
@@ -126,15 +122,6 @@ const Page = () => {
 						/>
 					</Box>
 				</Modal>
-				<Box className="flex flex-col">
-					<Button
-						variant="contained"
-						className="bg-neutral-100 text-primary-main rounded-full border-2 border-primary-main normal-case shadow-none text-xl px-8 py-4"
-						onClick={() => signOut()}
-					>
-						Sign Out
-					</Button>
-				</Box>
 			</Box>
 		</Box>
 	)

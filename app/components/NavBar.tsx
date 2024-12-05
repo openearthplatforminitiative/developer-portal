@@ -5,12 +5,15 @@ import Typography from "@mui/material/Typography"
 import Link from "next/link"
 import Box from "@mui/material/Box"
 import { usePathname } from "next/navigation"
-import { IconButton, Menu, MenuItem } from "@mui/material"
+import { Button, IconButton, Menu, MenuItem } from "@mui/material"
 import { useState } from "react"
 import { BurgerMenu } from "@/app/icons/BurgerMenu"
 import { ArrowOutward, Person } from "@mui/icons-material"
+import { useRouter } from "next/navigation"
 
 const NavBar = () => {
+	const router = useRouter()
+
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
@@ -31,8 +34,27 @@ const NavBar = () => {
 		setIsOpen(true)
 	}
 
+	const [anchorElDropdown, setAnchorElDropdown] = useState<null | HTMLElement>(
+		null
+	)
+
+	const isDropdownOpen = Boolean(anchorElDropdown)
+
 	const isLoggedIn = () => {
 		return localStorage.getItem("login") === "true"
+	}
+
+	const handleDropdown = (event: React.MouseEvent<HTMLElement>) => {
+		setAnchorElDropdown(event.currentTarget)
+	}
+
+	const handleDropdownClose = () => {
+		setAnchorElDropdown(null)
+	}
+
+	const signOut = () => {
+		localStorage.removeItem("login")
+		router.push("/")
 	}
 
 	return (
@@ -63,15 +85,44 @@ const NavBar = () => {
 					About the project <ArrowOutward />
 				</Link>
 				{isLoggedIn() ? (
-					<Link
-						href="/my-page"
-						className={linkClassName("/my-page") + " bg-primary-90"}
-					>
-						My Page <Person />
-					</Link>
+					<>
+						<Button
+							onClick={handleDropdown}
+							className={
+								" bg-primary-40 text-neutral-100 hover:text-neutral-0" +
+								linkClassName("/dashboard")
+							}
+						>
+							username <Person />
+						</Button>
+						<Menu
+							open={isDropdownOpen}
+							anchorEl={anchorElDropdown}
+							onClose={handleDropdownClose}
+							anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+							transformOrigin={{ vertical: "top", horizontal: "right" }}
+							className="shadow-none"
+						>
+							<MenuItem onClick={handleDropdownClose} className={"p-4 w-44"}>
+								<Link href="/dashboard">
+									<Typography className="text-xl">Dashboard</Typography>
+								</Link>
+							</MenuItem>
+							<MenuItem onClick={signOut} className={"p-4"}>
+								<Typography className="text-xl">Sign out</Typography>
+							</MenuItem>
+						</Menu>
+					</>
 				) : (
-					<Link href="/sign-in" className={baseStyle + " bg-primary-90"}>
-						Sign in / Sign up <ArrowOutward />
+					<Link
+						href="/dashboard"
+						className={
+							baseStyle +
+							" bg-primary-40 text-neutral-100 hover:bg-[#1d1b2014] hover:text-neutral-0"
+						}
+						onClick={() => localStorage.setItem("login", "true")}
+					>
+						Sign In <Person />
 					</Link>
 				)}
 			</Box>
@@ -119,18 +170,18 @@ const NavBar = () => {
 					<MenuItem onClick={handleClose} className="bg-primary-90 mb-[-8px]">
 						{isLoggedIn() ? (
 							<Link
-								href="/my-page"
+								href="/dashboard"
 								className="flex flex-row gap-2 items-center p-2"
 							>
-								<Typography className="text-lg">My Page</Typography>
+								<Typography className="text-lg">Dashboard</Typography>
 								<Person />
 							</Link>
 						) : (
 							<Link
-								href="/sign-in"
+								href="/dashboard"
 								className="flex flex-row gap-2 items-center p-2"
 							>
-								<Typography className="text-lg">Sign in / Sign up</Typography>
+								<Typography className="text-lg">Sign in</Typography>
 								<ArrowOutward />
 							</Link>
 						)}

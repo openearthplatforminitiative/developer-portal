@@ -3,6 +3,14 @@ import { typography } from "@/app/theme/typography"
 
 const theme = createTheme({
 	typography: typography,
+	palette: {
+		primary: {
+			main: "#006D41",
+		},
+		secondary: {
+			main: "#4E6354",
+		}
+	},
 	components: {
 		MuiPaper: {
 			styleOverrides: {

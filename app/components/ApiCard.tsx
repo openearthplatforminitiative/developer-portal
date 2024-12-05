@@ -3,7 +3,7 @@ import { ReactNode } from "react"
 import Link from "next/link"
 import Card from "@mui/material/Card"
 import Typography from "@mui/material/Typography"
-import { InternalLinkIcon } from "@/app/icons/InternalLinkIcon"
+import { ArrowForward } from "@mui/icons-material"
 
 export interface CardProps {
 	id?: number
@@ -25,7 +25,7 @@ const ApiCard = ({ header, subHeader, cardIcon, href }: CardProps) => {
 					<Box className="flex flex-row justify-between my-2">
 						<Typography className="text-2xl">{header}</Typography>
 						<Box className="transform transition-transform duration-300 group-hover:translate-x-2">
-							<InternalLinkIcon />
+							<ArrowForward />
 						</Box>
 					</Box>
 					<Typography className="text-base">{subHeader}</Typography>

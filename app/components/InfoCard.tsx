@@ -1,9 +1,8 @@
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
-import { InternalLinkIcon } from "@/app/icons/InternalLinkIcon"
 import Link from "next/link"
 import { CardProps } from "@/app/components/ApiCard"
-import { ExternalLinkIcon } from "@/app/icons/ExternalLinkIcon"
+import { ArrowForward, ArrowOutward } from "@mui/icons-material"
 
 interface InfoCardProps extends CardProps {
 	externalLink: boolean
@@ -28,7 +27,7 @@ const InfoCard = ({
 					<Typography className="text-xl xs:text-2xl">{header}</Typography>
 				</Box>
 				<Box className="transform transition-transform duration-300 group-hover:translate-x-2">
-					{externalLink ? <ExternalLinkIcon /> : <InternalLinkIcon />}
+					{externalLink ? <ArrowOutward /> : <ArrowForward />}
 				</Box>
 			</Box>
 			<Typography className="text-base">{subHeader}</Typography>
