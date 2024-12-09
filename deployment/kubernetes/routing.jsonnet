@@ -28,6 +28,7 @@ local hostMatch = std.extVar('hostMatch');
       }],
       middlewares: [{
         name: 'oauth2-proxy',
+      },{
         name: 'traefikmiddleware-jwt@kubernetescrd'
       }],
     }],
