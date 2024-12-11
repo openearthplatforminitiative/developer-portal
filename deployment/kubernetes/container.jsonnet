@@ -31,7 +31,7 @@
               value: 'production',
             },
             {
-              name: 'API_DOMAIN',
+              name: 'NEXT_PUBLIC_API_DOMAIN',
               valueFrom: {
                 configMapKeyRef: {
                   name: 'dev-portal-config',
