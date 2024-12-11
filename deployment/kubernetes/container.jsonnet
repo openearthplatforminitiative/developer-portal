@@ -30,6 +30,15 @@
               name: 'NODE_ENV',
               value: 'production',
             },
+            {
+              name: 'API_DOMAIN',
+              valueFrom: {
+                configMapKeyRef: {
+                  name: 'dev-portal-config',
+                  key: 'api_domain'
+                }
+              }
+            }
           ],
         }],
       },
