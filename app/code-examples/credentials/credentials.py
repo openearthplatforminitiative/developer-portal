@@ -15,7 +15,7 @@ with Client() as client:
 
     # Use access token to get data
     response = client.get(
-        url="https://api-dev1.openepi.io/weather/locationforecast",
+        url="https://api.openepi.io/weather/locationforecast",
         params={"lat": 52.520008, "lon": 13.404954},
         headers={"Authorization": f"Bearer {token}"},
     )
