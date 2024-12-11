@@ -8,23 +8,27 @@ import { usePathname } from "next/navigation"
 import { Button, IconButton, Menu, MenuItem } from "@mui/material"
 import { useState } from "react"
 import { BurgerMenu } from "@/app/icons/BurgerMenu"
-import { ArrowOutward, Person } from "@mui/icons-material"
-import { useRouter } from "next/navigation"
+import { ArrowOutward, Login, Person } from "@mui/icons-material"
+import { useAuth } from "../hooks/authProvider"
 
 const NavBar = () => {
-	const router = useRouter()
+	const { user: name, logout } = useAuth()
 
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
 	const currentRoute = usePathname()
 	const baseStyle: string =
-		"px-6 py-2 rounded-full flex flex-row items-center gap-1.5"
+		"px-6 py-2 rounded-full flex flex-row items-center gap-1.5 hover:bg-[#1d1b2014]"
 
-	const linkClassName = (path: string) =>
+	const linkClassName = (path: string, primary?: boolean) =>
 		currentRoute.startsWith(path)
-			? baseStyle + " bg-secondary-90"
-			: baseStyle + " hover:bg-[#1d1b2014]"
+			? baseStyle +
+				(primary
+					? " bg-primary-40 text-neutral-100 hover:text-neutral-0"
+					: " bg-secondary-90")
+			: baseStyle +
+				(primary ? " bg-primary-40 text-neutral-100 hover:text-neutral-0" : "")
 
 	const handleClose = () => {
 		setIsOpen(false)
@@ -40,21 +44,12 @@ const NavBar = () => {
 
 	const isDropdownOpen = Boolean(anchorElDropdown)
 
-	const isLoggedIn = () => {
-		return localStorage.getItem("login") === "true"
-	}
-
 	const handleDropdown = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorElDropdown(event.currentTarget)
 	}
 
 	const handleDropdownClose = () => {
 		setAnchorElDropdown(null)
-	}
-
-	const signOut = () => {
-		localStorage.removeItem("login")
-		router.push("/")
 	}
 
 	return (
@@ -84,16 +79,13 @@ const NavBar = () => {
 				>
 					About the project <ArrowOutward />
 				</Link>
-				{isLoggedIn() ? (
+				{name ? (
 					<>
 						<Button
 							onClick={handleDropdown}
-							className={
-								" bg-primary-40 text-neutral-100 hover:text-neutral-0" +
-								linkClassName("/dashboard")
-							}
+							className={linkClassName("/dashboard", true)}
 						>
-							username <Person />
+							{name} <Person />
 						</Button>
 						<Menu
 							open={isDropdownOpen}
@@ -103,13 +95,15 @@ const NavBar = () => {
 							transformOrigin={{ vertical: "top", horizontal: "right" }}
 							className="shadow-none"
 						>
-							<MenuItem onClick={handleDropdownClose} className={"p-4 w-44"}>
-								<Link href="/dashboard">
+							<Link href="/dashboard">
+								<MenuItem onClick={handleDropdownClose} className="p-4 w-44">
 									<Typography className="text-xl">Dashboard</Typography>
-								</Link>
-							</MenuItem>
-							<MenuItem onClick={signOut} className={"p-4"}>
-								<Typography className="text-xl">Sign out</Typography>
+								</MenuItem>
+							</Link>
+							<MenuItem className="p-4" onClick={logout}>
+								<Typography className="text-xl flex items-center gap-1">
+									Sign out
+								</Typography>
 							</MenuItem>
 						</Menu>
 					</>
@@ -120,9 +114,8 @@ const NavBar = () => {
 							baseStyle +
 							" bg-primary-40 text-neutral-100 hover:bg-[#1d1b2014] hover:text-neutral-0"
 						}
-						onClick={() => localStorage.setItem("login", "true")}
 					>
-						Sign In <Person />
+						Sign in <Login />
 					</Link>
 				)}
 			</Box>
@@ -168,7 +161,7 @@ const NavBar = () => {
 						</Link>
 					</MenuItem>
 					<MenuItem onClick={handleClose} className="bg-primary-90 mb-[-8px]">
-						{isLoggedIn() ? (
+						{name ? (
 							<Link
 								href="/dashboard"
 								className="flex flex-row gap-2 items-center p-2"

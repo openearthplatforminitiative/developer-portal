@@ -1,4 +1,4 @@
-import { Visibility, VisibilityOff, Clear } from "@mui/icons-material"
+import { Visibility, VisibilityOff, Clear, Refresh } from "@mui/icons-material"
 import {
 	Table,
 	TableHead,
@@ -12,15 +12,16 @@ import { useState } from "react"
 import { ConfirmationDialog } from "./ConfirmationDialog"
 
 type application = {
-	name: string
-	clientId: string
-	clientSecret: string
+	client_name: string
+	client_id: string
+	client_secret: string
 	showSecret?: boolean
 }
 
 type ApplicationsTableProps = {
 	applications: application[]
 	onDelete: (clientId: string) => void
+	onRenew: (clientId: string, clientName: string) => void
 }
 
 export const ApplicationsTable = (props: ApplicationsTableProps) => {
@@ -53,18 +54,32 @@ export const ApplicationsTable = (props: ApplicationsTableProps) => {
 			.join("")
 	}
 
-	const [applicationToDelete, setApplicationToDelete] =
-		useState<application | null>(null)
+	const [applicationToDelete, setApplicationToDelete] = useState<application>()
+	const [applicationToRenew, setApplicationToRenew] = useState<application>()
+
+	const handleConfirmRenew = () => {
+		if (applicationToRenew) {
+			props.onRenew(
+				applicationToRenew.client_id,
+				applicationToRenew.client_name
+			)
+			setApplicationToRenew(undefined)
+		}
+	}
+
+	const handleCancelRenew = () => {
+		setApplicationToRenew(undefined)
+	}
 
 	const handleConfirmDelete = () => {
 		if (applicationToDelete) {
-			props.onDelete(applicationToDelete.clientId)
-			setApplicationToDelete(null)
+			props.onDelete(applicationToDelete.client_id)
+			setApplicationToDelete(undefined)
 		}
 	}
 
 	const handleCancelDelete = () => {
-		setApplicationToDelete(null)
+		setApplicationToDelete(undefined)
 	}
 
 	return (
@@ -81,27 +96,27 @@ export const ApplicationsTable = (props: ApplicationsTableProps) => {
 				<TableBody>
 					{props.applications.map((application: application) => (
 						<TableRow
-							className="odd:bg-primary-99 even:bg-neutral-99"
-							key={application.clientId}
+							className="odd:bg-neutral-99 even:bg-neutralVariant-99"
+							key={application.client_id}
 						>
-							<TableBodyCell>{application.name}</TableBodyCell>
+							<TableBodyCell>{application.client_name}</TableBodyCell>
 							<TableBodyCell align="right">
-								{application.clientId}
+								{application.client_id}
 							</TableBodyCell>
 							<TableBodyCell align="right">
-								{isShowSecret(application.clientId)
-									? application.clientSecret
-									: getBullet(application.clientSecret)}
+								{isShowSecret(application.client_id)
+									? application.client_secret
+									: getBullet(application.client_secret)}
 								<Tooltip title="Show secret">
 									<IconButton
 										aria-label="show secret"
 										onClick={() =>
-											isShowSecret(application.clientId)
+											isShowSecret(application.client_id)
 												? hideSecret()
-												: showSecret(application.clientId)
+												: showSecret(application.client_id)
 										}
 									>
-										{isShowSecret(application.clientId) ? (
+										{isShowSecret(application.client_id) ? (
 											<Visibility />
 										) : (
 											<VisibilityOff />
@@ -110,6 +125,14 @@ export const ApplicationsTable = (props: ApplicationsTableProps) => {
 								</Tooltip>
 							</TableBodyCell>
 							<TableBodyCell align="right">
+								<Tooltip title="Renew client secret">
+									<IconButton
+										aria-label="renew"
+										onClick={() => setApplicationToRenew(application)}
+									>
+										<Refresh />
+									</IconButton>
+								</Tooltip>
 								<Tooltip title="Delete Application">
 									<IconButton
 										color="error"
@@ -125,12 +148,22 @@ export const ApplicationsTable = (props: ApplicationsTableProps) => {
 				</TableBody>
 			</Table>
 			<ConfirmationDialog
-				open={applicationToDelete !== null}
+				open={applicationToDelete !== undefined}
 				onCancel={handleCancelDelete}
 				onConfirm={handleConfirmDelete}
-				title={`Delete ${applicationToDelete?.name}`}
-				content={`Are you sure you want to delete ${applicationToDelete?.name}?`}
+				color="error"
+				title={`Delete ${applicationToDelete?.client_name}`}
+				content={`Are you sure you want to delete ${applicationToDelete?.client_name}?`}
 				confirmText="Delete"
+			/>
+			<ConfirmationDialog
+				open={applicationToRenew !== undefined}
+				onCancel={handleCancelRenew}
+				onConfirm={handleConfirmRenew}
+				color="primary"
+				title={`Renew ${applicationToRenew?.client_name}`}
+				content={`Are you sure you want to renew ${applicationToRenew?.client_name}?`}
+				confirmText="Renew"
 			/>
 		</>
 	)

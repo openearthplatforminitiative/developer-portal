@@ -10,6 +10,7 @@ import {
 type ConfirmationDialogProps = {
 	open: boolean
 	title: string
+	color: string
 	content?: string
 	dialogProps?: DialogProps
 	confirmText?: string
@@ -21,6 +22,7 @@ type ConfirmationDialogProps = {
 export const ConfirmationDialog = ({
 	open,
 	title,
+	color,
 	content,
 	dialogProps,
 	confirmText,
@@ -51,7 +53,7 @@ export const ConfirmationDialog = ({
 				</Button>
 				<Button
 					variant="contained"
-					className="rounded-full text-xl bg-error-50 shadow-none"
+					className={`rounded-full text-xl bg-${color}-40 shadow-none`}
 					onClick={onConfirm}
 				>
 					{confirmText ? confirmText : "Confirm"}
