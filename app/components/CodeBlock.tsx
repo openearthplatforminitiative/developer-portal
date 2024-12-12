@@ -10,8 +10,10 @@ import { myCustomStyle } from "@/app/custom-code-style"
 import js from "react-syntax-highlighter/dist/esm/languages/hljs/javascript"
 import python from "react-syntax-highlighter/dist/cjs/languages/hljs/python"
 import java from "react-syntax-highlighter/dist/cjs/languages/hljs/java"
+import bash from "react-syntax-highlighter/dist/cjs/languages/hljs/bash"
 
 SyntaxHighlighter.registerLanguage("javascript", js)
+SyntaxHighlighter.registerLanguage("bash", bash)
 SyntaxHighlighter.registerLanguage("python", python)
 SyntaxHighlighter.registerLanguage("java", java)
 
