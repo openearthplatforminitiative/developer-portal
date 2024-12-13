@@ -6,6 +6,7 @@
 		"dev": "next dev --turbopack",
 		"build": "next build",
 		"start": "next start",
+		"build:codeExamples": "node import_code_examples.js",
 		"lint": "next lint",
 		"format": "prettier --write --ignore-path .gitignore .",
 		"format:check": "prettier --check --ignore-path .gitignore ."

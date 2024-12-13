@@ -30,3 +30,10 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Code examples
+
+When adding code examples, add a folder to the root code-examples folder
+After the files are added, you can run `npm run build:codeExamples` and a component will be available in app/code-examples
+
+If you are introducing a new language, please update the import_code_examples.js in the root folder, and register a new syntax in CodeBlock.tsx
