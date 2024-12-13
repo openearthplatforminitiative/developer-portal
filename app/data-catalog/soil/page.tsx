@@ -5,8 +5,9 @@ import { BackIcon } from "@/app/icons/BackIcon"
 import InfoCard from "@/app/components/InfoCard"
 import { GithubIconBlack } from "@/app/icons/GithubIconBlack"
 import { OpenApiIcon } from "@/app/icons/OpenApiIcon"
-import { getCodeExample } from "@/app/utils"
-import CodeBlockWrapper from "@/app/components/CodeBlockWrapper"
+import { SoilTypeExample } from "@/app/code-examples/SoilTypeExample"
+import { SoilPropertyExample } from "@/app/code-examples/SoilPropertyExample"
+import { SoilTypeSummaryExample } from "@/app/code-examples/SoilTypeSummaryExample"
 
 const SoilPage = () => {
 	return (
@@ -139,63 +140,18 @@ const SoilPage = () => {
 				<Typography className="text-base mt-6">
 					Retrieving the most probable soil type at the queried location.
 				</Typography>
-				<CodeBlockWrapper
-					codeBlocks={[
-						{
-							language: "javascript",
-							codeString: getCodeExample("soil", "soil-type.js"),
-						},
-						{
-							language: "python",
-							codeString: getCodeExample("soil", "soil-type.py"),
-						},
-						{
-							language: "java",
-							codeString: getCodeExample("soil", "soil-type.java"),
-						},
-					]}
-				/>
+				<SoilTypeExample />
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 2</Typography>
 				<Typography className="text-base mt-6">
 					Retrieving the mean of the soil property at the queried location and
 					depth.
 				</Typography>
-				<CodeBlockWrapper
-					codeBlocks={[
-						{
-							language: "javascript",
-							codeString: getCodeExample("soil", "soil-property.js"),
-						},
-						{
-							language: "python",
-							codeString: getCodeExample("soil", "soil-property.py"),
-						},
-						{
-							language: "java",
-							codeString: getCodeExample("soil", "soil-property.java"),
-						},
-					]}
-				/>
+				<SoilPropertyExample />
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 3</Typography>
 				<Typography className="text-base mt-6">
 					Get a summary of the soil types in the queried bounding box.
 				</Typography>
-				<CodeBlockWrapper
-					codeBlocks={[
-						{
-							language: "javascript",
-							codeString: getCodeExample("soil", "soil-type-summary.js"),
-						},
-						{
-							language: "python",
-							codeString: getCodeExample("soil", "soil-type-summary.py"),
-						},
-						{
-							language: "java",
-							codeString: getCodeExample("soil", "soil-type-summary.java"),
-						},
-					]}
-				/>
+				<SoilTypeSummaryExample />
 			</Box>
 		</Box>
 	)

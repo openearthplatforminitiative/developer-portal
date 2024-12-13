@@ -5,8 +5,8 @@ import { BackIcon } from "@/app/icons/BackIcon"
 import InfoCard from "@/app/components/InfoCard"
 import { GithubIconBlack } from "@/app/icons/GithubIconBlack"
 import { OpenApiIcon } from "@/app/icons/OpenApiIcon"
-import { getCodeExample } from "@/app/utils"
-import CodeBlockWrapper from "@/app/components/CodeBlockWrapper"
+import { GeocodingExample } from "@/app/code-examples/GeocodingExample"
+import { ReverseGeocodingExample } from "@/app/code-examples/ReverseGeocodingExample"
 
 const GeocodingPage = () => {
 	return (
@@ -104,42 +104,12 @@ const GeocodingPage = () => {
 				<Typography className="text-base mt-6">
 					Retrieving the coordinates of <q>Berlin</q>.
 				</Typography>
-				<CodeBlockWrapper
-					codeBlocks={[
-						{
-							language: "javascript",
-							codeString: getCodeExample("geocoding", "geocoding.js"),
-						},
-						{
-							language: "python",
-							codeString: getCodeExample("geocoding", "geocoding.py"),
-						},
-						{
-							language: "java",
-							codeString: getCodeExample("geocoding", "geocoding.java"),
-						},
-					]}
-				/>
+				<GeocodingExample />
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 2</Typography>
 				<Typography className="text-base mt-6">
 					Retrieving a location near the given coordinate.
 				</Typography>
-				<CodeBlockWrapper
-					codeBlocks={[
-						{
-							language: "javascript",
-							codeString: getCodeExample("geocoding", "reverse-geocoding.js"),
-						},
-						{
-							language: "python",
-							codeString: getCodeExample("geocoding", "reverse-geocoding.py"),
-						},
-						{
-							language: "java",
-							codeString: getCodeExample("geocoding", "reverse-geocoding.java"),
-						},
-					]}
-				/>
+				<ReverseGeocodingExample />
 			</Box>
 		</Box>
 	)

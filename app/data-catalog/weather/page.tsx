@@ -5,8 +5,7 @@ import { BackIcon } from "@/app/icons/BackIcon"
 import InfoCard from "@/app/components/InfoCard"
 import { GithubIconBlack } from "@/app/icons/GithubIconBlack"
 import { OpenApiIcon } from "@/app/icons/OpenApiIcon"
-import { getCodeExample } from "@/app/utils"
-import CodeBlockWrapper from "@/app/components/CodeBlockWrapper"
+import { WeatherExample } from "@/app/code-examples/WeatherExample"
 
 const WeatherPage = () => {
 	return (
@@ -83,22 +82,7 @@ const WeatherPage = () => {
 				<Typography className="text-base mt-6">
 					Retrieving weather forecast for a given location for the next 9 days.
 				</Typography>
-				<CodeBlockWrapper
-					codeBlocks={[
-						{
-							language: "javascript",
-							codeString: getCodeExample("weather", "weather.js"),
-						},
-						{
-							language: "python",
-							codeString: getCodeExample("weather", "weather.py"),
-						},
-						{
-							language: "java",
-							codeString: getCodeExample("weather", "weather.java"),
-						},
-					]}
-				/>
+				<WeatherExample />
 			</Box>
 		</Box>
 	)

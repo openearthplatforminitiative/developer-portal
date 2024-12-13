@@ -15,7 +15,7 @@ const token = tokenJson.access_token
 // Use access token to get data
 
 const weatherResponse = await fetch(
-	`https://api.openepi.io/weather/locationforecast?lat=52.520008&lon=13.404954`,
+	"https://api.openepi.io/weather/locationforecast?lat=52.520008&lon=13.404954",
 	{
 		headers: { Authorization: `Bearer ${token}` },
 	}

@@ -5,8 +5,7 @@ import { BackIcon } from "@/app/icons/BackIcon"
 import InfoCard from "@/app/components/InfoCard"
 import { GithubIconBlack } from "@/app/icons/GithubIconBlack"
 import { OpenApiIcon } from "@/app/icons/OpenApiIcon"
-import { getCodeExample } from "@/app/utils"
-import CodeBlockWrapper from "@/app/components/CodeBlockWrapper"
+import { DeforestationExample } from "@/app/code-examples/DeforestationExample"
 
 const DeforestationPage = () => {
 	return (
@@ -101,22 +100,7 @@ const DeforestationPage = () => {
 					Get the total forest cover loss within the queried river basin over
 					the given time period.
 				</Typography>
-				<CodeBlockWrapper
-					codeBlocks={[
-						{
-							language: "javascript",
-							codeString: getCodeExample("deforestation", "deforestation.js"),
-						},
-						{
-							language: "python",
-							codeString: getCodeExample("deforestation", "deforestation.py"),
-						},
-						{
-							language: "java",
-							codeString: getCodeExample("deforestation", "deforestation.java"),
-						},
-					]}
-				/>
+				<DeforestationExample />
 			</Box>
 		</Box>
 	)

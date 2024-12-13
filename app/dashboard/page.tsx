@@ -1,7 +1,6 @@
 import { Box, Typography } from "@mui/material"
 import { Application } from "./application"
-import CodeBlockWrapper from "../components/CodeBlockWrapper"
-import { getCodeExample } from "../utils"
+import { CredentialsExample } from "../code-examples/CredentialsExample"
 
 const Page = () => {
 	return (
@@ -35,26 +34,7 @@ const Page = () => {
 				authenticate your requests in the authorization header. See examples
 				below.
 			</Typography>
-			<CodeBlockWrapper
-				codeBlocks={[
-					{
-						language: "javascript",
-						codeString: getCodeExample("credentials", "credentials.js"),
-					},
-					{
-						language: "python",
-						codeString: getCodeExample("credentials", "credentials.py"),
-					},
-					{
-						language: "java",
-						codeString: getCodeExample("credentials", "credentials.java"),
-					},
-					{
-						language: "bash",
-						codeString: getCodeExample("credentials", "credentials.sh"),
-					},
-				]}
-			/>
+			<CredentialsExample />
 		</Box>
 	)
 }
