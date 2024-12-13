@@ -1,13 +1,9 @@
 import { Box, Typography } from "@mui/material"
 import { Application } from "./application"
-import { unstable_noStore as noStore } from "next/cache"
 import CodeBlockWrapper from "../components/CodeBlockWrapper"
 import { getCodeExample } from "../utils"
 
 const Page = () => {
-	noStore()
-	const apiDomain = process.env.API_DOMAIN || "api-dev1.openepi.io"
-
 	return (
 		<Box className="w-full h-full lg:max-w-7xl px-8 lg:my-44 my-20">
 			<Typography
@@ -26,7 +22,7 @@ const Page = () => {
 				Applications
 			</Typography>
 			<Box className="w-full mb-8">
-				<Application apiDomain={apiDomain} />
+				<Application />
 			</Box>
 			<Typography
 				variant="h2"

@@ -9,7 +9,10 @@ export function middleware(req: Request) {
 	const response = NextResponse.next()
 	if (email || username) {
 		const userInfo = username || email || ""
-		response.cookies.set("developer_portal", userInfo)
+		response.cookies.set("username", userInfo, {
+			sameSite: "strict",
+			secure: true,
+		})
 	}
 
 	return response

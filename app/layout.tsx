@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import localFont from "next/font/local"
 import "./globals.css"
 import NavBar from "@/app/components/NavBar"
 import { ReactNode } from "react"
@@ -7,10 +7,10 @@ import ThemeRegistry from "@/app/components/ThemeRegistry"
 import Footer from "@/app/components/Footer"
 import HelpButton from "@/app/components/HelpButton"
 import { AuthProvider } from "./hooks/authProvider"
+import { CookieConsent } from "./components/CookieConsent"
 
-const inter = Inter({
-	weight: ["400", "500", "600"],
-	subsets: ["latin"],
+const inter = localFont({
+	src: "./inter.ttf",
 	display: "swap",
 	variable: "--font-inter",
 })
@@ -25,10 +25,14 @@ const RootLayout = ({ children }: { children: ReactNode }) => (
 		<ThemeRegistry options={{ key: "mui" }}>
 			<body className="bg-[#FBFDF8] min-h-screen flex flex-col justify-between">
 				<AuthProvider>
-					<NavBar />
-					<main className="flex-1 flex flex-col items-center">{children}</main>
-					<HelpButton />
-					<Footer />
+					<CookieConsent>
+						<NavBar />
+						<main className="flex-1 flex flex-col items-center">
+							{children}
+						</main>
+						<HelpButton />
+						<Footer />
+					</CookieConsent>
 				</AuthProvider>
 			</body>
 		</ThemeRegistry>

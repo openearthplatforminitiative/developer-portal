@@ -7,21 +7,20 @@ import {
 	IconButton,
 	Tooltip,
 } from "@mui/material"
-import { ChangeEvent, createRef, useState } from "react"
+import { ChangeEvent, useRef, useState } from "react"
+import { createClient } from "../dashboard/actions"
 
 type ApplicationRegistrationFormProps = {
-	onSubmit: (e: React.FormEvent<HTMLFormElement>) => void
-	onCancel: () => void
-	submitting: boolean
+	onSuccess: () => void
 }
 
 export const ApplicationRegistrationForm = ({
-	onSubmit,
-	submitting,
+	onSuccess,
 }: ApplicationRegistrationFormProps) => {
 	const [open, setOpen] = useState(false)
 	const [error, setError] = useState(false)
 	const [submitable, setSubmitable] = useState(false)
+	const [submitting, setSubmitting] = useState(false)
 	const [validationMessage, setValidationMessage] = useState<string>()
 
 	const maxLength = 20
@@ -30,10 +29,20 @@ export const ApplicationRegistrationForm = ({
 
 	const regex = /^[a-zA-Z0-9]*$/
 
-	const inputRef = createRef<HTMLInputElement>()
+	const inputRef = useRef<HTMLInputElement>(null)
+
+	const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault()
+		setSubmitting(true)
+		await createClient(inputRef.current?.value || "")
+		await onSuccess()
+		setSubmitting(false)
+		setOpen(false)
+	}
 
 	const handleOpen = () => {
 		setOpen(true)
+		console.log(inputRef.current)
 		inputRef.current?.focus()
 	}
 	const handleClose = () => setOpen(false)
@@ -60,24 +69,21 @@ export const ApplicationRegistrationForm = ({
 	}
 
 	return (
-		<form
-			noValidate
-			autoComplete="off"
-			onSubmit={onSubmit}
-			className="flex flex-col gap-4"
-		>
-			<FormControl className="w-full py-4 px-4">
+		<form noValidate autoComplete="off" onSubmit={onSubmit}>
+			<FormControl className="flex flex-col gap-1 w-full py-4 px-4">
 				<Box className="flex w-full items-center justify-between gap-4">
-					<TextField
-						color="primary"
-						label="Name"
-						name="name"
-						error={error}
-						ref={inputRef}
-						onChange={handleTyping}
-						className="flex-1"
-						aria-describedby="my-helper-text"
-					/>
+					<Box sx={{ opacity: open ? 1 : 0 }} className="flex flex-1">
+						<TextField
+							color="primary"
+							label="Name"
+							name="name"
+							error={error}
+							inputRef={inputRef}
+							onChange={handleTyping}
+							className="flex-1"
+							aria-describedby="my-helper-text"
+						/>
+					</Box>
 					<Box className="flex gap-2">
 						{open ? (
 							<>

@@ -52,6 +52,14 @@ const Footer = () => {
 										About the project <ExternalLinkIconSmall />
 									</a>
 								</ListItem>
+								<ListItem>
+									<Link
+										className="underline hover:no-underline"
+										href="/cookies"
+									>
+										Cookies
+									</Link>
+								</ListItem>
 							</List>
 						</Box>
 						<Box>

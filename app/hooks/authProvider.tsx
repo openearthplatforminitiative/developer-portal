@@ -8,6 +8,7 @@ import {
 	ReactNode,
 	useEffect,
 } from "react"
+import Cookies from "js-cookie"
 
 interface AuthContextType {
 	user: string | undefined
@@ -25,11 +26,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 	const [user, setUser] = useState<string>()
 
 	useEffect(() => {
-		const cookieValue = document.cookie
-			.split("; ")
-			.find((row) => row.startsWith("developer_portal="))
-			?.split("=")[1]
-		setUser(cookieValue || undefined)
+		setUser(Cookies.get("username") || undefined)
 	}, [currentRoute])
 
 	const logout = () => {
