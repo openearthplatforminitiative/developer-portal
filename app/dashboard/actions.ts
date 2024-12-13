@@ -53,11 +53,10 @@ export async function createClient(clientName: string) {
 	const cookieStore = await cookies()
 	const cookie = cookieStore.get("__Secure-openepi_user")
 	return await fetch(
-		`https://${process.env.API_DOMAIN}/client-registration/clients/`,
+		`https://${process.env.API_DOMAIN}/client-registration/clients/?client_name=${clientName}`,
 		{
 			method: "POST",
 			credentials: "include",
-			body: JSON.stringify({ client_name: clientName }),
 			headers: {
 				Cookie: `__Secure-openepi_user=${cookie?.value}`,
 			},
