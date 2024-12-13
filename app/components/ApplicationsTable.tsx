@@ -10,6 +10,7 @@ import {
 } from "@mui/material"
 import { useState } from "react"
 import { ConfirmationDialog } from "./ConfirmationDialog"
+import { deleteClient, updateClient } from "../dashboard/actions"
 
 type application = {
 	client_name: string
@@ -20,11 +21,13 @@ type application = {
 
 type ApplicationsTableProps = {
 	applications: application[]
-	onDelete: (clientId: string) => void
-	onRenew: (clientId: string, clientName: string) => void
+	onSuccess: () => void
 }
 
-export const ApplicationsTable = (props: ApplicationsTableProps) => {
+export const ApplicationsTable = ({
+	applications,
+	onSuccess,
+}: ApplicationsTableProps) => {
 	const [secret, setShowSecret] = useState<string | false>(false)
 
 	const isShowSecret = (applicationId: string) => {
@@ -57,12 +60,13 @@ export const ApplicationsTable = (props: ApplicationsTableProps) => {
 	const [applicationToDelete, setApplicationToDelete] = useState<application>()
 	const [applicationToRenew, setApplicationToRenew] = useState<application>()
 
-	const handleConfirmRenew = () => {
+	const handleConfirmRenew = async () => {
 		if (applicationToRenew) {
-			props.onRenew(
+			await updateClient(
 				applicationToRenew.client_id,
 				applicationToRenew.client_name
 			)
+			onSuccess()
 			setApplicationToRenew(undefined)
 		}
 	}
@@ -73,7 +77,8 @@ export const ApplicationsTable = (props: ApplicationsTableProps) => {
 
 	const handleConfirmDelete = () => {
 		if (applicationToDelete) {
-			props.onDelete(applicationToDelete.client_id)
+			deleteClient(applicationToDelete.client_id)
+			onSuccess()
 			setApplicationToDelete(undefined)
 		}
 	}
@@ -94,7 +99,7 @@ export const ApplicationsTable = (props: ApplicationsTableProps) => {
 					</TableRow>
 				</TableHead>
 				<TableBody>
-					{props.applications.map((application: application) => (
+					{applications.map((application: application) => (
 						<TableRow
 							className="odd:bg-neutral-99 even:bg-neutralVariant-99"
 							key={application.client_id}

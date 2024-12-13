@@ -7,11 +7,11 @@ import {
 	IconButton,
 	Tooltip,
 } from "@mui/material"
-import { ChangeEvent, useRef, useState } from "react"
+import { ChangeEvent, useEffect, useRef, useState } from "react"
 import { createClient } from "../dashboard/actions"
 
 type ApplicationRegistrationFormProps = {
-	onSuccess: () => void
+	onSuccess: () => Promise<void>
 }
 
 export const ApplicationRegistrationForm = ({
@@ -39,6 +39,10 @@ export const ApplicationRegistrationForm = ({
 		setSubmitting(false)
 		setOpen(false)
 	}
+
+	useEffect(() => {
+		if (open) inputRef.current?.focus()
+	}, [open])
 
 	const handleOpen = () => {
 		setOpen(true)
@@ -72,7 +76,7 @@ export const ApplicationRegistrationForm = ({
 		<form noValidate autoComplete="off" onSubmit={onSubmit}>
 			<FormControl className="flex flex-col gap-1 w-full py-4 px-4">
 				<Box className="flex w-full items-center justify-between gap-4">
-					<Box sx={{ opacity: open ? 1 : 0 }} className="flex flex-1">
+					<Box visibility={open ? "visible" : "hidden"} className="flex flex-1">
 						<TextField
 							color="primary"
 							label="Name"
@@ -80,6 +84,8 @@ export const ApplicationRegistrationForm = ({
 							error={error}
 							inputRef={inputRef}
 							onChange={handleTyping}
+							disabled={!open}
+							hidden={!open}
 							className="flex-1"
 							aria-describedby="my-helper-text"
 						/>

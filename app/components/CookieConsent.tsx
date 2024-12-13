@@ -30,23 +30,26 @@ export const CookieConsent = ({ children }: CookieConsentProps) => {
 		<>
 			{children}
 			{!informedUser && (
-				<Box className="w-full fixed bottom-0 bg-secondary-90 flex justify-center px-8 py-4">
-					<Box className="w-full lg:max-w-7xl flex justify-between items-center">
+				<Box className="w-full fixed bottom-0 bg-card border-t border-t-neutral-90 flex justify-center py-4">
+					<Box className="w-full lg:max-w-7xl flex justify-between px-8 items-center">
 						<Typography variant="body2">
-							<Cookie className="size-8 mr-2" />
+							<Cookie className="size-8 mr-2 text-neutral-30" />
 							OpenEPI developer portal uses cookies for essential
 							functionalities
 						</Typography>
-						<Box className="flex gap-2 items-center">
-							<Link href="/cookies" className="text-neutral-0 text-xl">
-								READ MORE
+						<Box className="flex gap-4 items-center">
+							<Link
+								href="/cookies"
+								className="text-neutral-0 text-xl underline hover:no-underline"
+							>
+								Read more
 							</Link>
 							<Button
-								className="rounded-full shadow-none"
+								className="rounded-full shadow-none normal-case text font-normal"
 								variant="contained"
 								onClick={handleClick}
 							>
-								I understand
+								I Understand
 							</Button>
 						</Box>
 					</Box>

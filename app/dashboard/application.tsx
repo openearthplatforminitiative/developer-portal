@@ -4,7 +4,7 @@ import { Skeleton, Typography } from "@mui/material"
 import { useEffect, useState } from "react"
 import { ApplicationRegistrationForm } from "../components/ApplicationRegistrationForm"
 import { ApplicationsTable } from "../components/ApplicationsTable"
-import { deleteClient, getClients, updateClient } from "./actions"
+import { getClients } from "./actions"
 
 type Application = {
 	client_name: string
@@ -31,16 +31,6 @@ export const Application = () => {
 		initFetch()
 	}, [])
 
-	const handleRenew = async (clientId: string, clientName: string) => {
-		await updateClient(clientId, clientName)
-		await fetchClients()
-	}
-
-	const handleDelete = async (clientId: string) => {
-		await deleteClient(clientId)
-		await fetchClients()
-	}
-
 	return (
 		<>
 			{loading ? (
@@ -53,8 +43,7 @@ export const Application = () => {
 			) : (
 				<ApplicationsTable
 					applications={applications}
-					onDelete={handleDelete}
-					onRenew={handleRenew}
+					onSuccess={fetchClients}
 				/>
 			)}
 			<ApplicationRegistrationForm onSuccess={fetchClients} />

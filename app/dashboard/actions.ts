@@ -31,7 +31,7 @@ export async function updateClient(clientId: string, clientName: string) {
 				Cookie: `__Secure-openepi_user=${cookie?.value}`,
 			},
 		}
-	).then((res) => res.json())
+	).then((res) => res.ok)
 }
 
 export async function deleteClient(clientId: string) {
@@ -46,7 +46,7 @@ export async function deleteClient(clientId: string) {
 				Cookie: `__Secure-openepi_user=${cookie?.value}`,
 			},
 		}
-	).then((res) => res.json())
+	).then((res) => res.ok)
 }
 
 export async function createClient(clientName: string) {
@@ -61,5 +61,5 @@ export async function createClient(clientName: string) {
 				Cookie: `__Secure-openepi_user=${cookie?.value}`,
 			},
 		}
-	).then((res) => res.json())
+	).then((res) => res.ok)
 }
