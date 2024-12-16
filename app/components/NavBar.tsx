@@ -135,50 +135,48 @@ const NavBar = () => {
 					disableScrollLock={true}
 					anchorEl={anchorEl}
 				>
-					<MenuItem onClick={handleClose}>
-						<Link href="/data-catalog" className="p-2">
+					<Link href="/data-catalog">
+						<MenuItem onClick={handleClose} className="py-3 px-6 flex gap-2">
 							<Typography className="text-lg">Data catalog</Typography>
-						</Link>
-					</MenuItem>
-					<MenuItem onClick={handleClose}>
-						<Link href="/resources" className="p-2">
+						</MenuItem>
+					</Link>
+					<Link href="/resources">
+						<MenuItem onClick={handleClose} className="py-3 px-6 flex gap-2">
 							<Typography className="text-lg">Resources </Typography>
-						</Link>
-					</MenuItem>
-					<MenuItem onClick={handleClose}>
-						<Link href="/contact" className="p-2">
+						</MenuItem>
+					</Link>
+					<MenuItem onClick={handleClose} className="py-3 px-6 flex gap-2">
+						<Link href="/contact">
 							<Typography className="text-lg">Contact</Typography>
 						</Link>
 					</MenuItem>
-					<MenuItem onClick={handleClose}>
-						<Link
-							href="https://openepi.io"
-							target="_blank"
-							className="flex flex-row gap-2 items-center p-2"
-						>
+					<Link href="https://openepi.io" target="_blank">
+						<MenuItem onClick={handleClose} className="py-3 px-6 flex gap-2">
 							<Typography className="text-lg">About the project</Typography>
 							<ArrowOutward />
-						</Link>
-					</MenuItem>
-					<MenuItem onClick={handleClose} className="bg-primary-90 mb-[-8px]">
-						{name ? (
-							<Link
-								href="/dashboard"
-								className="flex flex-row gap-2 items-center p-2"
+						</MenuItem>
+					</Link>
+					{name ? (
+						<Link href="/dashboard">
+							<MenuItem
+								onClick={handleClose}
+								className="bg-primary-90 mb-[-8px] py-3 px-6 flex gap-2"
 							>
 								<Typography className="text-lg">Dashboard</Typography>
 								<Person />
-							</Link>
-						) : (
-							<Link
-								href="/dashboard"
-								className="flex flex-row gap-2 items-center p-2"
+							</MenuItem>
+						</Link>
+					) : (
+						<Link href="/dashboard">
+							<MenuItem
+								onClick={handleClose}
+								className="bg-primary-90 mb-[-8px] py-3 px-6 flex gap-2"
 							>
 								<Typography className="text-lg">Sign in</Typography>
 								<ArrowOutward />
-							</Link>
-						)}
-					</MenuItem>
+							</MenuItem>
+						</Link>
+					)}
 				</Menu>
 			</Box>
 		</nav>
