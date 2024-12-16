@@ -12,14 +12,26 @@ type Application = {
 	client_secret: string
 }
 
+const dummy_applications = [
+	{
+		client_name: "Test",
+		client_id: "kroglid-Test",
+		client_secret: "ajfiajwifhq3j4iw12j12io4j3nsdkonawipdaw",
+	},
+	{
+		client_name: "Test2",
+		client_id: "kroglid-Test2",
+		client_secret: "ajfiajwifhq3j4iw12j12io4j3nsdkonawipdaw",
+	},
+]
 export const Application = () => {
 	const [loading, setLoading] = useState(true)
 	const [applications, setApplications] = useState<Application[]>([])
 
 	const fetchClients = async () => {
 		const clients = await getClients()
-		console.log(clients)
-		setApplications(clients)
+		if (clients) setApplications(clients)
+		else setApplications(dummy_applications)
 	}
 
 	const initFetch = async () => {
