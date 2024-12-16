@@ -8,8 +8,10 @@ import { usePathname } from "next/navigation"
 import { Button, IconButton, Menu, MenuItem } from "@mui/material"
 import { useState } from "react"
 import { BurgerMenu } from "@/app/icons/BurgerMenu"
-import { ArrowOutward, Login, Person } from "@mui/icons-material"
+import { ArrowOutward, Login, Logout, Person } from "@mui/icons-material"
 import { useAuth } from "../hooks/authProvider"
+import { signOut } from "../actions"
+import { OpenEPILogo } from "../icons/OpenEPILogo"
 
 const NavBar = () => {
 	const { user: name, logout } = useAuth()
@@ -56,7 +58,12 @@ const NavBar = () => {
 		<nav className="flex flex-row items-center sm:p-12 p-6 justify-between">
 			<Link href="/">
 				<Box className="flex lg:flex-row flex-col gap-5 items-center">
-					<OpenEPILogoLarge />
+					<Box className="xs:flex hidden">
+						<OpenEPILogoLarge />
+					</Box>
+					<Box className="xs:hidden flex">
+						<OpenEPILogo />
+					</Box>
 					<Typography className="lg:text-4xl 2xl:inline hidden">
 						| Developer Portal
 					</Typography>
@@ -100,7 +107,7 @@ const NavBar = () => {
 									<Typography className="text-xl">Dashboard</Typography>
 								</MenuItem>
 							</Link>
-							<MenuItem className="p-4" onClick={logout}>
+							<MenuItem className="p-4" onClick={signOut}>
 								<Typography className="text-xl flex items-center gap-1">
 									Sign out
 								</Typography>
@@ -157,23 +164,34 @@ const NavBar = () => {
 						</MenuItem>
 					</Link>
 					{name ? (
-						<Link href="/dashboard">
-							<MenuItem
-								onClick={handleClose}
-								className="bg-primary-90 mb-[-8px] py-3 px-6 flex gap-2"
-							>
-								<Typography className="text-lg">Dashboard</Typography>
-								<Person />
-							</MenuItem>
-						</Link>
+						<>
+							<Link href="/dashboard">
+								<MenuItem
+									onClick={handleClose}
+									className="py-3 px-6 flex gap-2"
+								>
+									<Typography className="text-lg">Dashboard</Typography>
+									<Person />
+								</MenuItem>
+							</Link>
+							<Link href="/dashboard/oauth2/sign_out?rd=https://auth-dev3.openepi.io/realms/openepi/protocol/openid-connect/logout">
+								<MenuItem
+									onClick={handleClose}
+									className="py-3 px-6 flex gap-2"
+								>
+									<Typography className="text-lg">Sign out</Typography>
+									<Logout />
+								</MenuItem>
+							</Link>
+						</>
 					) : (
 						<Link href="/dashboard">
 							<MenuItem
 								onClick={handleClose}
-								className="bg-primary-90 mb-[-8px] py-3 px-6 flex gap-2"
+								className="bg-primary-90 py-3 px-6 flex gap-2"
 							>
 								<Typography className="text-lg">Sign in</Typography>
-								<ArrowOutward />
+								<Login />
 							</MenuItem>
 						</Link>
 					)}
