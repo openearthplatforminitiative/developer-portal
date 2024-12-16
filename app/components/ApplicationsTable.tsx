@@ -1,4 +1,11 @@
-import { Visibility, VisibilityOff, Clear, Refresh } from "@mui/icons-material"
+import {
+	Visibility,
+	VisibilityOff,
+	Clear,
+	Refresh,
+	MoreHoriz,
+	Close,
+} from "@mui/icons-material"
 import {
 	Table,
 	TableHead,
@@ -7,6 +14,10 @@ import {
 	TableBody,
 	IconButton,
 	Tooltip,
+	Box,
+	Typography,
+	Menu,
+	MenuItem,
 } from "@mui/material"
 import { useState } from "react"
 import { ConfirmationDialog } from "./ConfirmationDialog"
@@ -30,9 +41,25 @@ export const ApplicationsTable = ({
 }: ApplicationsTableProps) => {
 	const [secret, setShowSecret] = useState<string | false>(false)
 
+	const [open, setOpen] = useState(false)
+
 	const isShowSecret = (applicationId: string) => {
 		return secret === applicationId
 	}
+
+	const [anchorElDropdown, setAnchorElDropdown] = useState<null | HTMLElement>(
+		null
+	)
+
+	const handleDropdown = (event: React.MouseEvent<HTMLElement>) => {
+		setAnchorElDropdown(event.currentTarget)
+	}
+
+	const handleDropdownClose = () => {
+		setAnchorElDropdown(null)
+	}
+
+	const isDropdownOpen = Boolean(anchorElDropdown)
 
 	const showSecret = (applicationId: string) => {
 		setShowSecret(applicationId)
@@ -89,7 +116,78 @@ export const ApplicationsTable = ({
 
 	return (
 		<>
-			<Table>
+			<Box className="lg:hidden">
+				{applications.map((application: application) => (
+					<Box className="relative border-t border-l border-r last-of-type:border-b border-neutral-90 first-of-type:rounded-t-2xl last-of-type:rounded-b-2xl p-4">
+						<Typography className="text-3xl mb-5">
+							{application.client_name}
+						</Typography>
+						<Typography className="text-sm font-medium">CLIENT ID</Typography>
+						<Typography className="text-2xl mb-4">
+							{application.client_id}
+						</Typography>
+						<Typography className="text-sm font-medium">
+							CLIENT SECRET
+						</Typography>
+						<Box className="flex items-center gap-2">
+							<Typography
+								style={{ wordBreak: "break-word" }}
+								className="text-2xl font-mono"
+							>
+								{isShowSecret(application.client_id)
+									? application.client_secret
+									: getBullet(application.client_secret)}
+							</Typography>
+							<Tooltip title="Show secret">
+								<IconButton
+									aria-label="show secret"
+									onClick={() =>
+										isShowSecret(application.client_id)
+											? hideSecret()
+											: showSecret(application.client_id)
+									}
+								>
+									{isShowSecret(application.client_id) ? (
+										<Visibility />
+									) : (
+										<VisibilityOff />
+									)}
+								</IconButton>
+							</Tooltip>
+						</Box>
+						<IconButton
+							onClick={handleDropdown}
+							className="absolute top-4 right-4 bg-neutral-90"
+						>
+							<MoreHoriz />
+						</IconButton>
+						<Menu
+							classes={{ paper: "bg-[#FBFDF8]" }}
+							open={isDropdownOpen}
+							anchorEl={anchorElDropdown}
+							onClose={handleDropdownClose}
+							anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+							transformOrigin={{ vertical: "top", horizontal: "right" }}
+						>
+							<MenuItem
+								className="flex gap-2 px-6 py-3"
+								onClick={() => setApplicationToRenew(application)}
+							>
+								<Refresh />
+								Renew Client Secret
+							</MenuItem>
+							<MenuItem
+								className="flex gap-2 px-6 py-3"
+								onClick={() => setApplicationToDelete(application)}
+							>
+								<Close />
+								Delete Application
+							</MenuItem>
+						</Menu>
+					</Box>
+				))}
+			</Box>
+			<Table className="lg:table hidden">
 				<TableHead>
 					<TableRow>
 						<TableHeadCell>Name</TableHeadCell>
@@ -100,15 +198,12 @@ export const ApplicationsTable = ({
 				</TableHead>
 				<TableBody>
 					{applications.map((application: application) => (
-						<TableRow
-							className="odd:bg-neutral-99 even:bg-neutralVariant-99"
-							key={application.client_id}
-						>
+						<TableRow key={application.client_id}>
 							<TableBodyCell>{application.client_name}</TableBodyCell>
 							<TableBodyCell align="right">
 								{application.client_id}
 							</TableBodyCell>
-							<TableBodyCell align="right">
+							<TableBodyCell align="right" className="font-mono">
 								{isShowSecret(application.client_id)
 									? application.client_secret
 									: getBullet(application.client_secret)}
