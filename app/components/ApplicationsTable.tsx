@@ -124,7 +124,6 @@ export const ApplicationsTable = ({
 	const handleConfirmDelete = async () => {
 		if (applicationToDelete) {
 			const client = await deleteClient(applicationToDelete.client_id)
-			console.error(client)
 			if (client.errors !== undefined) {
 				setAlert({
 					severity: "error",
@@ -151,7 +150,10 @@ export const ApplicationsTable = ({
 		<>
 			<Box className="lg:hidden">
 				{applications.map((application: Application) => (
-					<Box className="relative border-t border-l border-r last-of-type:border-b border-neutral-90 first-of-type:rounded-t-2xl last-of-type:rounded-b-2xl p-4">
+					<Box
+						className="relative border-t border-l border-r last-of-type:border-b border-neutral-90 first-of-type:rounded-t-2xl last-of-type:rounded-b-2xl p-4"
+						key={application.client_id}
+					>
 						<Typography className="text-3xl mb-5">
 							{application.client_name}
 						</Typography>

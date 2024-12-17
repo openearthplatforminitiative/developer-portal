@@ -22,7 +22,7 @@ import { signOut } from "../actions"
 import { OpenEPILogo } from "../icons/OpenEPILogo"
 
 const NavBar = () => {
-	const { user: name, logout } = useAuth()
+	const { user, logout } = useAuth()
 
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -32,7 +32,6 @@ const NavBar = () => {
 		"px-6 py-2 rounded-full flex flex-row items-center gap-1.5 hover:bg-[#1d1b2014]"
 
 	const linkClassName = (path: string, primary?: boolean) => {
-		console.log(path)
 		return currentRoute.startsWith(path)
 			? baseStyle +
 					(primary
@@ -98,14 +97,14 @@ const NavBar = () => {
 				>
 					About the project <ArrowOutward />
 				</Link>
-				{name ? (
+				{user ? (
 					<>
 						<Button
 							onClick={handleDropdown}
 							className={linkClassName("/dashboard", true)}
 						>
 							<Person />
-							{name}
+							{user}
 							{isDropdownOpen ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
 						</Button>
 						<Menu
@@ -145,12 +144,11 @@ const NavBar = () => {
 			<Box className="xl:hidden">
 				<IconButton
 					size="large"
-					edge="start"
 					color="inherit"
 					aria-label="menu"
 					onClick={handleClick}
 				>
-					<BurgerIcon className="text-5xl" />
+					<BurgerIcon className="text-3xl" />
 				</IconButton>
 				<Menu
 					open={isOpen}
@@ -179,8 +177,8 @@ const NavBar = () => {
 							<ArrowOutward />
 						</MenuItem>
 					</Link>
-					{name ? (
-						<>
+					{user ? (
+						<Box>
 							<Link href="/dashboard">
 								<MenuItem
 									onClick={handleClose}
@@ -199,7 +197,7 @@ const NavBar = () => {
 									<Logout />
 								</MenuItem>
 							</Link>
-						</>
+						</Box>
 					) : (
 						<Link href="/dashboard">
 							<MenuItem
