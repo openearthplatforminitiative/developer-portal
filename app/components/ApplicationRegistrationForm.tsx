@@ -6,9 +6,6 @@ import {
 	FormHelperText,
 	IconButton,
 	Tooltip,
-	Snackbar,
-	Alert,
-	AlertTitle,
 } from "@mui/material"
 import { ChangeEvent, useEffect, useRef, useState } from "react"
 import { createClient } from "../dashboard/actions"
@@ -42,7 +39,6 @@ export const ApplicationRegistrationForm = ({
 		setSubmitting(true)
 		const client = await createClient(inputRef.current?.value || "")
 		if (client.errors !== undefined) {
-			console.error("Could not create client")
 			setAlert({
 				severity: "error",
 				title: `Could not create ${inputRef.current?.value}`,
@@ -66,7 +62,6 @@ export const ApplicationRegistrationForm = ({
 
 	const handleOpen = () => {
 		setOpen(true)
-		console.log(inputRef.current)
 		inputRef.current?.focus()
 	}
 	const handleClose = () => setOpen(false)

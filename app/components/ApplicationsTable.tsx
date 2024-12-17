@@ -136,7 +136,7 @@ export const ApplicationsTable = ({
 					title: "Success",
 					message: `${applicationToDelete.client_name} was deleted successfully`,
 				})
-				onDelete(client.client_id)
+				onDelete(applicationToDelete.client_id)
 			}
 			setApplicationToDelete(undefined)
 		}
