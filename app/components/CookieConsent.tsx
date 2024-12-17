@@ -11,7 +11,7 @@ type CookieConsentProps = {
 }
 
 export const CookieConsent = ({ children }: CookieConsentProps) => {
-	const [informedUser, setInformedUser] = useState<boolean>()
+	const [informedUser, setInformedUser] = useState(true)
 
 	useEffect(() => {
 		setInformedUser(Cookies.get("cookie_informed") === "true")
