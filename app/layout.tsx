@@ -6,8 +6,9 @@ import { ReactNode } from "react"
 import ThemeRegistry from "@/app/components/ThemeRegistry"
 import Footer from "@/app/components/Footer"
 import HelpButton from "@/app/components/HelpButton"
-import { AuthProvider } from "./hooks/authProvider"
+import { AuthProvider } from "./providers/authProvider"
 import { CookieConsent } from "./components/CookieConsent"
+import { AlertProvider } from "./providers/alertProvider"
 
 const inter = localFont({
 	src: "./inter.ttf",
@@ -25,14 +26,16 @@ const RootLayout = ({ children }: { children: ReactNode }) => (
 		<ThemeRegistry options={{ key: "mui" }}>
 			<body className="bg-[#FBFDF8] min-h-screen flex flex-col justify-between">
 				<AuthProvider>
-					<CookieConsent>
-						<NavBar />
-						<main className="flex-1 flex flex-col items-center">
-							{children}
-						</main>
-						<HelpButton />
-						<Footer />
-					</CookieConsent>
+					<AlertProvider>
+						<CookieConsent>
+							<NavBar />
+							<main className="flex-1 flex flex-col items-center">
+								{children}
+							</main>
+							<HelpButton />
+							<Footer />
+						</CookieConsent>
+					</AlertProvider>
 				</AuthProvider>
 			</body>
 		</ThemeRegistry>
