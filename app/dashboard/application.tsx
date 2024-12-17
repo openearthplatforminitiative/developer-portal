@@ -1,11 +1,12 @@
 "use client"
 
-import { Button, Skeleton, Typography } from "@mui/material"
+import { Box, Button, Skeleton, Typography } from "@mui/material"
 import { useEffect, useState } from "react"
 import { ApplicationRegistrationForm } from "../components/ApplicationRegistrationForm"
 import { ApplicationsTable } from "../components/ApplicationsTable"
 import { getClients } from "./actions"
 import { type Application as ApplicationType } from "../types/application"
+import { Refresh } from "@mui/icons-material"
 
 export const Application = () => {
 	const [loading, setLoading] = useState(true)
@@ -15,7 +16,7 @@ export const Application = () => {
 	const fetchClients = async () => {
 		const clients = await getClients()
 		if (clients.errors !== undefined) {
-			setError(`Could not fetch applications\n${clients.errors[0].message}`)
+			setError(`Could not fetch applications.\n${clients.errors[0].message}`)
 		} else setApplications(clients.clients)
 	}
 
@@ -51,10 +52,19 @@ export const Application = () => {
 			{loading ? (
 				<Skeleton variant="rectangular" width="100%" height="60px" />
 			) : error ? (
-				<Typography className="text-xl xs:text-2xl bg-neutralVariant-95 p-4">
-					{error}
-					<Button onClick={refetch}>Try Again</Button>
-				</Typography>
+				<Box className="flex flex-col gap-2 bg-neutralVariant-95 p-4">
+					<Typography className="text-xl xs:text-2xl whitespace-pre-line">
+						{error}
+					</Typography>
+					<Button
+						variant="contained"
+						className="self-start gap-2 normal-case shadow-none rounded-full"
+						onClick={refetch}
+					>
+						Refetch
+						<Refresh />
+					</Button>
+				</Box>
 			) : applications.length == 0 ? (
 				<Typography className="text-xl xs:text-2xl bg-neutralVariant-95 p-4">
 					No applications registered yet. Click the button below to register a

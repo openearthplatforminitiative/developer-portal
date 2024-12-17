@@ -7,8 +7,16 @@ import Box from "@mui/material/Box"
 import { usePathname } from "next/navigation"
 import { Button, IconButton, Menu, MenuItem } from "@mui/material"
 import { useState } from "react"
-import { BurgerMenu } from "@/app/icons/BurgerMenu"
-import { ArrowOutward, Login, Logout, Person } from "@mui/icons-material"
+import {
+	ArrowOutward,
+	GridView,
+	KeyboardArrowDown,
+	KeyboardArrowUp,
+	Login,
+	Logout,
+	Person,
+	Menu as BurgerIcon,
+} from "@mui/icons-material"
 import { useAuth } from "../providers/authProvider"
 import { signOut } from "../actions"
 import { OpenEPILogo } from "../icons/OpenEPILogo"
@@ -23,14 +31,18 @@ const NavBar = () => {
 	const baseStyle: string =
 		"px-6 py-2 rounded-full flex flex-row items-center gap-1.5 hover:bg-[#1d1b2014]"
 
-	const linkClassName = (path: string, primary?: boolean) =>
-		currentRoute.startsWith(path)
+	const linkClassName = (path: string, primary?: boolean) => {
+		console.log(path)
+		return currentRoute.startsWith(path)
 			? baseStyle +
-				(primary
-					? " bg-primary-40 text-neutral-100 hover:text-neutral-0"
-					: " bg-secondary-90")
+					(primary
+						? " bg-primary-40 text-neutral-100 hover:text-neutral-0"
+						: " bg-secondary-90")
 			: baseStyle +
-				(primary ? " bg-primary-40 text-neutral-100 hover:text-neutral-0" : "")
+					(primary
+						? " bg-primary-40 text-neutral-100 hover:text-neutral-0"
+						: "")
+	}
 
 	const handleClose = () => {
 		setIsOpen(false)
@@ -70,13 +82,13 @@ const NavBar = () => {
 				</Box>
 			</Link>
 			<Box className="xl:flex xl:flex-row xl:text-2xl hidden">
-				<Link href="/data-catalog" className={linkClassName("/data-catalog/")}>
+				<Link href="/data-catalog" className={linkClassName("/data-catalog")}>
 					Data catalog
 				</Link>
-				<Link href="/resources" className={linkClassName("/resources/")}>
+				<Link href="/resources" className={linkClassName("/resources")}>
 					Resources
 				</Link>
-				<Link href="/contact" className={linkClassName("/contact/")}>
+				<Link href="/contact" className={linkClassName("/contact")}>
 					Contact
 				</Link>
 				<Link
@@ -92,7 +104,9 @@ const NavBar = () => {
 							onClick={handleDropdown}
 							className={linkClassName("/dashboard", true)}
 						>
-							{name} <Person />
+							<Person />
+							{name}
+							{isDropdownOpen ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
 						</Button>
 						<Menu
 							open={isDropdownOpen}
@@ -104,12 +118,14 @@ const NavBar = () => {
 						>
 							<Link href="/dashboard">
 								<MenuItem onClick={handleDropdownClose} className="p-4 w-44">
-									<Typography className="text-xl">Dashboard</Typography>
+									<Typography className="text-xl flex items-center gap-1">
+										<GridView /> Dashboard
+									</Typography>
 								</MenuItem>
 							</Link>
 							<MenuItem className="p-4" onClick={signOut}>
 								<Typography className="text-xl flex items-center gap-1">
-									Sign out
+									<Logout /> Sign out
 								</Typography>
 							</MenuItem>
 						</Menu>
@@ -134,7 +150,7 @@ const NavBar = () => {
 					aria-label="menu"
 					onClick={handleClick}
 				>
-					<BurgerMenu width={36} height={24} />
+					<BurgerIcon className="text-5xl" />
 				</IconButton>
 				<Menu
 					open={isOpen}

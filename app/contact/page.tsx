@@ -16,15 +16,17 @@ const ContactPage = () => {
 				Need help or want to get involved
 			</Typography>
 			<Box className="flex sm:flex-row flex-col gap-28">
-				<Box className="flex flex-col sm:w-1/2">
-					<Typography variant="h2" className="text-2xl xs:text-3xl ">
-						Submit bugs, feature requests and more
-					</Typography>
-					<Typography className="mt-8 mb-10 text-base">
-						Here you will find a overview of all our repositories. If your issue
-						doesn&apos;t apply to any of the repositories we recommend you use
-						our Discord or submit a general enquiry.
-					</Typography>
+				<Box className="flex items-stretch flex-col sm:w-1/2 justify-between">
+					<Box>
+						<Typography variant="h2" className="text-2xl xs:text-3xl ">
+							Submit bugs, feature requests and more
+						</Typography>
+						<Typography className="mt-8 mb-10 text-base">
+							Here you will find a overview of all our repositories. If your
+							issue doesn&apos;t apply to any of the repositories we recommend
+							you use our Discord or submit a general enquiry.
+						</Typography>
+					</Box>
 					<Link
 						href="https://github.com/openearthplatforminitiative"
 						target="_blank"
@@ -39,14 +41,16 @@ const ContactPage = () => {
 						</Button>
 					</Link>
 				</Box>
-				<Box className="flex flex-col gap-30 sm:w-1/2">
-					<Typography variant="h2" className="text-2xl xs:text-3xl">
-						Join the community and join the discussion
-					</Typography>
-					<Typography className="mt-8 mb-10 text-base">
-						See what’s going on, get help or start a conversation on our open
-						Discord server.
-					</Typography>
+				<Box className="flex items-stretch flex-col gap-30 sm:w-1/2 justify-between">
+					<Box>
+						<Typography variant="h2" className="text-2xl xs:text-3xl">
+							Join the community and join the discussion
+						</Typography>
+						<Typography className="mt-8 mb-10 text-base">
+							See what’s going on, get help or start a conversation on our open
+							Discord server.
+						</Typography>
+					</Box>
 					<Link
 						href="https://discord.gg/R4ASSWRe7c"
 						target="_blank"

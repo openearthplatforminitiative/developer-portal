@@ -74,7 +74,7 @@ const DataCatalogPage = () => {
 					We currently have 6 APIs available.
 				</Typography>
 			</Box>
-			<Box className="flex flex-wrap gap-14 mt-16">
+			<Box className="flex flex-wrap justify-stretch gap-14 mt-16">
 				{cards.map((card) => (
 					<ApiCard
 						key={card.id}
@@ -92,7 +92,7 @@ const DataCatalogPage = () => {
 				<Typography className="text-xl xs:text-2xl">
 					We provide two client libraries to make use of our data easier.
 				</Typography>
-				<Box className="flex lg:flex-row flex-col gap-6 mt-8 w-full">
+				<Box className="flex justify-stretch lg:flex-row flex-col justify-s gap-6 mt-8 w-full">
 					<InfoCard
 						externalLink={true}
 						header="Javascript"
