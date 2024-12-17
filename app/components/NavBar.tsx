@@ -9,7 +9,7 @@ import { Button, IconButton, Menu, MenuItem } from "@mui/material"
 import { useState } from "react"
 import { BurgerMenu } from "@/app/icons/BurgerMenu"
 import { ArrowOutward, Login, Logout, Person } from "@mui/icons-material"
-import { useAuth } from "../hooks/authProvider"
+import { useAuth } from "../providers/authProvider"
 import { signOut } from "../actions"
 import { OpenEPILogo } from "../icons/OpenEPILogo"
 

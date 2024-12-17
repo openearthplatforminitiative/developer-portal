@@ -6,12 +6,17 @@ import {
 	FormHelperText,
 	IconButton,
 	Tooltip,
+	Snackbar,
+	Alert,
+	AlertTitle,
 } from "@mui/material"
 import { ChangeEvent, useEffect, useRef, useState } from "react"
 import { createClient } from "../dashboard/actions"
+import { Application } from "../types/application"
+import { useAlert } from "../providers/alertProvider"
 
 type ApplicationRegistrationFormProps = {
-	onSuccess: () => Promise<void>
+	onSuccess: (client: Application) => Promise<void>
 }
 
 export const ApplicationRegistrationForm = ({
@@ -19,6 +24,7 @@ export const ApplicationRegistrationForm = ({
 }: ApplicationRegistrationFormProps) => {
 	const [open, setOpen] = useState(false)
 	const [error, setError] = useState(false)
+	const { setAlert } = useAlert()
 	const [submitable, setSubmitable] = useState(false)
 	const [submitting, setSubmitting] = useState(false)
 	const [validationMessage, setValidationMessage] = useState<string>()
@@ -34,8 +40,22 @@ export const ApplicationRegistrationForm = ({
 	const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		setSubmitting(true)
-		await createClient(inputRef.current?.value || "")
-		await onSuccess()
+		const client = await createClient(inputRef.current?.value || "")
+		if (client.errors !== undefined) {
+			console.error("Could not create client")
+			setAlert({
+				severity: "error",
+				title: `Could not create ${inputRef.current?.value}`,
+				message: client.errors[0].message,
+			})
+		} else {
+			await onSuccess(client)
+			setAlert({
+				severity: "success",
+				title: "Success",
+				message: `Application ${client.client_name} registered successfully`,
+			})
+		}
 		setSubmitting(false)
 		setOpen(false)
 	}

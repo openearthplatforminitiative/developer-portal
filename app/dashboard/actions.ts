@@ -5,7 +5,7 @@ import { cookies } from "next/headers"
 export async function getClients() {
 	const cookieStore = await cookies()
 	const cookie = cookieStore.get("__Secure-openepi_user")
-	return await fetch(
+	return fetch(
 		`https://${process.env.API_DOMAIN}/client-registration/clients/`,
 		{
 			method: "GET",
@@ -16,13 +16,22 @@ export async function getClients() {
 		}
 	)
 		.then((res) => res.json())
-		.then((data) => data.clients)
+		.catch((err) => {
+			console.error(err)
+			return {
+				errors: [
+					{
+						message: `Seems like the problem is on our side. Please try again later.`,
+					},
+				],
+			}
+		})
 }
 
 export async function updateClient(clientId: string, clientName: string) {
 	const cookieStore = await cookies()
 	const cookie = cookieStore.get("__Secure-openepi_user")
-	return await fetch(
+	return fetch(
 		`https://${process.env.API_DOMAIN}/client-registration/clients/${clientId}/?client_name=${clientName}`,
 		{
 			method: "PUT",
@@ -31,13 +40,24 @@ export async function updateClient(clientId: string, clientName: string) {
 				Cookie: `__Secure-openepi_user=${cookie?.value}`,
 			},
 		}
-	).then((res) => res.ok)
+	)
+		.then(async (res) => res.json())
+		.catch((err) => {
+			console.error(err)
+			return {
+				errors: [
+					{
+						message: `Seems like the problem is on our side. Please try again later.`,
+					},
+				],
+			}
+		})
 }
 
 export async function deleteClient(clientId: string) {
 	const cookieStore = await cookies()
 	const cookie = cookieStore.get("__Secure-openepi_user")
-	return await fetch(
+	return fetch(
 		`https://${process.env.API_DOMAIN}/client-registration/clients/${clientId}`,
 		{
 			method: "DELETE",
@@ -46,13 +66,24 @@ export async function deleteClient(clientId: string) {
 				Cookie: `__Secure-openepi_user=${cookie?.value}`,
 			},
 		}
-	).then((res) => res.ok)
+	)
+		.then((res) => (res.ok ? true : res.json()))
+		.catch((err) => {
+			console.error(err)
+			return {
+				errors: [
+					{
+						message: `Seems like the problem is on our side. Please try again later.`,
+					},
+				],
+			}
+		})
 }
 
 export async function createClient(clientName: string) {
 	const cookieStore = await cookies()
 	const cookie = cookieStore.get("__Secure-openepi_user")
-	return await fetch(
+	return fetch(
 		`https://${process.env.API_DOMAIN}/client-registration/clients/?client_name=${clientName}`,
 		{
 			method: "POST",
@@ -61,5 +92,16 @@ export async function createClient(clientName: string) {
 				Cookie: `__Secure-openepi_user=${cookie?.value}`,
 			},
 		}
-	).then((res) => res.ok)
+	)
+		.then(async (res) => res.json())
+		.catch((err) => {
+			console.error(err)
+			return {
+				errors: [
+					{
+						message: `Seems like the problem is on our side. Please try again later.`,
+					},
+				],
+			}
+		})
 }

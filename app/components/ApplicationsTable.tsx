@@ -18,30 +18,34 @@ import {
 	Typography,
 	Menu,
 	MenuItem,
+	Alert,
+	Snackbar,
+	AlertTitle,
 } from "@mui/material"
 import { useState } from "react"
 import { ConfirmationDialog } from "./ConfirmationDialog"
 import { deleteClient, updateClient } from "../dashboard/actions"
-
-type application = {
-	client_name: string
-	client_id: string
-	client_secret: string
-	showSecret?: boolean
-}
+import { Application } from "../types/application"
+import { useAlert } from "../providers/alertProvider"
 
 type ApplicationsTableProps = {
-	applications: application[]
-	onSuccess: () => void
+	applications: Application[]
+	onDelete: (client_id: string) => void
+	onUpdate: (client: Application) => void
+}
+
+type AlertProps = {
+	severity: "error" | "warning" | "info" | "success"
+	title: string
+	message: string
 }
 
 export const ApplicationsTable = ({
 	applications,
-	onSuccess,
+	onDelete,
+	onUpdate,
 }: ApplicationsTableProps) => {
 	const [secret, setShowSecret] = useState<string | false>(false)
-
-	const [open, setOpen] = useState(false)
 
 	const isShowSecret = (applicationId: string) => {
 		return secret === applicationId
@@ -84,16 +88,31 @@ export const ApplicationsTable = ({
 			.join("")
 	}
 
-	const [applicationToDelete, setApplicationToDelete] = useState<application>()
-	const [applicationToRenew, setApplicationToRenew] = useState<application>()
+	const [applicationToDelete, setApplicationToDelete] = useState<Application>()
+	const [applicationToRenew, setApplicationToRenew] = useState<Application>()
+	const { setAlert } = useAlert()
 
 	const handleConfirmRenew = async () => {
 		if (applicationToRenew) {
-			await updateClient(
+			const client = await updateClient(
 				applicationToRenew.client_id,
 				applicationToRenew.client_name
 			)
-			onSuccess()
+			if (client.errors !== undefined) {
+				setAlert({
+					severity: "error",
+					title: `Could not renew ${applicationToRenew.client_name}`,
+					message: client.errors[0].message,
+				})
+			} else {
+				setAlert({
+					severity: "success",
+					title: "Success",
+					message: `${applicationToRenew.client_name} was renewed successfully`,
+				})
+				onUpdate(client)
+				setApplicationToRenew(undefined)
+			}
 			setApplicationToRenew(undefined)
 		}
 	}
@@ -102,10 +121,24 @@ export const ApplicationsTable = ({
 		setApplicationToRenew(undefined)
 	}
 
-	const handleConfirmDelete = () => {
+	const handleConfirmDelete = async () => {
 		if (applicationToDelete) {
-			deleteClient(applicationToDelete.client_id)
-			onSuccess()
+			const client = await deleteClient(applicationToDelete.client_id)
+			console.error(client)
+			if (client.errors !== undefined) {
+				setAlert({
+					severity: "error",
+					title: `Could not delete ${applicationToDelete.client_name}`,
+					message: client.errors[0].message,
+				})
+			} else {
+				setAlert({
+					severity: "success",
+					title: "Success",
+					message: `${applicationToDelete.client_name} was deleted successfully`,
+				})
+				onDelete(client.client_id)
+			}
 			setApplicationToDelete(undefined)
 		}
 	}
@@ -117,7 +150,7 @@ export const ApplicationsTable = ({
 	return (
 		<>
 			<Box className="lg:hidden">
-				{applications.map((application: application) => (
+				{applications.map((application: Application) => (
 					<Box className="relative border-t border-l border-r last-of-type:border-b border-neutral-90 first-of-type:rounded-t-2xl last-of-type:rounded-b-2xl p-4">
 						<Typography className="text-3xl mb-5">
 							{application.client_name}
@@ -197,7 +230,7 @@ export const ApplicationsTable = ({
 					</TableRow>
 				</TableHead>
 				<TableBody>
-					{applications.map((application: application) => (
+					{applications.map((application: Application) => (
 						<TableRow key={application.client_id}>
 							<TableBodyCell>{application.client_name}</TableBodyCell>
 							<TableBodyCell align="right">
