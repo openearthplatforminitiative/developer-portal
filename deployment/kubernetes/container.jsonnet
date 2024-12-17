@@ -38,6 +38,15 @@
                   key: 'api_domain'
                 }
               }
+            },
+            {
+              name: 'AUTH_DOMAIN',
+              valueFrom: {
+                configMapKeyRef: {
+                  name: 'dev-portal-config',
+                  key: 'auth_domain'
+                }
+              }
             }
           ],
         }],
