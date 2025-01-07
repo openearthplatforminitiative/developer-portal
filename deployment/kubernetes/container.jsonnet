@@ -47,6 +47,51 @@
                   key: 'auth_domain'
                 }
               }
+            },
+            {
+              name: 'AUTH_CLIENT_ID',
+              valueFrom: {
+                configMapKeyRef: {
+                  name: 'dev-portal-config',
+                  key: 'auth_client_id'
+                }
+              }
+            },
+            {
+              name: 'AUTH_CLIENT_SECRET',
+              valueFrom: {
+                configMapKeyRef: {
+                  name: 'dev-portal-config',
+                  key: 'auth_client_secret'
+                }
+              }
+            },
+            {
+              name: 'AUTH_CLIENT_ISSUER',
+              valueFrom: {
+                configMapKeyRef: {
+                  name: 'dev-portal-config',
+                  key: 'auth_client_issuer'
+                }
+              }
+            },
+            {
+              name: 'NEXTAUTH_URL',
+              valueFrom: {
+                configMapKeyRef: {
+                  name: 'dev-portal-config',
+                  key: 'nextauth_url'
+                }
+              }
+            },
+            {
+              name: 'NEXTAUTH_SECRET',
+              valueFrom: {
+                configMapKeyRef: {
+                  name: 'dev-portal-config',
+                  key: 'nextauth_secret'
+                }
+              }
             }
           ],
         }],
