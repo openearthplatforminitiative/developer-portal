@@ -11,24 +11,13 @@ local hostMatch = std.extVar('hostMatch');
     entryPoints: ['websecure'],
     routes: [{
       kind: 'Rule',
-      match: 'Host(`' + hostMatch + '`) && !PathPrefix(`/dashboard`)',
+      match: 'Host(`' + hostMatch + '`)',
       services: [{
         kind: 'Service',
         name: 'developer-portal',
         port: 80,
       }],
     },
-    {
-      kind: 'Rule',
-      match: 'Host(`' + hostMatch + '`) && PathPrefix(`/dashboard`)',
-      services: [{
-        kind: 'Service',
-        name: 'developer-portal',
-        port: 80,
-      }],
-      middlewares: [{
-        name: 'oauth2-proxy',
-      }],
-    }],
+    ],
   },
 }
