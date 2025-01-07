@@ -9,7 +9,7 @@ import {
 } from "@mui/material"
 import { ChangeEvent, useEffect, useRef, useState } from "react"
 import { createClient } from "../dashboard/actions"
-import { Application } from "../types/application"
+import { Application } from "../../types/application"
 import { useAlert } from "../providers/alertProvider"
 
 type ApplicationRegistrationFormProps = {
@@ -46,10 +46,11 @@ export const ApplicationRegistrationForm = ({
 			})
 		} else {
 			await onSuccess(client)
+			inputRef.current!.value = ""
 			setAlert({
 				severity: "success",
 				title: "Success",
-				message: `Application ${client.client_name} registered successfully`,
+				message: `${client.client_name} was registered successfully`,
 			})
 		}
 		setSubmitting(false)

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import { ApplicationRegistrationForm } from "../components/ApplicationRegistrationForm"
 import { ApplicationsTable } from "../components/ApplicationsTable"
 import { getClients } from "./actions"
-import { type Application as ApplicationType } from "../types/application"
+import { type Application as ApplicationType } from "../../types/application"
 import { Refresh } from "@mui/icons-material"
 
 export const Application = () => {
@@ -15,8 +15,11 @@ export const Application = () => {
 
 	const fetchClients = async () => {
 		const clients = await getClients()
+		console.log(clients)
 		if (clients.errors !== undefined) {
 			setError(`Could not fetch applications.\n${clients.errors[0].message}`)
+		} else if (!clients.clients) {
+			setError("Could not fetch applications.")
 		} else setApplications(clients.clients)
 	}
 

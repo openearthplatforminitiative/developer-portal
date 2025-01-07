@@ -22,10 +22,6 @@ export const CookieConsent = ({ children }: CookieConsentProps) => {
 		Cookies.set("cookie_informed", "true", { expires: 90, sameSite: "strict" })
 	}
 
-	const handleReadMore = () => {
-		setInformedUser(true)
-	}
-
 	return (
 		<>
 			{children}

@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material"
 import { Application } from "./application"
 import { CredentialsExample } from "../code-examples/CredentialsExample"
+import { Suspense } from "react"
 
 const Page = () => {
 	return (
@@ -21,7 +22,9 @@ const Page = () => {
 				Applications
 			</Typography>
 			<Box className="w-full mb-8">
-				<Application />
+				<Suspense>
+					<Application />
+				</Suspense>
 			</Box>
 			<Typography
 				variant="h2"

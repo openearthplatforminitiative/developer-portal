@@ -18,6 +18,7 @@
 		"@mui/material": "^6",
 		"js-cookie": "^3.0.5",
 		"next": "^15",
+		"next-auth": "^4.24.11",
 		"react": "^19",
 		"react-dom": "^19",
 		"serve": "^14.2.4"

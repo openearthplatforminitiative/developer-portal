@@ -17,12 +17,14 @@ import {
 	Person,
 	Menu as BurgerIcon,
 } from "@mui/icons-material"
-import { useAuth } from "../providers/authProvider"
-import { signOut } from "../actions"
 import { OpenEPILogo } from "../icons/OpenEPILogo"
+import { signIn, signOut, useSession } from "next-auth/react"
 
 const NavBar = () => {
-	const { user, logout } = useAuth()
+	const { data: session } = useSession()
+
+	console.log(session)
+	const user = session?.user?.name
 
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -122,7 +124,10 @@ const NavBar = () => {
 									</Typography>
 								</MenuItem>
 							</Link>
-							<MenuItem className="p-4" onClick={signOut}>
+							<MenuItem
+								onClick={() => signOut({ redirect: false, callbackUrl: "/" })}
+								className="p-4"
+							>
 								<Typography className="text-xl flex items-center gap-1">
 									<Logout /> Sign out
 								</Typography>
@@ -130,15 +135,15 @@ const NavBar = () => {
 						</Menu>
 					</>
 				) : (
-					<Link
-						href="/dashboard"
+					<Button
+						onClick={() => signIn("keycloak", { callbackUrl: "/dashboard" })}
 						className={
 							baseStyle +
 							" bg-primary-40 text-neutral-100 hover:bg-[#1d1b2014] hover:text-neutral-0"
 						}
 					>
 						Sign in <Login />
-					</Link>
+					</Button>
 				)}
 			</Box>
 			<Box className="xl:hidden">
@@ -188,26 +193,22 @@ const NavBar = () => {
 									<Person />
 								</MenuItem>
 							</Link>
-							<Link href="/dashboard/oauth2/sign_out?rd=https://auth-dev3.openepi.io/realms/openepi/protocol/openid-connect/logout">
-								<MenuItem
-									onClick={handleClose}
-									className="py-3 px-6 flex gap-2"
-								>
-									<Typography className="text-lg">Sign out</Typography>
-									<Logout />
-								</MenuItem>
-							</Link>
+							<MenuItem
+								onClick={() => signOut({ redirect: false, callbackUrl: "/" })}
+								className="py-3 px-6 flex gap-2"
+							>
+								<Typography className="text-lg">Sign out</Typography>
+								<Logout />
+							</MenuItem>
 						</Box>
 					) : (
-						<Link href="/dashboard">
-							<MenuItem
-								onClick={handleClose}
-								className="bg-primary-90 py-3 px-6 flex gap-2"
-							>
-								<Typography className="text-lg">Sign in</Typography>
-								<Login />
-							</MenuItem>
-						</Link>
+						<MenuItem
+							onClick={() => signIn("keycloak", { callbackUrl: "/dashboard" })}
+							className="bg-primary-90 py-3 px-6 flex gap-2"
+						>
+							<Typography className="text-lg">Sign in</Typography>
+							<Login />
+						</MenuItem>
 					)}
 				</Menu>
 			</Box>

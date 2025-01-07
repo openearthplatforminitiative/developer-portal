@@ -18,26 +18,17 @@ import {
 	Typography,
 	Menu,
 	MenuItem,
-	Alert,
-	Snackbar,
-	AlertTitle,
 } from "@mui/material"
 import { useState } from "react"
 import { ConfirmationDialog } from "./ConfirmationDialog"
 import { deleteClient, updateClient } from "../dashboard/actions"
-import { Application } from "../types/application"
+import { Application } from "../../types/application"
 import { useAlert } from "../providers/alertProvider"
 
 type ApplicationsTableProps = {
 	applications: Application[]
 	onDelete: (client_id: string) => void
 	onUpdate: (client: Application) => void
-}
-
-type AlertProps = {
-	severity: "error" | "warning" | "info" | "success"
-	title: string
-	message: string
 }
 
 export const ApplicationsTable = ({
