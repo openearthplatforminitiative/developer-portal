@@ -1,7 +1,6 @@
 "use server"
 
-import { authOptions, getAccessToken } from "@/lib/auth-utils"
-import { getServerSession } from "next-auth"
+import { getAccessToken } from "@/lib/auth-utils"
 
 export async function getClients() {
 	const accessToken = await getAccessToken()
@@ -11,7 +10,7 @@ export async function getClients() {
 			method: "GET",
 			credentials: "include",
 			headers: {
-				authentication: `bearer ${accessToken}`,
+				Authorization: `Bearer ${accessToken}`,
 			},
 		}
 	)
@@ -36,7 +35,7 @@ export async function updateClient(clientId: string, clientName: string) {
 			method: "PUT",
 			credentials: "include",
 			headers: {
-				authentication: `bearer ${accessToken}`,
+				Authorization: `Bearer ${accessToken}`,
 			},
 		}
 	)
@@ -61,7 +60,7 @@ export async function deleteClient(clientId: string) {
 			method: "DELETE",
 			credentials: "include",
 			headers: {
-				authentication: `bearer ${accessToken}`,
+				Authorization: `Bearer ${accessToken}`,
 			},
 		}
 	)
@@ -86,7 +85,7 @@ export async function createClient(clientName: string) {
 			method: "POST",
 			credentials: "include",
 			headers: {
-				authentication: `bearer ${accessToken}`,
+				Authorization: `Bearer ${accessToken}`,
 			},
 		}
 	)
