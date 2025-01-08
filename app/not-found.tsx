@@ -1,4 +1,5 @@
-import { Box, Typography } from "@mui/material"
+import { ArrowForward } from "@mui/icons-material"
+import { Box, Button, Typography } from "@mui/material"
 import Link from "next/link"
 
 const NotFound = () => (
@@ -8,11 +9,20 @@ const NotFound = () => (
 				variant="h1"
 				className="leading-[48px] xs:leading-[64px] text-4xl xs:text-6xl"
 			>
-				Could not find the page you were looking for
+				Page does not exist
 			</Typography>
 			<Typography className="text-xl xs:text-2xl">
-				<Link href="/">Go back to the home page</Link>
+				We could not find the page you were looking for
 			</Typography>
+			<Link href="/">
+				<Button
+					variant="contained"
+					className="self-start gap-2 normal-case shadow-none rounded-full"
+					endIcon={<ArrowForward />}
+				>
+					Back to home
+				</Button>
+			</Link>
 		</Box>
 	</Box>
 )

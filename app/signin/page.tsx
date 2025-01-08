@@ -1,5 +1,6 @@
 "use client"
 
+import { Login } from "@mui/icons-material"
 import { Box, Button, Typography } from "@mui/material"
 import { signIn } from "next-auth/react"
 
@@ -20,6 +21,7 @@ const Page = () => {
 					variant="contained"
 					className="self-start gap-2 normal-case shadow-none rounded-full"
 					onClick={() => signIn("keycloak", { callbackUrl: "/dashboard" })}
+					endIcon={<Login />}
 				>
 					Sign in
 				</Button>
