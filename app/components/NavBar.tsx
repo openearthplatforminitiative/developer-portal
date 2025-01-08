@@ -67,6 +67,16 @@ const NavBar = () => {
 		setAnchorElDropdown(null)
 	}
 
+	const handleSignIn = () => {
+		signIn("keycloak", { callbackUrl: "/dashboard" })
+	}
+
+	const handleSignOut = () => {
+		if (currentRoute.startsWith("/dashboard")) {
+			signOut({ redirect: true, callbackUrl: "/" })
+		} else signOut({ redirect: false, callbackUrl: "/" })
+	}
+
 	return (
 		<nav className="flex flex-row items-center sm:p-12 p-6 justify-between">
 			<Link href="/">
@@ -124,10 +134,7 @@ const NavBar = () => {
 									</Typography>
 								</MenuItem>
 							</Link>
-							<MenuItem
-								onClick={() => signOut({ redirect: false, callbackUrl: "/" })}
-								className="p-4"
-							>
+							<MenuItem onClick={handleSignOut} className="p-4">
 								<Typography className="text-xl flex items-center gap-1">
 									<Logout /> Sign out
 								</Typography>
@@ -136,7 +143,7 @@ const NavBar = () => {
 					</>
 				) : (
 					<Button
-						onClick={() => signIn("keycloak", { callbackUrl: "/dashboard" })}
+						onClick={handleSignIn}
 						className={
 							baseStyle +
 							" bg-primary-40 text-neutral-100 hover:bg-[#1d1b2014] hover:text-neutral-0"
@@ -194,7 +201,7 @@ const NavBar = () => {
 								</MenuItem>
 							</Link>
 							<MenuItem
-								onClick={() => signOut({ redirect: false, callbackUrl: "/" })}
+								onClick={handleSignOut}
 								className="py-3 px-6 flex gap-2"
 							>
 								<Typography className="text-lg">Sign out</Typography>
@@ -203,7 +210,7 @@ const NavBar = () => {
 						</Box>
 					) : (
 						<MenuItem
-							onClick={() => signIn("keycloak", { callbackUrl: "/dashboard" })}
+							onClick={handleSignIn}
 							className="bg-primary-90 py-3 px-6 flex gap-2"
 						>
 							<Typography className="text-lg">Sign in</Typography>
