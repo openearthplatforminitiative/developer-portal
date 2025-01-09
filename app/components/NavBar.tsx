@@ -31,13 +31,6 @@ const NavBar = () => {
 	const baseStyle: string =
 		"px-6 py-2 rounded-full flex flex-row items-center gap-1.5 hover:bg-[#1d1b2014]"
 
-	useEffect(() => {
-		if (session?.error === "RefreshAccessTokenError") {
-			if (currentRoute.startsWith("/dashboard")) signIn("keycloak")
-			else handleSignOut()
-		}
-	}, [session, currentRoute])
-
 	const linkClassName = (path: string, primary?: boolean) => {
 		return currentRoute.startsWith(path)
 			? baseStyle +

@@ -51,7 +51,6 @@ const refreshAccessToken = async (token: JWT) => {
 }
 
 export const authOptions: NextAuthOptions = {
-	debug: true,
 	providers: [keycloakProvider],
 	callbacks: {
 		async jwt({ token, account }) {
