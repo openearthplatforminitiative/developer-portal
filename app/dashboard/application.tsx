@@ -15,7 +15,6 @@ export const Application = () => {
 
 	const fetchClients = async () => {
 		const clients = await getClients()
-		console.log(clients)
 		if (clients.errors !== undefined) {
 			setError(`Could not fetch applications.\n${clients.errors[0].message}`)
 		} else if (!clients.clients) {

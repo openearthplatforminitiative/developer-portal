@@ -1,5 +1,6 @@
 import KeycloakProvider from "next-auth/providers/keycloak"
 import { getServerSession, type NextAuthOptions } from "next-auth"
+import { JWT } from "next-auth/jwt"
 
 const keycloakProvider = KeycloakProvider({
 	clientId: process.env.AUTH_CLIENT_ID!,
@@ -15,22 +16,63 @@ const keycloakProvider = KeycloakProvider({
 	},
 })
 
+const refreshAccessToken = async (token: JWT) => {
+	try {
+		const response = await fetch(
+			`${process.env.AUTH_CLIENT_ISSUER}/protocol/openid-connect/token`,
+			{
+				method: "POST",
+				body: new URLSearchParams({
+					grant_type: "refresh_token",
+					refresh_token: token.refresh_token,
+					client_id: process.env.AUTH_CLIENT_ID!,
+					client_secret: process.env.AUTH_CLIENT_SECRET!,
+				}),
+			}
+		)
+		const newToken = await response.json()
+		if (!response.ok) {
+			throw newToken
+		}
+		return {
+			...token,
+			access_token: newToken.access_token,
+			id_token: newToken.id_token,
+			refresh_token: newToken.refresh_token,
+			expires_at: Date.now() + newToken.expires_in * 1000,
+		}
+	} catch (error) {
+		console.log("Failed to refresh token", error)
+		return {
+			...token,
+			error: "RefreshAccessTokenError",
+		}
+	}
+}
+
 export const authOptions: NextAuthOptions = {
 	debug: true,
 	providers: [keycloakProvider],
 	callbacks: {
 		async jwt({ token, account }) {
-			if (account?.access_token) {
-				token.accessToken = account.access_token
+			if (account) {
+				return {
+					...token,
+					access_token: account.access_token,
+					id_token: account.id_token,
+					refresh_token: account.refresh_token,
+					expires_at: account.expires_at! * 1000,
+				}
+			} else if (Date.now() < token.expires_at) {
+				return token
 			}
-			if (account?.id_token) {
-				token.id_token = account.id_token
-			}
-			return token
+			const newToken = await refreshAccessToken(token)
+			return newToken
 		},
 		async session({ session, token }) {
 			if (session.user) session.user
 			session.token = token
+			session.error = token.error
 			return session
 		},
 	},
@@ -40,7 +82,7 @@ export const authOptions: NextAuthOptions = {
 				`${keycloakProvider.options?.issuer}/protocol/openid-connect/logout`
 			)
 			logOutUrl.searchParams.set("id_token_hint", token.id_token)
-			console.log(await fetch(logOutUrl))
+			await fetch(logOutUrl)
 		},
 	},
 }
@@ -51,5 +93,5 @@ export async function getAccessToken(): Promise<string | undefined> {
 		console.error("No session found")
 		return undefined
 	}
-	return session.token.accessToken
+	return session.token.access_token
 }

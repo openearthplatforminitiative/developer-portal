@@ -6,7 +6,7 @@ import Link from "next/link"
 import Box from "@mui/material/Box"
 import { usePathname } from "next/navigation"
 import { Button, IconButton, Menu, MenuItem } from "@mui/material"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {
 	ArrowOutward,
 	GridView,
@@ -22,16 +22,21 @@ import { signIn, signOut, useSession } from "next-auth/react"
 
 const NavBar = () => {
 	const { data: session } = useSession()
-
-	console.log(session)
 	const user = session?.user?.name
 
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-
 	const currentRoute = usePathname()
+
 	const baseStyle: string =
 		"px-6 py-2 rounded-full flex flex-row items-center gap-1.5 hover:bg-[#1d1b2014]"
+
+	useEffect(() => {
+		if (session?.error === "RefreshAccessTokenError") {
+			if (currentRoute.startsWith("/dashboard")) signIn("keycloak")
+			else handleSignOut()
+		}
+	}, [session, currentRoute])
 
 	const linkClassName = (path: string, primary?: boolean) => {
 		return currentRoute.startsWith(path)
@@ -74,7 +79,7 @@ const NavBar = () => {
 	const handleSignOut = () => {
 		if (currentRoute.startsWith("/dashboard")) {
 			signOut({ redirect: true, callbackUrl: "/" })
-		} else signOut({ redirect: false, callbackUrl: "/" })
+		} else signOut({ redirect: false })
 	}
 
 	return (

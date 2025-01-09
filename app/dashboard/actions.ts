@@ -8,7 +8,6 @@ export async function getClients() {
 		`https://${process.env.API_DOMAIN}/client-registration/clients/`,
 		{
 			method: "GET",
-			credentials: "include",
 			headers: {
 				Authorization: `Bearer ${accessToken}`,
 			},
@@ -33,7 +32,6 @@ export async function updateClient(clientId: string, clientName: string) {
 		`https://${process.env.API_DOMAIN}/client-registration/clients/${clientId}/?client_name=${clientName}`,
 		{
 			method: "PUT",
-			credentials: "include",
 			headers: {
 				Authorization: `Bearer ${accessToken}`,
 			},
@@ -58,7 +56,6 @@ export async function deleteClient(clientId: string) {
 		`https://${process.env.API_DOMAIN}/client-registration/clients/${clientId}`,
 		{
 			method: "DELETE",
-			credentials: "include",
 			headers: {
 				Authorization: `Bearer ${accessToken}`,
 			},
@@ -83,7 +80,6 @@ export async function createClient(clientName: string) {
 		`https://${process.env.API_DOMAIN}/client-registration/clients/?client_name=${clientName}`,
 		{
 			method: "POST",
-			credentials: "include",
 			headers: {
 				Authorization: `Bearer ${accessToken}`,
 			},
