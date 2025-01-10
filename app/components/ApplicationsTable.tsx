@@ -5,6 +5,7 @@ import {
 	Refresh,
 	MoreHoriz,
 	Close,
+	ContentCopy,
 } from "@mui/icons-material"
 import {
 	Table,
@@ -112,6 +113,15 @@ export const ApplicationsTable = ({
 		setApplicationToRenew(undefined)
 	}
 
+	const copyToClipboard = (text: string) => {
+		navigator.clipboard.writeText(text)
+		setAlert({
+			severity: "success",
+			title: "Copied to clipboard",
+			message: "",
+		})
+	}
+
 	const handleConfirmDelete = async () => {
 		if (applicationToDelete) {
 			const client = await deleteClient(applicationToDelete.client_id)
@@ -151,6 +161,14 @@ export const ApplicationsTable = ({
 						<Typography className="text-sm font-medium">CLIENT ID</Typography>
 						<Typography className="text-2xl mb-4">
 							{application.client_id}
+							<Tooltip title="Copy to clipboard">
+								<IconButton
+									aria-label="copy client id"
+									onClick={() => copyToClipboard(application.client_id)}
+								>
+									<ContentCopy />
+								</IconButton>
+							</Tooltip>
 						</Typography>
 						<Typography className="text-sm font-medium">
 							CLIENT SECRET
@@ -164,6 +182,16 @@ export const ApplicationsTable = ({
 									? application.client_secret
 									: getBullet(application.client_secret)}
 							</Typography>
+							{isShowSecret(application.client_id) && (
+								<Tooltip title="Copy to clipboard">
+									<IconButton
+										aria-label="copy client secret"
+										onClick={() => copyToClipboard(application.client_secret)}
+									>
+										<ContentCopy />
+									</IconButton>
+								</Tooltip>
+							)}
 							<Tooltip title="Show secret">
 								<IconButton
 									aria-label="show secret"
@@ -228,11 +256,29 @@ export const ApplicationsTable = ({
 							<TableBodyCell>{application.client_name}</TableBodyCell>
 							<TableBodyCell align="right">
 								{application.client_id}
+								<Tooltip title="Copy to clipboard">
+									<IconButton
+										aria-label="copy client id"
+										onClick={() => copyToClipboard(application.client_id)}
+									>
+										<ContentCopy />
+									</IconButton>
+								</Tooltip>
 							</TableBodyCell>
 							<TableBodyCell align="right" className="font-mono">
 								{isShowSecret(application.client_id)
 									? application.client_secret
 									: getBullet(application.client_secret)}
+								{isShowSecret(application.client_id) && (
+									<Tooltip title="Copy to clipboard">
+										<IconButton
+											aria-label="copy client secret"
+											onClick={() => copyToClipboard(application.client_secret)}
+										>
+											<ContentCopy />
+										</IconButton>
+									</Tooltip>
+								)}
 								<Tooltip title="Show secret">
 									<IconButton
 										aria-label="show secret"

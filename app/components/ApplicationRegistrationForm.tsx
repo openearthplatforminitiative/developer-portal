@@ -90,7 +90,7 @@ export const ApplicationRegistrationForm = ({
 
 	return (
 		<form noValidate autoComplete="off" onSubmit={onSubmit}>
-			<FormControl className="flex flex-col gap-1 w-full py-4 px-4">
+			<FormControl className="flex flex-col gap-1 w-full py-4">
 				<Box className="flex w-full items-center justify-between gap-4">
 					<Box visibility={open ? "visible" : "hidden"} className="flex flex-1">
 						<TextField
