@@ -39,7 +39,7 @@ const Home = () => {
 					<CircleSpinner />
 					<Typography
 						variant="h1"
-						className="flex-1 py-48 text-4xl xs:text-7xl w-full h-full xl:w-[40rem] px-8 xl:ml-auto z-10"
+						className="flex-1 py-48 text-4xl xs:text-6xl w-full h-full xl:w-[40rem] px-8 pr-16 xl:ml-auto z-10"
 					>
 						<b>Global open source data</b>
 						<br /> enabling local innovation
