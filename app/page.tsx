@@ -34,18 +34,18 @@ const Home = () => {
 
 	return (
 		<Box className="lg:mb-28 mb-16 w-full">
-			<Box className="flex xl:flex-row flex-col">
-				<Box className="relative flex flex-col bg-primary-90 xl:w-1/2 overflow-hidden">
+			<Box className="flex lg:flex-row flex-col">
+				<Box className="relative flex flex-col bg-primary-90 lg:w-1/2 overflow-hidden">
 					<CircleSpinner />
 					<Typography
 						variant="h1"
-						className="flex-1 py-48 text-4xl xs:text-6xl w-full h-full xl:w-[40rem] px-8 pr-16 xl:ml-auto z-10"
+						className="flex-1 py-48 text-4xl xs:text-6xl w-full h-full lg:w-[40rem] px-8 pr-16 lg:ml-auto z-10"
 					>
 						<b>Global open source data</b>
 						<br /> enabling local innovation
 					</Typography>
 				</Box>
-				<Box className="flex flex-col xl:w-1/2 gap-10 justify-center py-16 px-8 bg-neutral-90">
+				<Box className="flex flex-col lg:w-1/2 gap-10 justify-center py-16 px-8 bg-neutral-90">
 					<Box className="flex flex-row gap-2">
 						<LockOpenOutlined className="text-4xl" />
 						<Typography className="text-2xl xs:text-3xl">

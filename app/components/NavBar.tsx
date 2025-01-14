@@ -76,7 +76,7 @@ const NavBar = () => {
 	}
 
 	return (
-		<nav className="flex flex-row items-center sm:p-12 p-6 justify-between">
+		<nav className="flex flex-row sticky top-0 z-20 bg-[#FBFDF8] backdrop-blur-sm w-full items-center sm:px-12 px-6 sm:py-4 py-2 sm:my-8 my-4 justify-between">
 			<Link href="/">
 				<Box className="flex lg:flex-row flex-col gap-5 items-center">
 					<Box className="xs:flex hidden">
