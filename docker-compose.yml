@@ -1,0 +1,64 @@
+volumes:
+  postgres_data:
+    driver: local
+  keycloak_themes:
+    driver: local
+
+services:
+  postgres:
+    container_name: developer-portal-kcdb
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: keycloak
+    networks:
+      - local
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "postgres", "-U", "postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+    restart: unless-stopped
+
+  keycloak-init:
+    image: ghcr.io/openearthplatforminitiative/keycloak-theme:test
+    command:
+      [
+        "sh",
+        "-c",
+        "cp /openepi-theme.jar /opt/keycloak/providers/openepi-theme.jar",
+      ]
+    volumes:
+      - keycloak_themes:/opt/keycloak/providers
+    depends_on:
+      - keycloak
+
+  keycloak:
+    container_name: developer-portal-kc
+    image: quay.io/keycloak/keycloak:latest
+    volumes:
+      - ../infrastructure/keycloak/openepi-realm.json:/opt/keycloak/data/import/openepi-realm.json
+      - keycloak_themes:/opt/keycloak/providers
+    command: start-dev --import-realm --verbose
+    env_file:
+      - ./.env.docker
+    ports:
+      - 8080:8080
+    links:
+      - postgres
+    networks:
+      - local
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+networks:
+  local:
+    name: local
+    driver: bridge
