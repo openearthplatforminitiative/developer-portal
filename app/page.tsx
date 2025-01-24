@@ -80,17 +80,15 @@ const Home = () => {
 								additional benefits like increased rate limits for greater
 								flexibility.
 							</Typography>
-							<Link href="/about">
-								<Button
-									variant="contained"
-									className="rounded-full normal-case shadow-none text-xl px-8 py-4"
-									onClick={() =>
-										signIn("keycloak", { callbackUrl: "/dashboard" })
-									}
-								>
-									Register for increased rate limits
-								</Button>
-							</Link>
+							<Button
+								variant="contained"
+								className="rounded-full normal-case shadow-none text-xl px-8 py-4 self-start"
+								onClick={() =>
+									signIn("keycloak", { callbackUrl: "/dashboard" })
+								}
+							>
+								Register for increased rate limits
+							</Button>
 						</Box>
 						<Image
 							width={256}
