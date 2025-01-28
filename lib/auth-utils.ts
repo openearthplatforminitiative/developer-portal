@@ -9,7 +9,10 @@ const keycloakProvider = KeycloakProvider({
 	profile(profile) {
 		return {
 			id: profile.sub,
-			name: profile.preferred_username,
+			name: profile.given_name.trim() + " " + profile.family_name.trim(),
+			firstName: profile.given_name.trim(),
+			lastName: profile.family_name.trim(),
+			username: profile.preferred_username,
 			email: profile.email,
 			image: profile.picture,
 		}
@@ -53,23 +56,32 @@ const refreshAccessToken = async (token: JWT) => {
 export const authOptions: NextAuthOptions = {
 	providers: [keycloakProvider],
 	callbacks: {
-		async jwt({ token, account }) {
-			if (account) {
-				return {
+		async jwt({ token, account, user }) {
+			let newToken: JWT = token
+			if (user) {
+				console.log("user", user)
+				newToken = {
 					...token,
-					access_token: account.access_token,
-					id_token: account.id_token,
-					refresh_token: account.refresh_token,
+					user: user,
+				}
+			}
+			if (account) {
+				newToken = {
+					...newToken,
+					access_token: account.access_token!,
+					id_token: account.id_token!,
+					refresh_token: account.refresh_token!,
 					expires_at: account.expires_at! * 1000,
 				}
 			} else if (Date.now() < token.expires_at) {
-				return token
+				return newToken
+			} else {
+				newToken = await refreshAccessToken(token)
 			}
-			const newToken = await refreshAccessToken(token)
 			return newToken
 		},
 		async session({ session, token }) {
-			if (session.user) session.user
+			if (token.user) session.user = token.user
 			session.token = token
 			session.error = token.error
 			return session

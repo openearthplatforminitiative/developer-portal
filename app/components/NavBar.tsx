@@ -10,11 +10,8 @@ import { useState } from "react"
 import {
 	ArrowOutward,
 	GridView,
-	KeyboardArrowDown,
-	KeyboardArrowUp,
 	Login,
 	Logout,
-	Person,
 	Menu as BurgerIcon,
 } from "@mui/icons-material"
 import { OpenEPILogo } from "../icons/OpenEPILogo"
@@ -23,6 +20,7 @@ import { signIn, signOut, useSession } from "next-auth/react"
 const NavBar = () => {
 	const { data: session } = useSession()
 	const user = session?.user?.name
+	console.log(user)
 
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -77,13 +75,6 @@ const NavBar = () => {
 		} else signOut({ redirect: false })
 	}
 
-	const compressUsername = (username: string) => {
-		const newUsername = username.split("@")[0]
-		if (newUsername.length > 14) {
-			return newUsername.slice(0, 10) + "..."
-		}
-		return newUsername
-	}
 	const getInitials = (name = "") =>
 		name
 			.split(" ")

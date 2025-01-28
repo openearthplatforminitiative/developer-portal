@@ -71,14 +71,14 @@ const Home = () => {
 					<Box className="flex flex-col-reverse lg:flex-row gap-14 sm:w-full sm:max-w-7xl sm:mx-auto px-8">
 						<Box className="flex flex-1 flex-col gap-10">
 							<Typography className="text-3xl xs:text-4xl">
-								Explore our APIs and start building your innovation
+								Explore our catalog and start building your innovation
 							</Typography>
 							<Typography className="text-xl xs:text-2xl">
-								OpenEPI is a global open-source data platform providing access
-								to verified, high-quality data to support innovation. While our
-								APIs are available without authentication, signing up can offer
-								additional benefits like increased rate limits for greater
-								flexibility.
+								OpenEPI is an enabler for the worlds open-source data, linking
+								developers to verified, high-quality data to support innovation.
+								While our APIs are available without authentication, signing up
+								can offer additional benefits like increased rate limits for
+								greater flexibility.
 							</Typography>
 							<Button
 								variant="contained"

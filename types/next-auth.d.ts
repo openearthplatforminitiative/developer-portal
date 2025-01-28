@@ -2,11 +2,17 @@ import NextAuth, { DefaultSession } from "next-auth"
 import { DefaultJWT } from "next-auth/jwt"
 
 declare module "next-auth" {
+	interface user {
+		id: string
+		name: string
+		firstName: string
+		lastName: string
+		username: string
+		email: string
+	}
 	interface Session extends DefaultSession {
 		token: JWT
-		user?: {
-			preferred_username?: string
-		} & DefaultSession["user"]
+		user?: user
 		error?: string
 	}
 }
@@ -18,5 +24,6 @@ declare module "next-auth/jwt" {
 		refresh_token: string
 		expires_at: number
 		error?: string
+		user?: user
 	}
 }

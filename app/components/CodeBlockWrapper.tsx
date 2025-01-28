@@ -1,7 +1,7 @@
 "use client"
 
 import { Box, Tab, Tabs } from "@mui/material"
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import CodeBlock from "./CodeBlock"
 
 interface CodeBlockProps {
@@ -22,10 +22,10 @@ const CodeBlockWrapper = ({ codeBlocks }: CodeBlockWrapperProps) => {
 
 	return (
 		<>
-			<Box className="mt-6">
+			<Box className="mt-6 ml-3">
 				<Tabs value={tabValue} onChange={handleChange}>
 					{codeBlocks.map((block, index) => (
-						<Tab key={index} label={block.language} />
+						<Tab key={index} disableRipple label={block.language} />
 					))}
 				</Tabs>
 			</Box>
