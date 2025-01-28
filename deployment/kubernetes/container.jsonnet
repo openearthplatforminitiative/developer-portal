@@ -40,15 +40,6 @@
               }
             },
             {
-              name: 'AUTH_DOMAIN',
-              valueFrom: {
-                configMapKeyRef: {
-                  name: 'dev-portal-config',
-                  key: 'auth_domain'
-                }
-              }
-            },
-            {
               name: 'AUTH_CLIENT_ID',
               valueFrom: {
                 configMapKeyRef: {
