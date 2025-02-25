@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	output: "export",
-	trailingSlash: true,
+	output: "standalone",
 	images: { unoptimized: true },
+	async redirects() {
+		return []
+	},
 }
 
 module.exports = nextConfig

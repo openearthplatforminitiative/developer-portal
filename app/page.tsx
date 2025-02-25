@@ -1,3 +1,5 @@
+"use client"
+
 import Box from "@mui/material/Box"
 import { CircleSpinner } from "@/app/components/CircleSpinner"
 import Typography from "@mui/material/Typography"
@@ -14,65 +16,102 @@ import { OpenLockIcon } from "@/app/icons/OpenLockIcon"
 import { VerifiedIcon } from "@/app/icons/VerifiedIcon"
 import { LightBulbIcon } from "@/app/icons/LightBulbIcon"
 import { JavaLogo } from "@/app/icons/JavaLogo"
+import { signIn, useSession } from "next-auth/react"
+import Image from "next/image"
+import {
+	DomainVerificationOutlined,
+	Lightbulb,
+	LightbulbOutlined,
+	LockOpenOutlined,
+	Verified,
+	VerifiedOutlined,
+	VerifiedUser,
+	VerifiedUserOutlined,
+} from "@mui/icons-material"
 
 const Home = () => {
+	const { data: session } = useSession()
+
 	return (
 		<Box className="lg:mb-28 mb-16 w-full">
-			<Box className="flex xl:flex-row flex-col mb-28">
-				<Box className="flex flex-col bg-primary-90 xl:w-1/2 py-48 overflow-hidden">
-					<Box className="relative xl:-left-60 -left-64 2xs:top-44 xs:top-80 sm:top-40 lg:top-20 xl:top-32">
-						<Box className="absolute animate-spinFrom90 left-[31.5px] top-[31.5px]">
-							<CircleSpinner width={397} height={397} />
-						</Box>
-						<Box className="absolute animate-spin">
-							<CircleSpinner width={460} height={460} />
-						</Box>
-					</Box>
-
+			<Box className="flex lg:flex-row flex-col">
+				<Box className="relative flex flex-col bg-primary-90 lg:w-1/2 overflow-hidden">
+					<CircleSpinner />
 					<Typography
 						variant="h1"
-						className="leading-[48px] xs:leading-[64px] text-4xl xs:text-6xl font-normal w-full h-full xl:max-w-[37.5rem] pr-20 xl:ml-auto z-10 2xs:pl-8 xs:pl-32 xl:pl-0"
+						className="flex-1 py-48 text-4xl xs:text-6xl w-full h-full lg:w-[40rem] px-8 pr-16 lg:ml-auto z-10"
 					>
-						<b>Global open source data</b> enabling local innovation
+						<b>Global open source data</b>
+						<br /> enabling local innovation
 					</Typography>
 				</Box>
-				<Box className="flex flex-col bg-neutral-95 xl:w-1/2 gap-10 justify-center xs:pl-32 xl:pl-16 py-16 px-8">
+				<Box className="flex flex-col lg:w-1/2 gap-10 justify-center py-16 px-8 bg-neutral-90">
 					<Box className="flex flex-row gap-2">
-						<Box className="w-fit h-fit">
-							<OpenLockIcon />
-						</Box>
+						<LockOpenOutlined className="text-4xl" />
 						<Typography className="text-2xl xs:text-3xl">
 							Truly open source
 						</Typography>
 					</Box>
 					<Box className="flex flex-row gap-2">
-						<Box className="w-fit h-fit">
-							<VerifiedIcon />
-						</Box>
+						<VerifiedUserOutlined className="text-4xl" />
 						<Typography className="text-2xl xs:text-3xl">
 							Verified and quality assured data
 						</Typography>
 					</Box>
 					<Box className="flex flex-row gap-2">
-						<Box className="w-fit h-fit">
-							<LightBulbIcon />
-						</Box>
+						<LightbulbOutlined className="text-4xl" />
 						<Typography className="text-2xl xs:text-3xl">
 							Built to support innovation
 						</Typography>
 					</Box>
 				</Box>
 			</Box>
-			<Box className="flex flex-col sm:w-full sm:max-w-7xl sm:mx-auto px-8">
+			{!session && (
+				<Box className="bg-neutral-95 py-20">
+					<Box className="flex flex-col-reverse lg:flex-row gap-14 sm:w-full sm:max-w-7xl sm:mx-auto px-8">
+						<Box className="flex flex-1 flex-col gap-10">
+							<Typography className="text-3xl xs:text-4xl">
+								Explore our catalog and start building your innovation
+							</Typography>
+							<Typography className="text-xl xs:text-2xl">
+								OpenEPI is an enabler for the worlds open-source data, linking
+								developers to verified, high-quality data to support innovation.
+								While our APIs are available without authentication, signing up
+								can offer additional benefits like increased rate limits for
+								greater flexibility.
+							</Typography>
+							<Button
+								variant="contained"
+								className="rounded-full normal-case shadow-none text-xl px-8 py-4 self-start"
+								onClick={() =>
+									signIn("keycloak", { callbackUrl: "/dashboard" })
+								}
+							>
+								Register for increased rate limits
+							</Button>
+						</Box>
+						<Image
+							width={256}
+							height={256}
+							alt="about"
+							src="about-logo.svg"
+							className="w-40 h-40 xs:w-48 xs:h-48 lg:w-64 lg:h-64"
+						/>
+					</Box>
+				</Box>
+			)}
+			<Box className="flex flex-col sm:w-full sm:max-w-7xl sm:mx-auto mt-28 px-8">
 				<Box className="flex flex-col gap-8 mb-6">
 					<Typography variant="h2" className="text-3xl xs:text-4xl">
 						Data catalog of open data
 					</Typography>
 					<Typography className="text-xl xs:text-2xl">
-						We currently have 6 APIs available.
+						We provide a range of climate and geospatial data APIs
+						<br />
+						The following are a selection of some of them
 					</Typography>
 				</Box>
-				<Box className="flex flex-col my-28 gap-14 sm:mt-16 sm:mb-28 2xl:items-end sm:mx-0 w-fit">
+				<Box className="flex flex-col my-28 gap-14 sm:mt-16 sm:mx-0 w-fit">
 					<Box className="flex flex-row flex-1 flex-wrap gap-14">
 						<ApiCard
 							header="Weather"
@@ -95,10 +134,10 @@ const Home = () => {
 					</Box>
 					<Link href="/data-catalog" className="lg:w-fit w-full">
 						<Button
-							variant="outlined"
-							className="text-primary-main sm:w-fit rounded-full border-neutralVariant-50 normal-case lg:text-sm text-lg w-full h-10"
+							variant="contained"
+							className="rounded-full normal-case shadow-none text-xl px-8 py-4"
 						>
-							View all
+							Explore all our APIs
 						</Button>
 					</Link>
 				</Box>
@@ -108,7 +147,8 @@ const Home = () => {
 							Client libraries
 						</Typography>
 						<Typography className="text-xl xs:text-2xl">
-							We provide two client libraries to make use of our data easier
+							To ease your integration with our APIs, we provide three client
+							libraries
 						</Typography>
 					</Box>
 					<Box className="flex lg:flex-row flex-col gap-6 w-full">

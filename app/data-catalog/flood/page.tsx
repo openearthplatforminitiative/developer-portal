@@ -5,8 +5,9 @@ import { BackIcon } from "@/app/icons/BackIcon"
 import InfoCard from "@/app/components/InfoCard"
 import { GithubIconBlack } from "@/app/icons/GithubIconBlack"
 import { OpenApiIcon } from "@/app/icons/OpenApiIcon"
-import { getCodeExample } from "@/app/utils"
-import CodeBlockWrapper from "@/app/components/CodeBlockWrapper"
+import { FloodSummaryExample } from "@/app/code-examples/FloodSummaryExample"
+import { FloodThresholdExample } from "@/app/code-examples/FloodThresholdExample"
+import { FloodDetailedExample } from "@/app/code-examples/FloodDetailedExample"
 
 const FloodPage = () => {
 	return (
@@ -123,65 +124,20 @@ const FloodPage = () => {
 					Retrieving the peak day of the summary forecast for the 5° by 5° grid
 					cell that the given coordinates fall into.
 				</Typography>
-				<CodeBlockWrapper
-					codeBlocks={[
-						{
-							language: "javascript",
-							codeString: getCodeExample("flood", "flood-summary.js"),
-						},
-						{
-							language: "python",
-							codeString: getCodeExample("flood", "flood-summary.py"),
-						},
-						{
-							language: "java",
-							codeString: getCodeExample("flood", "flood-summary.java"),
-						},
-					]}
-				/>
+				<FloodSummaryExample />
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 2</Typography>
 				<Typography className="text-base mt-6">
 					Retrieving the minimum forecasted discharge of the first day of the
 					detailed forecast for the 5° by 5° grid cell that the given
 					coordinates fall into.
 				</Typography>
-				<CodeBlockWrapper
-					codeBlocks={[
-						{
-							language: "javascript",
-							codeString: getCodeExample("flood", "flood-detailed.js"),
-						},
-						{
-							language: "python",
-							codeString: getCodeExample("flood", "flood-detailed.py"),
-						},
-						{
-							language: "java",
-							codeString: getCodeExample("flood", "flood-detailed.java"),
-						},
-					]}
-				/>
+				<FloodDetailedExample />
 				<Typography className="text-2xl xs:text-3xl mt-8">Example 3</Typography>
 				<Typography className="text-base mt-6">
 					Retrieving the 2-year return period threshold for the 5° by 5° grid
 					cell that the given coordinates fall into.
 				</Typography>
-				<CodeBlockWrapper
-					codeBlocks={[
-						{
-							language: "javascript",
-							codeString: getCodeExample("flood", "flood-threshold.js"),
-						},
-						{
-							language: "python",
-							codeString: getCodeExample("flood", "flood-threshold.py"),
-						},
-						{
-							language: "java",
-							codeString: getCodeExample("flood", "flood-threshold.java"),
-						},
-					]}
-				/>
+				<FloodThresholdExample />
 			</Box>
 		</Box>
 	)
