@@ -9,7 +9,7 @@ const theme = createTheme({
 		},
 		secondary: {
 			main: "#4E6354",
-		}
+		},
 	},
 	components: {
 		MuiPaper: {
