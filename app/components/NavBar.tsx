@@ -20,7 +20,6 @@ import { signIn, signOut, useSession } from "next-auth/react"
 const NavBar = () => {
 	const { data: session } = useSession()
 	const user = session?.user?.name
-	console.log(user)
 
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
