@@ -12,6 +12,7 @@ import { CropHealthIcon } from "@/app/icons/CropHealthIcon"
 import ApiCard, { CardProps } from "@/app/components/ApiCard"
 import InfoCard from "@/app/components/InfoCard"
 import { JavaLogo } from "@/app/icons/JavaLogo"
+import { AgricultureIcon } from "@/app/icons/AgricultureIcon"
 
 const cards: CardProps[] = [
 	{
@@ -57,6 +58,14 @@ const cards: CardProps[] = [
 			"This section provides early disease detection in crops using machine learning.",
 		cardIcon: <CropHealthIcon />,
 		href: "/data-catalog/crop-health",
+	},
+	{
+		id: 7,
+		header: "Agriculture",
+		subHeader:
+			"This section provides a summary of agricultural relevant data from the other APIs.",
+		cardIcon: <AgricultureIcon />,
+		href: "/data-catalog/agriculture",
 	},
 ]
 
