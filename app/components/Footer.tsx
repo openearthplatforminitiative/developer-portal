@@ -115,7 +115,7 @@ const Footer = () => {
 					<Box className="flex flex-col gap-6 pt-14 pb-20 w-full">
 						<Divider />
 						<Typography>
-							2024 - Except where otherwise noted, content on this site is
+							2025 - Except where otherwise noted, content on this site is
 							licensed under a Creative Commons Attribution 4.0 International
 							license.
 						</Typography>
