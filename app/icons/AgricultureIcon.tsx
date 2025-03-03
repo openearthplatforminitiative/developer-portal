@@ -1,5 +1,3 @@
-import GrassOutlinedIcon from "@mui/icons-material/GrassOutlined"
-
 export const AgricultureIcon = () => (
 	<svg
 		width="56"

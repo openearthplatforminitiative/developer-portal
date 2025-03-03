@@ -1,7 +1,7 @@
 "use client"
 
 import { Box, Button, Skeleton, Typography } from "@mui/material"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { ApplicationRegistrationForm } from "../components/ApplicationRegistrationForm"
 import { ApplicationsTable } from "../components/ApplicationsTable"
 import { getClients } from "./actions"
@@ -39,15 +39,15 @@ export const Application = () => {
 		setApplications(newApplications)
 	}
 
-	const refetch = async () => {
+	const refetch = useCallback(async () => {
 		setLoading(true)
 		await fetchClients()
 		setLoading(false)
-	}
+	}, [])
 
 	useEffect(() => {
 		refetch()
-	}, [])
+	}, [refetch])
 
 	return (
 		<>

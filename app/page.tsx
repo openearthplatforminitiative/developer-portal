@@ -12,20 +12,12 @@ import { JavascriptLogo } from "@/app/icons/JavascriptLogo"
 import { PythonLogo } from "@/app/icons/PythonLogo"
 import Button from "@mui/material/Button"
 import Link from "next/link"
-import { OpenLockIcon } from "@/app/icons/OpenLockIcon"
-import { VerifiedIcon } from "@/app/icons/VerifiedIcon"
-import { LightBulbIcon } from "@/app/icons/LightBulbIcon"
 import { JavaLogo } from "@/app/icons/JavaLogo"
 import { signIn, useSession } from "next-auth/react"
 import Image from "next/image"
 import {
-	DomainVerificationOutlined,
-	Lightbulb,
 	LightbulbOutlined,
 	LockOpenOutlined,
-	Verified,
-	VerifiedOutlined,
-	VerifiedUser,
 	VerifiedUserOutlined,
 } from "@mui/icons-material"
 

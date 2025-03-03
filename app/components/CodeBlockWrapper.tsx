@@ -1,7 +1,7 @@
 "use client"
 
 import { Box, Tab, Tabs } from "@mui/material"
-import React, { useRef, useState } from "react"
+import React, { useState } from "react"
 import CodeBlock from "./CodeBlock"
 
 interface CodeBlockProps {

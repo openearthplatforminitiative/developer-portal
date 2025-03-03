@@ -2,9 +2,7 @@
 
 import React, { useState } from "react"
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter"
-import { CopyIcon } from "@/app/icons/CopyIcon"
 import { IconButton, Tooltip } from "@mui/material"
-import { CheckIcon } from "@/app/icons/CheckIcon"
 import Box from "@mui/material/Box"
 import { myCustomStyle } from "@/app/custom-code-style"
 import js from "react-syntax-highlighter/dist/esm/languages/hljs/javascript"

@@ -21,7 +21,7 @@ const AgriculturePage = () => {
 					Agriculture API
 				</Typography>
 				<Typography className="text-xl xs:text-2xl">
-					Summary of the other API's, relevant for agriculture.
+					Summary of the other API&apos;s, relevant for agriculture.
 				</Typography>
 			</Box>
 			<Box className="flex lg:flex-row flex-col gap-6 mt-20">
