@@ -31,13 +31,13 @@ const NavBar = () => {
 	const linkClassName = (path: string, primary?: boolean) => {
 		return currentRoute.startsWith(path)
 			? baseStyle +
-					(primary
-						? " bg-primary-40 text-neutral-100 hover:text-neutral-0"
-						: " bg-secondary-90")
+			(primary
+				? " bg-primary-40 text-neutral-100 hover:text-neutral-0"
+				: " bg-secondary-90")
 			: baseStyle +
-					(primary
-						? " bg-primary-40 text-neutral-100 hover:text-neutral-0"
-						: "")
+			(primary
+				? " bg-primary-40 text-neutral-100 hover:text-neutral-0"
+				: "")
 	}
 
 	const handleClose = () => {
@@ -83,7 +83,7 @@ const NavBar = () => {
 			.toUpperCase()
 
 	return (
-		<nav className="flex flex-row sticky top-0 z-20 bg-[#FBFDF8] backdrop-blur-sm w-full items-center sm:px-6 px-4 sm:py-4 py-2 sm:my-8 my-4 justify-between">
+		<nav className="flex flex-row sticky top-0 z-20 bg-[#FBFDF8] w-full items-center sm:px-6 px-4 sm:py-4 py-2 sm:my-8 my-4 justify-between">
 			<Link href="/">
 				<Box className="flex gap-5 items-center">
 					<Box className="2xl:inline hidden">
