@@ -23,7 +23,7 @@ const DrawNewPolygon = (id: string, initialCoordinates: LngLat[]): GeoJSON.Featu
 
 
 export const DrawPolygon = () => {
-  const {generateFeatureId, tool, features, setFeatures, setMode} = useDraw()
+  const {generateFeatureId, tool, features, setFeatures, setTool} = useDraw()
   const { newPolygon, setNewPolygon } = useDrawPolygon()
   
   const map = useMap()
@@ -56,7 +56,7 @@ export const DrawPolygon = () => {
                 }
                 setNewPolygon(undefined)
                 setFeatures([...features, updatedNewPolygon])
-                setMode('selecting')
+                setTool('select')
             } else {
               const updatedNewPolygon: GeoJSON.Feature<GeoJSON.Polygon> = {
                 ...newPolygon,
@@ -89,11 +89,21 @@ export const DrawPolygon = () => {
       } = event;
       if (tool == 'polygon' && newPolygon) {
         const updatedCoordinates = [...(newPolygon.geometry.coordinates[0] as [number, number][])];
-
+        const hoveredFeatures = map.current?.queryRenderedFeatures(event.point, {
+          layers: ['draw-polygon-first-point'],
+        });
         if (updatedCoordinates.length === 1) {
           updatedCoordinates.push([lngLat.lng, lngLat.lat]);
         } else {
           updatedCoordinates[updatedCoordinates.length - 1] = [lngLat.lng, lngLat.lat];
+        }
+
+        if (map.current) {
+          if (updatedCoordinates.length > 3 && (hoveredFeatures?.length ?? 0) > 0) {
+            map.current.getCanvas().style.cursor = 'pointer';
+          } else {
+            map.current.getCanvas().style.cursor = 'crosshair';
+          }
         }
         
         const updatedNewPolygon: GeoJSON.Feature<GeoJSON.Polygon> = {
