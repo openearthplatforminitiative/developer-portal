@@ -38,7 +38,7 @@ const ResourceCard = ({
 						<Typography variant="h5" className="text-xl xs:text-2xl">
 							{header}
 						</Typography>
-						<Box className="transform transition-transform duration-300 group-hover:translate-x-2">
+						<Box className="transform transition-transform duration-300 group-hover:translate-x-2 group-hover:-translate-y-2">
 							<ExternalLinkIcon />
 						</Box>
 					</Box>
