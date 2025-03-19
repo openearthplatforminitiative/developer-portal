@@ -1,11 +1,9 @@
 "use client";
 import { Close } from "@mui/icons-material";
-import { useDataCatalog } from "./DataCatalogProvider"
 import { useDraw } from "./DrawControl/DrawProvider";
 import { useEffect } from "react";
 
 export const DataCatalogMapAreas = () => {
-  const { eventEmitter, areas, setAreas, selectedAreaId, setSelectedAreaId } = useDataCatalog()
   const { setFeatures, features, selectedFeatureId, setSelectedFeatureId, setTool } = useDraw()
 
   useEffect(() => {
@@ -32,7 +30,8 @@ export const DataCatalogMapAreas = () => {
   }
 
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap items-center gap-2 w-full">
+      {features.length > 0 && <span>GeoFeatures</span>}
       {features.map((feature, index) => (
         <div
           className={`flex cursor-pointer hover:bg-neutral-95 gap-2 items-center rounded-xl border px-4 py-2 ${selectedFeatureId === feature.id ? 'bg-neutral-90' : ''}`}

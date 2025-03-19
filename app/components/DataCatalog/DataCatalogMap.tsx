@@ -1,9 +1,8 @@
 "use client"
 
-import { Map, MapProvider } from 'react-map-gl/maplibre';
+import { Map } from 'react-map-gl/maplibre';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { DrawControl } from './DrawControl/DrawControl';
-import { DrawProvider } from './DrawControl/DrawProvider';
 import { DataCatalogMapNavigation } from './DataCatalogMapNavigation';
 import { DataCatalogGeoSearch } from '../GeoAutoComplete';
 

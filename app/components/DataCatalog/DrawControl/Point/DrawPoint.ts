@@ -1,7 +1,7 @@
 "use client"
 
 import { LngLat, MapMouseEvent } from "maplibre-gl"
-import { useEffect, useId } from "react"
+import { useEffect } from "react"
 import { useMap } from "react-map-gl/maplibre"
 import { useDraw } from "../DrawProvider"
 
@@ -24,17 +24,17 @@ export const DrawPoint = () => {
   const {generateFeatureId, features, setFeatures, tool} = useDraw()
   const map = useMap()
 
-  useEffect(() => {
-    const handleClick = (event: MapMouseEvent & Object) => {
-      const {
-        lngLat
-      } = event;
-      if (tool == 'point') {
-        const newPoint = DrawNewPoint(generateFeatureId(), lngLat)
-        setFeatures([...features, newPoint])
-      }
+  const handleClick = (event: MapMouseEvent & Object) => {
+    const {
+      lngLat
+    } = event;
+    if (tool == 'point') {
+      const newPoint = DrawNewPoint(generateFeatureId(), lngLat)
+      setFeatures([...features, newPoint])
     }
+  }
 
+  useEffect(() => {
     map.current?.on('click', handleClick)
     return () => {
       map.current?.off('click', handleClick)

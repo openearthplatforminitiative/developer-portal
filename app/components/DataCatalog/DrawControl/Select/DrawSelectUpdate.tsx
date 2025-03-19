@@ -1,17 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 import { useDraw } from "../DrawProvider"
-import { MapRef, Marker, MarkerEvent, useMap } from "react-map-gl/maplibre"
-import { Feature, Polygon } from "geojson"
-import { Point, LngLat, MapMouseEvent } from "maplibre-gl"
+import { MarkerDragEvent, MarkerEvent, useMap } from "react-map-gl/maplibre"
+import { Feature, Polygon, Point } from "geojson"
+import { LngLat, MapMouseEvent } from "maplibre-gl"
+import { DrawSelectAddMarkers } from "./DrawSelectAddMarkers"
+import { DrawSelectMoveMarkers } from "./DrawSelectMoveMarkers"
 
-function movePolygon(geoJsonFeature: Feature<Polygon>, currentLngLat: LngLat, prevLngLat: LngLat, map: MapRef) {
+function movePolygon(geoJsonFeature: Feature<Polygon>, currentLngLat: LngLat, prevLngLat: LngLat) {
   let deltaX = currentLngLat.lng - prevLngLat.lng;
   let deltaY = currentLngLat.lat - prevLngLat.lat;
 
-  let minLat = 90
-  let maxLat = -90
-  let minLng = 180
-  let maxLng = -180
+  let minLat = 90, maxLat = -90, minLng = 180, maxLng = -180
 
   geoJsonFeature.geometry.coordinates[0].forEach(coord => {
     if (coord[1] < minLat) minLat = coord[1];
@@ -35,7 +34,7 @@ function movePolygon(geoJsonFeature: Feature<Polygon>, currentLngLat: LngLat, pr
   const coordinates = geoJsonFeature.geometry.coordinates[0].map(coord => {
     const newLngLat = new LngLat(coord[0] + deltaX, coord[1] + deltaY);
     let newLng = newLngLat.lng;
-    return [newLng, newLngLat.lat];
+    return [newLng, newLngLat.lat] as [number, number];
   });
   return coordinates;
 }
@@ -62,44 +61,36 @@ export const DrawSelectUpdate = () => {
     return feature
   }, [features, selectedFeatureId])
 
+  const startDragging = (event: MapMouseEvent & Object) => {
+    if ((event.originalEvent.target as HTMLElement).tagName !== 'CANVAS') return;
+    const clickedFeatures = map.current?.queryRenderedFeatures(event.point, {
+      layers: ['polygon'],
+    });
+    if (clickedFeatures?.some(feature => feature.id === selectedFeatureId)) {
+      event.preventDefault();
+      setPrevDragLngLat(event.lngLat);
+      setIsDragging(true);
+    }
+  };
+
+  const handleDrag = (event: MapMouseEvent & Object) => {
+    if (!isDragging) return;
+    if (!prevDragLngLat) { setPrevDragLngLat(event.lngLat) }
+    const newCoords = movePolygon(featureToUpdate as Feature<Polygon>, event.lngLat, prevDragLngLat as LngLat);
+    setPrevDragLngLat(event.lngLat);
+    setCoords(newCoords);
+  };
+
+  const endDragging = () => {
+    setIsDragging(false);
+    setPrevDragLngLat(undefined);
+  };
+
   useEffect(() => {
     if (featureToUpdate?.geometry.type === 'Point') return;
-
-    const startDragging = (event: MapMouseEvent & Object) => {
-      console.log('event.target', event.target);
-      console.log('event.', event.originalEvent)
-      if (event.originalEvent.target.tagName !== 'CANVAS') return;
-      const clickedFeatures = map.current?.queryRenderedFeatures(event.point, {
-        layers: ['polygon'],
-      });
-      console.log('clickedFeatures', clickedFeatures);
-      if (clickedFeatures?.some(feature => feature.id === selectedFeatureId)) {
-        event.preventDefault();
-        // console.log('set isDragging to true');
-        setPrevDragLngLat(event.lngLat);
-        setIsDragging(true);
-      }
-    };
-
-    const handleDrag = (event: MapMouseEvent & Object) => {
-      console.log('isDragging', isDragging);
-      if (!isDragging) return;
-      if (!prevDragLngLat) { setPrevDragLngLat(event.lngLat) }
-      const newCoords = movePolygon(featureToUpdate as Feature<Polygon>, event.lngLat, prevDragLngLat as LngLat, map.current as MapRef);
-      setPrevDragLngLat(event.lngLat);
-      setCoords(newCoords);
-    };
-
-    const endDragging = () => {
-      console.log('end dragging');
-      setIsDragging(false);
-      setPrevDragLngLat(undefined);
-    };
-
     map.current?.on('mousedown', startDragging);
     map.current?.on('mousemove', handleDrag);
     map.current?.on('mouseup', endDragging);
-
     return () => {
       map.current?.off('mousedown', startDragging);
       map.current?.off('mousemove', handleDrag);
@@ -114,23 +105,21 @@ export const DrawSelectUpdate = () => {
         features.map((feature) => {
           if (feature.id === selectedFeatureId) {
             if (feature.geometry.type === 'Point') {
-              const newFeature: Feature<Point> = {
+              return {
                 ...feature,
                 geometry: {
                   ...feature.geometry,
                   coordinates: coords as [number, number]
                 }
-              }
-              return newFeature
+              } as Feature<Point>
             } else {
-              const newFeature: Feature<Polygon> = {
+              return {
                 ...feature,
                 geometry: {
                   ...feature.geometry,
                   coordinates: [coords] as [number, number][][]
                 }
-              }
-              return newFeature
+              } as Feature<Polygon>
             }
           }
           return feature
@@ -140,7 +129,6 @@ export const DrawSelectUpdate = () => {
   }, [coords, setFeatures, selectedFeatureId])
 
   const handleDoubleClick = (event: MarkerEvent<MouseEvent>, index: number) => {
-    // check if double click
     if (doubleClickTimer.current) {
       clearTimeout(doubleClickTimer.current)
       doubleClickTimer.current = null
@@ -152,7 +140,6 @@ export const DrawSelectUpdate = () => {
         return
       }
       if (index === 0 || index === coords.length - 1) {
-        // delete index and last index, and duplicate second index
         const newCoords = [...(coords as [number, number][])]
         newCoords.pop()
         newCoords.splice(0, 1)
@@ -170,76 +157,32 @@ export const DrawSelectUpdate = () => {
     }
   }
 
-
-  const moveMarkers = useMemo(() => {
-    if (!featureToUpdate || !coords) return []
-    if (featureToUpdate.geometry.type === 'Point') {
-      return <Marker
-        key={featureToUpdate.id}
-        longitude={coords[0] as number}
-        latitude={coords[1] as number}
-        draggable
-        onDrag={(event) => {
-          setCoords([event.lngLat.lng, event.lngLat.lat])
-        }}
-      >
-        <div className="size-6 rounded-full bg-primary-80 border-4 border-neutral-100" />
-      </Marker>
+  const handleMoveMarkerDrag = (event: MarkerDragEvent, index: number) => {
+    if (featureToUpdate?.geometry.type === 'Point') {
+      setCoords([event.lngLat.lng, event.lngLat.lat])
+    } else {
+      const newCoords = [...(coords as [number, number][])]
+      newCoords[index] = [event.lngLat.lng, event.lngLat.lat]
+      if (index === (coords?.length ?? 0) - 1) {
+        newCoords[0] = [event.lngLat.lng, event.lngLat.lat]
+      }
+      setCoords(newCoords)
     }
-    return featureToUpdate.geometry.coordinates[0].map((coord: number[], index: number) => {
-      if (index === 0) return null
-      return <Marker
-        key={index}
-        longitude={coord[0]}
-        latitude={coord[1]}
-        draggable
-        onDrag={(event) => {
-          const newCoords = [...(coords as [number, number][])]
-          newCoords[index] = [event.lngLat.lng, event.lngLat.lat]
-          if (index === coords.length - 1) {
-            newCoords[0] = [event.lngLat.lng, event.lngLat.lat]
-          }
-          setCoords(newCoords)
-        }}
-        onClick={(e) => handleDoubleClick(e, index)}
-
-      >
-        <div className="size-6 rounded-full bg-primary-80 border-4 border-neutral-100" />
-      </Marker>
-    }
-    )
-  }, [featureToUpdate, coords])
+  }
 
   const handleAddMarkerClick = (e: MarkerEvent<MouseEvent>, coordinate: [number, number], index: number) => {
     setCoords((prevCoords) => {
+      prevCoords = prevCoords as [number, number][]
       const newCoords = prevCoords ? [...prevCoords] : []
       newCoords.splice(index, 0, [coordinate[0], coordinate[1]])
       return newCoords
     })
   }
 
-  const addMarkers = useMemo(() => {
-    if (!featureToUpdate || !coords) return null
-    if (featureToUpdate.geometry.type === 'Point') return null
-    return coords.map((coord, index: number) => {
-      if (index === 0) return null
-      const previousCoord = coords[index - 1] as [number, number]
-      const markerCoord = [(coord[0] + previousCoord[0]) / 2, (coord[1] + previousCoord[1]) / 2] as [number, number]
-      return <Marker
-        key={index}
-        longitude={markerCoord[0]}
-        latitude={markerCoord[1]}
-        onClick={(e) => handleAddMarkerClick(e, markerCoord, index)}
-      >
-        <div className="size-3 rounded-full bg-primary-80 border-4 border-neutral-100" />
-      </Marker>
-    })
-  }, [featureToUpdate, coords])
-
   return (
     <>
-      {moveMarkers}
-      {addMarkers}
+      <DrawSelectMoveMarkers onClick={handleDoubleClick} onDrag={handleMoveMarkerDrag} coords={coords} featureToUpdate={featureToUpdate as Feature<Polygon>} />
+      <DrawSelectAddMarkers onClick={handleAddMarkerClick} coords={coords as [number, number][]} featureToUpdate={featureToUpdate as Feature<Polygon>} />
     </>
   )
 }
