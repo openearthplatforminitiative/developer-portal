@@ -1,6 +1,6 @@
 import { MapMouseEvent, useMap } from "react-map-gl/maplibre"
 import { useDraw } from "../DrawProvider"
-import { useEffect } from "react"
+import { useCallback, useEffect } from "react"
 import { DrawSelectUpdate } from "./DrawSelectUpdate"
 
 export const DrawSelectControl = () => {
@@ -8,7 +8,7 @@ export const DrawSelectControl = () => {
 
   const map = useMap()
 
-  const handleClick = (event: MapMouseEvent & Object) => {
+  const handleClick = useCallback((event: MapMouseEvent & Object) => {
     if (tool !== 'select') return
     if ((event.originalEvent.target as HTMLElement).tagName !== 'CANVAS') return;
     const clickedFeatures = map.current?.queryRenderedFeatures(event.point, {
@@ -19,20 +19,21 @@ export const DrawSelectControl = () => {
     } else {
       setSelectedFeatureId(undefined)
     }
-  }
+  }, [map, setSelectedFeatureId, tool])
 
   useEffect(() => {
     if (tool !== 'select' && selectedFeatureId) {
       setSelectedFeatureId(undefined)
     }
-  }, [tool])
+  }, [selectedFeatureId, setSelectedFeatureId, tool])
 
   useEffect(() => {
-    map.current?.on('click', handleClick)
+    const mapRef = map.current
+    mapRef?.on('click', handleClick)
     return () => {
-      map.current?.off('click', handleClick)
+      mapRef?.off('click', handleClick)
     }
-  }, [map, tool, features, selectedFeatureId])
+  }, [map, tool, features, selectedFeatureId, handleClick])
 
   return (
     <DrawSelectUpdate />

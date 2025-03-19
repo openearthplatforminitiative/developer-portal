@@ -6,7 +6,7 @@ import {
 } from '@mui/icons-material';
 import { GeolocateControl, useMap } from 'react-map-gl/maplibre';
 import maplibregl from 'maplibre-gl';
-import { createRef, useEffect, useState } from 'react';
+import { createRef, useEffect, useState, useCallback } from 'react';
 
 export const DataCatalogMapNavigation = () => {
   const geoControlRef = createRef<maplibregl.GeolocateControl>();
@@ -15,20 +15,22 @@ export const DataCatalogMapNavigation = () => {
 
   const map = useMap();
 
-  useEffect(() => {
-    const handleRotate = () => {
-      if (map.current) {
-        setCurrentBearing(map.current.getBearing());
-        setCurrentPitch(map.current.getPitch());
-      }
-    };
-    map.current?.on('rotate', handleRotate);
-    map.current?.on('pitch', handleRotate);
-    return () => {
-      map.current?.off('rotate', handleRotate);
-      map.current?.off('pitch', handleRotate);
+  const handleRotate = useCallback(() => {
+    if (map.current) {
+      setCurrentBearing(map.current.getBearing());
+      setCurrentPitch(map.current.getPitch());
     }
   }, [map]);
+
+  useEffect(() => {
+    const mapRef = map.current;
+    mapRef?.on('rotate', handleRotate);
+    mapRef?.on('pitch', handleRotate);
+    return () => {
+      mapRef?.off('rotate', handleRotate);
+      mapRef?.off('pitch', handleRotate);
+    }
+  }, [handleRotate, map]);
 
 
   const handleCompassClick = () => {

@@ -122,23 +122,26 @@ export const DrawPolygon = () => {
   }, [tool, newPolygon, setNewPolygon]);
 
   useEffect(() => {
-    map.current?.on("click", handleClick);
+    const mapRef = map.current;
+    mapRef?.on("click", handleClick);
     return () => {
-      map.current?.off("click", handleClick);
+      mapRef?.off("click", handleClick);
     };
   }, [map, handleClick]);
 
   useEffect(() => {
-    map.current?.on("mousemove", handleHover);
+    const mapRef = map.current;
+    mapRef?.on("mousemove", handleHover);
     return () => {
-      map.current?.off("mousemove", handleHover);
+      mapRef?.off("mousemove", handleHover);
     };
   }, [map, handleHover]);
 
   useEffect(() => {
-    map.current?.on("contextmenu", handleRightClick);
+    const mapRef = map.current;
+    mapRef?.on("contextmenu", handleRightClick);
     return () => {
-      map.current?.off("contextmenu", handleRightClick);
+      mapRef?.off("contextmenu", handleRightClick);
     };
   }, [map, handleRightClick]);
 
