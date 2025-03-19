@@ -1,41 +1,16 @@
 import {
   Add,
   LocationSearching,
-  NavigationOutlined,
   Remove,
 } from '@mui/icons-material';
 import { GeolocateControl, useMap } from 'react-map-gl/maplibre';
 import maplibregl from 'maplibre-gl';
-import { createRef, useEffect, useState, useCallback } from 'react';
+import { createRef } from 'react';
 
 export const DataCatalogMapNavigation = () => {
   const geoControlRef = createRef<maplibregl.GeolocateControl>();
-  const [currentBearing, setCurrentBearing] = useState(0);
-  const [currentPitch, setCurrentPitch] = useState(0);
 
   const map = useMap();
-
-  const handleRotate = useCallback(() => {
-    if (map.current) {
-      setCurrentBearing(map.current.getBearing());
-      setCurrentPitch(map.current.getPitch());
-    }
-  }, [map]);
-
-  useEffect(() => {
-    const mapRef = map.current;
-    mapRef?.on('rotate', handleRotate);
-    mapRef?.on('pitch', handleRotate);
-    return () => {
-      mapRef?.off('rotate', handleRotate);
-      mapRef?.off('pitch', handleRotate);
-    }
-  }, [handleRotate, map]);
-
-
-  const handleCompassClick = () => {
-    map.current?.resetNorthPitch();
-  };
 
   const handleZoomIn = () => {
     map.current?.zoomIn();
@@ -58,14 +33,6 @@ export const DataCatalogMapNavigation = () => {
           </button>
           <button onClick={handleZoomOut} className={buttonStyle}>
             <Remove />
-          </button>
-          <button className={buttonStyle} onClick={handleCompassClick}>
-            <NavigationOutlined
-              style={{
-                transform: `rotateZ(${currentBearing}deg) rotateX(${currentPitch}deg)`,
-                perspective: '100px',
-              }}
-            />
           </button>
         </div>
         <div className="flex flex-col overflow-hidden rounded-lg shadow-md">

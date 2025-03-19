@@ -13,6 +13,8 @@ export const DataCatalogMap = () => {
       mapStyle='https://tiles.openfreemap.org/styles/liberty'
       interactiveLayerIds={['polygon-source', 'polygon', 'polygon-outline', 'point']}
       renderWorldCopies={false}
+      pitchWithRotate={false}
+      dragRotate={false}
     >
       <DataCatalogGeoSearch />
       <DrawControl />
