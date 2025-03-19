@@ -27,12 +27,6 @@ export const DrawNewPolygonSource = () => {
   }
   return (
     <>
-      <Source type="geojson" data={firstPoint}>
-        <Layer
-          id="draw-polygon-first-point"
-          type="circle"
-        />
-      </Source>
       <Source type="geojson" data={featureCollection}>
         <Layer
           id="draw-polygon"
@@ -58,6 +52,25 @@ export const DrawNewPolygonSource = () => {
             "circle-color": "#77DAA0"
           }}
         />
+      </Source>
+      <Source type="geojson" data={firstPoint}>
+        <Layer
+          id="draw-polygon-first-point-outline"
+          type="circle"
+          paint={{
+            "circle-radius": 7,
+            "circle-color": "#FFFFFF"
+          }}
+        />
+        <Layer
+          id="draw-polygon-first-point"
+          type="circle"
+          paint={{
+            "circle-radius": 5,
+            "circle-color": "#77DAA0"
+          }}
+        />
+        {/* outline white */}
       </Source>
     </>
   )

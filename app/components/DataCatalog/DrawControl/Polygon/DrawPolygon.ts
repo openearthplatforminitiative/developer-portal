@@ -1,151 +1,146 @@
-import { LngLat, MapMouseEvent } from "maplibre-gl"
-import { useEffect, useId } from "react"
-import { useMap } from "react-map-gl/maplibre"
-import { useDraw } from "../DrawProvider"
-import { useDrawPolygon } from "./DrawPolygonProvider"
-import { getAngleBetweenPoints } from "./DrawPolygonUtils"
+import { LngLat, MapMouseEvent } from "maplibre-gl";
+import { useCallback, useEffect } from "react";
+import { useMap } from "react-map-gl/maplibre";
+import { useDraw } from "../DrawProvider";
+import { useDrawPolygon } from "./DrawPolygonProvider";
 
-const DrawNewPolygon = (id: string, initialCoordinates: LngLat[]): GeoJSON.Feature<GeoJSON.Polygon> => {
-  return ({
-    type: 'Feature',
-    id: id,
-    geometry: {
-      type: 'Polygon',
-      coordinates: [
-        initialCoordinates.map((lngLat) => [lngLat.lng, lngLat.lat])
-      ]
-    },
-    properties: {
-      id: id
-    }
-  })
-}
-
+const DrawNewPolygon = (id: string, initialCoordinates: LngLat[]): GeoJSON.Feature<GeoJSON.Polygon> => ({
+  type: "Feature",
+  id,
+  geometry: {
+    type: "Polygon",
+    coordinates: [initialCoordinates.map(({ lng, lat }) => [lng, lat])]
+  },
+  properties: { id }
+});
 
 export const DrawPolygon = () => {
-  const {generateFeatureId, tool, features, setFeatures, setTool} = useDraw()
-  const { newPolygon, setNewPolygon } = useDrawPolygon()
-  
-  const map = useMap()
+  const { generateFeatureId, tool, features, setFeatures, setTool } = useDraw();
+  const { newPolygon, setNewPolygon } = useDrawPolygon();
+  const map = useMap();
 
-  useEffect(() => {
-    if (tool !== 'polygon' && newPolygon) {
-      setNewPolygon(undefined)
-    }
-  }, [tool])
-
-  useEffect(() => {
-    const handleClick = (event: MapMouseEvent & Object) => {
-      const {
-        lngLat
-      } = event;
-      if (tool == 'polygon') {
-        if (newPolygon) {          
-          const clickedFeatures = map.current?.queryRenderedFeatures(event.point, {
-            layers: ['draw-polygon-first-point'],
-          });
-            if (newPolygon.geometry.coordinates[0].length > 3 && (clickedFeatures?.length ?? 0 > 0)) {
-                const updatedNewPolygon: GeoJSON.Feature<GeoJSON.Polygon> = {
-                ...newPolygon,
-                geometry: {
-                  ...newPolygon.geometry,
-                  coordinates: [
-                  [...(newPolygon.geometry.coordinates[0] as [number, number][]).slice(0, -1), [(newPolygon.geometry.coordinates[0][0] as [number, number])[0], (newPolygon.geometry.coordinates[0][0] as [number, number])[1]]]
-                  ]
-                }
-                }
-                setNewPolygon(undefined)
-                setFeatures([...features, updatedNewPolygon])
-                setTool('select')
-            } else {
-              const updatedNewPolygon: GeoJSON.Feature<GeoJSON.Polygon> = {
-                ...newPolygon,
-                geometry: {
-                  ...newPolygon.geometry,
-                  coordinates: [
-                    [...(newPolygon.geometry.coordinates[0] as [number, number][]), [lngLat.lng, lngLat.lat]]
-                  ]
-                }
-              }
-              setNewPolygon(updatedNewPolygon) 
-            }
-        } else {
-          const initNewPolygon = DrawNewPolygon(generateFeatureId(), [lngLat])
-          setNewPolygon(initNewPolygon)
-        }
-      }
-    }
-
-    map.current?.on('click', handleClick)
-    return () => {
-      map.current?.off('click', handleClick)
-    }
-  }, [map, newPolygon, setFeatures, features, tool])
-
-  useEffect(() => {
-    const handleHover = (event: MapMouseEvent & Object) => {
-      const {
-        lngLat
-      } = event;
-      if (tool == 'polygon' && newPolygon) {
-        const updatedCoordinates = [...(newPolygon.geometry.coordinates[0] as [number, number][])];
-        const hoveredFeatures = map.current?.queryRenderedFeatures(event.point, {
-          layers: ['draw-polygon-first-point'],
+  const handleClick = useCallback(
+    (event: MapMouseEvent & Object) => {
+      if (tool !== "polygon") return;
+      const { lngLat } = event;
+      
+      if (newPolygon) {
+        const clickedFeatures = map.current?.queryRenderedFeatures(event.point, {
+          layers: ["draw-polygon-first-point"],
         });
-        if (updatedCoordinates.length === 1) {
-          updatedCoordinates.push([lngLat.lng, lngLat.lat]);
-        } else {
-          updatedCoordinates[updatedCoordinates.length - 1] = [lngLat.lng, lngLat.lat];
-        }
 
-        if (map.current) {
-          if (updatedCoordinates.length > 3 && (hoveredFeatures?.length ?? 0) > 0) {
-            map.current.getCanvas().style.cursor = 'pointer';
-          } else {
-            map.current.getCanvas().style.cursor = 'crosshair';
-          }
-        }
-        
-        const updatedNewPolygon: GeoJSON.Feature<GeoJSON.Polygon> = {
-          ...newPolygon,
-          geometry: {
-        ...newPolygon.geometry,
-        coordinates: [updatedCoordinates]
-          }
-        }
-        setNewPolygon(updatedNewPolygon)
-      }
-    }
-    
-    map.current?.on('mousemove', handleHover)
-    return () => {
-      map.current?.off('mousemove', handleHover)
-    }
-  }, [map, newPolygon, setFeatures, features, tool])
-  
-  useEffect(() => {
-    const handleRightClick = (event: MapMouseEvent & Object) => {
-      if (tool == 'polygon' && newPolygon) {
-        const updatedCoordinates = [...(newPolygon.geometry.coordinates[0] as [number, number][])];
-
-        if (updatedCoordinates.length > 2) {
-            updatedCoordinates.splice(-2, 1);
-          const updatedNewPolygon: GeoJSON.Feature<GeoJSON.Polygon> = {
+        if (newPolygon.geometry.coordinates[0].length > 3 && (clickedFeatures?.length ?? 0) > 0) {
+          const updatedPolygon: GeoJSON.Feature<GeoJSON.Polygon> = {
             ...newPolygon,
             geometry: {
               ...newPolygon.geometry,
-              coordinates: [updatedCoordinates]
+              coordinates: [
+                [
+                  ...((newPolygon.geometry.coordinates[0] as [number, number][]).slice(0, -1)),
+                  newPolygon.geometry.coordinates[0][0] as [number, number]
+                ]
+              ]
             }
-          }
-          setNewPolygon(updatedNewPolygon)
+          };
+          setNewPolygon(undefined);
+          setFeatures([...features, updatedPolygon]);
+          setTool("select");
         } else {
-          setNewPolygon(undefined)
+          const updatedPolygon: GeoJSON.Feature<GeoJSON.Polygon> = {
+            ...newPolygon,
+            geometry: {
+              ...newPolygon.geometry,
+              coordinates: [
+                [
+                  ...((newPolygon.geometry.coordinates[0] as [number, number][])),
+                  [lngLat.lng, lngLat.lat]
+                ]
+              ]
+            }
+          };
+          setNewPolygon(updatedPolygon);
         }
+      } else {
+        const initPolygon = DrawNewPolygon(generateFeatureId(), [lngLat]);
+        setNewPolygon(initPolygon);
       }
+    },
+    [tool, newPolygon, map, generateFeatureId, setNewPolygon, setFeatures, features, setTool]
+  );
+
+  const handleHover = useCallback(
+    (event: MapMouseEvent & Object) => {
+      if (tool !== "polygon" || !newPolygon) return;
+      const { lngLat } = event;
+      const updatedCoordinates = [...(newPolygon.geometry.coordinates[0] as [number, number][])];
+      const hoveredFeatures = map.current?.queryRenderedFeatures(event.point, {
+        layers: ["draw-polygon-first-point"],
+      });
+
+      if (updatedCoordinates.length === 1) {
+        updatedCoordinates.push([lngLat.lng, lngLat.lat]);
+      } else {
+        updatedCoordinates[updatedCoordinates.length - 1] = [lngLat.lng, lngLat.lat];
+      }
+
+      if (map.current) {
+        map.current.getCanvas().style.cursor =
+          updatedCoordinates.length > 3 && (hoveredFeatures?.length ?? 0) > 0
+            ? "pointer"
+            : "crosshair";
+      }
+
+      const updatedPolygon: GeoJSON.Feature<GeoJSON.Polygon> = {
+        ...newPolygon,
+        geometry: { ...newPolygon.geometry, coordinates: [updatedCoordinates] }
+      };
+      setNewPolygon(updatedPolygon);
+    },
+    [tool, newPolygon, map, setNewPolygon]
+  );
+
+  const handleRightClick = useCallback(() => {
+    if (tool !== "polygon" || !newPolygon) return;
+    const updatedCoordinates = [...(newPolygon.geometry.coordinates[0] as [number, number][])];
+
+    if (updatedCoordinates.length > 2) {
+      updatedCoordinates.splice(-2, 1);
+      const updatedPolygon: GeoJSON.Feature<GeoJSON.Polygon> = {
+        ...newPolygon,
+        geometry: { ...newPolygon.geometry, coordinates: [updatedCoordinates] }
+      };
+      setNewPolygon(updatedPolygon);
+    } else {
+      setNewPolygon(undefined);
     }
-    map.current?.on('contextmenu', handleRightClick)
+  }, [tool, newPolygon, setNewPolygon]);
+
+  useEffect(() => {
+    if (tool !== "polygon" && newPolygon) {
+      setNewPolygon(undefined);
+    }
+  }, [tool, newPolygon, setNewPolygon]);
+
+  useEffect(() => {
+    map.current?.on("click", handleClick);
     return () => {
-      map.current?.off('contextmenu', handleRightClick)
-    }
-  }, [map, newPolygon, setFeatures, features, tool])
-}
+      map.current?.off("click", handleClick);
+    };
+  }, [map, handleClick]);
+
+  useEffect(() => {
+    map.current?.on("mousemove", handleHover);
+    return () => {
+      map.current?.off("mousemove", handleHover);
+    };
+  }, [map, handleHover]);
+
+  useEffect(() => {
+    map.current?.on("contextmenu", handleRightClick);
+    return () => {
+      map.current?.off("contextmenu", handleRightClick);
+    };
+  }, [map, handleRightClick]);
+
+  return null;
+};
