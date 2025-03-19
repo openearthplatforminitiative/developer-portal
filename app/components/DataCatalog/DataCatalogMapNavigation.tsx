@@ -1,26 +1,35 @@
 import {
   Add,
   LocationSearching,
-  Navigation,
   NavigationOutlined,
   Remove,
 } from '@mui/icons-material';
 import { GeolocateControl, useMap } from 'react-map-gl/maplibre';
-import maplibregl, { LngLat, LngLatBounds } from 'maplibre-gl';
-import { createRef, useState } from 'react';
+import maplibregl from 'maplibre-gl';
+import { createRef, useEffect, useState } from 'react';
 
 export const DataCatalogMapNavigation = () => {
   const geoControlRef = createRef<maplibregl.GeolocateControl>();
   const [currentBearing, setCurrentBearing] = useState(0);
   const [currentPitch, setCurrentPitch] = useState(0);
-  const [userHasMoved, setUserHasMoved] = useState(false);
 
   const map = useMap();
 
-  const handleRotate = (bearing: number, pitch: number) => {
-    setCurrentBearing(bearing);
-    setCurrentPitch(pitch);
-  };
+  useEffect(() => {
+    const handleRotate = () => {
+      if (map.current) {
+        setCurrentBearing(map.current.getBearing());
+        setCurrentPitch(map.current.getPitch());
+      }
+    };
+    map.current?.on('rotate', handleRotate);
+    map.current?.on('pitch', handleRotate);
+    return () => {
+      map.current?.off('rotate', handleRotate);
+      map.current?.off('pitch', handleRotate);
+    }
+  }, [map]);
+
 
   const handleCompassClick = () => {
     map.current?.resetNorthPitch();
