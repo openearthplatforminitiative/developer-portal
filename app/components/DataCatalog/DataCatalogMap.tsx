@@ -5,6 +5,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { DrawControl } from './DrawControl/DrawControl';
 import { DrawProvider } from './DrawControl/DrawProvider';
 import { DataCatalogMapNavigation } from './DataCatalogMapNavigation';
+import { DataCatalogGeoSearch } from '../GeoAutoComplete';
 
 export const DataCatalogMap = () => {
   return (
@@ -12,7 +13,9 @@ export const DataCatalogMap = () => {
       attributionControl={false}
       mapStyle='https://tiles.openfreemap.org/styles/liberty'
       interactiveLayerIds={['polygon-source', 'polygon', 'polygon-outline', 'point']}
+      renderWorldCopies={false}
     >
+      <DataCatalogGeoSearch />
       <DrawControl />
       <DataCatalogMapNavigation />
     </Map>
