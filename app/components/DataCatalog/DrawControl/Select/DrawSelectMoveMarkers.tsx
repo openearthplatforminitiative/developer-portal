@@ -16,7 +16,7 @@ export const DrawSelectMoveMarkers = ({ featureToUpdate, coords, onDrag, onClick
       longitude={coords[0] as number}
       latitude={coords[1] as number}
       draggable
-      onDrag={(event) => onDrag}
+      onDrag={(event) => onDrag(event, 0)}
     >
       <div className="size-6 rounded-full bg-primary-80 border-4 border-neutral-100" />
     </Marker>
