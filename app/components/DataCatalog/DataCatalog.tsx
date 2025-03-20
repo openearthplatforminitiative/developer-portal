@@ -19,7 +19,7 @@ export const DataCatalog = () => {
         <DataCatalogFilters />
         <DataCatalogMapAreas />
         <div className="max-h-[700px] w-full flex gap-10 justify-stretch">
-          <div className={`relative transition-all ${showMap ? 'w-full' : 'w-0'}`}>
+          <div className={`relative transition-all ${showMap ? 'w-full h-[700px]' : 'w-0'}`}>
             <DataCatalogMap />
             <div className="absolute -right-5 top-0 h-full flex justify-center items-center pointer-events-none">
               <Tooltip title="Toggle map">

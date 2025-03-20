@@ -22,7 +22,7 @@ const InfoCard = ({
 			className="flex flex-1 flex-col gap-6 border rounded-xl px-6 pt-8 pb-10 w-full hover:bg-[#6750a414] group"
 		>
 			<Box className="flex flex-row justify-between px-2 items-center">
-				<Box className="flex flex-row gap-2">
+				<Box className="flex flex-row gap-2 items-center">
 					{cardIcon}
 					<Typography className="text-xl xs:text-2xl">{header}</Typography>
 				</Box>

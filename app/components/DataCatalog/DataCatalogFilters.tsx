@@ -1,5 +1,8 @@
 import { Check } from "@mui/icons-material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDataCatalog } from "./DataCatalogProvider";
+import { ResourceTypes, SpatialTypes } from "@/app/data-catalog/DataCatalogActions";
+
 
 type FilterQuery = {
   field: string;
@@ -30,7 +33,33 @@ const defaultFilters: FilterQuery[] = [
 ]
 
 export const DataCatalogFilters = () => {
+  const { setTypes, setSpatial } = useDataCatalog()
   const [filters, setFilters] = useState<FilterQuery[]>(defaultFilters)
+
+  useEffect(() => {
+    const newTypes: ResourceTypes[] = []
+    if (filters.some(filter => filter.field === 'APIs' && filter.value)) {
+      newTypes.push('API')
+    }
+    if (filters.some(filter => filter.field === 'Datasets' && filter.value)) {
+      newTypes.push('Dataset')
+    }
+    if (filters.some(filter => filter.field === 'ML Models' && filter.value)) {
+      newTypes.push('ML Model')
+    }
+    setTypes(newTypes)
+  }, [filters, setTypes])
+
+  useEffect(() => {
+    const newSpatial: SpatialTypes[] = []
+    if (filters.some(filter => filter.field === 'Global Coverage' && filter.value)) {
+      newSpatial.push('Global')
+    }
+    if (filters.some(filter => filter.field === 'Local Coverage' && filter.value)) {
+      newSpatial.push('Region')
+    }
+    setSpatial(newSpatial)
+  }, [filters, setSpatial])
 
   const handleSelect = (field: string) => {
     const newFilters = filters.map(filter => {

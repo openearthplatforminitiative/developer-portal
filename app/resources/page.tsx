@@ -36,7 +36,7 @@ const ResourcesPage = () => {
 										<Typography variant="h5" className="text-xl xs:text-2xl">
 											Our open policy
 										</Typography>
-										<Box className="transform transition-transform duration-300 group-hover:translate-x-2">
+										<Box className="transform transition-transform duration-300 group-hover:translate-x-2 group-hover:-translate-y-2">
 											<ExternalLinkIcon />
 										</Box>
 									</Box>
@@ -57,7 +57,7 @@ const ResourcesPage = () => {
 										<Typography variant="h5" className="text-xl xs:text-2xl">
 											Our metadata specification
 										</Typography>
-										<Box className="transform transition-transform duration-300 group-hover:translate-x-2">
+										<Box className="transform transition-transform duration-300 group-hover:translate-x-2 group-hover:-translate-y-2">
 											<ExternalLinkIcon />
 										</Box>
 									</Box>
@@ -75,7 +75,7 @@ const ResourcesPage = () => {
 										<Typography variant="h5" className="text-xl xs:text-2xl">
 											OpenAPI Specification
 										</Typography>
-										<Box className="transform transition-transform duration-300 group-hover:translate-x-2">
+										<Box className="transform transition-transform duration-300 group-hover:translate-x-2 group-hover:-translate-y-2">
 											<ExternalLinkIcon />
 										</Box>
 									</Box>

@@ -2,9 +2,15 @@
 import { Close } from "@mui/icons-material";
 import { useDraw } from "./DrawControl/DrawProvider";
 import { useEffect } from "react";
+import { useDataCatalog } from "./DataCatalogProvider";
 
 export const DataCatalogMapAreas = () => {
   const { setFeatures, features, selectedFeatureId, setSelectedFeatureId, setTool } = useDraw()
+  const { setFeatures: setFeatures2 } = useDataCatalog()
+
+  useEffect(() => {
+    setFeatures2(features)
+  }, [features, setFeatures2])
 
   useEffect(() => {
     features.forEach(feature => {
