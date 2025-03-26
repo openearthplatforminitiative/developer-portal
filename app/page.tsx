@@ -20,6 +20,7 @@ import {
 	LockOpenOutlined,
 	VerifiedUserOutlined,
 } from "@mui/icons-material"
+import { Categories } from "./components/Categories"
 
 const Home = () => {
 	const { data: session } = useSession()
@@ -98,41 +99,32 @@ const Home = () => {
 						Data catalog of open data
 					</Typography>
 					<Typography className="text-xl xs:text-2xl">
-						We provide a range of climate and geospatial data APIs
+						We provide a range of climate and geospatial data.
 						<br />
-						The following are a selection of some of them
+						OpenEPI, together with our partners, provide APIs, Datasets, ML Models and more
 					</Typography>
-				</Box>
-				<Box className="flex flex-col my-28 gap-14 sm:mt-16 sm:mx-0 w-fit">
-					<Box className="flex flex-row flex-1 flex-wrap gap-14">
-						<ApiCard
-							header="Weather"
-							subHeader="This section provides access to real-time weather data."
-							cardIcon={<WeatherIcon />}
-							href="/data-catalog/weather"
-						/>
-						<ApiCard
-							header="Flood"
-							subHeader="This section provides access to real-time flood forecasts."
-							cardIcon={<FloodIcon />}
-							href="/data-catalog/flood"
-						/>
-						<ApiCard
-							header="Geocoding"
-							subHeader="This section provides geocoding and address lookup services."
-							cardIcon={<GeocodingIcon />}
-							href="/data-catalog/geocoding"
-						/>
-					</Box>
 					<Link href="/data-catalog" className="lg:w-fit w-full">
 						<Button
 							variant="contained"
 							className="rounded-full normal-case shadow-none text-xl px-8 py-4"
 						>
-							Explore all our APIs
+							Explore all our data catalog
 						</Button>
 					</Link>
 				</Box>
+			</Box>
+			<div className="flex flex-col sm:w-full sm:max-w-7xl sm:mx-auto mt-28 px-8">
+				<div className="flex flex-col gap-8 mb-6">
+					<Typography variant="h2" className="text-3xl xs:text-4xl">
+						Categories
+					</Typography>
+					<Typography className="text-xl xs:text-2xl">
+						We currently provide data from these categories
+					</Typography>
+				</div>
+				<Categories />
+			</div>
+			<Box className="flex flex-col sm:w-full sm:max-w-7xl sm:mx-auto mt-28 px-8">
 				<Box className="flex flex-col lg:mx-0 mx-2">
 					<Box className="flex flex-col gap-8 mb-16">
 						<Typography variant="h2" className="text-3xl xs:text-4xl">
@@ -143,7 +135,7 @@ const Home = () => {
 							libraries
 						</Typography>
 					</Box>
-					<Box className="flex lg:flex-row flex-col gap-6 w-full">
+					<Box className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 						<InfoCard
 							externalLink={true}
 							header="Javascript"
@@ -168,7 +160,7 @@ const Home = () => {
 					</Box>
 				</Box>
 			</Box>
-		</Box>
+		</Box >
 	)
 }
 
