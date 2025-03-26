@@ -2,24 +2,37 @@ import { useMemo } from "react";
 import { Layer, Source } from "react-map-gl/maplibre";
 import { useDraw } from "../DrawProvider";
 
-export const DrawPolygonSource = () => {
+export const DrawSelectSource = () => {
 
-  const { features, selectedFeature } = useDraw()
+  const { selectedFeature } = useDraw()
 
   const featureCollection = useMemo((): GeoJSON.FeatureCollection => {
+
     return ({
       type: 'FeatureCollection',
-      features: features.filter(feature => feature.geometry.type === 'Polygon' && feature.id !== selectedFeature?.id),
+      features: selectedFeature ? [selectedFeature] : []
     })
-  }, [features, selectedFeature])
+  }, [selectedFeature])
+
+  if (!selectedFeature) return null
 
   return (
     <Source promoteId='id' type="geojson" data={featureCollection}>
       <Layer
-        id="polygon"
+        id="selected-point"
+        type="circle"
+        paint={{
+          "circle-radius": 5,
+          "circle-color": "#A3CDDB",
+          "circle-stroke-width": 1,
+          "circle-stroke-color": "#FFFFFF"
+        }}
+      />
+      <Layer
+        id="selected-polygon"
         type="fill"
         paint={{
-          "fill-color": "#77DAA0",
+          "fill-color": "#A3CDDB",
           "fill-opacity": [
             'case',
             ['boolean', ['feature-state', 'hover'], false],
@@ -29,10 +42,10 @@ export const DrawPolygonSource = () => {
         }}
       />
       <Layer
-        id="polygon-outline"
+        id="selected-polygon-outline"
         type="line"
         paint={{
-          "line-color": "#77DAA0",
+          "line-color": "#A3CDDB",
           "line-width": [
             'case',
             ['boolean', ['feature-state', 'hover'], false],

@@ -4,11 +4,11 @@ import { useDraw } from "../DrawProvider";
 
 export const DrawPointSource = () => {
 
-  const { features } = useDraw()
+  const { features, selectedFeature } = useDraw()
   const featureCollection = useMemo((): GeoJSON.GeoJSON => ({
     type: 'FeatureCollection',
-    features: features.filter(feature => feature.geometry.type === 'Point'),
-  }), [features])
+    features: features.filter(feature => feature.geometry.type === 'Point' && feature.id !== selectedFeature?.id),
+  }), [features, selectedFeature])
 
   return (
     <Source type="geojson" promoteId='id' data={featureCollection}>

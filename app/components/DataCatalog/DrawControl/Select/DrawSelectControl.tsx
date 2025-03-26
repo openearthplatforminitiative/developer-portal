@@ -2,9 +2,10 @@ import { MapMouseEvent, useMap } from "react-map-gl/maplibre"
 import { useDraw } from "../DrawProvider"
 import { useCallback, useEffect } from "react"
 import { DrawSelectUpdate } from "./DrawSelectUpdate"
+import { DrawSelectSource } from "./DrawSelectSource"
 
 export const DrawSelectControl = () => {
-  const { features, tool, selectedFeatureId, setSelectedFeatureId } = useDraw()
+  const { features, setFeatures, tool, selectedFeature, setSelectedFeature } = useDraw()
 
   const map = useMap()
 
@@ -14,18 +15,18 @@ export const DrawSelectControl = () => {
     const clickedFeatures = map.current?.queryRenderedFeatures(event.point, {
       layers: ['polygon', 'point'],
     });
-    if (clickedFeatures?.length ?? 0 > 0) {
-      setSelectedFeatureId(clickedFeatures![0].id)
+    if (clickedFeatures && (clickedFeatures.length ?? 0) > 0) {
+      setSelectedFeature(features.find(feature => feature.id === clickedFeatures[0].id))
     } else {
-      setSelectedFeatureId(undefined)
+      setSelectedFeature(undefined)
     }
-  }, [map, setSelectedFeatureId, tool])
+  }, [tool, features])
 
   useEffect(() => {
-    if (tool !== 'select' && selectedFeatureId) {
-      setSelectedFeatureId(undefined)
+    if (tool !== 'select' && selectedFeature) {
+      setSelectedFeature(undefined)
     }
-  }, [selectedFeatureId, setSelectedFeatureId, tool])
+  }, [tool, selectedFeature])
 
   useEffect(() => {
     const mapRef = map.current
@@ -33,9 +34,12 @@ export const DrawSelectControl = () => {
     return () => {
       mapRef?.off('click', handleClick)
     }
-  }, [map, tool, features, selectedFeatureId, handleClick])
+  }, [map, tool, features, selectedFeature, handleClick])
 
   return (
-    <DrawSelectUpdate />
+    <>
+      <DrawSelectUpdate />
+      <DrawSelectSource />
+    </>
   )
 }
