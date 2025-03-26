@@ -2,16 +2,16 @@ import InfoCard from "@/app/components/InfoCard"
 import { BackIcon } from "@/app/icons/BackIcon"
 import { GithubIconBlack } from "@/app/icons/GithubIconBlack"
 import { OpenApiIcon } from "@/app/icons/OpenApiIcon"
-import { Card, Link, Typography } from "@mui/material"
+import { Card, Typography } from "@mui/material"
 import { fetchResource } from "../../DataCatalogActions"
 import { Resource } from "../../DataCatalogTypes"
 import { Fragment, Suspense } from "react"
 import { redirect } from "next/navigation"
 import { ArrowForward, CloudOutlined, Code, FileDownloadOutlined, ListAlt } from "@mui/icons-material"
 import ApiCard from "@/app/components/ApiCard"
-import { WeatherIcon } from "@/app/icons/WeatherIcon"
 import CodeBlockWrapper from "@/app/components/CodeBlockWrapper"
 import { ResourceMap } from "@/app/components/ResourceMap"
+import Link from "next/link"
 
 type ResourceLoaderProps = {
 	params: {
@@ -35,6 +35,7 @@ type ResourcePageProps = {
 }
 
 export const ResourcePage = ({ resource }: ResourcePageProps) => {
+	const Icon = resource.categories[0].icon
 	return (
 		<div className="w-full lg:max-w-7xl px-8 lg:my-44 my-20">
 			<Link
@@ -47,8 +48,8 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 
 			<div className="flex flex-col gap-8 mt-14">
 				<div className="flex flex-wrap items-center gap-4">
-					<Typography variant="h1" className="text-4xl xs:text-5xl">
-						{resource.title}
+					<Typography variant="h1" className="flex items-center text-4xl xs:text-5xl gap-4">
+						<Icon fontSize="inherit" />{resource.title}
 					</Typography>
 					<div className="flex items-center gap-2 px-4 py-2 bg-neutral-90 rounded-full text-lg font-medium">{resource.type}</div>
 				</div>
@@ -127,21 +128,26 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 				<Typography className="text-3xl xs:text-4xl">Provided by</Typography>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
 					{resource.providers.map((provider) => (
-						<Card key={provider.id} className="group bg-card hover:bg-secondary-90 h-full w-full shadow-none rounded-xl">
-							<div className="flex flex-col p-6 gap-3">
-								<div className="flex flex-row justify-between items-baseline">
-									<Typography variant="h5" className="text-xl xs:text-2xl">
-										{provider.name}
-									</Typography>
-									<div className="transform transition-transform duration-300 group-hover:translate-x-2">
-										<ArrowForward />
+						<Link
+							href={`/data-catalog/provider/${provider.id}`}
+							key={provider.id}
+						>
+							<Card key={provider.id} className="group bg-card hover:bg-secondary-90 h-full w-full shadow-none rounded-xl">
+								<div className="flex flex-col p-6 gap-3">
+									<div className="flex flex-row justify-between items-center">
+										<Typography variant="h5" className="text-xl xs:text-2xl">
+											{provider.name}
+										</Typography>
+										<div className="transform transition-transform duration-300 group-hover:translate-x-2">
+											<ArrowForward />
+										</div>
 									</div>
+									<Typography variant="body1" className="text-sm xs:text-base">
+										{provider.description}
+									</Typography>
 								</div>
-								<Typography variant="body1" className="text-sm xs:text-base">
-									{provider.description}
-								</Typography>
-							</div>
-						</Card>
+							</Card>
+						</Link>
 					))}
 				</div>
 			</div>
@@ -153,7 +159,7 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 							<div key={spatialExtent.id} className="flex flex-col bg-card h-full w-full shadow-none rounded-xl overflow-hidden">
 								<div className="w-full aspect-square shrink">
 									{spatialExtent.type === "Region" ? (
-										<ResourceMap geometry={[spatialExtent.geometry]} />
+										<ResourceMap geometry={spatialExtent.geometry} />
 									) : (
 										<ResourceMap geometry={[{
 											type: "Feature",
@@ -197,13 +203,13 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 			{resource.usedBy && resource.usedBy.length > 0 && (
 				<div className="flex flex-col mt-28">
 					<Typography className="text-3xl xs:text-4xl">Used by</Typography>
-					<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-16">
 						{resource.usedBy.map((usedByResource) => (
 							<ApiCard
 								key={usedByResource.id}
 								header={usedByResource.title}
 								subHeader={usedByResource.abstract}
-								cardIcon={<WeatherIcon />}
+								cardIcon={<CloudOutlined />}
 								href={usedByResource.id}
 							/>
 						))}
@@ -213,13 +219,13 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 			{resource.basedOn && resource.basedOn.length > 0 && (
 				<div className="flex flex-col mt-28">
 					<Typography className="text-3xl xs:text-4xl">Based on</Typography>
-					<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-16">
 						{resource.basedOn.map((basedOnResource) => (
 							<ApiCard
 								key={basedOnResource.id}
 								header={basedOnResource.title}
 								subHeader={basedOnResource.abstract}
-								cardIcon={<WeatherIcon />}
+								cardIcon={<CloudOutlined />}
 								href={basedOnResource.id}
 							/>
 						))}
@@ -229,7 +235,7 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 			{resource.useExamples && resource.useExamples.length > 0 && (
 				<div className="flex flex-col mt-28">
 					<Typography className="text-3xl xs:text-4xl">Use Examples</Typography>
-					<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-8">
 						{resource.useExamples.map((useExample) => (
 							<InfoCard
 								key={useExample.id}
