@@ -6,10 +6,10 @@ import { useDataCatalog } from "./DataCatalogProvider"
 export const DataCatalogSearch = () => {
   const { tags, setTags } = useDataCatalog()
   return (
-    <div className="bg-neutral-95 rounded-sm w-min">
+    <div className="bg-neutral-95 rounded-sm">
       <Autocomplete
         id="data-catalog-search"
-        className="sticky w-96 top-0"
+        className="w-full"
         multiple
         freeSolo
         value={tags}

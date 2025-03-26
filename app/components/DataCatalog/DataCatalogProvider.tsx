@@ -1,6 +1,5 @@
 "use client"
 
-import EventEmitter from 'events';
 import { Feature, Point, Polygon } from 'geojson';
 import {
   createContext,
@@ -17,16 +16,21 @@ import { Resource } from '@/app/data-catalog/DataCatalogTypes';
 interface DataCatalogContextType {
   selectedAreaId: string | number | undefined;
   setSelectedAreaId: (id: string | number | undefined) => void;
-  eventEmitter: EventEmitter;
   resources: Resource[];
   tags: string[];
   setTags: (tags: string[]) => void;
   types: ResourceTypes[];
-  setTypes: (types: ResourceTypes[]) => void;
+  setTypes: (types: string[]) => void;
   features: Feature<Point | Polygon>[];
   setFeatures: (features: Feature<Point | Polygon>[]) => void;
   spatial: SpatialTypes[];
-  setSpatial: (spatial: SpatialTypes[]) => void;
+  setSpatial: (spatial: string[]) => void;
+  categories: string[];
+  setCategories: (categories: string[]) => void;
+  providers: string[];
+  setProviders: (providers: string[]) => void;
+  showMap: boolean;
+  setShowMap: (showMap: boolean) => void;
 }
 
 const DataCatalogContext = createContext<DataCatalogContextType | undefined>(
@@ -40,19 +44,20 @@ export const DataCatalogProvider = ({ children }: { children: ReactNode }) => {
   const [features, setFeatures] = useState<Feature<Point | Polygon>[]>([]);
   const [spatial, setSpatial] = useState<SpatialTypes[]>([]);
   const [selectedAreaId, setSelectedAreaId] = useState<string | number | undefined>()
-  const eventEmitter = new EventEmitter()
+  const [categories, setCategories] = useState<string[]>([])
+  const [providers, setProviders] = useState<string[]>([])
+  const [showMap, setShowMap] = useState(true)
 
   useEffect(() => {
     const updateResources = async () => {
-      setResources(await fetchDataCatalog(types, features, spatial, tags));
+      setResources(await fetchDataCatalog(types, features, spatial, categories, providers, tags));
     };
     updateResources()
-  }, [types, features, spatial, tags])
+  }, [types, features, spatial, tags, categories, providers])
 
   return (
     <DataCatalogContext.Provider
       value={{
-        eventEmitter,
         selectedAreaId,
         setSelectedAreaId,
         resources,
@@ -64,6 +69,12 @@ export const DataCatalogProvider = ({ children }: { children: ReactNode }) => {
         setFeatures,
         spatial,
         setSpatial,
+        categories,
+        setCategories,
+        providers,
+        setProviders,
+        showMap,
+        setShowMap,
       }}
     >
       <MapProvider>
