@@ -9,11 +9,12 @@ import ApiCard from "@/app/components/ApiCard"
 import Link from "next/link"
 
 type ProviderLoaderProps = {
-  params: {
+  params: Promise<{
     providerId: string
-  }
+  }>
 }
-const page = async ({ params: { providerId } }: ProviderLoaderProps) => {
+const page = async ({ params }: ProviderLoaderProps) => {
+  const { providerId } = await params
   const provider = await fetchProvider(providerId)
   if (!provider) {
     redirect("/not-found")

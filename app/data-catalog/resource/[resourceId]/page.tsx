@@ -14,11 +14,13 @@ import { ResourceMap } from "@/app/components/ResourceMap"
 import Link from "next/link"
 
 type ResourceLoaderProps = {
-	params: {
+	params: Promise<{
 		resourceId: string
-	}
+	}>
 }
-const page = async ({ params: { resourceId } }: ResourceLoaderProps) => {
+
+const page = async ({ params }: ResourceLoaderProps) => {
+	const { resourceId } = await params
 	const resource = await fetchResource(resourceId)
 	if (!resource) {
 		redirect("/not-found")
