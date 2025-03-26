@@ -67,7 +67,7 @@ export const DataCatalogGeoSearch = () => {
   }, [searchQuery, fetchOptions]);
 
   return (
-    <div className="absolute w-96 top-4 left-4 pointer-events-none">
+    <div className="absolute right-20 max-w-96 top-4 left-4 pointer-events-none">
       <div className='pointer-events-auto bg-neutral-95 rounded-sm'>
         <Autocomplete
           disablePortal
