@@ -1,96 +1,164 @@
-import { Check } from "@mui/icons-material";
-import { useEffect, useState } from "react";
-import { useDataCatalog } from "./DataCatalogProvider";
-import { ResourceTypes, SpatialTypes } from "@/app/data-catalog/DataCatalogActions";
+import { useDataCatalog } from "./DataCatalogProvider"
+import { FilterSelect, Option } from "../FilterSelect"
+import { FilterSelectArea } from "../FilterSelectArea"
+import { DummyCategories } from "@/app/data-catalog/DataCatalogDummyCategories"
+import { useEffect, useMemo, useState } from "react"
+import { Modal, useMediaQuery } from "@mui/material"
+import {
+  Close,
+  Filter,
+  FilterAltOutlined,
+  Layers,
+  LayersOutlined,
+  Public,
+} from "@mui/icons-material"
 
+const resourceOptions: Option[] = [
+  { label: "APIs", value: "API" },
+  { label: "Datasets", value: "Dataset" },
+  { label: "ML Models", value: "ML Model" },
+]
+const spatialOptions: Option[] = [
+  { label: "Global Coverage", value: "Global" },
+  { label: "Partial Coverage", value: "Region" },
+  { label: "Non-Spatial", value: "Non" },
+]
+const categoryOptions: Option[] = DummyCategories.map((category) => ({
+  label: category.name,
+  value: category.id,
+}))
 
-type FilterQuery = {
-  field: string;
-  value: boolean;
-}
-
-const defaultFilters: FilterQuery[] = [
-  {
-    field: 'APIs',
-    value: false,
-  },
-  {
-    field: 'Datasets',
-    value: false,
-  },
-  {
-    field: 'ML Models',
-    value: false,
-  },
-  {
-    field: 'Global Coverage',
-    value: false,
-  },
-  {
-    field: 'Local Coverage',
-    value: false,
-  }
+const providerOptions: Option[] = [
+  { label: "NASA", value: "NASA" },
+  { label: "NOAA", value: "NOAA" },
+  { label: "USGS", value: "USGS" },
+  { label: "ESA", value: "ESA" },
+  { label: "JAXA", value: "JAXA" },
+  { label: "COPERNICUS", value: "COPERNICUS" },
+  { label: "CIESIN", value: "CIESIN" },
+  { label: "GEO", value: "GEO" },
+  { label: "WMO", value: "WMO" },
+  { label: "FAO", value: "FAO" },
+  { label: "UNEP", value: "UNEP" },
 ]
 
 export const DataCatalogFilters = () => {
-  const { setTypes, setSpatial } = useDataCatalog()
-  const [filters, setFilters] = useState<FilterQuery[]>(defaultFilters)
+  const [showFilters, setShowFilters] = useState(false)
+
+  const lg = useMediaQuery("(min-width: 1024px)")
 
   useEffect(() => {
-    const newTypes: ResourceTypes[] = []
-    if (filters.some(filter => filter.field === 'APIs' && filter.value)) {
-      newTypes.push('API')
+    if (!lg) {
+      setShowFilters(false)
     }
-    if (filters.some(filter => filter.field === 'Datasets' && filter.value)) {
-      newTypes.push('Dataset')
-    }
-    if (filters.some(filter => filter.field === 'ML Models' && filter.value)) {
-      newTypes.push('ML Model')
-    }
-    setTypes(newTypes)
-  }, [filters, setTypes])
+  }, [lg])
 
-  useEffect(() => {
-    const newSpatial: SpatialTypes[] = []
-    if (filters.some(filter => filter.field === 'Global Coverage' && filter.value)) {
-      newSpatial.push('Global')
-    }
-    if (filters.some(filter => filter.field === 'Local Coverage' && filter.value)) {
-      newSpatial.push('Region')
-    }
-    setSpatial(newSpatial)
-  }, [filters, setSpatial])
+  const {
+    setShowMap,
+    types,
+    setTypes,
+    spatial,
+    setSpatial,
+    categories,
+    setCategories,
+    providers,
+    setProviders,
+    features,
+  } = useDataCatalog()
 
-  const handleSelect = (field: string) => {
-    const newFilters = filters.map(filter => {
-      if (filter.field === field) {
-        return {
-          ...filter,
-          value: !filter.value
-        }
-      }
-      return filter
-    })
-    setFilters(newFilters)
-  }
+  const numberOfFilters = useMemo(() => {
+    return (
+      types.length +
+      spatial.length +
+      categories.length +
+      providers.length +
+      features.length
+    )
+  }, [types, spatial, categories, providers, features])
 
-  return (
-    <div className="flex flex-col gap-2">
-      <div className="flex flex-wrap items-center gap-2">
-        <span>Filter</span>
-        {filters.map((filter) => (
-          <div
-            key={filter.field}
-            className={`flex cursor-pointer h-[42px] gap-2 items-center rounded-xl border px-4 py-2 ${filter.value ? 'bg-primary-90 hover:bg-primary-80 border-primary-90' : 'hover:bg-neutral-95'}`}
-            onClick={() => handleSelect(filter.field)}
-          >
-            {filter.value &&
-              <Check fontSize="inherit" />
-            }
-            <h3>{filter.field}</h3>
-          </div>
-        ))}
+  const filters = (
+    <>
+      <div className="flex flex-col gap-1 flex-1">
+        <span className="font-medium">Resource Types</span>
+        <FilterSelect
+          options={resourceOptions}
+          selected={types}
+          setSelected={setTypes}
+        />
       </div>
-    </div>
+      <div className="flex flex-col gap-1 flex-1">
+        <span className="font-medium">Spatial Extent</span>
+        <FilterSelect
+          options={spatialOptions}
+          selected={spatial}
+          setSelected={setSpatial}
+        />
+      </div>
+      <div className="flex flex-col gap-1 flex-1">
+        <span className="font-medium">Categories</span>
+        <FilterSelect
+          options={categoryOptions}
+          selected={categories}
+          setSelected={setCategories}
+        />
+      </div>
+      <div className="flex flex-col gap-1 flex-1">
+        <span className="font-medium">Providers</span>
+        <FilterSelect
+          options={providerOptions}
+          selected={providers}
+          setSelected={setProviders}
+        />
+      </div>
+      <div className="flex flex-col gap-1 flex-1">
+        <span className="font-medium">Geometry</span>
+        <FilterSelectArea />
+      </div>
+    </>
   )
+
+  if (lg) {
+    return (
+      <div className="grid grid-cols-5 gap-2 text-base">
+        {filters}
+      </div>
+    )
+  } else {
+    return (
+      <>
+        <div className="flex gap-2">
+          <button
+            onClick={() => setShowMap(true)}
+            className="cursor-pointer bg-neutral-90 hover:bg-neutral-80 text-white rounded-lg px-4 py-2 flex items-center gap-2"
+          >
+            <Public /> Show map
+          </button>
+          <button
+            onClick={() => setShowFilters(true)}
+            className="cursor-pointer bg-neutral-90 hover:bg-neutral-80 text-white rounded-lg px-4 py-2 flex items-center gap-2"
+          >
+            <FilterAltOutlined /> Filters{" "}
+            {numberOfFilters > 0 && (
+              <span className="bg-neutral-95 flex justify-center items-center rounded-lg size-8">
+                {numberOfFilters}
+              </span>
+            )}
+          </button>
+        </div>
+        <Modal open={showFilters}>
+          <div className="bg-neutral-99 h-full w-full p-4">
+            <div className="w-full flex justify-end">
+              <button
+                onClick={() => setShowFilters(false)}
+                className="cursor-pointer bg-neutral-90 hover:bg-neutral-80 size-10 rounded-lg flex items-center justify-center"
+              >
+                <Close />
+              </button>
+            </div>
+            <div className="flex flex-col gap-2 text-base">{filters}</div>
+          </div>
+        </Modal>
+      </>
+    )
+  }
 }
