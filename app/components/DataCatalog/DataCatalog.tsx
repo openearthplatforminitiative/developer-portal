@@ -8,12 +8,18 @@ import { DataCatalogFilters } from "./DataCatalogFilters"
 import { Tooltip, useMediaQuery } from "@mui/material"
 import { DataCatalogModelMap } from "./DataCatalogModelMap"
 import { useEffect } from "react"
+import { DrawProvider } from "./DrawControl/DrawProvider"
+import { MapProvider } from "react-map-gl/maplibre"
 
 export const DataCatalog = () => {
 	return (
-		<DataCatalogProvider>
-			<DataCatalogContent />
-		</DataCatalogProvider>
+		<MapProvider>
+			<DrawProvider>
+				<DataCatalogProvider>
+					<DataCatalogContent />
+				</DataCatalogProvider>
+			</DrawProvider>
+		</MapProvider>
 	)
 }
 

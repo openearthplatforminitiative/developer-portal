@@ -5,7 +5,6 @@ import { DummyCategories } from "@/app/data-catalog/DataCatalogDummyCategories"
 import { useEffect, useMemo, useState } from "react"
 import { Modal, useMediaQuery } from "@mui/material"
 import { Close, FilterAltOutlined, Public } from "@mui/icons-material"
-import { FilterSelectTemporal } from "@/app/components/FilterSelectTemporal.tsx"
 
 const resourceOptions: Option[] = [
 	{ label: "APIs", value: "API" },
@@ -59,7 +58,7 @@ export const DataCatalogFilters = () => {
 		setProviders,
 		years,
 		setYears,
-		features,
+		selectedFeatures,
 	} = useDataCatalog()
 
 	const numberOfFilters = useMemo(() => {
@@ -68,16 +67,17 @@ export const DataCatalogFilters = () => {
 			spatial.length +
 			categories.length +
 			providers.length +
-			features.length
+			years.length +
+			selectedFeatures.length
 		)
-	}, [types, spatial, categories, providers, features])
+	}, [types, spatial, categories, providers, years, selectedFeatures])
 
 	const yearOptions: Option[] = useMemo(() => {
 		const fromYear = 1950
 		const currentYear = new Date().getFullYear()
 		return Array.from({ length: currentYear - fromYear + 1 }, (_, i) => ({
 			label: (currentYear - i).toString(),
-			value: currentYear - i,
+			value: (currentYear - i).toString(),
 		}))
 	}, [])
 

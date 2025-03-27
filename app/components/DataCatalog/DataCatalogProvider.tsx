@@ -7,6 +7,7 @@ import {
 	useState,
 	ReactNode,
 	useEffect,
+	useMemo,
 } from "react"
 import { MapProvider } from "react-map-gl/maplibre"
 import { DrawProvider } from "./DrawControl/DrawProvider"
@@ -16,6 +17,7 @@ import {
 	SpatialTypes,
 } from "@/app/data-catalog/DataCatalogActions"
 import { Resource } from "@/app/data-catalog/DataCatalogTypes"
+import { useDraw } from "@/app/components/DataCatalog/DrawControl/DrawProvider"
 
 interface DataCatalogContextType {
 	selectedAreaId: string | number | undefined
@@ -25,16 +27,15 @@ interface DataCatalogContextType {
 	setTags: (tags: string[]) => void
 	types: ResourceTypes[]
 	setTypes: (types: string[]) => void
-	features: Feature<Point | Polygon>[]
-	setFeatures: (features: Feature<Point | Polygon>[]) => void
+	selectedFeatures: Feature<Point | Polygon>[]
 	spatial: SpatialTypes[]
 	setSpatial: (spatial: string[]) => void
 	categories: string[]
 	setCategories: (categories: string[]) => void
 	providers: string[]
 	setProviders: (providers: string[]) => void
-	years: number[]
-	setYears: number[]
+	years: string[]
+	setYears: (years: string[]) => void
 	showMap: boolean
 	setShowMap: (showMap: boolean) => void
 }
@@ -47,22 +48,26 @@ export const DataCatalogProvider = ({ children }: { children: ReactNode }) => {
 	const [resources, setResources] = useState<Resource[]>([])
 	const [tags, setTags] = useState<string[]>([])
 	const [types, setTypes] = useState<ResourceTypes[]>([])
-	const [features, setFeatures] = useState<Feature<Point | Polygon>[]>([])
 	const [spatial, setSpatial] = useState<SpatialTypes[]>([])
 	const [selectedAreaId, setSelectedAreaId] = useState<
 		string | number | undefined
 	>()
 	const [categories, setCategories] = useState<string[]>([])
-	const [years, setYears] = useState<number[]>([])
+	const [years, setYears] = useState<string[]>([])
 	const [providers, setProviders] = useState<string[]>([])
 	const [showMap, setShowMap] = useState(true)
+	const { features } = useDraw()
+
+	const selectedFeatures = useMemo(() => {
+		return features.filter((feature) => feature?.properties?.selected === true)
+	}, [features])
 
 	useEffect(() => {
 		const updateResources = async () => {
 			setResources(
 				await fetchDataCatalog(
 					types,
-					features,
+					selectedFeatures,
 					spatial,
 					categories,
 					providers,
@@ -83,10 +88,9 @@ export const DataCatalogProvider = ({ children }: { children: ReactNode }) => {
 				setTags,
 				types,
 				setTypes,
-				features,
-				setFeatures,
 				spatial,
 				setSpatial,
+				selectedFeatures,
 				categories,
 				setCategories,
 				providers,
@@ -97,9 +101,7 @@ export const DataCatalogProvider = ({ children }: { children: ReactNode }) => {
 				setShowMap,
 			}}
 		>
-			<MapProvider>
-				<DrawProvider>{children}</DrawProvider>
-			</MapProvider>
+			{children}
 		</DataCatalogContext.Provider>
 	)
 }

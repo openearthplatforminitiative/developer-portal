@@ -21,19 +21,13 @@ export const FilterSelectArea = () => {
 		setSelectedFeature,
 		setTool,
 	} = useDraw()
-	const {
-		features: features2,
-		setFeatures: setFeatures2,
-		setShowMap,
-	} = useDataCatalog()
+	const { selectedFeatures, setShowMap } = useDataCatalog()
 
-	useEffect(() => {
-		if (features2.length === features.length) {
-			setFeatures2(features)
-		}
-	}, [features, features2, setFeatures2])
-
-	const handleDelete = (id: string | number | undefined) => {
+	const handleDelete = (
+		e: React.MouseEvent<HTMLElement>,
+		id: string | number | undefined
+	) => {
+		e.stopPropagation()
 		setTool("select")
 		setShowMap(true)
 		setSelectedFeature(undefined)
@@ -55,16 +49,25 @@ export const FilterSelectArea = () => {
 	}
 
 	const handleSelect = (id: string | number | undefined) => {
-		let newSelected
-		if (features2.some((sel) => sel.id === id)) {
-			newSelected = features2.filter((sel) => sel.id !== id)
-		} else {
-			newSelected = [...features2, features.find((sel) => sel.id === id)!]
-		}
-		setFeatures2(newSelected)
+		const newFeatures = features.map((feature) => {
+			if (feature.id !== id) return feature
+			else {
+				return {
+					...feature,
+					properties: {
+						selected: !feature.properties?.selected ?? true,
+					},
+				}
+			}
+		})
+		setFeatures(newFeatures)
 	}
 
-	const handleEdit = (id: string | number | undefined) => {
+	const handleEdit = (
+		event: React.MouseEvent<HTMLElement>,
+		id: string | number | undefined
+	) => {
+		event.stopPropagation()
 		if (selectedFeature?.id === id) {
 			setSelectedFeature(undefined)
 		} else {
@@ -76,7 +79,16 @@ export const FilterSelectArea = () => {
 
 	const clearSelected = (event: React.MouseEvent<HTMLElement>) => {
 		event.stopPropagation()
-		setFeatures2([])
+		setFeatures(
+			features.map((feature) => {
+				return {
+					...feature,
+					properties: {
+						selected: false,
+					},
+				}
+			})
+		)
 	}
 
 	const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -87,7 +99,7 @@ export const FilterSelectArea = () => {
 	}
 	return (
 		<>
-			<button
+			<div
 				className="flex cursor-pointer gap-2 items-center rounded-lg border px-2 py-1 justify-between hover:bg-neutral-95"
 				aria-controls={open ? "demo-positioned-menu" : undefined}
 				aria-haspopup="true"
@@ -96,10 +108,10 @@ export const FilterSelectArea = () => {
 				tabIndex={0}
 			>
 				<span className="flex gap-2 flex-wrap items-center">
-					{features2.length > 0 ? (
+					{selectedFeatures.length > 0 ? (
 						<>
 							<span className="flex px-3 py-1 gap-2 bg-neutral-90 rounded-lg items-center">
-								{features2.length}
+								{selectedFeatures.length}
 							</span>
 							<span className="font-medium">Selected</span>
 						</>
@@ -109,7 +121,7 @@ export const FilterSelectArea = () => {
 				</span>
 				<span className="flex items-center">
 					{open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
-					{features2.length > 0 && (
+					{selectedFeatures.length > 0 && (
 						<button
 							className="flex size-6 rounded-lg cursor-pointer bg-neutral-90 hover:bg-neutral-80 justify-center items-center"
 							onClick={clearSelected}
@@ -118,7 +130,7 @@ export const FilterSelectArea = () => {
 						</button>
 					)}
 				</span>
-			</button>
+			</div>
 			<Menu
 				id="demo-positioned-menu"
 				aria-labelledby="demo-positioned-button"
@@ -146,20 +158,20 @@ export const FilterSelectArea = () => {
 							<Checkbox
 								sx={{ padding: 0 }}
 								disableRipple
-								checked={features2.some((sel) => sel.id === option.id)}
+								checked={selectedFeatures.some((sel) => sel.id === option.id)}
 							/>
 							{option.geometry.type == "Point" ? "Point" : "Area"} {index + 1}
 						</div>
 						<div className="flex gap-2 opacity-0 transition-opacity group-hover:opacity-100">
 							<button
 								className="hover:text-neutral-20 cursor-pointer"
-								onClick={() => handleEdit(option.id)}
+								onClick={(event) => handleEdit(event, option.id)}
 							>
 								<Edit />
 							</button>
 							<button
 								className="hover:text-neutral-20 cursor-pointer"
-								onClick={() => handleDelete(option.id)}
+								onClick={(event) => handleDelete(event, option.id)}
 							>
 								<Close />
 							</button>
