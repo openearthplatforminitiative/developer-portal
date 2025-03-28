@@ -55,6 +55,7 @@ export const FilterSelectArea = () => {
 				return {
 					...feature,
 					properties: {
+						...feature.properties,
 						selected: !feature.properties?.selected ?? true,
 					},
 				}
@@ -84,6 +85,7 @@ export const FilterSelectArea = () => {
 				return {
 					...feature,
 					properties: {
+						...feature.properties,
 						selected: false,
 					},
 				}
