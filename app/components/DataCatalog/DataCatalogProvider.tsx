@@ -32,6 +32,10 @@ interface DataCatalogContextType {
 	setYears: (years: string[]) => void
 	showMap: boolean
 	setShowMap: (showMap: boolean) => void
+	currentPage: number
+	setCurrentPage: (page: number) => void
+	pages: number
+	setPages: (page: number) => void
 }
 
 const DataCatalogContext = createContext<DataCatalogContextType | undefined>(
@@ -52,6 +56,8 @@ export const DataCatalogProvider = ({ children }: { children: ReactNode }) => {
 	const [showMap, setShowMap] = useState(true)
 	const { features, setFeatures } = useDraw()
 	const [initialized, setInitialized] = useState(false)
+	const [currentPage, setCurrentPage] = useState(1)
+	const [pages, setPages] = useState(10)
 
 	const selectedFeatures = useMemo(() => {
 		return features.filter((feature) => feature?.properties?.selected === true)
@@ -68,6 +74,8 @@ export const DataCatalogProvider = ({ children }: { children: ReactNode }) => {
 				setTags(parsedStorage.tags ?? [])
 				setCategories(parsedStorage.categories ?? [])
 				setProviders(parsedStorage.providers ?? [])
+				setCurrentPage(parsedStorage.current_page ?? [])
+				setPages(parsedStorage.pages ?? [])
 			} catch {
 				return
 			}
@@ -86,9 +94,21 @@ export const DataCatalogProvider = ({ children }: { children: ReactNode }) => {
 				tags: tags,
 				categories: categories,
 				providers: providers,
+				current_page: currentPage,
+				pages: pages,
 			})
 		)
-	}, [types, features, spatial, tags, categories, providers, initialized])
+	}, [
+		types,
+		features,
+		spatial,
+		tags,
+		categories,
+		providers,
+		currentPage,
+		pages,
+		initialized,
+	])
 
 	useEffect(() => {
 		const updateResources = async () => {
@@ -127,6 +147,10 @@ export const DataCatalogProvider = ({ children }: { children: ReactNode }) => {
 				setYears,
 				showMap,
 				setShowMap,
+				currentPage,
+				setCurrentPage,
+				pages,
+				setPages,
 			}}
 		>
 			{children}

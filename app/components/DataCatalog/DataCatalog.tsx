@@ -4,7 +4,7 @@ import { DataCatalogMap } from "./DataCatalogMap"
 import { DataCatalogProvider, useDataCatalog } from "./DataCatalogProvider"
 import { UnfoldLess, UnfoldMore } from "@mui/icons-material"
 import { DataCatalogFilters } from "./DataCatalogFilters"
-import { useMediaQuery } from "@mui/material"
+import { useMediaQuery, Pagination } from "@mui/material"
 import { DataCatalogModelMap } from "./DataCatalogModelMap"
 import { useEffect } from "react"
 import { DrawProvider } from "./DrawControl/DrawProvider"
@@ -25,7 +25,8 @@ export const DataCatalog = () => {
 }
 
 export const DataCatalogContent = () => {
-	const { resources, showMap, setShowMap } = useDataCatalog()
+	const { resources, showMap, setCurrentPage, currentPage, pages, setShowMap } =
+		useDataCatalog()
 
 	const lg = useMediaQuery("(min-width: 1024px)")
 
@@ -34,6 +35,10 @@ export const DataCatalogContent = () => {
 			setShowMap(false)
 		}
 	}, [lg, setShowMap])
+
+	const handlePagination = (event: any, newPage: number) => {
+		setCurrentPage(newPage)
+	}
 
 	return (
 		<div className="w-full flex flex-col gap-4 mt-16">
@@ -80,6 +85,13 @@ export const DataCatalogContent = () => {
 						Please try a new search.
 					</div>
 				)}
+			</div>
+			<div className="w-full flex justify-center">
+				<Pagination
+					count={pages}
+					page={currentPage}
+					onChange={handlePagination}
+				/>
 			</div>
 		</div>
 	)
