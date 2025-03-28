@@ -4,11 +4,9 @@ import { LngLat, MapMouseEvent } from "maplibre-gl"
 import { useCallback, useEffect } from "react"
 import { useMap } from "react-map-gl/maplibre"
 import { useDraw } from "../DrawProvider"
+import { Feature, Point } from "geojson"
 
-const DrawNewPoint = (
-	id: string,
-	coordinates: LngLat
-): GeoJSON.Feature<GeoJSON.Point> => {
+const DrawNewPoint = (id: string, coordinates: LngLat): Feature<Point> => {
 	return {
 		type: "Feature",
 		id: id,
