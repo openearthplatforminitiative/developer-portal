@@ -25,18 +25,19 @@ export const useDraw = () => {
 
 export const DrawProvider = ({ children }: { children: ReactNode }) => {
 	const [tool, setTool] = useState<DrawTool>("select")
-	const [idCounter, setIdCounter] = useState(0)
-
-	const generateFeatureId = () => {
-		const newId = idCounter + 1
-		setIdCounter(newId)
-		return `feature-${newId}`
-	}
-
 	const [features, setFeatures] = useState<Feature<Polygon | Point>[]>([])
 	const [selectedFeature, setSelectedFeature] = useState<
 		Feature<Polygon | Point> | undefined
 	>(undefined)
+
+	const generateFeatureId = () => {
+		if (features.length === 0) {
+			return "feature-1"
+		} else {
+			const highestId = features[features.length - 1].id.split("-")
+			return `feature-${highestId + 1}`
+		}
+	}
 
 	return (
 		<DrawContext.Provider
