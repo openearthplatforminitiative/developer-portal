@@ -109,9 +109,9 @@ export const DataCatalogList = () => {
 				</div>
 			) : (
 				<div className="w-full flex justify-center items-center text-center text-xl rounded-lg p-10 bg-neutral-95">
-					Sorry, we dont have any resources on your search
+					Sorry, we dont have any resources on your search.
 					<br />
-					Please try a new search
+					Please try a new search.
 				</div>
 			)}
 		</>
