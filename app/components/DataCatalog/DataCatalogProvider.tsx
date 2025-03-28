@@ -9,13 +9,7 @@ import {
 	useEffect,
 	useMemo,
 } from "react"
-import { MapProvider } from "react-map-gl/maplibre"
-import { DrawProvider } from "./DrawControl/DrawProvider"
-import {
-	fetchDataCatalog,
-	ResourceTypes,
-	SpatialTypes,
-} from "@/app/data-catalog/DataCatalogActions"
+import { fetchDataCatalog } from "@/app/data-catalog/DataCatalogActions"
 import { Resource } from "@/app/data-catalog/DataCatalogTypes"
 import { useDraw } from "@/app/components/DataCatalog/DrawControl/DrawProvider"
 
@@ -25,10 +19,10 @@ interface DataCatalogContextType {
 	resources: Resource[]
 	tags: string[]
 	setTags: (tags: string[]) => void
-	types: ResourceTypes[]
+	types: string[]
 	setTypes: (types: string[]) => void
 	selectedFeatures: Feature<Point | Polygon>[]
-	spatial: SpatialTypes[]
+	spatial: string[]
 	setSpatial: (spatial: string[]) => void
 	categories: string[]
 	setCategories: (categories: string[]) => void
@@ -47,8 +41,8 @@ const DataCatalogContext = createContext<DataCatalogContextType | undefined>(
 export const DataCatalogProvider = ({ children }: { children: ReactNode }) => {
 	const [resources, setResources] = useState<Resource[]>([])
 	const [tags, setTags] = useState<string[]>([])
-	const [types, setTypes] = useState<ResourceTypes[]>([])
-	const [spatial, setSpatial] = useState<SpatialTypes[]>([])
+	const [types, setTypes] = useState<string[]>([])
+	const [spatial, setSpatial] = useState<string[]>([])
 	const [selectedAreaId, setSelectedAreaId] = useState<
 		string | number | undefined
 	>()
@@ -56,11 +50,45 @@ export const DataCatalogProvider = ({ children }: { children: ReactNode }) => {
 	const [years, setYears] = useState<string[]>([])
 	const [providers, setProviders] = useState<string[]>([])
 	const [showMap, setShowMap] = useState(true)
-	const { features } = useDraw()
+	const { features, setFeatures } = useDraw()
+	const [initialized, setInitialized] = useState(false)
 
 	const selectedFeatures = useMemo(() => {
 		return features.filter((feature) => feature?.properties?.selected === true)
 	}, [features])
+
+	useEffect(() => {
+		const storage = localStorage.getItem("dataCatalogSearch")
+		if (storage) {
+			try {
+				const parsedStorage = JSON.parse(storage)
+				setTypes(parsedStorage.types ?? [])
+				setFeatures(parsedStorage.features ?? [])
+				setSpatial(parsedStorage.spatial ?? [])
+				setTags(parsedStorage.tags ?? [])
+				setCategories(parsedStorage.categories ?? [])
+				setProviders(parsedStorage.providers ?? [])
+			} catch {
+				return
+			}
+		}
+		setInitialized(true)
+	}, [])
+
+	useEffect(() => {
+		if (!initialized) return
+		localStorage.setItem(
+			"dataCatalogSearch",
+			JSON.stringify({
+				types: types,
+				features: features,
+				spatial: spatial,
+				tags: tags,
+				categories: categories,
+				providers: providers,
+			})
+		)
+	}, [types, features, spatial, tags, categories, providers, initialized])
 
 	useEffect(() => {
 		const updateResources = async () => {
@@ -76,7 +104,7 @@ export const DataCatalogProvider = ({ children }: { children: ReactNode }) => {
 			)
 		}
 		updateResources()
-	}, [types, features, spatial, tags, categories, providers])
+	}, [types, features, spatial, tags, categories, providers, selectedFeatures])
 
 	return (
 		<DataCatalogContext.Provider
