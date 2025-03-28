@@ -4,7 +4,6 @@ import "./globals.css"
 import NavBar from "@/app/components/NavBar"
 import { ReactNode } from "react"
 import Footer from "@/app/components/Footer"
-import HelpButton from "@/app/components/HelpButton"
 import { Providers } from "./providers/providers"
 
 const inter = localFont({
@@ -24,7 +23,6 @@ const RootLayout = ({ children }: { children: ReactNode }) => (
 			<Providers>
 				<NavBar />
 				<main className="flex-1 flex flex-col items-center">{children}</main>
-				<HelpButton />
 				<Footer />
 			</Providers>
 		</body>
