@@ -1,52 +1,75 @@
-import { Card } from "@mui/material"
-import Box from "@mui/material/Box"
-import Typography from "@mui/material/Typography"
-import { ExternalLinkIcon } from "@/app/icons/ExternalLinkIcon"
-import Link from "next/link"
-import Image from "next/image"
+"use client"
 
-interface ResourceCardProps {
-	header: string
-	subHeader: string
-	href: string
-	imageUrl: string
-	alt: string
+import { ArrowForward, PublicOutlined, WbSunny } from "@mui/icons-material"
+import Link from "next/link"
+import { Resource } from "@/app/data-catalog/DataCatalogTypes"
+
+type ResourceCardProps = {
+	resource: Resource
 }
-const ResourceCard = ({
-	header,
-	subHeader,
-	imageUrl,
-	href,
-	alt,
-}: ResourceCardProps) => {
+
+export const ResourceCard = ({ resource }: ResourceCardProps) => {
+	const tagClasses = "text-sm px-2 py-1 rounded-lg"
+
+	const tagColors = () => {
+		switch (resource.type) {
+			case "API":
+				return (
+					<div className={`${tagClasses} bg-primary-90/90 text-primary-10`}>
+						{resource.type}
+					</div>
+				)
+			case "Dataset":
+				return (
+					<div className={`${tagClasses} bg-secondary-90/90 text-secondary-10`}>
+						{resource.type}
+					</div>
+				)
+			case "ML Model":
+				return (
+					<div className={`${tagClasses} bg-tertiary-90/90 text-tertiary-10`}>
+						{resource.type}
+					</div>
+				)
+			default:
+				return (
+					<div className={`${tagClasses} bg-error-90 text-error-main`}>
+						{resource.type}
+						break;
+					</div>
+				)
+		}
+	}
+
+	const spatialTag = () => {
+		if (resource.spatialExtent?.length ?? 0 > 0) {
+			return (
+				<div className={`${tagClasses} bg-neutral-80/50 flex items-center`}>
+					<PublicOutlined fontSize="small" />
+				</div>
+			)
+		}
+	}
+
+	const Icon = resource.categories[0]?.icon ?? <WbSunny />
+
 	return (
 		<Link
-			target="_blank"
-			href={href}
-			className="flex flex-1 md:min-w-[350px] min-w-[250px] 2xs:max-w-[calc(100%-0.75rem)] xs:max-w-[calc(50%-0.75rem)] lg:max-w-[calc(33%-0.75rem)] h-full"
+			className="group flex items-center justify-between gap-6 rounded-lg px-6 py-4 bg-neutral-95 hover:bg-neutral-90 cursor-pointer"
+			href={`/data-catalog/resource/${resource.id}`}
 		>
-			<Card className="group rounded-xl bg-card hover:bg-secondary-90 w-full h-full shadow-none">
-				<Image
-					src={imageUrl}
-					alt={alt}
-					width={350}
-					height={250}
-					className="h-full w-full"
-				/>
-				<Box className="flex flex-col p-6">
-					<Box className="flex flex-row justify-between items-center">
-						<Typography variant="h5" className="text-xl xs:text-2xl">
-							{header}
-						</Typography>
-						<Box className="transform transition-transform duration-300 group-hover:translate-x-2 group-hover:-translate-y-2">
-							<ExternalLinkIcon />
-						</Box>
-					</Box>
-					<Typography variant="body2">{subHeader}</Typography>
-				</Box>
-			</Card>
+			<div className="flex flex-col gap-2 w-full">
+				<div className="flex items-center gap-2">
+					<Icon />
+					<h3>{resource.title}</h3>
+				</div>
+				<div className="flex flex-wrap items-center gap-2">
+					{spatialTag()}
+					{tagColors()}
+					{/* {providerTag()} */}
+				</div>
+			</div>
+			<ArrowForward className="transition group-hover:translate-x-2" />
 		</Link>
 	)
 }
-
-export default ResourceCard

@@ -3,7 +3,11 @@ import Typography from "@mui/material/Typography"
 import { Card } from "@mui/material"
 import { ExternalLinkIcon } from "@/app/icons/ExternalLinkIcon"
 import Link from "next/link"
-import ResourceCard from "@/app/components/ResourceCard"
+import { ExternalCard } from "@/app/components/ExternalCard.tsx"
+import { PythonLogo } from "@/app/icons/PythonLogo"
+import { JavascriptLogo } from "@/app/icons/JavascriptLogo"
+import InfoCard from "@/app/components/InfoCard"
+import { JavaLogo } from "@/app/icons/JavaLogo"
 
 const ResourcesPage = () => {
 	return (
@@ -85,32 +89,63 @@ const ResourcesPage = () => {
 					</Box>
 				</Box>
 				<Box className="flex flex-col gap-8">
+					<Typography variant="h2" className="text-3xl xs:text-4xl">
+						Client libraries
+					</Typography>
+					<Typography className="text-xl xs:text-2xl">
+						We provide three client libraries to make use of our data easier.
+					</Typography>
+					<Box className="flex justify-stretch lg:flex-row flex-col justify-s gap-6 mt-8 w-full">
+						<InfoCard
+							externalLink={true}
+							header="Javascript"
+							subHeader="A javascript client for accessing data from OpenEPI."
+							cardIcon={<JavascriptLogo />}
+							href="https://www.npmjs.com/package/openepi-client"
+						/>
+						<InfoCard
+							externalLink={true}
+							header="Python"
+							subHeader="A python client for accessing data from OpenEPI."
+							cardIcon={<PythonLogo />}
+							href="https://pypi.org/project/openepi-client/"
+						/>
+						<InfoCard
+							externalLink={true}
+							header="Java"
+							subHeader="A java client for accessing data from OpenEPI."
+							cardIcon={<JavaLogo />}
+							href="https://central.sonatype.com/artifact/io.openepi/openepi-client"
+						/>
+					</Box>
+				</Box>
+				<Box className="flex flex-col gap-8">
 					<Typography variant="h2" className="text-3xl xs:text-4xl w-full">
 						Frontend
 					</Typography>
 					<Box className="flex flex-wrap gap-6">
-						<ResourceCard
+						<ExternalCard
 							header="Material UI"
 							subHeader=""
 							href="https://mui.com"
 							imageUrl="/mui.png"
 							alt="mui logo"
 						/>
-						<ResourceCard
+						<ExternalCard
 							header="Next JS"
 							subHeader=""
 							href="https://nextjs.org"
 							imageUrl="/next.png"
 							alt="next logo"
 						/>
-						<ResourceCard
+						<ExternalCard
 							header="Typescript"
 							subHeader=""
 							href="https://www.typescriptlang.org/"
 							imageUrl="/ts.png"
 							alt="typescript logo"
 						/>
-						<ResourceCard
+						<ExternalCard
 							header="Tailwind CSS"
 							subHeader=""
 							href="https://tailwindcss.com/"
@@ -124,21 +159,21 @@ const ResourcesPage = () => {
 						Design
 					</Typography>
 					<Box className="flex flex-1 flex-wrap gap-6">
-						<ResourceCard
+						<ExternalCard
 							header="Google fonts"
 							subHeader=""
 							href="https://fonts.google.com/"
 							imageUrl="/google-fonts.png"
 							alt="google fonts logo"
 						/>
-						<ResourceCard
+						<ExternalCard
 							header="Material design"
 							subHeader=""
 							href="https://m3.material.io/"
 							imageUrl="/material-design.png"
 							alt="material design logo"
 						/>
-						<ResourceCard
+						<ExternalCard
 							header="Material symbols"
 							subHeader=""
 							href="https://fonts.google.com/icons?selected=Material+Symbols+Outlined:arrow_back:FILL@0;wght@400;GRAD@0;opsz@24"
