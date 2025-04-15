@@ -1,38 +1,20 @@
-import { useDataCatalog } from "./DataCatalogProvider"
+import { useDataCatalogFilters } from "./DataCatalogFiltersProvider"
+import { useDataCatalogData } from "./DataCatalogDataProvider"
 import { FilterSelect, Option } from "../FilterSelect"
 import { FilterSelectArea } from "../FilterSelectArea"
-import { DummyCategories } from "@/app/data-catalog/DataCatalogDummyCategories"
 import { useEffect, useMemo, useState } from "react"
 import { Modal, useMediaQuery } from "@mui/material"
 import { Close, FilterAltOutlined, Public } from "@mui/icons-material"
 
 const resourceOptions: Option[] = [
 	{ label: "APIs", value: "API" },
-	{ label: "Datasets", value: "Dataset" },
-	{ label: "ML Models", value: "ML Model" },
+	{ label: "Datasets", value: "DATASET" },
+	{ label: "ML Models", value: "ML_MODEL" },
 ]
 const spatialOptions: Option[] = [
-	{ label: "Global Coverage", value: "Global" },
-	{ label: "Partial Coverage", value: "Region" },
-	{ label: "Non-Spatial", value: "Non" },
-]
-const categoryOptions: Option[] = DummyCategories.map((category) => ({
-	label: category.name,
-	value: category.id,
-}))
-
-const providerOptions: Option[] = [
-	{ label: "NASA", value: "NASA" },
-	{ label: "NOAA", value: "NOAA" },
-	{ label: "USGS", value: "USGS" },
-	{ label: "ESA", value: "ESA" },
-	{ label: "JAXA", value: "JAXA" },
-	{ label: "COPERNICUS", value: "COPERNICUS" },
-	{ label: "CIESIN", value: "CIESIN" },
-	{ label: "GEO", value: "GEO" },
-	{ label: "WMO", value: "WMO" },
-	{ label: "FAO", value: "FAO" },
-	{ label: "UNEP", value: "UNEP" },
+	{ label: "Global Coverage", value: "GLOBAL" },
+	{ label: "Partial Coverage", value: "REGION" },
+	{ label: "Non-Spatial", value: "NON_SPATIAL" },
 ]
 
 export const DataCatalogFilters = () => {
@@ -52,25 +34,43 @@ export const DataCatalogFilters = () => {
 		setTypes,
 		spatial,
 		setSpatial,
-		categories,
-		setCategories,
-		providers,
-		setProviders,
+		categories: filteredCategories,
+		setCategories: setFilteredCategories,
+		providers: filteredProviders,
+		setProviders: setFilteredProviders,
 		years,
 		setYears,
-		selectedFeatures,
-	} = useDataCatalog()
+	} = useDataCatalogFilters()
+
+	const { selectedFeatures, providers, categories } = useDataCatalogData()
+
+	const categoryOptions: Option[] = categories.map((category) => ({
+		label: category.title,
+		value: category.id,
+	}))
+
+	const providerOptions: Option[] = providers.map((provider) => ({
+		label: provider.name,
+		value: provider.id,
+	}))
 
 	const numberOfFilters = useMemo(() => {
 		return (
 			types.length +
 			spatial.length +
-			categories.length +
-			providers.length +
+			filteredCategories.length +
+			filteredProviders.length +
 			years.length +
 			selectedFeatures.length
 		)
-	}, [types, spatial, categories, providers, years, selectedFeatures])
+	}, [
+		types,
+		spatial,
+		filteredCategories,
+		filteredProviders,
+		years,
+		selectedFeatures,
+	])
 
 	const yearOptions: Option[] = useMemo(() => {
 		const fromYear = 1950
@@ -111,16 +111,16 @@ export const DataCatalogFilters = () => {
 				<span className="font-medium">Categories</span>
 				<FilterSelect
 					options={categoryOptions}
-					selected={categories}
-					setSelected={setCategories}
+					selected={filteredCategories}
+					setSelected={setFilteredCategories}
 				/>
 			</div>
 			<div className="flex flex-col gap-1 flex-1">
 				<span className="font-medium">Providers</span>
 				<FilterSelect
 					options={providerOptions}
-					selected={providers}
-					setSelected={setProviders}
+					selected={filteredProviders}
+					setSelected={setFilteredProviders}
 				/>
 			</div>
 			<div className="flex flex-col gap-1 flex-1">

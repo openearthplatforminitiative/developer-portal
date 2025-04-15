@@ -4,9 +4,9 @@ import { Feature, Polygon } from "geojson"
 
 export type CategorySummary = {
 	id: string
-	name: string
-	icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> & { muiName: string }
-	description: string
+	title: string
+	abstract: string
+	icon: string
 }
 
 export type Category = CategorySummary & {
@@ -27,35 +27,41 @@ export type ProviderSummary = {
 	url: string
 }
 
-export type Provider = {
+export type ProviderData = {
 	id: string
 	name: string
 	description?: string
 	url: string
+}
+
+export type Provider = {
+	id: string
+	name: string
+	description?: string
 	resources: ResourceSummary[]
 }
 
 export type UseExample = {
 	id: string
-	title: string
+	name: string
 	description: string
 	example_url: string
 }
 
 export type GlobalSpatialExtent = {
 	id: string
-	type: "Global"
+	type: "GLOBAL"
 	details?: string
-	spatialResolution?: string
+	spatial_resolution?: string
 }
 
 export type RegionSpatialExtent = {
 	id: string
-	type: "Region"
+	type: "REGION"
 	region: string
 	details?: string
 	geometry: Feature<Polygon>[]
-	spatialResolution?: string
+	spatial_resolution?: string
 }
 
 export type SpatialExtent = GlobalSpatialExtent | RegionSpatialExtent
@@ -63,7 +69,7 @@ export type SpatialExtent = GlobalSpatialExtent | RegionSpatialExtent
 export type Code = {
 	id: string
 	language: "Java" | "Javascript" | "Python" | "Go" | "Bash"
-	code: string
+	source: string
 }
 
 export type CodeExample = {
@@ -78,9 +84,11 @@ export type ResourceSummary = {
 	title: string
 	abstract: string
 	type: "API" | "Dataset" | "ML Model"
+	icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> & { muiName: string }
+	has_spatial_extent: boolean
 }
 
-export type Resource = {
+export type ResourceData = {
 	id: string
 	title: string
 	abstract: string
@@ -88,7 +96,29 @@ export type Resource = {
 	html_content?: string
 	openapi_url?: string
 	download_url?: string
-	github_url?: string
+	git_url?: string
+	documentation_url?: string
+	update_frequency?: string
+	release_date?: string
+	client_library: boolean
+	keywords: string[]
+	version: string
+	license: string
+	basedOn: string[]
+	usedBy: string[]
+	providers: string[]
+	examples?: UseExample[]
+	spatial_extent?: SpatialExtent[]
+	code_examples?: CodeExample[]
+	categories: string[]
+}
+
+export type Resource = ResourceSummary & {
+	html_content?: string
+	icon: string
+	openapi_url?: string
+	download_url?: string
+	git_url?: string
 	documentation_url?: string
 	update_frequency?: string
 	release_date?: string
@@ -96,11 +126,11 @@ export type Resource = {
 	keywords: string[]
 	version: string
 	license: License
-	basedOn?: ResourceSummary[]
-	usedBy?: ResourceSummary[]
+	based_on?: ResourceSummary[]
+	used_by?: ResourceSummary[]
 	providers: ProviderSummary[]
-	useExamples?: UseExample[]
-	spatialExtent?: SpatialExtent[]
-	codeExamples?: CodeExample[]
+	examples?: UseExample[]
+	spatial_extent?: SpatialExtent[]
+	code_examples?: CodeExample[]
 	categories: CategorySummary[]
 }

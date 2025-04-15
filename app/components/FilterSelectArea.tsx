@@ -9,7 +9,7 @@ import {
 import { Checkbox, Divider, Menu, MenuItem } from "@mui/material"
 import { useEffect, useState } from "react"
 import { useDraw } from "./DataCatalog/DrawControl/DrawProvider"
-import { useDataCatalog } from "./DataCatalog/DataCatalogProvider"
+import { useDataCatalogData } from "./DataCatalog/DataCatalogDataProvider"
 
 export const FilterSelectArea = () => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -21,7 +21,7 @@ export const FilterSelectArea = () => {
 		setSelectedFeature,
 		setTool,
 	} = useDraw()
-	const { selectedFeatures, setShowMap } = useDataCatalog()
+	const { selectedFeatures, setShowMap } = useDataCatalogData()
 
 	const handleDelete = (
 		e: React.MouseEvent<HTMLElement>,

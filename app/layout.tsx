@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
 import "./globals.css"
+import "./material_symbols.css"
 import NavBar from "@/app/components/NavBar"
 import { ReactNode } from "react"
 import Footer from "@/app/components/Footer"

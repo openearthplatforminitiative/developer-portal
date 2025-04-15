@@ -4,6 +4,8 @@ import { DataCatalogMap } from "./DataCatalogMap"
 import { DataCatalogProvider, useDataCatalog } from "./DataCatalogProvider"
 import { UnfoldLess, UnfoldMore } from "@mui/icons-material"
 import { DataCatalogFilters } from "./DataCatalogFilters"
+import { useDataCatalogFilters } from "./DataCatalogFiltersProvider"
+import { useDataCatalogData } from "./DataCatalogDataProvider"
 import { useMediaQuery, Pagination } from "@mui/material"
 import { DataCatalogModelMap } from "./DataCatalogModelMap"
 import { useEffect } from "react"
@@ -11,6 +13,7 @@ import { DrawProvider } from "./DrawControl/DrawProvider"
 import { MapProvider } from "react-map-gl/maplibre"
 import { DataCatalogSearch } from "./DataCatalogSearch"
 import { ResourceCard } from "../ResourceCard.tsx"
+import { motion, AnimatePresence } from "motion/react"
 
 export const DataCatalog = () => {
 	return (
@@ -25,8 +28,9 @@ export const DataCatalog = () => {
 }
 
 export const DataCatalogContent = () => {
-	const { resources, showMap, setCurrentPage, currentPage, pages, setShowMap } =
-		useDataCatalog()
+	const { showMap, setShowMap } = useDataCatalog()
+	const { resources } = useDataCatalogData()
+	const { setCurrentPage, currentPage, pages } = useDataCatalogFilters()
 
 	const lg = useMediaQuery("(min-width: 1024px)")
 
@@ -37,6 +41,7 @@ export const DataCatalogContent = () => {
 	}, [lg, setShowMap])
 
 	const handlePagination = (event: any, newPage: number) => {
+		console.log(newPage)
 		setCurrentPage(newPage)
 	}
 
@@ -46,10 +51,11 @@ export const DataCatalogContent = () => {
 			<div className="w-full">
 				<DataCatalogSearch />
 			</div>
-			<div className="transition-all grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:auto-rows-[minmax(92px,1fr)] gap-4">
-				{lg ? (
-					<div
-						className={`transition-all relative ${showMap ? "w-auto col-span-2 row-span-7" : "row-span-3"}`}
+			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:auto-rows-[minmax(92px, 1fr)] gap-4">
+				{lg && (
+					<motion.div
+						layout
+						className={`relative ${showMap ? "min-h-[632px] col-[span_2] row-[span_6]" : "min-h-[308px] row-[span_3]"}`}
 					>
 						<div className="w-full h-full overflow-hidden rounded-lg">
 							<DataCatalogMap />
@@ -66,33 +72,46 @@ export const DataCatalogContent = () => {
 								)}
 							</button>
 						</div>
-					</div>
-				) : (
-					<DataCatalogModelMap />
+					</motion.div>
 				)}
-				{resources.length > 0 ? (
-					resources.map((resource) => (
-						<div key={resource.id}>
-							<ResourceCard resource={resource} />
-						</div>
-					))
-				) : (
-					<div
-						className={`${showMap ? "col-span-1 row-span-7" : "col-span-2 row-span-3"} flex justify-center items-center text-center text-xl rounded-lg p-10 bg-neutral-95`}
-					>
-						Sorry, we dont have any resources on your search.
-						<br />
-						Please try a new search.
-					</div>
-				)}
+				<AnimatePresence>
+					{resources.length > 0 ? (
+						resources.map((resource) => (
+							<motion.div
+								key={resource.id}
+								layout
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								exit={{ opacity: 0 }}
+							>
+								<ResourceCard resource={resource} />
+							</motion.div>
+						))
+					) : (
+						<motion.div
+							layout
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+							key="empty"
+							className={`${showMap ? "col-span-1 row-span-7" : "col-span-2 row-span-3"} flex justify-center items-center text-center text-xl rounded-lg p-10 bg-neutral-95`}
+						>
+							Sorry, we dont have any resources on your search.
+							<br />
+							Please try a new search.
+						</motion.div>
+					)}
+				</AnimatePresence>
 			</div>
 			<div className="w-full flex justify-center">
 				<Pagination
+					siblingCount={0}
 					count={pages}
 					page={currentPage}
 					onChange={handlePagination}
 				/>
 			</div>
+			{!lg && <DataCatalogModelMap />}
 		</div>
 	)
 }

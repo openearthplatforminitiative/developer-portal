@@ -1,39 +1,46 @@
-import { Feature, Point, Polygon } from "geojson"
-import { DataCatalogDummyData } from "./DataCatalogDummyData"
-import { booleanContains } from "@turf/turf"
-import { Provider, ProviderSummary, Resource } from "./DataCatalogTypes"
-import { DummyCategories } from "./DataCatalogDummyCategories"
+"use server"
 
-export type SpatialTypes = "Region" | "Global" | "Non"
+import { Feature, Point, Polygon } from "geojson"
+import {
+	Category,
+	Provider,
+	Resource,
+	ResourceSummary,
+} from "./DataCatalogTypes"
+
+export type SpatialTypes = "REGION" | "GLOBAL" | "NON_SPATIAL"
 export type ResourceTypes = "API" | "Dataset" | "ML Model"
 
-export const fetchProviders = async () => {
-	return DataCatalogDummyData.reduce((providers, resource) => {
-		resource.providers?.forEach((provider) => {
-			if (!providers.some((p) => p.id === provider.id)) {
-				providers.push(provider)
-			}
+export const fetchProviders = async (): Promise<Provider[]> => {
+	return await fetch(`http://localhost:8000/providers`, {
+		headers: {
+			accept: "application/json",
+			"Content-Type": "application/json",
+		},
+	})
+		.then((response) => response.json())
+		.then((data) => data)
+		.catch((error) => {
+			console.error("Error:", error)
+			return []
 		})
-		return providers
-	}, [] as ProviderSummary[])
 }
 
-export const fetchProvider = async (id: string): Promise<Provider | null> => {
-	const providerSummary = DataCatalogDummyData.reduce(
-		(foundProvider, resource) => {
-			if (foundProvider) return foundProvider
-			return resource.providers?.find((provider) => provider.id === id) || null
+export const fetchProvider = async (
+	id: string
+): Promise<Provider | undefined> => {
+	return await fetch(`http://localhost:8000/providers/${id}`, {
+		headers: {
+			accept: "application/json",
+			"Content-Type": "application/json",
 		},
-		null as ProviderSummary | null
-	)
-
-	if (!providerSummary) return null
-
-	const resources: Resource[] = DataCatalogDummyData.filter((resource) =>
-		resource.providers?.some((p) => p.id === id)
-	)
-
-	return { ...providerSummary, resources }
+	})
+		.then((response) => response.json())
+		.then((data) => data)
+		.catch((error) => {
+			console.error("Error:", error)
+			return []
+		})
 }
 
 export const fetchDataCatalog = async (
@@ -42,79 +49,87 @@ export const fetchDataCatalog = async (
 	spatial: string[],
 	categories: string[],
 	providers: string[],
-	tags: string[]
-) => {
-	return DataCatalogDummyData.filter((resource) => {
-		if (types.length > 0 && !types.includes(resource.type)) {
-			return false
+	tags: string[],
+	page: number,
+	limit: number
+): Promise<{ total_pages: number, resources: ResourceSummary[] }> => {
+	return await fetch(
+		`http://localhost:8000/resources?page=${page - 1}&per_page=${limit}`,
+		{
+			method: "POST",
+			headers: {
+				accept: "application/json",
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				types: types,
+				features: features,
+				spatial: spatial,
+				categories: categories,
+				providers: providers,
+				tags: tags,
+			}),
 		}
-
-		if (
-			spatial.length > 0 &&
-			!spatial.some((spatialType) => {
-				if (spatialType === "Non") {
-					return !resource.spatialExtent || resource.spatialExtent.length === 0
-				}
-				return resource.spatialExtent?.some(
-					(extent) => extent.type === spatialType
-				)
-			})
-		) {
-			return false
-		}
-
-		const coversAllFeatures = features.every((feature) =>
-			resource.spatialExtent?.some((extent) => {
-				if (extent.type === "Global") return true
-				return extent.geometry.some((geometry) =>
-					booleanContains(geometry, feature.geometry)
-				)
-			})
-		)
-		if (!coversAllFeatures) {
-			return false
-		}
-
-		if (
-			categories.length > 0 &&
-			!categories.some((categoryId) =>
-				resource.categories?.some((category) => category.id === categoryId)
-			)
-		) {
-			return false
-		}
-
-		if (
-			providers.length > 0 &&
-			!providers.some((providerId) =>
-				resource.providers?.some((provider) => provider.name === providerId)
-			)
-		) {
-			return false
-		}
-
-		// Filter by tags
-		const resourceText = [
-			resource.title,
-			resource.keywords?.join(" "),
-			resource.abstract,
-			resource.html_content,
-			resource.providers?.map((provider) => provider.name).join(" "),
-		]
-			.join(" ")
-			.toLowerCase()
-
-		if (tags.length > 0) {
-			return tags.some((tag) => resourceText.includes(tag.toLowerCase()))
-		}
-		return true
-	})
+	)
+		.then((response) => response.json())
+		.then((data) => data)
+		.catch((error) => {
+			console.error("Error:", error)
+			return []
+		})
 }
 
-export const fetchResource = async (id: string) => {
-	return DataCatalogDummyData.find((resource) => resource.id === id)
+export const fetchResource = async (
+	id: string
+): Promise<Resource | undefined> => {
+	return await fetch(`http://localhost:8000/resources/${id}`, {
+		headers: {
+			accept: "application/json",
+			"Content-Type": "application/json",
+		},
+	})
+		.then((response) => {
+			console.log("response", response)
+			return response.json()
+		})
+		.then((data) => {
+			console.log("data", data)
+			return data
+		})
+		.catch((error) => {
+			console.error("Error:", error)
+			return []
+		})
 }
 
 export const fetchCategories = async () => {
-	return DummyCategories
+	return await fetch(`http://localhost:8000/categories`, {
+		headers: {
+			accept: "application/json",
+			"Content-Type": "application/json",
+		},
+	})
+		.then((response) => response.json())
+		.then((data) => data)
+		.catch((error) => {
+			console.error("Error:", error)
+			return []
+		})
+}
+
+export const fetchCategory = async (
+	id: string
+): Promise<Category | undefined> => {
+	return await fetch(`http://localhost:8000/categories/${id}`, {
+		headers: {
+			accept: "application/json",
+			"Content-Type": "application/json",
+		},
+	})
+		.then((response) => response.json())
+		.then((data) => data)
+		.catch((error) => {
+			console.error("Error:", error)
+			return []
+		})
 }

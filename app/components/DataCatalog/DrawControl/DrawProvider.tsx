@@ -34,7 +34,9 @@ export const DrawProvider = ({ children }: { children: ReactNode }) => {
 		if (features.length === 0) {
 			return "feature-1"
 		} else {
-			const highestId = features[features.length - 1].id.split("-")
+			const highestId = features.length > 0 && typeof features[features.length - 1].id === "string"
+				? (features[features.length - 1].id as string).split("-")[1]
+				: "0"
 			return `feature-${highestId + 1}`
 		}
 	}
