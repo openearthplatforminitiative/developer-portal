@@ -9,6 +9,7 @@ import { Fragment, Suspense } from "react"
 import { redirect } from "next/navigation"
 import {
 	ArrowForward,
+	ArrowOutward,
 	CloudOutlined,
 	Code,
 	FileDownloadOutlined,
@@ -16,7 +17,6 @@ import {
 } from "@mui/icons-material"
 import CodeBlockWrapper from "@/app/components/CodeBlockWrapper"
 import { ResourceMap } from "@/app/components/ResourceMap"
-import { LicenseInfo } from "@/app/components/LicenseInfo"
 import Link from "next/link"
 import { ResourceCard } from "@/app/components/ResourceCard.tsx"
 
@@ -75,7 +75,12 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 							Version {resource.version}
 						</div>
 					)}
-					{resource.license && <LicenseInfo license={resource.license} />}
+					{resource.license &&
+						<Link className="group flex items-center gap-2 px-4 py-2 bg-neutral-90 rounded-full" href={resource.license.url} target="_blank">
+							{resource.license.name}
+							<ArrowOutward className="transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+						</Link>
+					}
 					{resource.release_date && (
 						<div className="flex items-center gap-2 px-4 py-2 bg-neutral-90 rounded-full">
 							Released {new Date(resource.release_date).getFullYear()}
