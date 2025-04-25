@@ -4,7 +4,7 @@ import { Button, useMediaQuery, Icon } from "@mui/material"
 import ApiCard from "./ApiCard"
 import { useEffect, useMemo, useRef, useState } from "react"
 import { fetchCategories } from "../data-catalog/DataCatalogActions"
-import { CategorySummary } from "../data-catalog/DataCatalogTypes"
+import { CategorySummary } from "@/types/category"
 
 export const Categories = () => {
 	const [show, setShow] = useState(false)

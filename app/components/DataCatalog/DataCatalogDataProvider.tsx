@@ -14,7 +14,9 @@ import {
 	fetchProviders,
 	fetchCategories,
 } from "@/app/data-catalog/DataCatalogActions"
-import { Category, Provider, ResourceSummary } from "@/app/data-catalog/DataCatalogTypes"
+import { ResourceSummary } from "@/types/resource.ts"
+import { Provider } from "@/types/provider.ts"
+import { Category } from "@/types/category.ts"
 import { useDataCatalogFilters } from "./DataCatalogFiltersProvider.tsx"
 import { useDraw } from "@/app/components/DataCatalog/DrawControl/DrawProvider.tsx"
 
@@ -87,7 +89,7 @@ export const DataCatalogDataProvider = ({
 			)
 			console.log(data)
 			setPages(data.total_pages)
-			setResources(data.resources)
+			setResources(data.data)
 		}
 		updateResources()
 	}, [types, spatial, tags, filterCategories, filterProviders, selectedFeatures, currentPage, initialized, setPages])

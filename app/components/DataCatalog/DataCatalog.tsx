@@ -51,7 +51,7 @@ export const DataCatalogContent = () => {
 			<div className="w-full">
 				<DataCatalogSearch />
 			</div>
-			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:auto-rows-[minmax(92px, 1fr)] gap-4">
+			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:auto-rows-[minmax(92px, 1fr)] gap-4 content-stretch">
 				{lg && (
 					<motion.div
 						layout

@@ -2,11 +2,12 @@
 
 import { Feature, Point, Polygon } from "geojson"
 import {
-	Category,
-	Provider,
 	Resource,
-	ResourceSummary,
-} from "./DataCatalogTypes"
+	ResourceSummary
+} from "@/types/resource"
+import { Provider } from "@/types/provider"
+import { Category } from "@/types/category"
+import { Pagination } from "@/types/pagination"
 
 export type SpatialTypes = "REGION" | "GLOBAL" | "NON_SPATIAL"
 export type ResourceTypes = "API" | "Dataset" | "ML Model"
@@ -52,7 +53,7 @@ export const fetchDataCatalog = async (
 	tags: string[],
 	page: number,
 	limit: number
-): Promise<{ total_pages: number, resources: ResourceSummary[] }> => {
+): Promise<Pagination<ResourceSummary>> => {
 	return await fetch(
 		`http://localhost:8000/resources/search?page=${page - 1}&per_page=${limit}`,
 		{

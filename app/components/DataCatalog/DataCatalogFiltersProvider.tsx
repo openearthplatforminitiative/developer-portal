@@ -7,7 +7,7 @@ import {
 	ReactNode,
 	useEffect,
 } from "react"
-import { Resource } from "@/app/data-catalog/DataCatalogTypes"
+import { Resource } from "@/types/resource"
 import { useDraw } from "@/app/components/DataCatalog/DrawControl/DrawProvider"
 
 interface DataCatalogFiltersContextType {

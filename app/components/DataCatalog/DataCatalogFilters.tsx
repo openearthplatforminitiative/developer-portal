@@ -9,6 +9,7 @@ import { Close, FilterAltOutlined, Public } from "@mui/icons-material"
 const resourceOptions: Option[] = [
 	{ label: "APIs", value: "API" },
 	{ label: "Datasets", value: "DATASET" },
+	{ label: "Dataset_Collection", value: "DATASET_COLLECTION" },
 	{ label: "ML Models", value: "ML_MODEL" },
 ]
 const spatialOptions: Option[] = [

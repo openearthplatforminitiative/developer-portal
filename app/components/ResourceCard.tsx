@@ -2,7 +2,7 @@
 
 import { ArrowForward, PublicOutlined, WbSunny } from "@mui/icons-material"
 import Link from "next/link"
-import { ResourceSummary } from "@/app/data-catalog/DataCatalogTypes"
+import { ResourceSummary } from "@/types/resource"
 import { motion } from "framer-motion"
 
 type ResourceCardProps = {
@@ -18,6 +18,12 @@ export const ResourceCard = ({ resource }: ResourceCardProps) => {
 				return (
 					<div className={`${tagClasses} bg-primary-90/90 text-primary-10`}>
 						{resource.type}
+					</div>
+				)
+			case "DATASET_COLLECTION":
+				return (
+					<div className={`${tagClasses} bg-neutral-100/90 text-neutral-10`}>
+						Dataset Collection
 					</div>
 				)
 			case "DATASET":
@@ -36,7 +42,6 @@ export const ResourceCard = ({ resource }: ResourceCardProps) => {
 				return (
 					<div className={`${tagClasses} bg-error-90 text-error-main`}>
 						{resource.type}
-						break;
 					</div>
 				)
 		}
@@ -83,16 +88,14 @@ export const ResourceCard = ({ resource }: ResourceCardProps) => {
 		}
 	}
 
-	const Icon = resource.icon ?? WbSunny
-
 	return (
 		<motion.div
 			layout
 			exit={{ opacity: 0 }}
-			className="group flex items-center justify-between gap-6 rounded-lg px-6 py-4 bg-neutral-95 hover:bg-neutral-90 cursor-pointer"
+			className="group h-full flex items-center justify-between gap-6 rounded-lg px-6 py-4 bg-neutral-95 hover:bg-neutral-90 cursor-pointer"
 		>
 			<Link
-				className="flex flex-col gap-2 w-full h-full"
+				className="flex flex-col justify-center gap-2 w-full h-full"
 				href={`/data-catalog/resource/${resource.id}`}
 			>
 				<div className="flex items-center gap-2">

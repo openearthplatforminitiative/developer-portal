@@ -1,7 +1,7 @@
 import { BackIcon } from "@/app/icons/BackIcon"
 import { Card, Typography } from "@mui/material"
 import { fetchProvider } from "../../DataCatalogActions"
-import { Provider } from "../../DataCatalogTypes"
+import { Provider } from "@/types/provider"
 import { Suspense } from "react"
 import { redirect } from "next/navigation"
 import { ArrowOutward } from "@mui/icons-material"

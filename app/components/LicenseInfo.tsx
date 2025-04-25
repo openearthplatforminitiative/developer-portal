@@ -8,7 +8,7 @@ import {
 import { Menu } from "@mui/material"
 import { useState } from "react"
 import Link from "next/link"
-import { License } from "@/app/data-catalog/DataCatalogTypes.ts"
+import { License } from "@/types/license"
 
 type LicenseInfoType = {
 	license: License

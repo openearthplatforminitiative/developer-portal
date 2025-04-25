@@ -4,7 +4,7 @@ import { GithubIconBlack } from "@/app/icons/GithubIconBlack"
 import { OpenApiIcon } from "@/app/icons/OpenApiIcon"
 import { Card, Typography } from "@mui/material"
 import { fetchResource } from "../../DataCatalogActions"
-import { Resource } from "../../DataCatalogTypes"
+import { Resource } from "@/types/resource"
 import { Fragment, Suspense } from "react"
 import { redirect } from "next/navigation"
 import {
