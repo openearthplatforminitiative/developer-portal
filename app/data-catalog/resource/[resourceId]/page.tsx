@@ -150,24 +150,24 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
 					{resource.providers.map((provider) => (
 						<Link
-							href={`/data-catalog/provider/${provider.id}`}
-							key={provider.id}
+							href={`/data-catalog/provider/${provider.provider.id}`}
+							key={provider.provider.id}
 						>
 							<Card
-								key={provider.id}
+								key={provider.provider.id}
 								className="group bg-card hover:bg-secondary-90 h-full w-full shadow-none rounded-xl"
 							>
 								<div className="flex flex-col p-6 gap-3">
 									<div className="flex flex-row justify-between items-center">
 										<Typography variant="h5" className="text-xl xs:text-2xl">
-											{provider.name}
+											{provider.provider.name}
 										</Typography>
 										<div className="transform transition-transform duration-300 group-hover:translate-x-2">
 											<ArrowForward />
 										</div>
 									</div>
 									<Typography variant="body1" className="text-sm xs:text-base">
-										{provider.description}
+										{provider.provider.description}
 									</Typography>
 								</div>
 							</Card>

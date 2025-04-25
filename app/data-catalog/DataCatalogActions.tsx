@@ -54,7 +54,7 @@ export const fetchDataCatalog = async (
 	limit: number
 ): Promise<{ total_pages: number, resources: ResourceSummary[] }> => {
 	return await fetch(
-		`http://localhost:8000/resources?page=${page - 1}&per_page=${limit}`,
+		`http://localhost:8000/resources/search?page=${page - 1}&per_page=${limit}`,
 		{
 			method: "POST",
 			headers: {

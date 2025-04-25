@@ -60,7 +60,7 @@ export const ResourcePage = ({ category }: CategoryPageProps) => {
 					<Typography className="text-3xl xs:text-4xl">Data Catalog</Typography>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
 						{category.resources.map((resource) => (
-							<ResourceCard key={resource.id} resource={resource} />
+							<ResourceCard key={resource.resource.id} resource={resource.resource} />
 						))}
 					</div>
 				</div>
