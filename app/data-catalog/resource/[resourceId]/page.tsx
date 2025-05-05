@@ -44,7 +44,6 @@ type ResourcePageProps = {
 }
 
 export const ResourcePage = ({ resource }: ResourcePageProps) => {
-	//	const Icon = resource.categories[0].icon
 	console.log(resource)
 	return (
 		<div className="w-full lg:max-w-7xl px-8 lg:my-44 my-20">
@@ -76,9 +75,11 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 						</div>
 					)}
 					{resource.license &&
-						<Link className="group flex items-center gap-2 px-4 py-2 bg-neutral-90 rounded-full" href={resource.license.url} target="_blank">
+						<Link className="group flex items-center gap-2 px-4 py-2 bg-neutral-90 rounded-full"
+							href={resource.license.url} target="_blank">
 							{resource.license.name}
-							<ArrowOutward className="transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+							<ArrowOutward fontSize="inherit"
+								className="transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
 						</Link>
 					}
 					{resource.release_date && (
@@ -226,9 +227,14 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 									<Typography variant="body1" className="text-sm xs:text-base">
 										{spatialExtent.details}
 									</Typography>
-									<Typography variant="body1" className="text-sm xs:text-base">
-										Spatial Resolution: {spatialExtent.spatial_resolution}
-									</Typography>
+									<div>
+										<Typography variant="body2" className="text-sm xs:text-base">
+											Spatial Resolution
+										</Typography>
+										<Typography variant="body1" className="text-sm xs:text-base">
+											{spatialExtent.spatial_resolution}
+										</Typography>
+									</div>
 								</div>
 							</div>
 						))}
