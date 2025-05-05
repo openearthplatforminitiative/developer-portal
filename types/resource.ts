@@ -1,5 +1,3 @@
-import { SvgIconTypeMap } from "@mui/material"
-import { OverridableComponent } from "@mui/material/OverridableComponent"
 import { CategorySummary } from "./category"
 import { ProviderSummary } from "./provider"
 import { UseExample } from "./use-example"
@@ -21,14 +19,17 @@ export type ResourceSummary = {
 	id: string
 	title: string
 	abstract: string
-	type: "API" | "Dataset" | "ML Model"
-	icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> & { muiName: string }
+	type: "API" | "DATASET" | "ML_MODEL" | "DATASET_COLLECTION"
+	icon: string
 	has_spatial_extent: boolean
+	covers_all: boolean
+	intersects_all: boolean
+	covers_some: boolean
+	intersects_some: boolean
 }
 
 export type Resource = ResourceSummary & {
 	html_content?: string
-	icon: string
 	openapi_url?: string
 	download_url?: string
 	git_url?: string

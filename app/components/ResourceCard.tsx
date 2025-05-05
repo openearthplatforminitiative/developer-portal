@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowForward, PublicOutlined, WbSunny } from "@mui/icons-material"
+import { ArrowForward, PublicOutlined } from "@mui/icons-material"
 import Link from "next/link"
 import { ResourceSummary } from "@/types/resource"
 import { motion } from "framer-motion"
@@ -47,7 +47,7 @@ export const ResourceCard = ({ resource }: ResourceCardProps) => {
 		}
 	}
 
-	const spatialTag = () => {
+	const hasSpatialTag = () => {
 		if (resource.has_spatial_extent) {
 			return (
 				<div className={`${tagClasses} bg-neutral-80/50 flex items-center`}>
@@ -57,26 +57,23 @@ export const ResourceCard = ({ resource }: ResourceCardProps) => {
 		}
 	}
 
-	const spatialCoversTag = () => {
+	const spatialTag = () => {
 		if (resource.covers_all) {
 			return (
 				<div className={`${tagClasses} bg-neutral-80/50 flex items-center`}>
 					Covers
 				</div>
 			)
+		} else if (resource.intersects_all) {
+			return (
+				<div className={`${tagClasses} bg-neutral-80/50 flex items-center`}>
+					Intersects
+				</div>
+			)
 		} else if (resource.covers_some) {
 			return (
 				<div className={`${tagClasses} bg-neutral-80/50 flex items-center`}>
 					Covers Some
-				</div>
-			)
-		}
-	}
-	const spatialIntersectsTag = () => {
-		if (resource.intersects_all) {
-			return (
-				<div className={`${tagClasses} bg-neutral-80/50 flex items-center`}>
-					Intersects
 				</div>
 			)
 		} else if (resource.intersects_some) {
@@ -105,10 +102,9 @@ export const ResourceCard = ({ resource }: ResourceCardProps) => {
 					<h3>{resource.title}</h3>
 				</div>
 				<div className="flex flex-wrap items-center gap-2">
-					{spatialTag()}
+					{hasSpatialTag()}
 					{tagColors()}
-					{spatialCoversTag()}
-					{spatialIntersectsTag()}
+					{spatialTag()}
 				</div>
 			</Link>
 			<ArrowForward className="transition group-hover:translate-x-2" />
