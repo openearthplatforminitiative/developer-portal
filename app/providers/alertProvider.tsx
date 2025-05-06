@@ -1,7 +1,7 @@
 "use client"
 
 import { Alert, AlertTitle, Snackbar } from "@mui/material"
-import React, { createContext, useContext, useState, ReactNode } from "react"
+import React, { createContext, useContext, useState, ReactNode, useCallback } from "react"
 
 type AlertProps = {
 	severity: "error" | "warning" | "info" | "success"
@@ -20,9 +20,9 @@ export const AlertProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
 	const [alerts, setAlerts] = useState<AlertProps[]>([])
 
-	const addAlert = (alert: AlertProps) => {
-		setAlerts([...alerts, alert])
-	}
+	const addAlert = useCallback((alert: AlertProps) => {
+		setAlerts((prevAlerts) => [...prevAlerts, alert]);
+	}, []);
 
 	const clearAlert = (index: number) => {
 		// remove alert from array
