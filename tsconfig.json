@@ -14,14 +14,14 @@
 		"allowImportingTsExtensions": true,
 		"jsx": "preserve",
 		"incremental": true,
-		"typeRoots": ["types"],
+		"typeRoots": ["src/types"],
 		"plugins": [
 			{
 				"name": "next"
 			}
 		],
 		"paths": {
-			"@/*": ["./*"]
+			"@/*": ["./src/*"]
 		}
 	},
 	"include": [

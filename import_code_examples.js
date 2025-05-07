@@ -38,7 +38,7 @@ for (const directory of files) {
 	})
 	const codeExampleName = `${snakeToPascal(dirName)}Example`
 	const codeExample = `
-    import CodeBlockWrapper from "@/app/components/CodeBlockWrapper"
+    import CodeBlockWrapper from "@/components/CodeBlockWrapper"
     
     export const ${codeExampleName} = () => (
       <CodeBlockWrapper
