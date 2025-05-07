@@ -3,13 +3,13 @@
 import { ArrowForward, PublicOutlined } from "@mui/icons-material"
 import Link from "next/link"
 import { ResourceSummary } from "@/types/resource"
-import { motion } from "framer-motion"
 
 type ResourceCardProps = {
 	resource: ResourceSummary
+	isLoading?: boolean
 }
 
-export const ResourceCard = ({ resource }: ResourceCardProps) => {
+export const ResourceCard = ({ resource, isLoading }: ResourceCardProps) => {
 	const tagClasses = "text-sm px-2 py-1 rounded-lg"
 
 	const tagColors = () => {
@@ -85,29 +85,31 @@ export const ResourceCard = ({ resource }: ResourceCardProps) => {
 		}
 	}
 
+	const Content = () => (
+		<>
+			<div className="flex items-center gap-2">
+				<span className="material-symbols-outlined font-medium">
+					{resource.icon}
+				</span>
+				<h3>{resource.title}</h3>
+			</div>
+			<div className="flex flex-wrap items-center gap-2">
+				{hasSpatialTag()}
+				{tagColors()}
+				{spatialTag()}
+			</div>
+		</>
+	)
 	return (
-		<motion.div
-			layout
-			exit={{ opacity: 0 }}
-			className="group h-full flex items-center justify-between gap-6 rounded-lg px-6 py-4 bg-neutral-95 hover:bg-neutral-90 cursor-pointer"
+		<div className={`group h-full flex items-center justify-between gap-6 rounded-lg px-6 py-4 transition-colors ${isLoading ? "animate-pulse bg-neutral-90" : " bg-neutral-95 hover:bg-neutral-90 cursor-pointer"}`}
 		>
 			<Link
 				className="flex flex-col justify-center gap-2 w-full h-full"
 				href={`/data-catalog/resource/${resource.id}`}
 			>
-				<div className="flex items-center gap-2">
-					<span className="material-symbols-outlined font-medium">
-						{resource.icon}
-					</span>
-					<h3>{resource.title}</h3>
-				</div>
-				<div className="flex flex-wrap items-center gap-2">
-					{hasSpatialTag()}
-					{tagColors()}
-					{spatialTag()}
-				</div>
+				<Content />
 			</Link>
 			<ArrowForward className="transition group-hover:translate-x-2" />
-		</motion.div>
+		</div>
 	)
 }

@@ -13,12 +13,16 @@ type FilterSelectProps = {
 	options: Option[]
 	selected: string[]
 	setSelected: (value: string[]) => void
+	isLoading?: boolean
+	error?: Error | null
 }
 
 export const FilterSelect = ({
 	options,
 	selected,
 	setSelected,
+	isLoading,
+	error
 }: FilterSelectProps) => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 	const open = Boolean(anchorEl)
@@ -43,6 +47,46 @@ export const FilterSelect = ({
 	const handleClose = () => {
 		setAnchorEl(null)
 	}
+
+	const MenuContent = () => {
+		if (isLoading) {
+			return (
+				<MenuItem className="flex gap-2 py-2">
+					<span className="animate-pulse bg-neutral-90 rounded-lg w-20 h-4" />
+				</MenuItem>
+			)
+		} else if (error) {
+			return (
+				<MenuItem className="flex gap-2 py-2">
+					<span className="text-red-500">{error.message}</span>
+				</MenuItem>
+			)
+		}
+		if (options.length === 0) {
+			return (
+				<MenuItem className="flex gap-2 py-2">
+					<span className="text-neutral-80">No options available</span>
+				</MenuItem>
+			)
+		}
+		return options.map((option) => (
+			<MenuItem
+				key={option.value}
+				onClick={() => {
+					handleSelect(option.value)
+				}}
+				className="flex gap-2 py-2"
+			>
+				<Checkbox
+					sx={{ padding: 0 }}
+					disableRipple
+					checked={selected.some((sel) => sel === option.value)}
+				/>
+				{option.label}
+			</MenuItem>
+		))
+	}
+
 	return (
 		<>
 			<div
@@ -93,23 +137,8 @@ export const FilterSelect = ({
 					horizontal: "left",
 				}}
 			>
-				{options.map((option) => (
-					<MenuItem
-						key={option.value}
-						onClick={() => {
-							handleSelect(option.value)
-						}}
-						className="flex gap-2 py-2"
-					>
-						<Checkbox
-							sx={{ padding: 0 }}
-							disableRipple
-							checked={selected.some((sel) => sel === option.value)}
-						/>
-						{option.label}
-					</MenuItem>
-				))}
-			</Menu>
+				<MenuContent />
+			</Menu >
 		</>
 	)
 }

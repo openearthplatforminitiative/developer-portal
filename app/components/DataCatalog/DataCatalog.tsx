@@ -1,36 +1,71 @@
 "use client"
 
 import { DataCatalogMap } from "./DataCatalogMap"
-import { DataCatalogProvider, useDataCatalog } from "./DataCatalogProvider"
+import { useDataCatalog } from "./DataCatalogProvider"
 import { UnfoldLess, UnfoldMore } from "@mui/icons-material"
 import { DataCatalogFilters } from "./DataCatalogFilters"
 import { useDataCatalogFilters } from "./DataCatalogFiltersProvider"
-import { useDataCatalogData } from "./DataCatalogDataProvider"
-import { useMediaQuery, Pagination } from "@mui/material"
+import { useMediaQuery, Pagination, Skeleton } from "@mui/material"
 import { DataCatalogModelMap } from "./DataCatalogModelMap"
-import { useEffect } from "react"
-import { DrawProvider } from "./DrawControl/DrawProvider"
-import { MapProvider } from "react-map-gl/maplibre"
+import { useEffect, useState } from "react"
 import { DataCatalogSearch } from "./DataCatalogSearch"
-import { ResourceCard } from "../ResourceCard.tsx"
+import { ResourceCard } from "../ResourceCard"
 import { motion, AnimatePresence } from "motion/react"
+import { useDataCatalogSearch } from "@/app/hooks/useDataCatalogSearch"
+import { ResourceSummary } from "@/types/resource"
 
 export const DataCatalog = () => {
-	return (
-		<MapProvider>
-			<DrawProvider>
-				<DataCatalogProvider>
-					<DataCatalogContent />
-				</DataCatalogProvider>
-			</DrawProvider>
-		</MapProvider>
-	)
+	const { initialized } = useDataCatalogFilters()
+	if (!initialized) {
+		return (
+			<div className="w-full h-full flex justify-center items-center">
+				<Skeleton
+					variant="rectangular"
+					className="w-full h-[1000px] rounded-lg"
+				/>
+			</div>
+		)
+	}
+	return <DataCatalogInitiated />
 }
+const DataCatalogInitiated = () => {
+	const [resources, setResources] = useState<ResourceSummary[]>([])
 
-export const DataCatalogContent = () => {
 	const { showMap, setShowMap } = useDataCatalog()
-	const { resources } = useDataCatalogData()
-	const { setCurrentPage, currentPage, pages } = useDataCatalogFilters()
+	const {
+		types,
+		spatial,
+		categories: filterCategories,
+		providers: filterProviders,
+		tags,
+		setCurrentPage,
+		pages,
+		currentPage,
+		selectedFeatures,
+		setPages,
+	} = useDataCatalogFilters()
+
+	const { data, isLoading, error } = useDataCatalogSearch(
+		types,
+		selectedFeatures,
+		spatial,
+		filterCategories,
+		filterProviders,
+		tags,
+		currentPage,
+		21,
+	)
+
+	useEffect(() => {
+		if (isLoading) return
+		if (data?.data) {
+			setPages(data?.total_pages || 1)
+			setResources(data?.data)
+		} else {
+			setPages(1)
+			setResources([])
+		}
+	}, [data, isLoading, setPages])
 
 	const lg = useMediaQuery("(min-width: 1024px)")
 
@@ -51,7 +86,8 @@ export const DataCatalogContent = () => {
 			<div className="w-full">
 				<DataCatalogSearch />
 			</div>
-			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:auto-rows-[minmax(92px, 1fr)] gap-4 content-stretch">
+			<div
+				className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:auto-rows-[minmax(92px, 1fr)] gap-4 content-stretch">
 				{lg && (
 					<motion.div
 						layout
@@ -84,22 +120,51 @@ export const DataCatalogContent = () => {
 								animate={{ opacity: 1 }}
 								exit={{ opacity: 0 }}
 							>
-								<ResourceCard resource={resource} />
+								<ResourceCard resource={resource} isLoading={isLoading} />
 							</motion.div>
 						))
 					) : (
-						<motion.div
-							layout
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							exit={{ opacity: 0 }}
-							key="empty"
-							className={`${showMap ? "col-span-1 row-span-7" : "col-span-2 row-span-3"} flex justify-center items-center text-center text-xl rounded-lg p-10 bg-neutral-95`}
-						>
-							Sorry, we dont have any resources on your search.
-							<br />
-							Please try a new search.
-						</motion.div>
+						error ? (
+							<motion.div
+								key="error"
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								exit={{ opacity: 0 }}
+								className={`${showMap ? "col-span-1 row-span-6" : "col-span-2 row-span-3"} flex justify-center items-center text-center text-xl rounded-lg p-10 bg-neutral-95`}
+							>
+								Oups! Something went wrong on our side.
+								<br />
+								Please try again later
+							</motion.div>
+						) : (
+							isLoading ? (
+								Array.from({ length: 6 }).map((_, i) => (
+									<motion.div
+										key={`skeleton-${i}`}
+										initial={{ opacity: 0 }}
+										animate={{ opacity: 1 }}
+										exit={{ opacity: 0 }}
+									>
+										<Skeleton
+											variant="rectangular"
+											className="w-full h-[86px] rounded-lg"
+										/>
+									</motion.div>
+								))
+							) : (
+								<motion.div
+									key="empty"
+									initial={{ opacity: 0 }}
+									animate={{ opacity: 1 }}
+									exit={{ opacity: 0 }}
+									className={`${showMap ? "col-span-1 row-span-6" : "col-span-2 row-span-3"} flex justify-center items-center text-center text-xl rounded-lg p-10 bg-neutral-95`}
+								>
+									Sorry, we dont have any resources on your search.
+									<br />
+									Please try a new search.
+								</motion.div>
+							)
+						)
 					)}
 				</AnimatePresence>
 			</div>

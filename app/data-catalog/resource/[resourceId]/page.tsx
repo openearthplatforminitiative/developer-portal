@@ -187,16 +187,17 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 						Spatial Extent
 					</Typography>
 					<div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-						{resource.spatial_extent.map((spatialExtent) => (
+						{resource.spatial_extent.map((spatialExtent, index) => (
 							<div
 								key={spatialExtent.id}
 								className="flex flex-col bg-card h-full w-full shadow-none rounded-xl overflow-hidden"
 							>
 								<div className="w-full aspect-square shrink">
 									{spatialExtent.type === "REGION" ? (
-										<ResourceMap geometry={spatialExtent.geometry} />
+										<ResourceMap id={`resource-map-${index}`} geometry={spatialExtent.geometry} />
 									) : (
 										<ResourceMap
+											id={`resource-map-${index}`}
 											geometry={[
 												{
 													type: "Feature",

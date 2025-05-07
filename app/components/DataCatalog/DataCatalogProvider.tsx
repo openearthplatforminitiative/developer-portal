@@ -1,14 +1,13 @@
 "use client"
 
-import { createContext, useContext, useState, ReactNode } from "react"
+import { createContext, useContext, useState, ReactNode, Dispatch, SetStateAction } from "react"
 import { DataCatalogFiltersProvider } from "./DataCatalogFiltersProvider"
-import { DataCatalogDataProvider } from "./DataCatalogDataProvider"
 
 interface DataCatalogContextType {
 	selectedAreaId: string | number | undefined
-	setSelectedAreaId: (id: string | number | undefined) => void
+	setSelectedAreaId: Dispatch<SetStateAction<string | number | undefined>>
 	showMap: boolean
-	setShowMap: (showMap: boolean) => void
+	setShowMap: Dispatch<SetStateAction<boolean>>
 }
 
 const DataCatalogContext = createContext<DataCatalogContextType | undefined>(
@@ -31,7 +30,7 @@ export const DataCatalogProvider = ({ children }: { children: ReactNode }) => {
 			}}
 		>
 			<DataCatalogFiltersProvider>
-				<DataCatalogDataProvider>{children}</DataCatalogDataProvider>
+				{children}
 			</DataCatalogFiltersProvider>
 		</DataCatalogContext.Provider>
 	)

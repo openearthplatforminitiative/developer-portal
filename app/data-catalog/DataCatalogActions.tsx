@@ -5,26 +5,28 @@ import {
 	Resource,
 	ResourceSummary
 } from "@/types/resource"
-import { Provider } from "@/types/provider"
-import { Category } from "@/types/category"
+import { Provider, ProviderSummary } from "@/types/provider"
+import { Category, CategorySummary } from "@/types/category"
 import { Pagination } from "@/types/pagination"
 
 export type SpatialTypes = "REGION" | "GLOBAL" | "NON_SPATIAL"
 export type ResourceTypes = "API" | "Dataset" | "ML Model"
 
-export const fetchProviders = async (): Promise<Provider[]> => {
+export const fetchProviders = async (): Promise<ProviderSummary[]> => {
 	return await fetch(`http://localhost:8000/providers`, {
 		headers: {
 			accept: "application/json",
 			"Content-Type": "application/json",
 		},
 	})
-		.then((response) => response.json())
-		.then((data) => data)
-		.catch((error) => {
-			console.error("Error:", error)
-			return []
+		.then((response) => {
+			if (!response.ok) {
+				throw new Error(response.statusText)
+			}
+			return response.json()
 		})
+		.then((data) => data)
+		.catch(() => { throw new Error("Could not fetch providers") })
 }
 
 export const fetchProvider = async (
@@ -36,12 +38,14 @@ export const fetchProvider = async (
 			"Content-Type": "application/json",
 		},
 	})
-		.then((response) => response.json())
-		.then((data) => data)
-		.catch((error) => {
-			console.error("Error:", error)
-			return []
+		.then((response) => {
+			if (!response.ok) {
+				throw new Error(response.statusText)
+			}
+			return response.json()
 		})
+		.then((data) => data)
+		.catch(() => { throw new Error("Could not fetch provider") })
 }
 
 export const fetchDataCatalog = async (
@@ -72,12 +76,14 @@ export const fetchDataCatalog = async (
 			}),
 		}
 	)
-		.then((response) => response.json())
-		.then((data) => data)
-		.catch((error) => {
-			console.error("Error:", error)
-			return []
+		.then((response) => {
+			if (!response.ok) {
+				throw new Error(response.statusText)
+			}
+			return response.json()
 		})
+		.then((data) => data)
+		.catch(() => { throw new Error("Could not fetch data catalog") })
 }
 
 export const fetchResource = async (
@@ -103,19 +109,21 @@ export const fetchResource = async (
 		})
 }
 
-export const fetchCategories = async () => {
+export const fetchCategories = async (): Promise<CategorySummary[]> => {
 	return await fetch(`http://localhost:8000/categories`, {
 		headers: {
 			accept: "application/json",
 			"Content-Type": "application/json",
 		},
 	})
-		.then((response) => response.json())
-		.then((data) => data)
-		.catch((error) => {
-			console.error("Error:", error)
-			return []
+		.then((response) => {
+			if (!response.ok) {
+				throw new Error(response.statusText)
+			}
+			return response.json()
 		})
+		.then((data) => data)
+		.catch(() => { throw new Error("Could not fetch categories") })
 }
 
 export const fetchCategory = async (

@@ -5,12 +5,14 @@ import "maplibre-gl/dist/maplibre-gl.css"
 import { Polygon, Feature } from "geojson"
 
 type LocationOption = {
+	id: string
 	geometry: Feature<Polygon>[]
 }
 
-export const ResourceMap = ({ geometry }: LocationOption) => {
+export const ResourceMap = ({ id, geometry }: LocationOption) => {
 	return (
 		<Map
+			id={id}
 			attributionControl={false}
 			mapStyle={mapStyle}
 			renderWorldCopies={false}
@@ -25,7 +27,7 @@ export const ResourceMap = ({ geometry }: LocationOption) => {
 			cursor="default"
 		>
 			<Source
-				id="polygon-source"
+				id="resource-polygon-source"
 				type="geojson"
 				data={{
 					type: "FeatureCollection",
@@ -35,7 +37,7 @@ export const ResourceMap = ({ geometry }: LocationOption) => {
 				<Layer
 					id="polygon"
 					type="fill"
-					source="polygon-source"
+					source="resource-polygon-source"
 					paint={{
 						"fill-color": "#3EA26D",
 						"fill-opacity": 0.5,

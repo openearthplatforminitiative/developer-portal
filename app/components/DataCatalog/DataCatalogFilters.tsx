@@ -1,10 +1,13 @@
 import { useDataCatalogFilters } from "./DataCatalogFiltersProvider"
-import { useDataCatalogData } from "./DataCatalogDataProvider"
 import { FilterSelect, Option } from "../FilterSelect"
 import { FilterSelectArea } from "../FilterSelectArea"
 import { useEffect, useMemo, useState } from "react"
 import { Modal, useMediaQuery } from "@mui/material"
 import { Close, FilterAltOutlined, Public } from "@mui/icons-material"
+import { useDataCatalog } from "./DataCatalogProvider"
+import { useCategories } from "@/app/hooks/useCategories"
+import { useProviders } from "@/app/hooks/usedProviders"
+import { useDraw } from "./DrawControl/DrawProvider"
 
 const resourceOptions: Option[] = [
 	{ label: "APIs", value: "API" },
@@ -29,8 +32,15 @@ export const DataCatalogFilters = () => {
 		}
 	}, [lg])
 
+	const { setShowMap } = useDataCatalog()
+
+	const { features } = useDraw()
+
+	const selectedFeatures = useMemo(() => {
+		return features.filter((feature) => feature?.properties?.selected === true)
+	}, [features])
+
 	const {
-		setShowMap,
 		types,
 		setTypes,
 		spatial,
@@ -43,17 +53,18 @@ export const DataCatalogFilters = () => {
 		setYears,
 	} = useDataCatalogFilters()
 
-	const { selectedFeatures, providers, categories } = useDataCatalogData()
+	const { data: categories, isLoading: isLoadingCategories, error: errorCategories } = useCategories()
+	const { data: providers, isLoading: isLoadingProviders, error: errorProviders } = useProviders()
 
-	const categoryOptions: Option[] = categories.map((category) => ({
+	const categoryOptions: Option[] = categories?.map((category) => ({
 		label: category.title,
 		value: category.id,
-	}))
+	})) ?? []
 
-	const providerOptions: Option[] = providers.map((provider) => ({
+	const providerOptions: Option[] = providers?.map((provider) => ({
 		label: provider.name,
 		value: provider.id,
-	}))
+	})) ?? []
 
 	const numberOfFilters = useMemo(() => {
 		return (
@@ -114,6 +125,8 @@ export const DataCatalogFilters = () => {
 					options={categoryOptions}
 					selected={filteredCategories}
 					setSelected={setFilteredCategories}
+					isLoading={isLoadingCategories}
+					error={errorCategories}
 				/>
 			</div>
 			<div className="flex flex-col gap-1 flex-1">
@@ -122,6 +135,8 @@ export const DataCatalogFilters = () => {
 					options={providerOptions}
 					selected={filteredProviders}
 					setSelected={setFilteredProviders}
+					isLoading={isLoadingProviders}
+					error={errorProviders}
 				/>
 			</div>
 			<div className="flex flex-col gap-1 flex-1">

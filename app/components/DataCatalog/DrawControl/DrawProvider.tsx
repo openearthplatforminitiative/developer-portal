@@ -1,16 +1,18 @@
-import { createContext, ReactNode, useContext, useState } from "react"
+"use client"
+
+import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from "react"
 import { Feature, Polygon, Point } from "geojson"
 
 export type DrawTool = "select" | "point" | "polygon"
 
 export interface DrawContextType {
 	tool: DrawTool
-	setTool: (tool: DrawTool) => void
+	setTool: Dispatch<SetStateAction<DrawTool>>
 	features: Feature<Polygon | Point>[]
 	generateFeatureId: () => string
-	setFeatures: (features: Feature<Polygon | Point>[]) => void
+	setFeatures: Dispatch<SetStateAction<Feature<Polygon | Point>[]>>
 	selectedFeature: Feature<Polygon | Point> | undefined
-	setSelectedFeature: (feature: Feature<Polygon | Point> | undefined) => void
+	setSelectedFeature: Dispatch<SetStateAction<Feature<Polygon | Point> | undefined>>
 }
 
 export const DrawContext = createContext<DrawContextType | undefined>(undefined)

@@ -15,9 +15,7 @@ type AlertContextType = {
 
 const AlertContext = createContext<AlertContextType | undefined>(undefined)
 
-export const AlertProvider: React.FC<{ children: ReactNode }> = ({
-	children,
-}) => {
+export const AlertProvider = ({ children }: { children: ReactNode }) => {
 	const [alerts, setAlerts] = useState<AlertProps[]>([])
 
 	const addAlert = useCallback((alert: AlertProps) => {

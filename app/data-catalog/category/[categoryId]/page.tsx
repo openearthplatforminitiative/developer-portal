@@ -5,6 +5,7 @@ import { redirect } from "next/navigation"
 import { fetchCategory } from "../../DataCatalogActions"
 import { ResourceCard } from "@/app/components/ResourceCard"
 import Link from "next/link"
+import { Category } from "@/types/category"
 
 type ProviderLoaderProps = {
 	params: Promise<{

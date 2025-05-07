@@ -6,32 +6,31 @@ import {
 	useState,
 	ReactNode,
 	useEffect,
+	Dispatch,
+	SetStateAction,
+	useMemo,
 } from "react"
-import { Resource } from "@/types/resource"
+import { Feature, Polygon, Point } from "geojson"
 import { useDraw } from "@/app/components/DataCatalog/DrawControl/DrawProvider"
 
 interface DataCatalogFiltersContextType {
-	selectedAreaId: string | number | undefined
-	setSelectedAreaId: (id: string | number | undefined) => void
-	resources: Resource[]
 	tags: string[]
-	setTags: (tags: string[]) => void
+	setTags: Dispatch<SetStateAction<string[]>>
 	types: string[]
-	setTypes: (types: string[]) => void
+	setTypes: Dispatch<SetStateAction<string[]>>
 	spatial: string[]
-	setSpatial: (spatial: string[]) => void
+	setSpatial: Dispatch<SetStateAction<string[]>>
 	categories: string[]
-	setCategories: (categories: string[]) => void
+	setCategories: Dispatch<SetStateAction<string[]>>
 	providers: string[]
 	setProviders: (providers: string[]) => void
 	years: string[]
-	setYears: (years: string[]) => void
-	showMap: boolean
-	setShowMap: (showMap: boolean) => void
+	setYears: Dispatch<SetStateAction<string[]>>
 	currentPage: number
-	setCurrentPage: (page: number) => void
+	selectedFeatures: Feature<Polygon | Point>[]
+	setCurrentPage: Dispatch<SetStateAction<number>>
 	pages: number
-	setPages: (page: number) => void
+	setPages: Dispatch<SetStateAction<number>>
 	initialized: boolean
 }
 
@@ -56,10 +55,15 @@ export const DataCatalogFiltersProvider = ({
 
 	const { features, setFeatures } = useDraw()
 
+	const selectedFeatures = useMemo(() => {
+		return features.filter((feature) => feature?.properties?.selected === true)
+	}, [features])
+
+
 	useEffect(() => {
 		const storage = localStorage.getItem("dataCatalogSearch")
 		console.log("STORAGE")
-		if (storage) {
+		if (storage && !initialized) {
 			try {
 				const parsedStorage = JSON.parse(storage)
 				setTypes(parsedStorage.types ?? [])
@@ -75,7 +79,7 @@ export const DataCatalogFiltersProvider = ({
 			}
 		}
 		setInitialized(true)
-	}, [])
+	}, [setFeatures, initialized])
 
 	useEffect(() => {
 		setCurrentPage(1)
@@ -123,6 +127,7 @@ export const DataCatalogFiltersProvider = ({
 				setProviders,
 				years,
 				setYears,
+				selectedFeatures,
 				currentPage,
 				setCurrentPage,
 				pages,

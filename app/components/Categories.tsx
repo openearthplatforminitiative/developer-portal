@@ -1,6 +1,6 @@
 "use client"
 
-import { Button, useMediaQuery, Icon } from "@mui/material"
+import { Button, useMediaQuery } from "@mui/material"
 import ApiCard from "./ApiCard"
 import { useEffect, useMemo, useRef, useState } from "react"
 import { fetchCategories } from "../data-catalog/DataCatalogActions"

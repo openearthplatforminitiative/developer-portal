@@ -2,14 +2,16 @@
 
 import {
 	Close,
-	Edit,
+	DeleteOutline,
+	EditOutlined,
 	KeyboardArrowDown,
 	KeyboardArrowUp,
 } from "@mui/icons-material"
 import { Checkbox, Divider, Menu, MenuItem } from "@mui/material"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useDraw } from "./DataCatalog/DrawControl/DrawProvider"
-import { useDataCatalogData } from "./DataCatalog/DataCatalogDataProvider"
+import { useDataCatalog } from "./DataCatalog/DataCatalogProvider"
+import { useDataCatalogFilters } from "./DataCatalog/DataCatalogFiltersProvider"
 
 export const FilterSelectArea = () => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -21,7 +23,8 @@ export const FilterSelectArea = () => {
 		setSelectedFeature,
 		setTool,
 	} = useDraw()
-	const { selectedFeatures, setShowMap } = useDataCatalogData()
+	const { selectedFeatures } = useDataCatalogFilters()
+	const { setShowMap } = useDataCatalog()
 
 	const handleDelete = (
 		e: React.MouseEvent<HTMLElement>,
@@ -164,18 +167,18 @@ export const FilterSelectArea = () => {
 							/>
 							{option.geometry.type == "Point" ? "Point" : "Area"} {index + 1}
 						</div>
-						<div className="flex gap-2 opacity-0 transition-opacity group-hover:opacity-100">
+						<div className="flex gap-1 opacity-0 transition-opacity group-hover:opacity-100">
 							<button
 								className="hover:text-neutral-20 cursor-pointer"
 								onClick={(event) => handleEdit(event, option.id)}
 							>
-								<Edit />
+								<EditOutlined />
 							</button>
 							<button
 								className="hover:text-neutral-20 cursor-pointer"
 								onClick={(event) => handleDelete(event, option.id)}
 							>
-								<Close />
+								<DeleteOutline />
 							</button>
 						</div>
 					</MenuItem>
