@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import Link from "next/link"
-import { CardProps } from "@/components/ApiCard"
+import { CardProps } from "@/components/CategoryCard"
 import { ArrowForward, ArrowOutward } from "@mui/icons-material"
 
 interface InfoCardProps extends CardProps {

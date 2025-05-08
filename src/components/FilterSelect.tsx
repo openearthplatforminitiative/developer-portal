@@ -51,21 +51,23 @@ export const FilterSelect = ({
 	const MenuContent = () => {
 		if (isLoading) {
 			return (
-				<MenuItem className="flex gap-2 py-2">
-					<span className="animate-pulse bg-neutral-90 rounded-lg w-20 h-4" />
-				</MenuItem>
+				<>
+					<MenuItem disableRipple disabled className="animate-pulse bg-neutral-90 rounded-lg w-48 h-8 mx-2 mb-2" />
+					<MenuItem disableRipple disabled className="animate-pulse bg-neutral-90 rounded-lg w-48 h-8 mx-2 mb-2" />
+					<MenuItem disableRipple disabled className="animate-pulse bg-neutral-90 rounded-lg w-48 h-8 mx-2" />
+				</>
 			)
 		} else if (error) {
 			return (
-				<MenuItem className="flex gap-2 py-2">
-					<span className="text-red-500">{error.message}</span>
+				<MenuItem disableRipple disabled className="flex gap-2 py-2">
+					{error.message}
 				</MenuItem>
 			)
 		}
 		if (options.length === 0) {
 			return (
-				<MenuItem className="flex gap-2 py-2">
-					<span className="text-neutral-80">No options available</span>
+				<MenuItem disableRipple disabled className="flex gap-2 py-2">
+					No options available
 				</MenuItem>
 			)
 		}

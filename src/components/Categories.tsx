@@ -1,7 +1,7 @@
 "use client"
 
 import { Button, useMediaQuery } from "@mui/material"
-import ApiCard from "./ApiCard"
+import CategoryCard from "./CategoryCard"
 import { useEffect, useMemo, useRef, useState } from "react"
 import { fetchCategories } from "@/app/data-catalog/DataCatalogActions"
 import { CategorySummary } from "@/types/category"
@@ -48,12 +48,12 @@ export const Categories = () => {
 	return (
 		<div className="relative grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 py-12 gap-14 transition-all h-min">
 			{filteredCategories.map((category) => (
-				<ApiCard
+				<CategoryCard
 					key={category.id}
 					header={category.title}
 					subHeader={category.abstract}
 					cardIcon={
-						<span className="material-symbols-outlined">{category.icon}</span>
+						<span className="material-symbols-outlined text-2xl">{category.icon}</span>
 					}
 					href={`data-catalog/category/${category.id}`}
 				/>

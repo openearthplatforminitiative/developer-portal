@@ -13,7 +13,7 @@ export interface CardProps {
 	href: string
 }
 
-const ApiCard = ({ header, subHeader, cardIcon, href }: CardProps) => {
+const CategoryCard = ({ header, subHeader, cardIcon, href }: CardProps) => {
 	return (
 		<Link
 			href={href}
@@ -34,4 +34,4 @@ const ApiCard = ({ header, subHeader, cardIcon, href }: CardProps) => {
 	)
 }
 
-export default ApiCard
+export default CategoryCard
