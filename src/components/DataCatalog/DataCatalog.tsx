@@ -36,6 +36,7 @@ const DataCatalogInitiated = () => {
 		types,
 		spatial,
 		categories: filterCategories,
+		years,
 		providers: filterProviders,
 		tags,
 		setCurrentPage,
@@ -50,10 +51,11 @@ const DataCatalogInitiated = () => {
 		selectedFeatures,
 		spatial,
 		filterCategories,
+		years,
 		filterProviders,
 		tags,
 		currentPage,
-		21,
+		21
 	)
 
 	useEffect(() => {
@@ -84,8 +86,7 @@ const DataCatalogInitiated = () => {
 		<div className="w-full flex flex-col gap-4 mt-16">
 			<DataCatalogFilters />
 			<DataCatalogSearch />
-			<div
-				className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:auto-rows-[minmax(92px, 1fr)] gap-4 content-stretch">
+			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:auto-rows-[minmax(92px, 1fr)] gap-4 content-stretch">
 				{lg && (
 					<motion.div
 						layout
@@ -121,49 +122,45 @@ const DataCatalogInitiated = () => {
 							<br />
 							Please try again later
 						</motion.div>
+					) : resources.length > 0 ? (
+						resources.map((resource) => (
+							<motion.div
+								key={resource.id}
+								layout
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								exit={{ opacity: 0 }}
+							>
+								<ResourceCard resource={resource} isLoading={isLoading} />
+							</motion.div>
+						))
+					) : isLoading ? (
+						Array.from({ length: 6 }).map((_, i) => (
+							<motion.div
+								key={`skeleton-${i}`}
+								layout
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								exit={{ opacity: 0 }}
+							>
+								<Skeleton
+									variant="rectangular"
+									className="w-full h-[86px] rounded-lg"
+								/>
+							</motion.div>
+						))
 					) : (
-						resources.length > 0 ? (
-							resources.map((resource) => (
-								<motion.div
-									key={resource.id}
-									layout
-									initial={{ opacity: 0 }}
-									animate={{ opacity: 1 }}
-									exit={{ opacity: 0 }}
-								>
-									<ResourceCard resource={resource} isLoading={isLoading} />
-								</motion.div>
-							))
-						) : (
-							isLoading ? (
-								Array.from({ length: 6 }).map((_, i) => (
-									<motion.div
-										key={`skeleton-${i}`}
-										layout
-										initial={{ opacity: 0 }}
-										animate={{ opacity: 1 }}
-										exit={{ opacity: 0 }}
-									>
-										<Skeleton
-											variant="rectangular"
-											className="w-full h-[86px] rounded-lg"
-										/>
-									</motion.div>
-								))
-							) : (
-								<motion.div
-									key="empty"
-									initial={{ opacity: 0 }}
-									animate={{ opacity: 1 }}
-									exit={{ opacity: 0 }}
-									className={`${showMap ? "col-span-1 row-span-6" : "col-span-2 row-span-3"} flex justify-center items-center text-center text-xl rounded-lg p-10 bg-neutral-95`}
-								>
-									Sorry, we dont have any resources on your search.
-									<br />
-									Please try a new search.
-								</motion.div>
-							)
-						)
+						<motion.div
+							key="empty"
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+							className={`${showMap ? "col-span-1 row-span-6" : "col-span-2 row-span-3"} flex justify-center items-center text-center text-xl rounded-lg p-10 bg-neutral-95`}
+						>
+							Sorry, we dont have any resources on your search.
+							<br />
+							Please try a new search.
+						</motion.div>
 					)}
 				</AnimatePresence>
 			</div>

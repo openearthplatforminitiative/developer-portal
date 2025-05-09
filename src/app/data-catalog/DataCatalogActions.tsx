@@ -1,10 +1,7 @@
 "use server"
 
 import { Feature, Point, Polygon } from "geojson"
-import {
-	Resource,
-	ResourceSummary
-} from "@//types/resource"
+import { Resource, ResourceSummary } from "@//types/resource"
 import { Provider, ProviderSummary } from "@//types/provider"
 import { Category, CategorySummary } from "@//types/category"
 import { Pagination } from "@//types/pagination"
@@ -26,7 +23,9 @@ export const fetchProviders = async (): Promise<ProviderSummary[]> => {
 			return response.json()
 		})
 		.then((data) => data)
-		.catch(() => { throw new Error("Could not fetch providers") })
+		.catch(() => {
+			throw new Error("Could not fetch providers")
+		})
 }
 
 export const fetchProvider = async (
@@ -45,7 +44,9 @@ export const fetchProvider = async (
 			return response.json()
 		})
 		.then((data) => data)
-		.catch(() => { throw new Error("Could not fetch provider") })
+		.catch(() => {
+			throw new Error("Could not fetch provider")
+		})
 }
 
 export const fetchDataCatalog = async (
@@ -53,6 +54,7 @@ export const fetchDataCatalog = async (
 	features: Feature<Point | Polygon>[],
 	spatial: string[],
 	categories: string[],
+	years: string[],
 	providers: string[],
 	tags: string[],
 	page: number,
@@ -71,6 +73,7 @@ export const fetchDataCatalog = async (
 				features: features,
 				spatial: spatial,
 				categories: categories,
+				years: years,
 				providers: providers,
 				tags: tags,
 			}),
@@ -83,7 +86,9 @@ export const fetchDataCatalog = async (
 			return response.json()
 		})
 		.then((data) => data)
-		.catch(() => { throw new Error("Could not fetch data catalog") })
+		.catch(() => {
+			throw new Error("Could not fetch data catalog")
+		})
 }
 
 export const fetchResource = async (
@@ -123,7 +128,9 @@ export const fetchCategories = async (): Promise<CategorySummary[]> => {
 			return response.json()
 		})
 		.then((data) => data)
-		.catch(() => { throw new Error("Could not fetch categories") })
+		.catch(() => {
+			throw new Error("Could not fetch categories")
+		})
 }
 
 export const fetchCategory = async (
