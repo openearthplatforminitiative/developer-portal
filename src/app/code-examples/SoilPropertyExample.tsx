@@ -1,11 +1,11 @@
 import CodeBlockWrapper from "@/components/CodeBlockWrapper"
 
 export const SoilPropertyExample = () => (
-    <CodeBlockWrapper
-        codeBlocks={[
-            {
-                language: "java",
-                codeString: `import io.openepi.soil.api.SoilApi;
+	<CodeBlockWrapper
+		codeBlocks={[
+			{
+				language: "java",
+				codeString: `import io.openepi.soil.api.SoilApi;
 import io.openepi.soil.model.*;
 import io.openepi.common.ApiException;
 import java.math.BigDecimal;
@@ -39,10 +39,10 @@ public class Main {
         }
     }
 }`,
-            },
-            {
-                language: "javascript",
-                codeString: `// Get the mean value of the soil property at the queried location and depth
+			},
+			{
+				language: "javascript",
+				codeString: `// Get the mean value of the soil property at the queried location and depth
 const response = await fetch(
 	"https://api.openepi.io/soil/property?" +
 		new URLSearchParams({
@@ -70,10 +70,10 @@ console.log(
 	\`Soil property: \${bdodName}, Depth: \${bdodDepth}, Value: \${bdodValue} \${bdodUnit}\`
 )
 `,
-            },
-            {
-                language: "python",
-                codeString: `from httpx import Client
+			},
+			{
+				language: "python",
+				codeString: `from httpx import Client
 
 with Client() as client:
     # Get the mean and the 0.05 quantile of the soil properties at the queried location and depths
@@ -105,7 +105,7 @@ with Client() as client:
         f"Soil property: {phh2o_name}, Depth: {phh2o_depth}, Value: {phh2o_value} {phh2o_unit}"
     )
 `,
-            },
-        ]}
-    />
+			},
+		]}
+	/>
 )

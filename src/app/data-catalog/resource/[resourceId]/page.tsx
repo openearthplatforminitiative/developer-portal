@@ -74,14 +74,19 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 							Version {resource.version}
 						</div>
 					)}
-					{resource.license &&
-						<Link className="group flex items-center gap-2 px-4 py-2 bg-neutral-90 rounded-full"
-							href={resource.license.url} target="_blank">
+					{resource.license && (
+						<Link
+							className="group flex items-center gap-2 px-4 py-2 bg-neutral-90 rounded-full"
+							href={resource.license.url}
+							target="_blank"
+						>
 							{resource.license.name}
-							<ArrowOutward fontSize="inherit"
-								className="transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+							<ArrowOutward
+								fontSize="inherit"
+								className="transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+							/>
 						</Link>
-					}
+					)}
 					{resource.release_date && (
 						<div className="flex items-center gap-2 px-4 py-2 bg-neutral-90 rounded-full">
 							Released {new Date(resource.release_date).getFullYear()}
@@ -194,7 +199,10 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 							>
 								<div className="w-full aspect-square shrink">
 									{spatialExtent.type === "REGION" ? (
-										<ResourceMap id={`resource-map-${index}`} geometry={spatialExtent.geometry} />
+										<ResourceMap
+											id={`resource-map-${index}`}
+											geometry={spatialExtent.geometry}
+										/>
 									) : (
 										<ResourceMap
 											id={`resource-map-${index}`}
@@ -229,10 +237,16 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 										{spatialExtent.details}
 									</Typography>
 									<div>
-										<Typography variant="body2" className="text-sm xs:text-base">
+										<Typography
+											variant="body2"
+											className="text-sm xs:text-base"
+										>
 											Spatial Resolution
 										</Typography>
-										<Typography variant="body1" className="text-sm xs:text-base">
+										<Typography
+											variant="body1"
+											className="text-sm xs:text-base"
+										>
 											{spatialExtent.spatial_resolution}
 										</Typography>
 									</div>

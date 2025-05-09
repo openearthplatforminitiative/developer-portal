@@ -101,7 +101,8 @@ export const ResourceCard = ({ resource, isLoading }: ResourceCardProps) => {
 		</>
 	)
 	return (
-		<div className={`group h-full flex items-center justify-between gap-6 rounded-lg px-6 py-4 transition-colors ${isLoading ? "animate-pulse bg-neutral-90" : " bg-neutral-95 hover:bg-neutral-90 cursor-pointer"}`}
+		<div
+			className={`group h-full flex items-center justify-between gap-6 rounded-lg px-6 py-4 transition-colors ${isLoading ? "animate-pulse bg-neutral-90" : " bg-neutral-95 hover:bg-neutral-90 cursor-pointer"}`}
 		>
 			<Link
 				className="flex flex-col justify-center gap-2 w-full h-full"

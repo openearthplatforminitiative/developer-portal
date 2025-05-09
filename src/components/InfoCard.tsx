@@ -26,7 +26,9 @@ const InfoCard = ({
 					{cardIcon}
 					<Typography className="text-xl xs:text-2xl">{header}</Typography>
 				</Box>
-				<Box className={`transform transition-transform duration-300 group-hover:translate-x-2 ${externalLink ? 'group-hover:-translate-y-2' : ''}`}>
+				<Box
+					className={`transform transition-transform duration-300 group-hover:translate-x-2 ${externalLink ? "group-hover:-translate-y-2" : ""}`}
+				>
 					{externalLink ? <ArrowOutward /> : <ArrowForward />}
 				</Box>
 			</Box>

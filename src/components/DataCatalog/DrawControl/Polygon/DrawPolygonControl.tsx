@@ -3,11 +3,11 @@ import { DrawPolygon } from "./DrawPolygon"
 import { DrawNewPolygonSource } from "./DrawNewPolygonSource"
 
 export const DrawPolygonControl = () => {
-  return (
-    <>
-      <DrawPolygon />
-      <DrawNewPolygonSource />
-      <DrawPolygonSource />
-    </>
-  )
+	return (
+		<>
+			<DrawPolygon />
+			<DrawNewPolygonSource />
+			<DrawPolygonSource />
+		</>
+	)
 }

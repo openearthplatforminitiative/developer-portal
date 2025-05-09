@@ -53,18 +53,28 @@ export const DataCatalogFilters = () => {
 		setYears,
 	} = useDataCatalogFilters()
 
-	const { data: categories, isLoading: isLoadingCategories, error: errorCategories } = useCategories()
-	const { data: providers, isLoading: isLoadingProviders, error: errorProviders } = useProviders()
+	const {
+		data: categories,
+		isLoading: isLoadingCategories,
+		error: errorCategories,
+	} = useCategories()
+	const {
+		data: providers,
+		isLoading: isLoadingProviders,
+		error: errorProviders,
+	} = useProviders()
 
-	const categoryOptions: Option[] = categories?.map((category) => ({
-		label: category.title,
-		value: category.id,
-	})) ?? []
+	const categoryOptions: Option[] =
+		categories?.map((category) => ({
+			label: category.title,
+			value: category.id,
+		})) ?? []
 
-	const providerOptions: Option[] = providers?.map((provider) => ({
-		label: provider.name,
-		value: provider.id,
-	})) ?? []
+	const providerOptions: Option[] =
+		providers?.map((provider) => ({
+			label: provider.name,
+			value: provider.id,
+		})) ?? []
 
 	const numberOfFilters = useMemo(() => {
 		return (

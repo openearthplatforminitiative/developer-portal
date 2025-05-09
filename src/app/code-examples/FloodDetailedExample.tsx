@@ -1,11 +1,11 @@
 import CodeBlockWrapper from "@/components/CodeBlockWrapper"
 
 export const FloodDetailedExample = () => (
-    <CodeBlockWrapper
-        codeBlocks={[
-            {
-                language: "java",
-                codeString: `import io.openepi.flood.api.FloodApi;
+	<CodeBlockWrapper
+		codeBlocks={[
+			{
+				language: "java",
+				codeString: `import io.openepi.flood.api.FloodApi;
 import io.openepi.flood.model.DetailedResponseModel;
 import io.openepi.common.ApiException;
 import java.math.BigDecimal;
@@ -27,10 +27,10 @@ public class Main {
         }
     }
 }`,
-            },
-            {
-                language: "javascript",
-                codeString: `const response = await fetch(
+			},
+			{
+				language: "javascript",
+				codeString: `const response = await fetch(
 	"https://api.openepi.io/flood/summary?" +
 		new URLSearchParams({
 			lon: "33.575897",
@@ -44,10 +44,10 @@ const minDischarge = json.queried_location.features[0].properties.min_dis
 
 console.log(\`Minimum forecasted discharge: \${minDischarge}\`)
 `,
-            },
-            {
-                language: "python",
-                codeString: `from httpx import Client
+			},
+			{
+				language: "python",
+				codeString: `from httpx import Client
 
 with Client() as client:
     response = client.get(
@@ -61,7 +61,7 @@ with Client() as client:
 
     print(f"Minimum forecasted discharge: {peak_day}")
 `,
-            },
-        ]}
-    />
+			},
+		]}
+	/>
 )

@@ -97,7 +97,8 @@ const Home = () => {
 					<Typography className="text-xl xs:text-2xl">
 						We provide a range of climate and geospatial data.
 						<br />
-						OpenEPI, together with our partners, provide APIs, Datasets, ML Models and more
+						OpenEPI, together with our partners, provide APIs, Datasets, ML
+						Models and more
 					</Typography>
 					<Link href="/data-catalog" className="lg:w-fit w-full">
 						<Button
@@ -156,7 +157,7 @@ const Home = () => {
 					</Box>
 				</Box>
 			</Box>
-		</Box >
+		</Box>
 	)
 }
 

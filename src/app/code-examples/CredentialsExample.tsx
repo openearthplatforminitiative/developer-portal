@@ -1,11 +1,11 @@
 import CodeBlockWrapper from "@/components/CodeBlockWrapper"
 
 export const CredentialsExample = () => (
-    <CodeBlockWrapper
-        codeBlocks={[
-            {
-                language: "java",
-                codeString: `package io.openepi;
+	<CodeBlockWrapper
+		codeBlocks={[
+			{
+				language: "java",
+				codeString: `package io.openepi;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -60,10 +60,10 @@ public class Main {
         }
     }
 }`,
-            },
-            {
-                language: "javascript",
-                codeString: `const tokenResponse = await fetch(
+			},
+			{
+				language: "javascript",
+				codeString: `const tokenResponse = await fetch(
 	"https://auth.openepi.io/realms/openepi/protocol/openid-connect/token",
 	{
 		method: "POST",
@@ -90,10 +90,10 @@ const airTemperature =
 	weatherJson.properties.timeseries[0].data.instant.details.air_temperature
 console.log(\`Air temperature: \${airTemperature}\`)
 `,
-            },
-            {
-                language: "python",
-                codeString: `with Client() as client:
+			},
+			{
+				language: "python",
+				codeString: `with Client() as client:
 
     # Get Access token    
     response = client.post(
@@ -118,10 +118,10 @@ console.log(\`Air temperature: \${airTemperature}\`)
     air_temperature = json["properties"]["timeseries"][0]["data"]["instant"]["details"]["air_temperature"]
 
     print(f"Air temperature: {air_temperature}")`,
-            },
-            {
-                language: "bash",
-                codeString: `
+			},
+			{
+				language: "bash",
+				codeString: `
 response=\$(curl -s -X POST "https://auth.openepi.io/realms/openepi/protocol/openid-connect/token" \
   -H "Content-Type: application/json" \
   -d '{"grant_type": "client_credentials", "client_id": "<YOUR_CLIENT_ID>", "client_secret": "<YOUR_CLIENT_SECRET>"}')
@@ -140,7 +140,7 @@ air_temperature=\$(echo \$weather_response | jq -r '.properties.timeseries[0].da
 
 echo "Air temperature: \$air_temperature"
 `,
-            },
-        ]}
-    />
+			},
+		]}
+	/>
 )

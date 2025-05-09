@@ -5,8 +5,7 @@ import { DrawSelectSource } from "./DrawSelectSource"
 import { useDraw } from "../DrawProvider"
 
 export const DrawSelectControl = () => {
-	const { features, tool, selectedFeature, setSelectedFeature } =
-		useDraw()
+	const { features, tool, selectedFeature, setSelectedFeature } = useDraw()
 
 	const map = useMap()
 
