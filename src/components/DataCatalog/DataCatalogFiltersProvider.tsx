@@ -70,6 +70,7 @@ export const DataCatalogFiltersProvider = ({
 				setSpatial(parsedStorage.spatial ?? [])
 				setTags(parsedStorage.tags ?? [])
 				setCategories(parsedStorage.categories ?? [])
+				setYears(parsedStorage.years ?? [])
 				setProviders(parsedStorage.providers ?? [])
 				setCurrentPage(parsedStorage.current_page ?? [])
 				setPages(parsedStorage.pages ?? [])
@@ -94,6 +95,7 @@ export const DataCatalogFiltersProvider = ({
 				spatial: spatial,
 				tags: tags,
 				categories: categories,
+				years: years,
 				providers: providers,
 				current_page: currentPage,
 				pages: pages,
@@ -105,6 +107,7 @@ export const DataCatalogFiltersProvider = ({
 		spatial,
 		tags,
 		categories,
+		years,
 		providers,
 		currentPage,
 		pages,
