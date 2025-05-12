@@ -28,6 +28,7 @@ export const DataCatalog = () => {
 	}
 	return <DataCatalogInitiated />
 }
+
 const DataCatalogInitiated = () => {
 	const [resources, setResources] = useState<ResourceSummary[]>([])
 
