@@ -1,6 +1,5 @@
 import InfoCard from "@/components/InfoCard"
 import { BackIcon } from "@/icons/BackIcon"
-import { GithubIconBlack } from "@/icons/GithubIconBlack"
 import { OpenApiIcon } from "@/icons/OpenApiIcon"
 import { Card, Typography } from "@mui/material"
 import { fetchResource } from "../../DataCatalogActions"
@@ -44,7 +43,41 @@ type ResourcePageProps = {
 }
 
 export const ResourcePage = ({ resource }: ResourcePageProps) => {
-	console.log(resource)
+	console.log("Resource Page", resource)
+	const ResourceTag = () => {
+		if (resource.type === "API") {
+			return (
+				<div className="flex items-center gap-2 px-4 py-2 bg-primary-90/90 text-primary-10 rounded-full text-lg font-medium">
+					{resource.type}
+				</div>
+			)
+		} else if (resource.type === "DATASET") {
+			return (
+				<div className="flex items-center gap-2 px-4 py-2 bg-secondary-90/90 text-secondary-10 rounded-full text-lg font-medium">
+					Dataset
+				</div>
+			)
+		} else if (resource.type === "DATASET_COLLECTION") {
+			return (
+				<div className="flex items-center gap-2 px-4 py-2 border border-neutral-10 bg-neutral-100/90 text-neutral-10 rounded-full text-lg font-medium">
+					Dataset Collection
+				</div>
+			)
+		} else if (resource.type === "ML_MODEL") {
+			return (
+				<div className="flex items-center gap-2 px-4 py-2 bg-tertiary-90/90 text-tertiary-10 rounded-full text-lg font-medium">
+					ML Model
+				</div>
+			)
+		} else {
+			return (
+				<div className="flex items-center gap-2 px-4 py-2 bg-error-90 text-error-main rounded-full text-lg font-medium">
+					{resource.type}
+				</div>
+			)
+		}
+	}
+
 	return (
 		<div className="w-full lg:max-w-7xl px-8 lg:my-44 my-20">
 			<Link
@@ -64,9 +97,7 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 						<span className="material-symbols-outlined">{resource.icon}</span>
 						{resource.title}
 					</Typography>
-					<div className="flex items-center gap-2 px-4 py-2 bg-neutral-90 rounded-full text-lg font-medium">
-						{resource.type}
-					</div>
+					<ResourceTag />
 				</div>
 				<div className="flex flex-wrap items-center gap-4">
 					{resource.version && (
@@ -74,14 +105,19 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 							Version {resource.version}
 						</div>
 					)}
-					{resource.license &&
-						<Link className="group flex items-center gap-2 px-4 py-2 bg-neutral-90 rounded-full"
-							href={resource.license.url} target="_blank">
+					{resource.license && (
+						<Link
+							className="group flex items-center gap-2 px-4 py-2 bg-neutral-90 rounded-full"
+							href={resource.license.url}
+							target="_blank"
+						>
 							{resource.license.name}
-							<ArrowOutward fontSize="inherit"
-								className="transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+							<ArrowOutward
+								fontSize="inherit"
+								className="transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+							/>
 						</Link>
-					}
+					)}
 					{resource.release_date && (
 						<div className="flex items-center gap-2 px-4 py-2 bg-neutral-90 rounded-full">
 							Released {new Date(resource.release_date).getFullYear()}
@@ -109,7 +145,7 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 					<InfoCard
 						externalLink={true}
 						header="OpenAPI Spec"
-						subHeader={`Explore the OpenAPI spec for the ${resource.title}`}
+						subHeader={`Explore the OpenAPI spec for ${resource.title}.`}
 						cardIcon={<OpenApiIcon />}
 						href={resource.openapi_url}
 					/>
@@ -117,9 +153,9 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 				{resource.git_url && (
 					<InfoCard
 						externalLink={true}
-						header="Github"
-						subHeader={`Explore the source code behind the ${resource.title}.`}
-						cardIcon={<GithubIconBlack />}
+						header="Source Code"
+						subHeader={`Explore the source code behind ${resource.title}.`}
+						cardIcon={<Code />}
 						href={resource.git_url}
 					/>
 				)}
@@ -127,7 +163,7 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 					<InfoCard
 						externalLink={true}
 						header="Documentation"
-						subHeader={`Explore the documentation for the ${resource.title}`}
+						subHeader={`Explore the documentation for ${resource.title}.`}
 						cardIcon={<ListAlt />}
 						href={resource.documentation_url}
 					/>
@@ -136,7 +172,7 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 					<InfoCard
 						externalLink={true}
 						header="Download"
-						subHeader={`Download the ${resource.title}`}
+						subHeader={`Download the ${resource.title}.`}
 						cardIcon={<FileDownloadOutlined />}
 						href={resource.download_url}
 					/>
@@ -145,12 +181,52 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 					<InfoCard
 						externalLink={false}
 						header="Client Libraries"
-						subHeader={`Explore the client libraries for the ${resource.title}`}
+						subHeader={`Explore the client libraries for ${resource.title}.`}
 						cardIcon={<Code />}
-						href="/data-catalog/client-libraries"
+						href="/resources"
 					/>
 				)}
 			</div>
+			{resource.parents && resource.parents.length > 0 && (
+				<div className="flex flex-col mt-28">
+					<Typography className="text-3xl xs:text-4xl">
+						{resource.type === "API" || resource.type === "ML_MODEL"
+							? "Distributes data from"
+							: "Part of"}
+					</Typography>
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+						{resource.parents.map((used_by_resource) => (
+							<ResourceCard
+								key={used_by_resource.id}
+								resource={used_by_resource}
+							/>
+						))}
+					</div>
+				</div>
+			)}
+			{resource.children && resource.children.length > 0 && (
+				<div className="flex flex-col mt-28">
+					<Typography className="text-3xl xs:text-4xl">
+						Distributions
+					</Typography>
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+						{resource.children.map((based_on_resource) => (
+							<ResourceCard
+								key={based_on_resource.id}
+								resource={based_on_resource}
+							/>
+						))}
+					</div>
+				</div>
+			)}
+			{resource.html_content && (
+				<div className="flex flex-col mt-28">
+					<div
+						className="prose"
+						dangerouslySetInnerHTML={{ __html: resource.html_content }}
+					/>
+				</div>
+			)}
 			<div className="flex flex-col mt-28">
 				<Typography className="text-3xl xs:text-4xl">Provided by</Typography>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
@@ -194,7 +270,10 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 							>
 								<div className="w-full aspect-square shrink">
 									{spatialExtent.type === "REGION" ? (
-										<ResourceMap id={`resource-map-${index}`} geometry={spatialExtent.geometry} />
+										<ResourceMap
+											id={`resource-map-${index}`}
+											geometry={spatialExtent.geometry}
+										/>
 									) : (
 										<ResourceMap
 											id={`resource-map-${index}`}
@@ -225,53 +304,32 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 											? spatialExtent.region
 											: "Global"}
 									</Typography>
-									<Typography variant="body1" className="text-sm xs:text-base">
-										{spatialExtent.details}
-									</Typography>
-									<div>
-										<Typography variant="body2" className="text-sm xs:text-base">
-											Spatial Resolution
+									{spatialExtent.details && (
+										<Typography
+											variant="body1"
+											className="text-sm xs:text-base"
+										>
+											{spatialExtent.details}
 										</Typography>
-										<Typography variant="body1" className="text-sm xs:text-base">
-											{spatialExtent.spatial_resolution}
-										</Typography>
-									</div>
+									)}
+									{spatialExtent.spatial_resolution && (
+										<div>
+											<Typography
+												variant="body2"
+												className="text-sm xs:text-base"
+											>
+												Spatial Resolution
+											</Typography>
+											<Typography
+												variant="body1"
+												className="text-sm xs:text-base"
+											>
+												{spatialExtent.spatial_resolution}
+											</Typography>
+										</div>
+									)}
 								</div>
 							</div>
-						))}
-					</div>
-				</div>
-			)}
-			{resource.html_content && (
-				<div className="flex flex-col mt-28">
-					<div
-						className="prose"
-						dangerouslySetInnerHTML={{ __html: resource.html_content }}
-					/>
-				</div>
-			)}
-			{resource.used_by && resource.used_by.length > 0 && (
-				<div className="flex flex-col mt-28">
-					<Typography className="text-3xl xs:text-4xl">Used by</Typography>
-					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-16">
-						{resource.used_by.map((used_by_resource) => (
-							<ResourceCard
-								key={used_by_resource.id}
-								resource={used_by_resource}
-							/>
-						))}
-					</div>
-				</div>
-			)}
-			{resource.based_on && resource.based_on.length > 0 && (
-				<div className="flex flex-col mt-28">
-					<Typography className="text-3xl xs:text-4xl">Based on</Typography>
-					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-16">
-						{resource.based_on.map((based_on_resource) => (
-							<ResourceCard
-								key={based_on_resource.id}
-								resource={based_on_resource}
-							/>
 						))}
 					</div>
 				</div>

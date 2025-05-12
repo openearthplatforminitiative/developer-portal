@@ -1,11 +1,11 @@
 import CodeBlockWrapper from "@/components/CodeBlockWrapper"
 
 export const WeatherExample = () => (
-    <CodeBlockWrapper
-        codeBlocks={[
-            {
-                language: "java",
-                codeString: `import io.openepi.weather.api.WeatherApi;
+	<CodeBlockWrapper
+		codeBlocks={[
+			{
+				language: "java",
+				codeString: `import io.openepi.weather.api.WeatherApi;
 import io.openepi.weather.model.METJSONForecast;
 import io.openepi.common.ApiException;
 import java.math.BigDecimal;
@@ -28,10 +28,10 @@ public class Main {
         }
     }
 }`,
-            },
-            {
-                language: "javascript",
-                codeString: `const response = await fetch(
+			},
+			{
+				language: "javascript",
+				codeString: `const response = await fetch(
 	"https://api.openepi.io/weather/locationforecast?lat=52.520008&lon=13.404954"
 )
 const json = await response.json()
@@ -42,10 +42,10 @@ const airTemperature =
 
 console.log(\`Air temperature: \${airTemperature}\`)
 `,
-            },
-            {
-                language: "python",
-                codeString: `from httpx import Client
+			},
+			{
+				language: "python",
+				codeString: `from httpx import Client
 
 with Client() as client:
     response = client.get(
@@ -61,7 +61,7 @@ with Client() as client:
 
     print(f"Air temperature: {air_temperature}")
 `,
-            },
-        ]}
-    />
+			},
+		]}
+	/>
 )

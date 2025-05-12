@@ -59,7 +59,6 @@ export const DataCatalogFiltersProvider = ({
 		return features.filter((feature) => feature?.properties?.selected === true)
 	}, [features])
 
-
 	useEffect(() => {
 		const storage = localStorage.getItem("dataCatalogSearch")
 		console.log("STORAGE")

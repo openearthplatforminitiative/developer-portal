@@ -1,11 +1,11 @@
 import CodeBlockWrapper from "@/components/CodeBlockWrapper"
 
 export const SoilTypeSummaryExample = () => (
-    <CodeBlockWrapper
-        codeBlocks={[
-            {
-                language: "java",
-                codeString: `mport io.openepi.soil.api.SoilApi;
+	<CodeBlockWrapper
+		codeBlocks={[
+			{
+				language: "java",
+				codeString: `mport io.openepi.soil.api.SoilApi;
 import io.openepi.soil.model.*;
 import io.openepi.common.ApiException;
 import java.math.BigDecimal;
@@ -39,10 +39,10 @@ public class Main {
         }
     }
 }`,
-            },
-            {
-                language: "javascript",
-                codeString: `// Get a summary of the soil types in the queried bounding box, represented
+			},
+			{
+				language: "javascript",
+				codeString: `// Get a summary of the soil types in the queried bounding box, represented
 // by a mapping of each soil type to the number of occurrences in the bounding box
 const response = await fetch(
 	"https://api.openepi.io/soil/type/summary?" +
@@ -66,10 +66,10 @@ const count2 = summaryList[1].count
 console.log(\`Soil type: \${soilType1}, Count: \${count1}\`)
 console.log(\`Soil type: \${soilType2}, Count: \${count2}\`)
 `,
-            },
-            {
-                language: "python",
-                codeString: `from httpx import Client
+			},
+			{
+				language: "python",
+				codeString: `from httpx import Client
 
 with Client() as client:
     # Get a summary of the soil types in the queried bounding box, represented
@@ -93,7 +93,7 @@ with Client() as client:
     print(f"Soil type: {soil_type_1}, Count: {count_1}")
     print(f"Soil type: {soil_type_2}, Count: {count_2}")
 `,
-            },
-        ]}
-    />
+			},
+		]}
+	/>
 )

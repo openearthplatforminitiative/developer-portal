@@ -30,8 +30,19 @@ type CategoryPageProps = {
 }
 
 export const ResourcePage = ({ category }: CategoryPageProps) => {
-	//	const Icon = category.icon
-	console.log(category)
+	const DatasetCollections = category.resources.filter(
+		(resource) => resource.resource.type === "DATASET_COLLECTION"
+	)
+	const Datasets = category.resources.filter(
+		(resource) => resource.resource.type === "DATASET"
+	)
+	const APIs = category.resources.filter(
+		(resource) => resource.resource.type === "API"
+	)
+	const MLModels = category.resources.filter(
+		(resource) => resource.resource.type === "ML_MODEL"
+	)
+
 	return (
 		<div className="w-full lg:max-w-7xl px-8 lg:my-44 my-20">
 			<Link
@@ -56,12 +67,56 @@ export const ResourcePage = ({ category }: CategoryPageProps) => {
 					{category.abstract}
 				</Typography>
 			</div>
-			{category.resources && category.resources.length > 0 && (
+			{DatasetCollections && DatasetCollections.length > 0 && (
 				<div className="flex flex-col mt-28">
-					<Typography className="text-3xl xs:text-4xl">Data Catalog</Typography>
+					<Typography className="text-3xl xs:text-4xl">
+						Dataset Collections
+					</Typography>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
-						{category.resources.map((resource) => (
-							<ResourceCard key={resource.resource.id} resource={resource.resource} />
+						{DatasetCollections.map((resource) => (
+							<ResourceCard
+								key={resource.resource.id}
+								resource={resource.resource}
+							/>
+						))}
+					</div>
+				</div>
+			)}
+			{Datasets && Datasets.length > 0 && (
+				<div className="flex flex-col mt-28">
+					<Typography className="text-3xl xs:text-4xl">Datasets</Typography>
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+						{Datasets.map((resource) => (
+							<ResourceCard
+								key={resource.resource.id}
+								resource={resource.resource}
+							/>
+						))}
+					</div>
+				</div>
+			)}
+			{APIs && APIs.length > 0 && (
+				<div className="flex flex-col mt-28">
+					<Typography className="text-3xl xs:text-4xl">APIs</Typography>
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+						{APIs.map((resource) => (
+							<ResourceCard
+								key={resource.resource.id}
+								resource={resource.resource}
+							/>
+						))}
+					</div>
+				</div>
+			)}
+			{MLModels && MLModels.length > 0 && (
+				<div className="flex flex-col mt-28">
+					<Typography className="text-3xl xs:text-4xl">ML Models</Typography>
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+						{MLModels.map((resource) => (
+							<ResourceCard
+								key={resource.resource.id}
+								resource={resource.resource}
+							/>
 						))}
 					</div>
 				</div>

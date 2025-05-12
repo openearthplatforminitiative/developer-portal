@@ -1,11 +1,11 @@
 import CodeBlockWrapper from "@/components/CodeBlockWrapper"
 
 export const SoilTypeExample = () => (
-    <CodeBlockWrapper
-        codeBlocks={[
-            {
-                language: "java",
-                codeString: `import io.openepi.soil.api.SoilApi;
+	<CodeBlockWrapper
+		codeBlocks={[
+			{
+				language: "java",
+				codeString: `import io.openepi.soil.api.SoilApi;
 import io.openepi.soil.model.SoilTypeJSON;
 import io.openepi.common.ApiException;
 import io.openepi.soil.model.SoilTypes;
@@ -27,10 +27,10 @@ public class Main {
         }
     }
 }`,
-            },
-            {
-                language: "javascript",
-                codeString: `// Get the most probable soil type at the queried location
+			},
+			{
+				language: "javascript",
+				codeString: `// Get the most probable soil type at the queried location
 const response = await fetch(
 	"https://api.openepi.io/soil/type?" +
 		new URLSearchParams({
@@ -45,10 +45,10 @@ const mostProbableSoilType = json.properties.most_probable_soil_type
 
 console.log(\`Most probable soil type: \${mostProbableSoilType}\`)
 `,
-            },
-            {
-                language: "python",
-                codeString: `from httpx import Client
+			},
+			{
+				language: "python",
+				codeString: `from httpx import Client
 
 with Client() as client:
     # Get the soil type at the queried location
@@ -66,7 +66,7 @@ with Client() as client:
 
     print(f"Soil type: {soil_type}, Probability: {probability}")
 `,
-            },
-        ]}
-    />
+			},
+		]}
+	/>
 )

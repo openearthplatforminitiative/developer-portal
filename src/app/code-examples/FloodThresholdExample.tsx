@@ -1,11 +1,11 @@
 import CodeBlockWrapper from "@/components/CodeBlockWrapper"
 
 export const FloodThresholdExample = () => (
-    <CodeBlockWrapper
-        codeBlocks={[
-            {
-                language: "java",
-                codeString: `import io.openepi.flood.api.FloodApi;
+	<CodeBlockWrapper
+		codeBlocks={[
+			{
+				language: "java",
+				codeString: `import io.openepi.flood.api.FloodApi;
 import io.openepi.common.ApiException;
 import io.openepi.flood.model.ThresholdResponseModel;
 import java.math.BigDecimal;
@@ -27,10 +27,10 @@ public class Main {
         }
     }
 }`,
-            },
-            {
-                language: "javascript",
-                codeString: `const response = await fetch(
+			},
+			{
+				language: "javascript",
+				codeString: `const response = await fetch(
 	"https://api.openepi.io/flood/threshold?" +
 		new URLSearchParams({
 			lon: "33.575897",
@@ -44,10 +44,10 @@ const threshold2y = json.queried_location.features[0].properties.threshold_2y
 
 console.log(\`2-year return period threshold in m^3/s: \${threshold2y} m^3/s\`)
 `,
-            },
-            {
-                language: "python",
-                codeString: `from httpx import Client
+			},
+			{
+				language: "python",
+				codeString: `from httpx import Client
 
 with Client() as client:
     response = client.get(
@@ -61,7 +61,7 @@ with Client() as client:
 
     print(f"2-year return period threshold: {threshold_2y} m^3/s")
 `,
-            },
-        ]}
-    />
+			},
+		]}
+	/>
 )

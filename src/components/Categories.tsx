@@ -53,7 +53,9 @@ export const Categories = () => {
 					header={category.title}
 					subHeader={category.abstract}
 					cardIcon={
-						<span className="material-symbols-outlined text-2xl">{category.icon}</span>
+						<span className="material-symbols-outlined text-2xl">
+							{category.icon}
+						</span>
 					}
 					href={`data-catalog/category/${category.id}`}
 				/>

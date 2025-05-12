@@ -1,6 +1,13 @@
 "use client"
 
-import { createContext, useContext, useState, ReactNode, Dispatch, SetStateAction } from "react"
+import {
+	createContext,
+	useContext,
+	useState,
+	ReactNode,
+	Dispatch,
+	SetStateAction,
+} from "react"
 import { DataCatalogFiltersProvider } from "./DataCatalogFiltersProvider"
 
 interface DataCatalogContextType {
@@ -29,9 +36,7 @@ export const DataCatalogProvider = ({ children }: { children: ReactNode }) => {
 				setShowMap,
 			}}
 		>
-			<DataCatalogFiltersProvider>
-				{children}
-			</DataCatalogFiltersProvider>
+			<DataCatalogFiltersProvider>{children}</DataCatalogFiltersProvider>
 		</DataCatalogContext.Provider>
 	)
 }

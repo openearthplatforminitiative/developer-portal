@@ -1,6 +1,13 @@
 "use client"
 
-import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from "react"
+import {
+	createContext,
+	Dispatch,
+	ReactNode,
+	SetStateAction,
+	useContext,
+	useState,
+} from "react"
 import { Feature, Polygon, Point } from "geojson"
 
 export type DrawTool = "select" | "point" | "polygon"
@@ -12,7 +19,9 @@ export interface DrawContextType {
 	generateFeatureId: () => string
 	setFeatures: Dispatch<SetStateAction<Feature<Polygon | Point>[]>>
 	selectedFeature: Feature<Polygon | Point> | undefined
-	setSelectedFeature: Dispatch<SetStateAction<Feature<Polygon | Point> | undefined>>
+	setSelectedFeature: Dispatch<
+		SetStateAction<Feature<Polygon | Point> | undefined>
+	>
 }
 
 export const DrawContext = createContext<DrawContextType | undefined>(undefined)
@@ -36,9 +45,11 @@ export const DrawProvider = ({ children }: { children: ReactNode }) => {
 		if (features.length === 0) {
 			return "feature-1"
 		} else {
-			const highestId = features.length > 0 && typeof features[features.length - 1].id === "string"
-				? (features[features.length - 1].id as string).split("-")[1]
-				: "0"
+			const highestId =
+				features.length > 0 &&
+				typeof features[features.length - 1].id === "string"
+					? (features[features.length - 1].id as string).split("-")[1]
+					: "0"
 			return `feature-${highestId + 1}`
 		}
 	}

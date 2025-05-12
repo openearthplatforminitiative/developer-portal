@@ -22,7 +22,7 @@ export const FilterSelect = ({
 	selected,
 	setSelected,
 	isLoading,
-	error
+	error,
 }: FilterSelectProps) => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 	const open = Boolean(anchorEl)
@@ -52,9 +52,21 @@ export const FilterSelect = ({
 		if (isLoading) {
 			return (
 				<>
-					<MenuItem disableRipple disabled className="animate-pulse bg-neutral-90 rounded-lg w-48 h-8 mx-2 mb-2" />
-					<MenuItem disableRipple disabled className="animate-pulse bg-neutral-90 rounded-lg w-48 h-8 mx-2 mb-2" />
-					<MenuItem disableRipple disabled className="animate-pulse bg-neutral-90 rounded-lg w-48 h-8 mx-2" />
+					<MenuItem
+						disableRipple
+						disabled
+						className="animate-pulse bg-neutral-90 rounded-lg w-48 h-8 mx-2 mb-2"
+					/>
+					<MenuItem
+						disableRipple
+						disabled
+						className="animate-pulse bg-neutral-90 rounded-lg w-48 h-8 mx-2 mb-2"
+					/>
+					<MenuItem
+						disableRipple
+						disabled
+						className="animate-pulse bg-neutral-90 rounded-lg w-48 h-8 mx-2"
+					/>
 				</>
 			)
 		} else if (error) {
@@ -140,7 +152,7 @@ export const FilterSelect = ({
 				}}
 			>
 				<MenuContent />
-			</Menu >
+			</Menu>
 		</>
 	)
 }

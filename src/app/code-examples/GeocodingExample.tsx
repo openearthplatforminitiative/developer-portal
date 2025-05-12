@@ -1,11 +1,11 @@
 import CodeBlockWrapper from "@/components/CodeBlockWrapper"
 
 export const GeocodingExample = () => (
-    <CodeBlockWrapper
-        codeBlocks={[
-            {
-                language: "java",
-                codeString: `import io.openepi.geocoding.api.GeocodingApi;
+	<CodeBlockWrapper
+		codeBlocks={[
+			{
+				language: "java",
+				codeString: `import io.openepi.geocoding.api.GeocodingApi;
 import io.openepi.geocoding.model.FeatureCollection;
 import io.openepi.common.ApiException;
 
@@ -23,10 +23,10 @@ public class Main {
         }
     }
 }`,
-            },
-            {
-                language: "javascript",
-                codeString: `const response = await fetch(
+			},
+			{
+				language: "javascript",
+				codeString: `const response = await fetch(
 	"https://api.openepi.io/geocoding/?" + new URLSearchParams({ q: "Berlin" })
 )
 const data = await response.json()
@@ -34,10 +34,10 @@ const data = await response.json()
 // prints the coordinates of the first result
 console.log(data.features[0].geometry.coordinates)
 `,
-            },
-            {
-                language: "python",
-                codeString: `from httpx import Client
+			},
+			{
+				language: "python",
+				codeString: `from httpx import Client
 
 with Client() as client:
     response = client.get(
@@ -50,7 +50,7 @@ with Client() as client:
     # prints the coordinates of the first result
     print(data["features"][0]["geometry"]["coordinates"])
 `,
-            },
-        ]}
-    />
+			},
+		]}
+	/>
 )

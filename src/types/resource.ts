@@ -40,8 +40,8 @@ export type Resource = ResourceSummary & {
 	keywords: string[]
 	version: string
 	license: License
-	based_on?: ResourceSummary[]
-	used_by?: ResourceSummary[]
+	parents?: ResourceSummary[]
+	children?: ResourceSummary[]
 	providers: ResourceProvider[]
 	examples?: UseExample[]
 	spatial_extent?: SpatialExtent[]
