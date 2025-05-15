@@ -10,7 +10,7 @@ export type SpatialTypes = "REGION" | "GLOBAL" | "NON_SPATIAL"
 export type ResourceTypes = "API" | "Dataset" | "ML Model"
 
 export const fetchProviders = async (): Promise<ProviderSummary[]> => {
-	return await fetch(`http://localhost:8000/providers`, {
+	return await fetch(`${process.env.DATA_CATALOG_URL}/providers`, {
 		headers: {
 			accept: "application/json",
 			"Content-Type": "application/json",
@@ -31,7 +31,7 @@ export const fetchProviders = async (): Promise<ProviderSummary[]> => {
 export const fetchProvider = async (
 	id: string
 ): Promise<Provider | undefined> => {
-	return await fetch(`http://localhost:8000/providers/${id}`, {
+	return await fetch(`${process.env.DATA_CATALOG_URL}/providers/${id}`, {
 		headers: {
 			accept: "application/json",
 			"Content-Type": "application/json",
@@ -61,7 +61,7 @@ export const fetchDataCatalog = async (
 	limit: number
 ): Promise<Pagination<ResourceSummary>> => {
 	return await fetch(
-		`http://localhost:8000/resources/search?page=${page - 1}&per_page=${limit}`,
+		`${process.env.DATA_CATALOG_URL}/resources/search?page=${page - 1}&per_page=${limit}`,
 		{
 			method: "POST",
 			headers: {
@@ -94,28 +94,26 @@ export const fetchDataCatalog = async (
 export const fetchResource = async (
 	id: string
 ): Promise<Resource | undefined> => {
-	return await fetch(`http://localhost:8000/resources/${id}`, {
+	return await fetch(`${process.env.DATA_CATALOG_URL}/resources/${id}`, {
 		headers: {
 			accept: "application/json",
 			"Content-Type": "application/json",
 		},
 	})
 		.then((response) => {
-			console.log("response", response)
+			if (!response.ok) {
+				throw new Error(response.statusText)
+			}
 			return response.json()
 		})
-		.then((data) => {
-			console.log("data", data)
-			return data
-		})
-		.catch((error) => {
-			console.error("Error:", error)
-			return []
+		.then((data) => data)
+		.catch(() => {
+			throw new Error("Could not fetch categories")
 		})
 }
 
 export const fetchCategories = async (): Promise<CategorySummary[]> => {
-	return await fetch(`http://localhost:8000/categories`, {
+	return await fetch(`${process.env.DATA_CATALOG_URL}/categories`, {
 		headers: {
 			accept: "application/json",
 			"Content-Type": "application/json",
@@ -136,7 +134,7 @@ export const fetchCategories = async (): Promise<CategorySummary[]> => {
 export const fetchCategory = async (
 	id: string
 ): Promise<Category | undefined> => {
-	return await fetch(`http://localhost:8000/categories/${id}`, {
+	return await fetch(`${process.env.DATA_CATALOG_URL}/categories/${id}`, {
 		headers: {
 			accept: "application/json",
 			"Content-Type": "application/json",

@@ -83,6 +83,15 @@
                   key: 'nextauth_secret'
                 }
               }
+            },
+            {
+              name: 'DATA_CATALOG_URL',
+              valueFrom: {
+                configMapKeyRef: {
+                  name: 'dev-portal-config',
+                  key: 'data_catalog_url'
+                }
+              }
             }
           ],
         }],
