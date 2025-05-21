@@ -1,23 +1,19 @@
 import InfoCard from "@/components/InfoCard"
 import { BackIcon } from "@/icons/BackIcon"
-import { OpenApiIcon } from "@/icons/OpenApiIcon"
-import { Card, Typography } from "@mui/material"
+import { Card, Skeleton, Typography } from "@mui/material"
 import { fetchResource } from "../../DataCatalogActions"
 import { Resource } from "@//types/resource"
 import { Fragment, Suspense } from "react"
 import { redirect } from "next/navigation"
 import {
 	ArrowForward,
-	ArrowOutward,
-	CloudOutlined,
-	Code,
-	FileDownloadOutlined,
-	ListAlt,
 } from "@mui/icons-material"
 import CodeBlockWrapper from "@/components/CodeBlockWrapper"
-import { ResourceMap } from "@/components/ResourceMap"
 import Link from "next/link"
-import { ResourceCard } from "@/components/ResourceCard.tsx"
+import Image from "next/image"
+import { ResourceOverview } from "@/components/DataCatalog/Resource/ResourceOverview"
+import { ResourceSpatialExtent } from "@/components/DataCatalog/Resource/ResourceSpatialExtent"
+import { ResourceAssociations } from "@/components/DataCatalog/Resource/ResourceAssociations"
 
 type ResourceLoaderProps = {
 	params: Promise<{
@@ -27,57 +23,6 @@ type ResourceLoaderProps = {
 
 const page = async ({ params }: ResourceLoaderProps) => {
 	const { resourceId } = await params
-	const resource = await fetchResource(resourceId)
-	if (!resource) {
-		redirect("/not-found")
-	}
-	return (
-		<Suspense>
-			<ResourcePage resource={resource} />
-		</Suspense>
-	)
-}
-
-type ResourcePageProps = {
-	resource: Resource
-}
-
-export const ResourcePage = ({ resource }: ResourcePageProps) => {
-	console.log("Resource Page", resource)
-	const ResourceTag = () => {
-		if (resource.type === "API") {
-			return (
-				<div className="flex items-center gap-2 px-4 py-2 bg-primary-90/90 text-primary-10 rounded-full text-lg font-medium">
-					{resource.type}
-				</div>
-			)
-		} else if (resource.type === "DATASET") {
-			return (
-				<div className="flex items-center gap-2 px-4 py-2 bg-secondary-90/90 text-secondary-10 rounded-full text-lg font-medium">
-					Dataset
-				</div>
-			)
-		} else if (resource.type === "DATASET_COLLECTION") {
-			return (
-				<div className="flex items-center gap-2 px-4 py-2 border border-neutral-10 bg-neutral-100/90 text-neutral-10 rounded-full text-lg font-medium">
-					Dataset Collection
-				</div>
-			)
-		} else if (resource.type === "ML_MODEL") {
-			return (
-				<div className="flex items-center gap-2 px-4 py-2 bg-tertiary-90/90 text-tertiary-10 rounded-full text-lg font-medium">
-					ML Model
-				</div>
-			)
-		} else {
-			return (
-				<div className="flex items-center gap-2 px-4 py-2 bg-error-90 text-error-main rounded-full text-lg font-medium">
-					{resource.type}
-				</div>
-			)
-		}
-	}
-
 	return (
 		<div className="w-full lg:max-w-7xl px-8 lg:my-44 my-20">
 			<Link
@@ -87,148 +32,109 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 				<BackIcon />
 				<Typography className="text-xl">Back to data catalog</Typography>
 			</Link>
+			<Suspense fallback={<ResourceSkeleton />}>
+				<ResourcePageLoader resourceId={resourceId} />
+			</Suspense>
+		</div>
+	)
+}
 
-			<div className="flex flex-col gap-8 mt-14">
-				<div className="flex flex-wrap items-center gap-4">
-					<Typography
-						variant="h1"
-						className="flex items-center text-4xl xs:text-5xl gap-4"
-					>
-						<span className="material-symbols-outlined">{resource.icon}</span>
-						{resource.title}
-					</Typography>
-					<ResourceTag />
-				</div>
-				<div className="flex flex-wrap items-center gap-4">
-					{resource.version && (
-						<div className="flex items-center gap-2 px-4 py-2 bg-neutral-90 rounded-full">
-							Version {resource.version}
-						</div>
-					)}
-					{resource.license && (
-						<Link
-							className="group flex items-center gap-2 px-4 py-2 bg-neutral-90 rounded-full"
-							href={resource.license.url}
-							target="_blank"
-						>
-							{resource.license.name}
-							<ArrowOutward
-								fontSize="inherit"
-								className="transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-							/>
-						</Link>
-					)}
-					{resource.release_date && (
-						<div className="flex items-center gap-2 px-4 py-2 bg-neutral-90 rounded-full">
-							Released {new Date(resource.release_date).getFullYear()}
-						</div>
-					)}
-					{resource.update_frequency && (
-						<div className="flex items-center gap-2 px-4 py-2 bg-neutral-90 rounded-full">
-							Updated {resource.update_frequency}
-						</div>
-					)}
-				</div>
-				<div className="flex items-center gap-4">
-					{resource.keywords && resource.keywords.length > 0 && (
-						<Typography variant="body2">
-							{resource.keywords.join(" • ")}
-						</Typography>
-					)}
-				</div>
-				<Typography className="text-xl xs:text-2xl">
-					{resource.abstract}
-				</Typography>
-			</div>
-			<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-20">
-				{resource.openapi_url && (
-					<InfoCard
-						externalLink={true}
-						header="OpenAPI Spec"
-						subHeader={`Explore the OpenAPI spec for ${resource.title}.`}
-						cardIcon={<OpenApiIcon />}
-						href={resource.openapi_url}
-					/>
-				)}
-				{resource.git_url && (
-					<InfoCard
-						externalLink={true}
-						header="Source Code"
-						subHeader={`Explore the source code behind ${resource.title}.`}
-						cardIcon={<Code />}
-						href={resource.git_url}
-					/>
-				)}
-				{resource.documentation_url && (
-					<InfoCard
-						externalLink={true}
-						header="Documentation"
-						subHeader={`Explore the documentation for ${resource.title}.`}
-						cardIcon={<ListAlt />}
-						href={resource.documentation_url}
-					/>
-				)}
-				{resource.download_url && (
-					<InfoCard
-						externalLink={true}
-						header="Download"
-						subHeader={`Download the ${resource.title}.`}
-						cardIcon={<FileDownloadOutlined />}
-						href={resource.download_url}
-					/>
-				)}
-				{resource.client_library && (
-					<InfoCard
-						externalLink={false}
-						header="Client Libraries"
-						subHeader={`Explore the client libraries for ${resource.title}.`}
-						cardIcon={<Code />}
-						href="/resources"
-					/>
-				)}
-			</div>
-			{resource.parents && resource.parents.length > 0 && (
-				<div className="flex flex-col mt-28">
-					<Typography className="text-3xl xs:text-4xl">
-						{resource.type === "API" || resource.type === "ML_MODEL"
-							? "Distributes data from"
-							: "Part of"}
-					</Typography>
-					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-						{resource.parents.map((used_by_resource) => (
-							<ResourceCard
-								key={used_by_resource.id}
-								resource={used_by_resource}
-							/>
-						))}
-					</div>
-				</div>
-			)}
-			{resource.children && resource.children.length > 0 && (
-				<div className="flex flex-col mt-28">
-					<Typography className="text-3xl xs:text-4xl">
-						Distributions
-					</Typography>
-					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-						{resource.children.map((based_on_resource) => (
-							<ResourceCard
-								key={based_on_resource.id}
-								resource={based_on_resource}
-							/>
-						))}
-					</div>
-				</div>
-			)}
+type ResourcePageLoaderProps = {
+	resourceId: string
+}
+
+export const ResourcePageLoader = async ({ resourceId }: ResourcePageLoaderProps) => {
+	try {
+		const resource = await fetchResource(resourceId)
+		if (!resource) {
+			redirect("/not-found")
+		}
+		return <ResourcePage resource={resource} />
+	} catch (error) {
+		console.error("Error fetching resource:", error)
+		redirect("/not-found")
+	}
+}
+
+export const ResourceSkeleton = () => {
+	return (
+		<div className="flex flex-col mt-14 gap-8">
+			<Skeleton
+				variant="rectangular"
+				className="w-full h-12" />
+			<Skeleton
+				variant="rectangular"
+				className="w-1/3 h-8" />
+		</div>
+	)
+}
+
+type ResourcePageProps = {
+	resource: Resource
+}
+
+export const ResourcePage = ({ resource }: ResourcePageProps) => {
+	console.log("ResourcePage", resource)
+	return (
+		<>
+			<ResourceOverview resource={resource} />
 			{resource.html_content && (
 				<div className="flex flex-col mt-28">
+					<Typography variant="h2">
+						More information
+					</Typography>
 					<div
-						className="prose"
+						className="prose mt-8 max-w-[750px]"
 						dangerouslySetInnerHTML={{ __html: resource.html_content }}
 					/>
 				</div>
 			)}
-			<div className="flex flex-col mt-28">
-				<Typography className="text-3xl xs:text-4xl">Provided by</Typography>
+			<ResourceAssociations resource={resource} />
+			<ResourceSpatialExtent resource={resource} />
+			{resource.examples && resource.examples.length > 0 && (
+				<div className="flex flex-col mt-28">
+					<Typography variant="h2">Use Examples</Typography>
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-8">
+						{resource.examples.map((use_example) => (
+							<InfoCard
+								key={use_example.id}
+								externalLink={true}
+								header={use_example.title}
+								subHeader={use_example.description}
+								cardIcon={use_example.favicon_url && (
+									<Image src={use_example.favicon_url} alt="" width={24} height={24} />
+								)}
+								href={use_example.example_url}
+							/>
+						))}
+					</div>
+				</div>
+			)}
+			{resource.code_examples && resource.code_examples.length > 0 && (
+				<div id="code-examples" className="flex flex-col mt-28">
+					<Typography variant="h2">
+						Code Examples
+					</Typography>
+					{resource.code_examples.map((codeExample) => (
+						<Fragment key={codeExample.id}>
+							<Typography variant="h3" className="mt-8">
+								{codeExample.title}
+							</Typography>
+							<Typography className="text-base mt-6">
+								{codeExample.description}
+							</Typography>
+							<CodeBlockWrapper
+								codeBlocks={codeExample.code.map((code) => ({
+									language: code.language,
+									codeString: code.source,
+								}))}
+							/>
+						</Fragment>
+					))}
+				</div>
+			)}
+			<div id="providers" className="flex flex-col mt-28">
+				<Typography variant="h2">Provided by</Typography>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
 					{resource.providers.map((provider) => (
 						<Link
@@ -257,124 +163,7 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 					))}
 				</div>
 			</div>
-			{resource.spatial_extent && resource.spatial_extent.length > 0 && (
-				<div className="flex flex-col mt-28">
-					<Typography className="text-3xl xs:text-4xl">
-						Spatial Extent
-					</Typography>
-					<div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-						{resource.spatial_extent.map((spatialExtent, index) => (
-							<div
-								key={spatialExtent.id}
-								className="flex flex-col bg-card h-full w-full shadow-none rounded-xl overflow-hidden"
-							>
-								<div className="w-full aspect-square shrink">
-									{spatialExtent.type === "REGION" ? (
-										<ResourceMap
-											id={`resource-map-${index}`}
-											geometry={spatialExtent.geometry}
-										/>
-									) : (
-										<ResourceMap
-											id={`resource-map-${index}`}
-											geometry={[
-												{
-													type: "Feature",
-													geometry: {
-														type: "Polygon",
-														coordinates: [
-															[
-																[180, 90],
-																[180, -90],
-																[-180, -90],
-																[-180, 90],
-																[180, 90],
-															],
-														],
-													},
-													properties: {},
-												},
-											]}
-										/>
-									)}
-								</div>
-								<div className="flex grow flex-col p-6 gap-3">
-									<Typography variant="h5" className="text-xl xs:text-2xl">
-										{spatialExtent.type === "REGION"
-											? spatialExtent.region
-											: "Global"}
-									</Typography>
-									{spatialExtent.details && (
-										<Typography
-											variant="body1"
-											className="text-sm xs:text-base"
-										>
-											{spatialExtent.details}
-										</Typography>
-									)}
-									{spatialExtent.spatial_resolution && (
-										<div>
-											<Typography
-												variant="body2"
-												className="text-sm xs:text-base"
-											>
-												Spatial Resolution
-											</Typography>
-											<Typography
-												variant="body1"
-												className="text-sm xs:text-base"
-											>
-												{spatialExtent.spatial_resolution}
-											</Typography>
-										</div>
-									)}
-								</div>
-							</div>
-						))}
-					</div>
-				</div>
-			)}
-			{resource.examples && resource.examples.length > 0 && (
-				<div className="flex flex-col mt-28">
-					<Typography className="text-3xl xs:text-4xl">Use Examples</Typography>
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-8">
-						{resource.examples.map((use_example) => (
-							<InfoCard
-								key={use_example.id}
-								externalLink={false}
-								header={use_example.name}
-								subHeader={use_example.description}
-								cardIcon={<CloudOutlined />}
-								href="/data-catalog/resource/1"
-							/>
-						))}
-					</div>
-				</div>
-			)}
-			{resource.code_examples && resource.code_examples.length > 0 && (
-				<div className="flex flex-col mt-28">
-					<Typography className="text-3xl xs:text-4xl">
-						Code Examples
-					</Typography>
-					{resource.code_examples.map((codeExample) => (
-						<Fragment key={codeExample.id}>
-							<Typography className="text-2xl xs:text-3xl mt-8">
-								{codeExample.title}
-							</Typography>
-							<Typography className="text-base mt-6">
-								{codeExample.description}
-							</Typography>
-							<CodeBlockWrapper
-								codeBlocks={codeExample.code.map((code) => ({
-									language: code.language,
-									codeString: code.source,
-								}))}
-							/>
-						</Fragment>
-					))}
-				</div>
-			)}
-		</div>
+		</>
 	)
 }
 

@@ -16,8 +16,8 @@ const resourceOptions: Option[] = [
 	{ label: "ML Models", value: "ML_MODEL" },
 ]
 const spatialOptions: Option[] = [
-	{ label: "Global Coverage", value: "GLOBAL" },
-	{ label: "Partial Coverage", value: "REGION" },
+	{ label: "Global", value: "GLOBAL" },
+	{ label: "Regional", value: "REGION" },
 	{ label: "Non-Spatial", value: "NON_SPATIAL" },
 ]
 

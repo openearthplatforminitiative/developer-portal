@@ -4,6 +4,7 @@ import { UseExample } from "./use-example"
 import { License } from "./license"
 import { SpatialExtent } from "./spatial-extent"
 import { CodeExample } from "./code"
+import { TemporalExtent } from "./temporal-extent"
 
 type ResourceProvider = {
 	provider: ProviderSummary
@@ -50,6 +51,7 @@ export type Resource = ResourceSummary & {
 	providers: ResourceProvider[]
 	examples?: UseExample[]
 	spatial_extent?: SpatialExtent[]
+	temporal_extent?: TemporalExtent[]
 	code_examples?: CodeExample[]
 	categories: ResourceCategory[]
 }

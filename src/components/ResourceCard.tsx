@@ -1,8 +1,10 @@
 "use client"
 
-import { ArrowForward, PublicOutlined } from "@mui/icons-material"
+import { ArrowForward, PublicOutlined, TravelExploreOutlined } from "@mui/icons-material"
 import Link from "next/link"
 import { ResourceSummary } from "@//types/resource"
+import { Typography } from "@mui/material"
+import { motion } from "motion/react"
 
 type ResourceCardProps = {
 	resource: ResourceSummary
@@ -51,7 +53,15 @@ export const ResourceCard = ({ resource, isLoading }: ResourceCardProps) => {
 		if (resource.has_spatial_extent) {
 			return (
 				<div className={`${tagClasses} bg-neutral-80/50 flex items-center`}>
-					<PublicOutlined fontSize="small" />
+					{resource.spatial_extent_type == "GLOBAL" ? (
+						<>
+							<PublicOutlined fontSize="small" className="mr-2" /> Global
+						</>
+					) : (
+						<>
+							<TravelExploreOutlined fontSize="small" className="mr-2" /> Regional
+						</>
+					)}
 				</div>
 			)
 		}
@@ -87,19 +97,20 @@ export const ResourceCard = ({ resource, isLoading }: ResourceCardProps) => {
 
 	const Content = () => (
 		<>
-			<div className="flex items-center gap-2">
-				<span className="material-symbols-outlined font-medium">
+			<Typography variant="subtitle1" className="flex items-center gap-2">
+				<span className="material-symbols-outlined font-light text-2xl">
 					{resource.icon}
 				</span>
-				<h3>{resource.title}</h3>
-			</div>
-			<div className="flex flex-wrap items-center gap-2">
+				{resource.title}
+			</Typography>
+			<motion.div layout className="flex flex-wrap items-center gap-2">
 				{hasSpatialTag()}
 				{tagColors()}
 				{spatialTag()}
-			</div>
+			</motion.div>
 		</>
 	)
+
 	return (
 		<div
 			className={`group h-full flex items-center justify-between gap-6 rounded-lg px-6 py-4 transition-colors ${isLoading ? "animate-pulse bg-neutral-90" : " bg-neutral-95 hover:bg-neutral-90 cursor-pointer"}`}

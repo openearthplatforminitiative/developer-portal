@@ -2,11 +2,11 @@
 
 import { Layer, Map, Source, StyleSpecification } from "react-map-gl/maplibre"
 import "maplibre-gl/dist/maplibre-gl.css"
-import { Polygon, Feature } from "geojson"
+import { Polygon, FeatureCollection } from "geojson"
 
 type LocationOption = {
 	id: string
-	geometry: Feature<Polygon>[]
+	geometry: FeatureCollection<Polygon>
 }
 
 export const ResourceMap = ({ id, geometry }: LocationOption) => {
@@ -29,10 +29,7 @@ export const ResourceMap = ({ id, geometry }: LocationOption) => {
 			<Source
 				id="resource-polygon-source"
 				type="geojson"
-				data={{
-					type: "FeatureCollection",
-					features: geometry,
-				}}
+				data={geometry}
 			>
 				<Layer
 					id="polygon"
@@ -40,7 +37,7 @@ export const ResourceMap = ({ id, geometry }: LocationOption) => {
 					source="resource-polygon-source"
 					paint={{
 						"fill-color": "#3EA26D",
-						"fill-opacity": 0.5,
+						"fill-opacity": 0.7,
 					}}
 				/>
 			</Source>
@@ -71,7 +68,7 @@ const mapStyle: StyleSpecification = {
 			id: "background",
 			type: "background",
 			paint: {
-				"background-color": "#F5FFF4",
+				"background-color": "#FBFDF8",
 			},
 		},
 		{
@@ -80,7 +77,7 @@ const mapStyle: StyleSpecification = {
 			source: "openmaptiles",
 			"source-layer": "water",
 			filter: ["!=", ["get", "brunnel"], "tunnel"],
-			paint: { "fill-color": "#A3CDDB" },
+			paint: { "fill-color": "#3B6471" },
 		},
 	],
 }

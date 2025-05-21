@@ -31,6 +31,7 @@ export const DataCatalog = () => {
 
 const DataCatalogInitiated = () => {
 	const [resources, setResources] = useState<ResourceSummary[]>([])
+	console.log("resources", resources)
 
 	const { showMap, setShowMap } = useDataCatalog()
 	const {
@@ -127,7 +128,7 @@ const DataCatalogInitiated = () => {
 						resources.map((resource) => (
 							<motion.div
 								key={resource.id}
-								layout
+								layout="position"
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
 								exit={{ opacity: 0 }}

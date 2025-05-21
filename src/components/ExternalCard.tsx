@@ -25,7 +25,7 @@ export const ExternalCard = ({
 			href={href}
 			className="flex flex-1 md:min-w-[350px] min-w-[250px] 2xs:max-w-[calc(100%-0.75rem)] xs:max-w-[calc(50%-0.75rem)] lg:max-w-[calc(33%-0.75rem)] h-full"
 		>
-			<Card className="group rounded-xl bg-card hover:bg-secondary-90 w-full h-full shadow-none">
+			<Card className="group rounded-xl bg-neutralvariant-90 hover:bg-secondary-90 w-full h-full shadow-none">
 				<Image
 					src={imageUrl}
 					alt={alt}

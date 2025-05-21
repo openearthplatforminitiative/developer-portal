@@ -8,6 +8,7 @@ import { PythonLogo } from "@/icons/PythonLogo"
 import { JavascriptLogo } from "@/icons/JavascriptLogo"
 import InfoCard from "@/components/InfoCard"
 import { JavaLogo } from "@/icons/JavaLogo"
+import Accordion from "@/components/Accordion"
 
 const ResourcesPage = () => {
 	return (
@@ -120,67 +121,67 @@ const ResourcesPage = () => {
 					</Box>
 				</Box>
 				<Box className="flex flex-col gap-8">
-					<Typography variant="h2" className="text-3xl xs:text-4xl w-full">
-						Frontend
-					</Typography>
-					<Box className="flex flex-wrap gap-6">
-						<ExternalCard
-							header="Material UI"
-							subHeader=""
-							href="https://mui.com"
-							imageUrl="/mui.png"
-							alt="mui logo"
-						/>
-						<ExternalCard
-							header="Next JS"
-							subHeader=""
-							href="https://nextjs.org"
-							imageUrl="/next.png"
-							alt="next logo"
-						/>
-						<ExternalCard
-							header="Typescript"
-							subHeader=""
-							href="https://www.typescriptlang.org/"
-							imageUrl="/ts.png"
-							alt="typescript logo"
-						/>
-						<ExternalCard
-							header="Tailwind CSS"
-							subHeader=""
-							href="https://tailwindcss.com/"
-							imageUrl="/tailwind.png"
-							alt="tailwind css logo"
-						/>
-					</Box>
-				</Box>
-				<Box className="flex flex-col gap-8">
 					<Typography variant="h2" className="text-3xl xs:text-4xl">
-						Design
+						Our preferred resources
 					</Typography>
-					<Box className="flex flex-1 flex-wrap gap-6">
-						<ExternalCard
-							header="Google fonts"
-							subHeader=""
-							href="https://fonts.google.com/"
-							imageUrl="/google-fonts.png"
-							alt="google fonts logo"
-						/>
-						<ExternalCard
-							header="Material design"
-							subHeader=""
-							href="https://m3.material.io/"
-							imageUrl="/material-design.png"
-							alt="material design logo"
-						/>
-						<ExternalCard
-							header="Material symbols"
-							subHeader=""
-							href="https://fonts.google.com/icons?selected=Material+Symbols+Outlined:arrow_back:FILL@0;wght@400;GRAD@0;opsz@24"
-							imageUrl="/material-symbols.png"
-							alt="material symbols logo"
-						/>
-					</Box>
+					<Accordion title="Frontend">
+						<Box className="flex flex-wrap gap-6">
+							<ExternalCard
+								header="Material UI"
+								subHeader=""
+								href="https://mui.com"
+								imageUrl="/mui.png"
+								alt="mui logo"
+							/>
+							<ExternalCard
+								header="Next JS"
+								subHeader=""
+								href="https://nextjs.org"
+								imageUrl="/next.png"
+								alt="next logo"
+							/>
+							<ExternalCard
+								header="Typescript"
+								subHeader=""
+								href="https://www.typescriptlang.org/"
+								imageUrl="/ts.png"
+								alt="typescript logo"
+							/>
+							<ExternalCard
+								header="Tailwind CSS"
+								subHeader=""
+								href="https://tailwindcss.com/"
+								imageUrl="/tailwind.png"
+								alt="tailwind css logo"
+							/>
+						</Box>
+					</Accordion>
+					<Accordion title="Design">
+						<Box className="flex flex-1 flex-wrap gap-6">
+							<ExternalCard
+								header="Google fonts"
+								subHeader=""
+								href="https://fonts.google.com/"
+								imageUrl="/google-fonts.png"
+								alt="google fonts logo"
+							/>
+							<ExternalCard
+								header="Material design"
+								subHeader=""
+								href="https://m3.material.io/"
+								imageUrl="/material-design.png"
+								alt="material design logo"
+							/>
+							<ExternalCard
+								header="Material symbols"
+								subHeader=""
+								href="https://fonts.google.com/icons?selected=Material+Symbols+Outlined:arrow_back:FILL@0;wght@400;GRAD@0;opsz@24"
+								imageUrl="/material-symbols.png"
+								alt="material symbols logo"
+							/>
+						</Box>
+
+					</Accordion>
 				</Box>
 			</Box>
 		</Box>
