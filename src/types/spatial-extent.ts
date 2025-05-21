@@ -1,4 +1,4 @@
-import { Feature, Polygon } from "geojson"
+import { FeatureCollection, Polygon } from "geojson"
 
 export type GlobalSpatialExtent = {
 	id: string
@@ -12,7 +12,7 @@ export type RegionSpatialExtent = {
 	type: "REGION"
 	region: string
 	details?: string
-	geometry: Feature<Polygon>[]
+	geometry: FeatureCollection<Polygon>
 	spatial_resolution?: string
 }
 

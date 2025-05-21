@@ -22,6 +22,7 @@ export type ResourceSummary = {
 	type: "API" | "DATASET" | "ML_MODEL" | "DATASET_COLLECTION"
 	icon: string
 	has_spatial_extent: boolean
+	spatial_extent_type?: "REGION" | "GLOBAL"
 	covers_all: boolean
 	intersects_all: boolean
 	covers_some: boolean
@@ -32,6 +33,10 @@ export type Resource = ResourceSummary & {
 	html_content?: string
 	openapi_url?: string
 	download_url?: string
+	api_authentication_url?: string
+	data_hub_url?: string
+	research_paper_url?: string
+	citations?: string
 	git_url?: string
 	documentation_url?: string
 	update_frequency?: string
