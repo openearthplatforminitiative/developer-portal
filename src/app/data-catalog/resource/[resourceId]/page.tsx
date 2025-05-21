@@ -74,7 +74,6 @@ type ResourcePageProps = {
 }
 
 export const ResourcePage = ({ resource }: ResourcePageProps) => {
-	console.log("ResourcePage", resource)
 	return (
 		<>
 			<ResourceOverview resource={resource} />

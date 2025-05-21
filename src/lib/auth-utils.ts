@@ -59,7 +59,6 @@ export const authOptions: NextAuthOptions = {
 		async jwt({ token, account, user }) {
 			let newToken: JWT = token
 			if (user) {
-				console.log("user", user)
 				newToken = {
 					...token,
 					user: user,

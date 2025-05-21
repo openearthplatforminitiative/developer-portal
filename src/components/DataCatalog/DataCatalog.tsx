@@ -31,7 +31,6 @@ export const DataCatalog = () => {
 
 const DataCatalogInitiated = () => {
 	const [resources, setResources] = useState<ResourceSummary[]>([])
-	console.log("resources", resources)
 
 	const { showMap, setShowMap } = useDataCatalog()
 	const {
@@ -80,7 +79,6 @@ const DataCatalogInitiated = () => {
 	}, [lg, setShowMap])
 
 	const handlePagination = (event: any, newPage: number) => {
-		console.log(newPage)
 		setCurrentPage(newPage)
 	}
 
