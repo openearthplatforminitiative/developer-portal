@@ -61,7 +61,6 @@ export const DataCatalogFiltersProvider = ({
 
 	useEffect(() => {
 		const storage = localStorage.getItem("dataCatalogSearch")
-		console.log("STORAGE")
 		if (storage && !initialized) {
 			try {
 				const parsedStorage = JSON.parse(storage)
