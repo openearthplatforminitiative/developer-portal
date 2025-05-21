@@ -10,7 +10,7 @@ export type SpatialTypes = "REGION" | "GLOBAL" | "NON_SPATIAL"
 export type ResourceTypes = "API" | "Dataset" | "ML Model"
 
 export const fetchProviders = async (): Promise<ProviderSummary[]> => {
-	return await fetch(`${process.env.DATA_CATALOG_URL}/providers`, {
+	return await fetch(`${process.env.DATA_CATALOG_URL}/v1/providers`, {
 		headers: {
 			accept: "application/json",
 			"Content-Type": "application/json",
@@ -31,7 +31,7 @@ export const fetchProviders = async (): Promise<ProviderSummary[]> => {
 export const fetchProvider = async (
 	id: string
 ): Promise<Provider | undefined> => {
-	return await fetch(`${process.env.DATA_CATALOG_URL}/providers/${id}`, {
+	return await fetch(`${process.env.DATA_CATALOG_URL}/v1/providers/${id}`, {
 		headers: {
 			accept: "application/json",
 			"Content-Type": "application/json",
@@ -61,7 +61,7 @@ export const fetchDataCatalog = async (
 	limit: number
 ): Promise<Pagination<ResourceSummary>> => {
 	return await fetch(
-		`${process.env.DATA_CATALOG_URL}/resources/search?page=${page - 1}&per_page=${limit}`,
+		`${process.env.DATA_CATALOG_URL}/v1/resources/search?page=${page - 1}&per_page=${limit}`,
 		{
 			method: "POST",
 			headers: {
@@ -94,7 +94,7 @@ export const fetchDataCatalog = async (
 export const fetchResource = async (
 	id: string
 ): Promise<Resource | undefined> => {
-	return await fetch(`${process.env.DATA_CATALOG_URL}/resources/${id}`, {
+	return await fetch(`${process.env.DATA_CATALOG_URL}/v1/resources/${id}`, {
 		headers: {
 			accept: "application/json",
 			"Content-Type": "application/json",
@@ -113,7 +113,7 @@ export const fetchResource = async (
 }
 
 export const fetchCategories = async (): Promise<CategorySummary[]> => {
-	return await fetch(`${process.env.DATA_CATALOG_URL}/categories`, {
+	return await fetch(`${process.env.DATA_CATALOG_URL}/v1/categories`, {
 		headers: {
 			accept: "application/json",
 			"Content-Type": "application/json",
@@ -134,7 +134,7 @@ export const fetchCategories = async (): Promise<CategorySummary[]> => {
 export const fetchCategory = async (
 	id: string
 ): Promise<Category | undefined> => {
-	return await fetch(`${process.env.DATA_CATALOG_URL}/categories/${id}`, {
+	return await fetch(`${process.env.DATA_CATALOG_URL}/v1/categories/${id}`, {
 		headers: {
 			accept: "application/json",
 			"Content-Type": "application/json",

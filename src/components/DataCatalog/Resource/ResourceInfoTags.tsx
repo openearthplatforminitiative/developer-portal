@@ -1,12 +1,25 @@
+"use client"
+
 import { Resource } from "@/types/resource"
 import { ArrowOutward } from "@mui/icons-material"
 import Link from "next/link"
+import { useMemo } from "react"
 
 type ResourceInfoTagsProps = {
   resource: Resource
 }
 
 export const ResourceInfoTags = ({ resource }: ResourceInfoTagsProps) => {
+
+  const temporalExtents = useMemo(() => {
+    if (resource.temporal_extent && resource.temporal_extent.length > 0) {
+      return resource.temporal_extent.map((temporalExtent) => (
+        `${temporalExtent.start_date && new Date(temporalExtent.start_date).getFullYear()} - ${temporalExtent.end_date ? new Date(temporalExtent.end_date).getFullYear() : ""}`
+      )).join(", ")
+    }
+    return null
+  }, [resource.temporal_extent])
+
   return (
     <>
       {resource.version && (
@@ -37,14 +50,13 @@ export const ResourceInfoTags = ({ resource }: ResourceInfoTagsProps) => {
           Updated {resource.update_frequency}
         </div>
       )}
-      {resource.temporal_extent && resource.temporal_extent.map((temporalExtent) => (
+      {temporalExtents && (
         <div
-          key={temporalExtent.id}
           className="flex items-center gap-2 px-4 py-2 bg-neutral-90 rounded-full"
         >
-          {temporalExtent.start_date} - {temporalExtent.end_date}
+          {temporalExtents}
         </div>
-      ))}
+      )}
     </>
   )
 }
