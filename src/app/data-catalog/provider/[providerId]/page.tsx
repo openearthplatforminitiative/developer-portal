@@ -73,7 +73,7 @@ export const ResourcePage = ({ provider }: ProviderPageProps) => {
 						<div className="flex flex-col p-6 gap-3">
 							<div className="flex flex-row justify-between items-center">
 								<Typography variant="h5" className="text-xl xs:text-2xl">
-									{provider.name}
+									{provider.provider_url}
 								</Typography>
 								<div className="transform transition-transform duration-300 group-hover:translate-x-2">
 									<ArrowOutward />
