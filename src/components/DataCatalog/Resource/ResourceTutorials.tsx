@@ -1,15 +1,9 @@
-import { ResourceSkeleton } from "@/app/data-catalog/resource/[resourceId]/page"
 import {
 	fetchResourceTutorialsByResourceNames,
 	ResourceTutorial,
-	sanityClient,
 } from "@/sanity/api"
-import { ArrowForward } from "@mui/icons-material"
 import { Typography } from "@mui/material"
 import { Suspense } from "react"
-import imageUrlBuilder from "@sanity/image-url"
-import Image from "next/image"
-import Link from "next/link"
 import { Tutorial } from "./ResourceTutorial"
 
 const ResourceTutorialsLoader = ({
@@ -19,7 +13,7 @@ const ResourceTutorialsLoader = ({
 }) => {
 	const tutorialsPromise = fetchResourceTutorialsByResourceNames(resourceNames)
 	return (
-		<Suspense fallback={<ResourceSkeleton />}>
+		<Suspense fallback={<p>Loading...</p>}>
 			<ResourceTutorials tutorialsPromise={tutorialsPromise} />
 		</Suspense>
 	)
@@ -44,11 +38,6 @@ const ResourceTutorials = async ({
 			</div>
 		</div>
 	)
-}
-
-const TutorialDialog = ({}) => {
-	// if router has a query param, get the slug from it
-	// next navigation
 }
 
 export default ResourceTutorialsLoader
