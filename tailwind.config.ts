@@ -129,7 +129,7 @@ const config: Config = {
 				99: "#F8F9F6",
 				100: "#FFFFFF",
 			},
-			neutralVariant: {
+			neutralvariant: {
 				main: "#586059",
 				0: "#000000",
 				5: "#0B130D",
@@ -169,6 +169,62 @@ const config: Config = {
 			animation: {
 				spin: "spin 40s linear infinite",
 				spinFrom90: "spinFrom90 40s linear infinite",
+			},
+			typography: {
+				DEFAULT: {
+					css: {
+						color: "#000",
+						h1: {
+							fontFamily: "Inter, Arial, sans-serif",
+							fontWeight: 400,
+							fontSize: "57px",
+							lineHeight: "64px",
+							letterSpacing: "0px",
+						},
+						h2: {
+							fontFamily: "Inter, Arial, sans-serif",
+							fontWeight: 400,
+							fontSize: "45px",
+							lineHeight: "52px",
+							letterSpacing: "0px",
+						},
+						h3: {
+							fontFamily: "Inter, Arial, sans-serif",
+							fontWeight: 400,
+							fontSize: "36px",
+							lineHeight: "44px",
+							letterSpacing: "0px",
+						},
+						h4: {
+							fontFamily: "Inter, Arial, sans-serif",
+							fontWeight: 400,
+							fontSize: "32px",
+							lineHeight: "40px",
+							letterSpacing: "0px",
+						},
+						h5: {
+							fontFamily: "Inter, Arial, sans-serif",
+							fontWeight: 400,
+							fontSize: "28px",
+							lineHeight: "36px",
+							letterSpacing: "0px",
+						},
+						h6: {
+							fontFamily: "Inter, Arial, sans-serif",
+							fontWeight: 400,
+							fontSize: "24px",
+							lineHeight: "32px",
+							letterSpacing: "0px",
+						},
+						body: {
+							fontFamily: "Inter, Arial, sans-serif",
+							fontWeight: 400,
+							fontSize: "1.125rem",
+							lineHeight: "16px",
+							letterSpacing: "0px",
+						},
+					},
+				},
 			},
 		},
 	},
