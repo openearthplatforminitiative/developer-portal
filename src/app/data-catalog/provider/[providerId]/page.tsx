@@ -21,7 +21,7 @@ const page = async ({ params }: ProviderLoaderProps) => {
 	}
 	return (
 		<Suspense>
-			<ResourcePage provider={provider} />
+			<ProviderPage provider={provider} />
 		</Suspense>
 	)
 }
@@ -30,7 +30,7 @@ type ProviderPageProps = {
 	provider: Provider
 }
 
-export const ResourcePage = ({ provider }: ProviderPageProps) => {
+const ProviderPage = ({ provider }: ProviderPageProps) => {
 	const DatasetCollections = provider.resources.filter(
 		(resource) => resource.resource.type === "DATASET_COLLECTION"
 	)

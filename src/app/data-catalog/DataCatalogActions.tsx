@@ -10,7 +10,7 @@ export type SpatialTypes = "REGION" | "GLOBAL" | "NON_SPATIAL"
 export type ResourceTypes = "API" | "Dataset" | "ML Model"
 
 export const fetchProviders = async (): Promise<ProviderSummary[]> => {
-	return await fetch(`${process.env.DATA_CATALOG_URL}/v1/providers`, {
+	return await fetch(`${process.env.DATA_CATALOG_URL}/v1/providers/`, {
 		headers: {
 			accept: "application/json",
 			"Content-Type": "application/json",
@@ -113,7 +113,7 @@ export const fetchResource = async (
 }
 
 export const fetchCategories = async (): Promise<CategorySummary[]> => {
-	return await fetch(`${process.env.DATA_CATALOG_URL}/v1/categories`, {
+	return await fetch(`${process.env.DATA_CATALOG_URL}/v1/categories/`, {
 		headers: {
 			accept: "application/json",
 			"Content-Type": "application/json",

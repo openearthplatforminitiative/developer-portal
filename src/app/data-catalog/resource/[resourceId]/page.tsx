@@ -43,7 +43,7 @@ type ResourcePageLoaderProps = {
 	resourceId: string
 }
 
-export const ResourcePageLoader = async ({ resourceId }: ResourcePageLoaderProps) => {
+const ResourcePageLoader = async ({ resourceId }: ResourcePageLoaderProps) => {
 	try {
 		const resource = await fetchResource(resourceId)
 		if (!resource) {
@@ -56,7 +56,7 @@ export const ResourcePageLoader = async ({ resourceId }: ResourcePageLoaderProps
 	}
 }
 
-export const ResourceSkeleton = () => {
+const ResourceSkeleton = () => {
 	return (
 		<div className="flex flex-col mt-14 gap-8">
 			<Skeleton
@@ -73,7 +73,7 @@ type ResourcePageProps = {
 	resource: Resource
 }
 
-export const ResourcePage = ({ resource }: ResourcePageProps) => {
+const ResourcePage = ({ resource }: ResourcePageProps) => {
 	return (
 		<>
 			<ResourceOverview resource={resource} />
