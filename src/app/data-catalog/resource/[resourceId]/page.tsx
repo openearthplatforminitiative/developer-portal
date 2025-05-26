@@ -5,6 +5,7 @@ import { fetchResource } from "../../DataCatalogActions"
 import { Resource } from "@//types/resource"
 import { Fragment, Suspense } from "react"
 import { redirect } from "next/navigation"
+
 import {
 	ArrowForward,
 } from "@mui/icons-material"
@@ -14,6 +15,7 @@ import Image from "next/image"
 import { ResourceOverview } from "@/components/DataCatalog/Resource/ResourceOverview"
 import { ResourceSpatialExtent } from "@/components/DataCatalog/Resource/ResourceSpatialExtent"
 import { ResourceAssociations } from "@/components/DataCatalog/Resource/ResourceAssociations"
+import ResourceTutorials from "@/components/DataCatalog/Resource/ResourceTutorials"
 
 type ResourceLoaderProps = {
 	params: Promise<{
@@ -88,6 +90,7 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 					/>
 				</div>
 			)}
+			<ResourceTutorials resourceNames={[resource.title]} />
 			<ResourceAssociations resource={resource} />
 			<ResourceSpatialExtent resource={resource} />
 			{resource.examples && resource.examples.length > 0 && (
@@ -167,3 +170,4 @@ export const ResourcePage = ({ resource }: ResourcePageProps) => {
 }
 
 export default page
+
