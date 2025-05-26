@@ -87,36 +87,43 @@ export const DrawSelectUpdate = () => {
 		return selectedFeature.geometry.coordinates[0] as [number, number][]
 	}, [selectedFeature])
 
-	const startDragging = (event: MapMouseEvent & Object) => {
-		if (!selectedFeature || tool !== "select") return
-		if ((event.originalEvent.target as HTMLElement).tagName !== "CANVAS") return
-		const clickedFeatures = map.current?.queryRenderedFeatures(event.point, {
-			layers: ["selected-polygon"],
-		})
-		if (
-			clickedFeatures?.some((feature) => feature.id === selectedFeature?.id)
-		) {
-			event.preventDefault()
+	const startDragging = useCallback(
+		(event: MapMouseEvent) => {
+			if (!selectedFeature || tool !== "select") return
+			if ((event.originalEvent.target as HTMLElement).tagName !== "CANVAS")
+				return
+			const clickedFeatures = map.current?.queryRenderedFeatures(event.point, {
+				layers: ["selected-polygon"],
+			})
+			if (
+				clickedFeatures?.some((feature) => feature.id === selectedFeature?.id)
+			) {
+				event.preventDefault()
+				setPrevDragLngLat(event.lngLat)
+				setIsDragging(true)
+			}
+		},
+		[map, selectedFeature, tool]
+	)
+
+	const handleDrag = useCallback(
+		(event: MapMouseEvent) => {
+			if (!isDragging) return
+			if (!prevDragLngLat) {
+				return setPrevDragLngLat(event.lngLat)
+			}
+			const newCoords = movePolygon(
+				coords as [number, number][],
+				event.lngLat,
+				prevDragLngLat
+			)
 			setPrevDragLngLat(event.lngLat)
-			setIsDragging(true)
-		}
-	}
+			updateCoords(newCoords)
+		},
+		[isDragging, prevDragLngLat, coords, updateCoords]
+	)
 
-	const handleDrag = (event: MapMouseEvent & Object) => {
-		if (!isDragging) return
-		if (!prevDragLngLat) {
-			return setPrevDragLngLat(event.lngLat)
-		}
-		const newCoords = movePolygon(
-			coords as [number, number][],
-			event.lngLat,
-			prevDragLngLat
-		)
-		setPrevDragLngLat(event.lngLat)
-		updateCoords(newCoords)
-	}
-
-	const endDragging = () => {
+	const endDragging = useCallback(() => {
 		setIsDragging(false)
 		setPrevDragLngLat(undefined)
 		if (!selectedFeature) return
@@ -125,7 +132,7 @@ export const DrawSelectUpdate = () => {
 				feature.id === selectedFeature?.id ? selectedFeature : feature
 			)
 		)
-	}
+	}, [features, selectedFeature, setFeatures])
 
 	useEffect(() => {
 		if (selectedFeature?.geometry.type === "Point") return
@@ -138,7 +145,15 @@ export const DrawSelectUpdate = () => {
 			mapRef?.off("mousemove", handleDrag)
 			mapRef?.off("mouseup", endDragging)
 		}
-	}, [map, selectedFeature, isDragging, prevDragLngLat])
+	}, [
+		map,
+		selectedFeature,
+		isDragging,
+		prevDragLngLat,
+		startDragging,
+		handleDrag,
+		endDragging,
+	])
 
 	const handleDoubleClick = (event: MarkerEvent<MouseEvent>, index: number) => {
 		if (!coords) return

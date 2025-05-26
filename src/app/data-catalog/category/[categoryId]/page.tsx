@@ -20,7 +20,7 @@ const page = async ({ params }: ProviderLoaderProps) => {
 	}
 	return (
 		<Suspense>
-			<ResourcePage category={category} />
+			<CategoryPage category={category} />
 		</Suspense>
 	)
 }
@@ -29,7 +29,7 @@ type CategoryPageProps = {
 	category: Category
 }
 
-export const ResourcePage = ({ category }: CategoryPageProps) => {
+const CategoryPage = ({ category }: CategoryPageProps) => {
 	const DatasetCollections = category.resources.filter(
 		(resource) => resource.resource.type === "DATASET_COLLECTION"
 	)
