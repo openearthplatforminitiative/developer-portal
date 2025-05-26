@@ -26,11 +26,7 @@ export const ResourceMap = ({ id, geometry }: LocationOption) => {
 			zoom={-10}
 			cursor="default"
 		>
-			<Source
-				id="resource-polygon-source"
-				type="geojson"
-				data={geometry}
-			>
+			<Source id="resource-polygon-source" type="geojson" data={geometry}>
 				<Layer
 					id="polygon"
 					type="fill"

@@ -180,7 +180,6 @@ const ResourcesPage = () => {
 								alt="material symbols logo"
 							/>
 						</Box>
-
 					</Accordion>
 				</Box>
 			</Box>

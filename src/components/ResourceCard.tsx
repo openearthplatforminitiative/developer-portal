@@ -1,6 +1,10 @@
 "use client"
 
-import { ArrowForward, PublicOutlined, TravelExploreOutlined } from "@mui/icons-material"
+import {
+	ArrowForward,
+	PublicOutlined,
+	TravelExploreOutlined,
+} from "@mui/icons-material"
 import Link from "next/link"
 import { ResourceSummary } from "@//types/resource"
 import { Typography } from "@mui/material"
@@ -59,7 +63,8 @@ export const ResourceCard = ({ resource, isLoading }: ResourceCardProps) => {
 						</>
 					) : (
 						<>
-							<TravelExploreOutlined fontSize="small" className="mr-2" /> Regional
+							<TravelExploreOutlined fontSize="small" className="mr-2" />{" "}
+							Regional
 						</>
 					)}
 				</div>

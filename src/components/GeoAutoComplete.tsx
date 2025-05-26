@@ -26,34 +26,43 @@ export const DataCatalogGeoSearch = () => {
 
 	useEffect(() => {
 		if (abortControllerRef.current) {
-			abortControllerRef.current.abort();
+			abortControllerRef.current.abort()
 		}
 
 		if (!searchQuery) {
-			setOptions([]);
-			return;
+			setOptions([])
+			return
 		}
 
-		setLoading(true);
-		geoCodingAction(searchQuery, "en").then((result) => {
-			if (result.features?.length > 0) {
-				const options = result.features
-					.map((feature) => {
-						let label = feature.properties.name || "";
-						if (feature.properties.city) label += `, ${feature.properties.city}`;
-						if (feature.properties.country) label += `, ${feature.properties.country}`;
-						const coordinate = feature.geometry.coordinates as [number, number];
-						return { label, coordinate };
-					})
-					.filter((v, i, self) => self.findIndex(t => t.label === v.label) === i);
-				setOptions(options);
-			}
-		}).catch((error) => {
-			console.error("Error fetching geocoding data:", error);
-			setOptions([]);
-		})
-		setLoading(false);
-	}, [searchQuery]);
+		setLoading(true)
+		geoCodingAction(searchQuery, "en")
+			.then((result) => {
+				if (result.features?.length > 0) {
+					const options = result.features
+						.map((feature) => {
+							let label = feature.properties.name || ""
+							if (feature.properties.city)
+								label += `, ${feature.properties.city}`
+							if (feature.properties.country)
+								label += `, ${feature.properties.country}`
+							const coordinate = feature.geometry.coordinates as [
+								number,
+								number,
+							]
+							return { label, coordinate }
+						})
+						.filter(
+							(v, i, self) => self.findIndex((t) => t.label === v.label) === i
+						)
+					setOptions(options)
+				}
+			})
+			.catch((error) => {
+				console.error("Error fetching geocoding data:", error)
+				setOptions([])
+			})
+		setLoading(false)
+	}, [searchQuery])
 
 	return (
 		<motion.div

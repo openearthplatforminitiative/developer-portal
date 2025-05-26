@@ -5,9 +5,7 @@ import { fetchResource } from "../../DataCatalogActions"
 import { Resource } from "@//types/resource"
 import { Fragment, Suspense } from "react"
 import { redirect } from "next/navigation"
-import {
-	ArrowForward,
-} from "@mui/icons-material"
+import { ArrowForward } from "@mui/icons-material"
 import CodeBlockWrapper from "@/components/CodeBlockWrapper"
 import Link from "next/link"
 import Image from "next/image"
@@ -59,12 +57,8 @@ const ResourcePageLoader = async ({ resourceId }: ResourcePageLoaderProps) => {
 const ResourceSkeleton = () => {
 	return (
 		<div className="flex flex-col mt-14 gap-8">
-			<Skeleton
-				variant="rectangular"
-				className="w-full h-12" />
-			<Skeleton
-				variant="rectangular"
-				className="w-1/3 h-8" />
+			<Skeleton variant="rectangular" className="w-full h-12" />
+			<Skeleton variant="rectangular" className="w-1/3 h-8" />
 		</div>
 	)
 }
@@ -79,9 +73,7 @@ const ResourcePage = ({ resource }: ResourcePageProps) => {
 			<ResourceOverview resource={resource} />
 			{resource.html_content && (
 				<div className="flex flex-col mt-28">
-					<Typography variant="h2">
-						More information
-					</Typography>
+					<Typography variant="h2">More information</Typography>
 					<div
 						className="prose mt-8 max-w-[750px]"
 						dangerouslySetInnerHTML={{ __html: resource.html_content }}
@@ -100,9 +92,16 @@ const ResourcePage = ({ resource }: ResourcePageProps) => {
 								externalLink={true}
 								header={use_example.title}
 								subHeader={use_example.description}
-								cardIcon={use_example.favicon_url && (
-									<Image src={use_example.favicon_url} alt="" width={24} height={24} />
-								)}
+								cardIcon={
+									use_example.favicon_url && (
+										<Image
+											src={use_example.favicon_url}
+											alt=""
+											width={24}
+											height={24}
+										/>
+									)
+								}
 								href={use_example.example_url}
 							/>
 						))}
@@ -111,9 +110,7 @@ const ResourcePage = ({ resource }: ResourcePageProps) => {
 			)}
 			{resource.code_examples && resource.code_examples.length > 0 && (
 				<div id="code-examples" className="flex flex-col mt-28">
-					<Typography variant="h2">
-						Code Examples
-					</Typography>
+					<Typography variant="h2">Code Examples</Typography>
 					{resource.code_examples.map((codeExample) => (
 						<Fragment key={codeExample.id}>
 							<Typography variant="h3" className="mt-8">
