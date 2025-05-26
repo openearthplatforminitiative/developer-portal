@@ -1,7 +1,7 @@
 "use client"
 
 import { Autocomplete, debounce, TextField } from "@mui/material"
-import { useState, useCallback, useEffect, useRef } from "react"
+import { useState, useEffect, useRef } from "react"
 import { geoCodingAction } from "./GeoCodingActions"
 import { LngLat } from "maplibre-gl"
 import { useMap } from "react-map-gl/maplibre"
@@ -20,56 +20,40 @@ export const DataCatalogGeoSearch = () => {
 
 	const map = useMap()
 
-	const fetchOptions = useCallback(
-		debounce(async (searchTerm, abortController) => {
-			if (!searchTerm) {
-				setOptions([])
-				return
-			}
-			setLoading(true)
-			await geoCodingAction(searchTerm, "en").then((result) => {
-				if (!abortController.signal.aborted) {
-					if (result.features && result.features.length > 0) {
-						const options = result.features
-							.map((feature) => {
-								let label = feature.properties.name || ""
-								if (feature.properties.city) {
-									label += `, ${feature.properties.city}`
-								}
-								if (feature.properties.country) {
-									label += `, ${feature.properties.country}`
-								}
-								const coordinate = feature.geometry.coordinates as [
-									number,
-									number,
-								]
-								return { label, coordinate }
-							})
-							.filter(
-								(value, index, self) =>
-									self.findIndex((t) => t.label === value.label) === index
-							)
-						setOptions(options)
-					}
-					setLoading(false)
-				}
-			})
-		}, 300),
-		[]
-	)
+	const debounceSetSearchQuery = debounce((value: string) => {
+		setSearchQuery(value)
+	}, 300)
 
 	useEffect(() => {
 		if (abortControllerRef.current) {
-			abortControllerRef.current.abort()
+			abortControllerRef.current.abort();
 		}
 
-		const newAbortController = new AbortController()
-		abortControllerRef.current = newAbortController
+		if (!searchQuery) {
+			setOptions([]);
+			return;
+		}
 
-		fetchOptions(searchQuery, newAbortController)
-
-		return () => newAbortController.abort() // Cleanup on unmount
-	}, [searchQuery, fetchOptions])
+		setLoading(true);
+		geoCodingAction(searchQuery, "en").then((result) => {
+			if (result.features?.length > 0) {
+				const options = result.features
+					.map((feature) => {
+						let label = feature.properties.name || "";
+						if (feature.properties.city) label += `, ${feature.properties.city}`;
+						if (feature.properties.country) label += `, ${feature.properties.country}`;
+						const coordinate = feature.geometry.coordinates as [number, number];
+						return { label, coordinate };
+					})
+					.filter((v, i, self) => self.findIndex(t => t.label === v.label) === i);
+				setOptions(options);
+			}
+		}).catch((error) => {
+			console.error("Error fetching geocoding data:", error);
+			setOptions([]);
+		})
+		setLoading(false);
+	}, [searchQuery]);
 
 	return (
 		<motion.div
@@ -93,7 +77,7 @@ export const DataCatalogGeoSearch = () => {
 						<TextField
 							{...params}
 							placeholder="Search and zoom to location"
-							onChange={(e) => setSearchQuery(e.target.value)}
+							onChange={(e) => debounceSetSearchQuery(e.target.value)}
 						/>
 					)}
 				/>
