@@ -4,6 +4,17 @@ import { Button, Typography } from "@mui/material"
 import { useState } from "react"
 import Image from "next/image"
 
+const partners = [
+	"/hackathon/partners/norad.png",
+	"/hackathon/partners/dhis2.png",
+	"/hackathon/partners/geo.png",
+	"/hackathon/partners/hub_ocean.png",
+	"/hackathon/partners/met.png",
+	"/hackathon/partners/varda.png",
+	"/hackathon/partners/wri.png",
+	"/hackathon/partners/knowit.png",
+]
+
 const Page = () => {
 	const [showIFrame, setShowIFrame] = useState(false)
 
@@ -76,6 +87,21 @@ const Page = () => {
 							Register now!
 						</Button>
 					)}
+				</div>
+				<Typography className="text-2xl xs:text-3xl mt-32 mb-8">
+					Partners & Contributors
+				</Typography>
+				<div className="w-full grid grid-cols-3 xs:grid-cols-4 gap-6 xs:gap-10 items-center">
+					{partners.map((partner, index) => (
+						<Image
+							key={index}
+							src={partner}
+							alt={`Partner ${index + 1}`}
+							width={200}
+							height={100}
+							className="w-full max-w-[200px] mb-4"
+						/>
+					))}
 				</div>
 			</div>
 		</div>
