@@ -30,10 +30,12 @@ const Page = () => {
           </span>
         </Typography>
         <Typography className="text-lg xs:text-2xl font-medium mb-2">
-          Are <span className="text-primary-40 italic font-bold">you</span> an aspiring changemaker?
+          Are <span className="text-primary-40 italic font-bold">you</span> an
+          aspiring changemaker?
         </Typography>
         <Typography variant="body1" className="leading-6">
-          - are you into code, understanding users needs, connecting the dots in data or crafting sustainable solutions for tomorrow or similar?
+          - are you into code, understanding users needs, connecting the dots in
+          data or crafting sustainable solutions for tomorrow or similar?
         </Typography>
         <Typography className="text-4xl xs:text-5xl font-semibold mt-24 flex flex-wrap gap-2">
           <span>30th June</span>-<span>27th July</span>
@@ -49,7 +51,11 @@ const Page = () => {
           />
         </Typography>
         <Typography className="mt-32 mb-24">
-          <span className="text-primary-40 font-medium">&apos;Hackation&apos; / hækˈeɪʃən /</span> : Combining the focus of a hackathon with the flexibility of your vacation
+          <span className="text-primary-40 font-medium">
+            &apos;Hackation&apos; / hækˈeɪʃən /
+          </span>{" "}
+          : Combining the focus of a hackathon with the flexibility of your
+          vacation
         </Typography>
         <div className="w-full relative flex flex-col items-center gap-3">
           <Image
