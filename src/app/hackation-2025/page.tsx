@@ -23,7 +23,7 @@ const Page = () => {
 			<div className="flex flex-col mb-20 items-start lg:text-center lg:items-center">
 				<Typography
 					variant="h1"
-					className="leading-[48px] xs:leading-[64px] text-4xl xs:text-6xl"
+					className="leading-[48px] xs:leading-[64px] font-semibold text-4xl xs:text-6xl"
 				>
 					Open data Hackation
 				</Typography>
@@ -88,18 +88,18 @@ const Page = () => {
 						</Button>
 					)}
 				</div>
-				<Typography className="text-2xl xs:text-3xl mt-32 mb-8">
+				<Typography className="text-base mt-32 mb-8 text-center w-full">
 					Partners & Contributors
 				</Typography>
-				<div className="w-full grid grid-cols-3 xs:grid-cols-4 gap-6 xs:gap-10 items-center">
+				<div className="w-full grid grid-cols-2 xs:grid-cols-4 justify-center gap-8 items-center">
 					{partners.map((partner, index) => (
 						<Image
 							key={index}
 							src={partner}
 							alt={`Partner ${index + 1}`}
-							width={200}
-							height={100}
-							className="w-full max-w-[200px] mb-4"
+							width={50}
+							height={50}
+							className="w-full max-w-[100px] mx-auto"
 						/>
 					))}
 				</div>
