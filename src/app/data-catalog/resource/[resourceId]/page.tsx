@@ -20,8 +20,7 @@ type ResourceLoaderProps = {
 
 export default async function Page({ params }: ResourceLoaderProps) {
 	const { resourceId } = await params
-	const resource = await fetchResource(resourceId)
-		.catch(() => notFound())
+	const resource = await fetchResource(resourceId).catch(() => notFound())
 	if (!resource) notFound()
 	return (
 		<div className="w-full lg:max-w-7xl px-8 lg:my-44 my-20">
