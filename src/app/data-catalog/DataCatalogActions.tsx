@@ -140,10 +140,14 @@ export const fetchCategory = async (
 			"Content-Type": "application/json",
 		},
 	})
-		.then((response) => response.json())
+		.then((response) => {
+			if (!response.ok) {
+				throw new Error(response.statusText)
+			}
+			return response.json()
+		})
 		.then((data) => data)
 		.catch((error) => {
-			console.error("Error:", error)
-			return []
+			throw new Error("Could not fetch category: " + error.message)
 		})
 }
