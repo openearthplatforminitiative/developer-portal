@@ -58,7 +58,7 @@ export interface ResourceTutorial {
 	slug: { current: string }
 	mainImage: string
 	relevantResources: {
-		resources: { title: string, id: string }[]
+		resources: { title: string; id: string }[]
 		includeResourceChildren?: boolean
 		includeResourceParents?: boolean
 		excludedResourceTypes?: string[]
@@ -115,7 +115,12 @@ export async function fetchRelevantResourceTutorialsForResource(
 			)
 		)
 	] | order(($resourceTitle in relevantResources.resources[].title) desc, count(relevantResources.resources[].title) asc, _createdAt asc){...}`
-	return sanityClient.fetch(query, { resourceTitle, parentsTitles, childrenTitles, resourceType })
+	return sanityClient.fetch(query, {
+		resourceTitle,
+		parentsTitles,
+		childrenTitles,
+		resourceType,
+	})
 }
 export async function fetchRelevantResourceTutorialsForTutorial(
 	relevantResourceTitles: string[],

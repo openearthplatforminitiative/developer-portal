@@ -12,11 +12,16 @@ type ResourceTutorialsLoaderProps = {
 }
 
 const ResourceTutorialsLoader = ({
-	resource
+	resource,
 }: ResourceTutorialsLoaderProps) => {
-	const childrenTitles = resource.children?.map((child) => child.title) || [];
-	const parentsTitles = resource.parents?.map((parent) => parent.title) || [];
-	const tutorialsPromise = fetchRelevantResourceTutorialsForResource(resource.title, parentsTitles, childrenTitles, resource.type)
+	const childrenTitles = resource.children?.map((child) => child.title) || []
+	const parentsTitles = resource.parents?.map((parent) => parent.title) || []
+	const tutorialsPromise = fetchRelevantResourceTutorialsForResource(
+		resource.title,
+		parentsTitles,
+		childrenTitles,
+		resource.type
+	)
 	return (
 		<Suspense fallback={<p>Loading...</p>}>
 			<ResourceTutorials tutorialsPromise={tutorialsPromise} />

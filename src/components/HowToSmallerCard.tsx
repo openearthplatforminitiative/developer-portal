@@ -13,10 +13,7 @@ export const HowToSmallerCard = ({ tutorial }: HowToCardProps) => {
 	console.log("HowToSmallerCard", tutorial)
 	const builder = imageUrlBuilder(sanityClient)
 	return (
-		<Link
-			key={tutorial._id}
-			href={`/how-tos/${tutorial.slug.current}`}
-		>
+		<Link key={tutorial._id} href={`/how-tos/${tutorial.slug.current}`}>
 			<div className="relative group bg-neutral-95 flex gap-1 xs:gap-2 w-full h-24 xs:h-36 rounded-xl cursor-pointer">
 				<Image
 					src={

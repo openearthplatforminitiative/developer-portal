@@ -13,15 +13,13 @@ import { ResourceSpatialExtent } from "@/components/DataCatalog/Resource/Resourc
 import { ResourceAssociations } from "@/components/DataCatalog/Resource/ResourceAssociations"
 import ResourceTutorials from "@/components/DataCatalog/Resource/ResourceTutorials"
 
-
 export default async function Page({
 	params,
 }: {
 	params: Promise<{ resourceId: string }>
 }) {
 	const { resourceId } = await params
-	const resource = await fetchResource(resourceId)
-		.catch(() => notFound())
+	const resource = await fetchResource(resourceId).catch(() => notFound())
 	if (!resource) notFound()
 
 	return (

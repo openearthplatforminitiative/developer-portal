@@ -6,32 +6,32 @@ import { HowToSmallerCard } from "./HowToSmallerCard"
 import { Skeleton } from "@mui/material"
 
 export default function GetHowToCard({ tutorialId }: { tutorialId: string }) {
-  const [tutorial, setTutorial] = useState<ResourceTutorial>()
-  const [loading, setLoading] = useState(true)
+	const [tutorial, setTutorial] = useState<ResourceTutorial>()
+	const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    async function loadTutorial() {
-      try {
-        const result = await fetchResourceTutorialsById(tutorialId)
-        console.log(result)
-        if (result) setTutorial(result)
-      } catch (err) {
-        console.error("Failed to fetch tutorial", err)
-      } finally {
-        setLoading(false)
-      }
-    }
+	useEffect(() => {
+		async function loadTutorial() {
+			try {
+				const result = await fetchResourceTutorialsById(tutorialId)
+				console.log(result)
+				if (result) setTutorial(result)
+			} catch (err) {
+				console.error("Failed to fetch tutorial", err)
+			} finally {
+				setLoading(false)
+			}
+		}
 
-    loadTutorial()
-  }, [tutorialId])
+		loadTutorial()
+	}, [tutorialId])
 
-  if (loading) {
-    return <Skeleton variant="rectangular" className="rounded-xl w-full h-36" />
-  }
+	if (loading) {
+		return <Skeleton variant="rectangular" className="rounded-xl w-full h-36" />
+	}
 
-  if (!tutorial) {
-    return <p>Tutorial not found</p>
-  }
+	if (!tutorial) {
+		return <p>Tutorial not found</p>
+	}
 
-  return <HowToSmallerCard tutorial={tutorial} />
+	return <HowToSmallerCard tutorial={tutorial} />
 }

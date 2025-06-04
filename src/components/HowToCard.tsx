@@ -14,10 +14,7 @@ type HowToCardProps = {
 export const HowToCard = ({ tutorial }: HowToCardProps) => {
 	const builder = imageUrlBuilder(sanityClient)
 	return (
-		<Link
-			key={tutorial._id}
-			href={`/how-tos/${tutorial.slug.current}`}
-		>
+		<Link key={tutorial._id} href={`/how-tos/${tutorial.slug.current}`}>
 			<div className="group flex flex-col relative w-full h-full rounded-xl overflow-hidden cursor-pointer">
 				<Image
 					src={
@@ -33,10 +30,7 @@ export const HowToCard = ({ tutorial }: HowToCardProps) => {
 				<div className="absolute flex flex-col justify-between items-start w-full bottom-0">
 					<div className="h-16 w-full bg-linear-to-b from-neutral-0/0 to-neutral-0/50" />
 					<div className="w-full max-h-full flex gap-6 items-end bg-neutral-0/50 text-neutral-100 text-semibold p-6">
-						<Typography
-							variant="h4"
-							className="text-2xl line-clamp-4"
-						>
+						<Typography variant="h4" className="text-2xl line-clamp-4">
 							{tutorial.title}
 						</Typography>
 						<ArrowForward
