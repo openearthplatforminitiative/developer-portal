@@ -61,7 +61,7 @@ const Page = () => {
 						className="absolute -bottom-15 w-full max-w-72 h-auto"
 					/>
 				</Typography>
-				<Typography className="mt-32 mb-24">
+				<Typography className="mt-32 mb-24 leading-6">
 					<span className="text-primary-40 font-medium">
 						&apos;Hackation&apos; / hækˈeɪʃən /
 					</span>{" "}
