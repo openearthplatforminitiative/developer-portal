@@ -1,4 +1,4 @@
-import { createClient } from "next-sanity"
+import { createClient, groq, PortableTextProps } from "next-sanity"
 
 export type CustomButton = {
 	text: string
@@ -57,7 +57,13 @@ export interface ResourceTutorial {
 	title: string
 	slug: { current: string }
 	mainImage: string
-	body: object[]
+	relevantResources: {
+		resources: { title: string, id: string }[]
+		includeResourceChildren?: boolean
+		includeResourceParents?: boolean
+		excludedResourceTypes?: string[]
+	}
+	body: PortableTextProps["value"]
 }
 
 const config = {
@@ -69,15 +75,67 @@ const config = {
 
 export const sanityClient = createClient(config)
 
-export async function fetchResourceTutorialsByResourceNames(
-	resourceNames: string[]
+export async function fetchResourceTutorials(): Promise<ResourceTutorial[]> {
+	const query = `*[_type == "resource_tutorial"]{...}`
+	return sanityClient.fetch(query)
+}
+export async function fetchLatestResourceTutorials(
+	limit: number = 3,
+	currentSlug?: string
 ): Promise<ResourceTutorial[]> {
-	const query = `*[_type == "resource_tutorial" && resourceName in $resourceNames]{...}`
-	return sanityClient.fetch(query, { resourceNames })
+	if (!currentSlug) {
+		const query = `*[_type == "resource_tutorial"] | order(_createdAt desc)[0...$limit]{...}`
+		return sanityClient.fetch(query, { limit })
+	}
+	const query = `*[_type == "resource_tutorial" && slug.current != $currentSlug] | order(_createdAt desc)[0...$limit]{...}`
+	return sanityClient.fetch(query, { limit, currentSlug })
+}
+export async function fetchRelevantResourceTutorialsForResource(
+	resourceTitle: string,
+	parentsTitles: string[],
+	childrenTitles: string[],
+	resourceType: string
+): Promise<ResourceTutorial[]> {
+	const query = groq`*[
+		_type == "resource_tutorial" &&
+		(
+			$resourceTitle in relevantResources.resources[].title  ||
+			(
+				(!defined(relevantResources.excludedResourceTypes) || !($resourceType in relevantResources.excludedResourceTypes)) &&
+				(
+					(
+						relevantResources.includeResourceChildren &&
+						count(relevantResources.resources[@.title in $parentsTitles]) > 0
+					) ||
+					(
+						relevantResources.includeResourceParents &&
+						count(relevantResources.resources[@.title in $childrenTitles]) > 0
+					)
+				)
+			)
+		)
+	] | order(($resourceTitle in relevantResources.resources[].title) desc, count(relevantResources.resources[].title) asc, _createdAt asc){...}`
+	return sanityClient.fetch(query, { resourceTitle, parentsTitles, childrenTitles, resourceType })
+}
+export async function fetchRelevantResourceTutorialsForTutorial(
+	relevantResourceTitles: string[],
+	slug: string = ""
+): Promise<ResourceTutorial[]> {
+	const query = groq`*[_type == "resource_tutorial" &&
+		count(relevantResources.resources[@.title in $relevantResourceTitles]) > 0 &&
+		slug.current != $slug
+	]{...}`
+	return sanityClient.fetch(query, { relevantResourceTitles, slug })
 }
 export async function fetchResourceTutorialBySlug(
 	slug: string
 ): Promise<ResourceTutorial> {
-	const query = `*[_type == "resource_tutorial" && slug.current == $slug][0]{...}`
+	const query = groq`*[_type == "resource_tutorial" && slug.current == $slug][0]{..., blockContentWithCode{..., resourceTutorialLink->}}`
 	return sanityClient.fetch(query, { slug })
+}
+export async function fetchResourceTutorialsById(
+	id: string
+): Promise<ResourceTutorial> {
+	const query = groq`*[_type == "resource_tutorial" && _id == $id][0]{...}`
+	return sanityClient.fetch(query, { id })
 }

@@ -16,6 +16,7 @@
 		"@emotion/styled": "^11",
 		"@mui/icons-material": "^7.1",
 		"@mui/material": "^7.1",
+		"@portabletext/react": "^3.2.1",
 		"@sanity/image-url": "^1.1.0",
 		"@tanstack/react-query": "^5.75.5",
 		"@turf/turf": "^7.2.0",
@@ -29,7 +30,6 @@
 		"react": "^19",
 		"react-dom": "^19",
 		"react-map-gl": "^8.0.1",
-		"react-portable-text": "^0.6.0",
 		"serve": "^14.2.4"
 	},
 	"devDependencies": {

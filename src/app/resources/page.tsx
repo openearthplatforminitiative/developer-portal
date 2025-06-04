@@ -9,6 +9,7 @@ import { JavascriptLogo } from "@/icons/JavascriptLogo"
 import InfoCard from "@/components/InfoCard"
 import { JavaLogo } from "@/icons/JavaLogo"
 import Accordion from "@/components/Accordion"
+import { HowToArticles } from "@/components/Resources/HowToArticles"
 
 const ResourcesPage = () => {
 	return (
@@ -88,6 +89,12 @@ const ResourcesPage = () => {
 							</Card>
 						</Link>
 					</Box>
+				</Box>
+				<Box className="flex flex-col gap-8">
+					<Typography variant="h2" className="text-3xl xs:text-4xl w-fit">
+						How-To Articles
+					</Typography>
+					<HowToArticles />
 				</Box>
 				<Box className="flex flex-col gap-8">
 					<Typography variant="h2" className="text-3xl xs:text-4xl">
