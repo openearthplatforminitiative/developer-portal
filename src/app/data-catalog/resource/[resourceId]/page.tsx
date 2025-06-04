@@ -1,10 +1,9 @@
 import InfoCard from "@/components/InfoCard"
 import { BackIcon } from "@/icons/BackIcon"
-import { Card, Skeleton, Typography } from "@mui/material"
+import { Card, Typography } from "@mui/material"
 import { fetchResource } from "../../DataCatalogActions"
-import { Resource } from "@//types/resource"
-import { Fragment, Suspense } from "react"
-import { redirect } from "next/navigation"
+import { Fragment } from "react"
+import { notFound } from "next/navigation"
 import { ArrowForward } from "@mui/icons-material"
 import CodeBlockWrapper from "@/components/CodeBlockWrapper"
 import Link from "next/link"
@@ -19,8 +18,11 @@ type ResourceLoaderProps = {
 	}>
 }
 
-const page = async ({ params }: ResourceLoaderProps) => {
+export default async function Page({ params }: ResourceLoaderProps) {
 	const { resourceId } = await params
+	const resource = await fetchResource(resourceId)
+		.catch(() => notFound())
+	if (!resource) notFound()
 	return (
 		<div className="w-full lg:max-w-7xl px-8 lg:my-44 my-20">
 			<Link
@@ -30,46 +32,6 @@ const page = async ({ params }: ResourceLoaderProps) => {
 				<BackIcon />
 				<Typography className="text-xl">Back to data catalog</Typography>
 			</Link>
-			<Suspense fallback={<ResourceSkeleton />}>
-				<ResourcePageLoader resourceId={resourceId} />
-			</Suspense>
-		</div>
-	)
-}
-
-type ResourcePageLoaderProps = {
-	resourceId: string
-}
-
-const ResourcePageLoader = async ({ resourceId }: ResourcePageLoaderProps) => {
-	try {
-		const resource = await fetchResource(resourceId)
-		if (!resource) {
-			redirect("/not-found")
-		}
-		return <ResourcePage resource={resource} />
-	} catch (error) {
-		console.error("Error fetching resource:", error)
-		redirect("/not-found")
-	}
-}
-
-const ResourceSkeleton = () => {
-	return (
-		<div className="flex flex-col mt-14 gap-8">
-			<Skeleton variant="rectangular" className="w-full h-12" />
-			<Skeleton variant="rectangular" className="w-1/3 h-8" />
-		</div>
-	)
-}
-
-type ResourcePageProps = {
-	resource: Resource
-}
-
-const ResourcePage = ({ resource }: ResourcePageProps) => {
-	return (
-		<>
 			<ResourceOverview resource={resource} />
 			{resource.html_content && (
 				<div className="flex flex-col mt-28">
@@ -159,8 +121,6 @@ const ResourcePage = ({ resource }: ResourcePageProps) => {
 					))}
 				</div>
 			</div>
-		</>
+		</div>
 	)
 }
-
-export default page

@@ -1,9 +1,7 @@
 import { BackIcon } from "@/icons/BackIcon"
 import { Card, Typography } from "@mui/material"
 import { fetchProvider } from "../../DataCatalogActions"
-import { Provider } from "@//types/provider"
-import { Suspense } from "react"
-import { redirect } from "next/navigation"
+import { notFound } from "next/navigation"
 import { ArrowOutward } from "@mui/icons-material"
 import Link from "next/link"
 import { ResourceCard } from "@/components/ResourceCard.tsx"
@@ -13,24 +11,11 @@ type ProviderLoaderProps = {
 		providerId: string
 	}>
 }
-const page = async ({ params }: ProviderLoaderProps) => {
+export default async function Page({ params }: ProviderLoaderProps) {
 	const { providerId } = await params
-	const provider = await fetchProvider(providerId)
-	if (!provider) {
-		redirect("/not-found")
-	}
-	return (
-		<Suspense>
-			<ProviderPage provider={provider} />
-		</Suspense>
-	)
-}
+	const provider = await fetchProvider(providerId).catch(() => notFound())
+	if (!provider) notFound()
 
-type ProviderPageProps = {
-	provider: Provider
-}
-
-const ProviderPage = ({ provider }: ProviderPageProps) => {
 	const DatasetCollections = provider.resources.filter(
 		(resource) => resource.resource.type === "DATASET_COLLECTION"
 	)
@@ -140,5 +125,3 @@ const ProviderPage = ({ provider }: ProviderPageProps) => {
 		</div>
 	)
 }
-
-export default page

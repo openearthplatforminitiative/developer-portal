@@ -1,10 +1,8 @@
 import { BackIcon } from "@/icons/BackIcon"
 import { Typography } from "@mui/material"
-import { Suspense } from "react"
-import { redirect } from "next/navigation"
+import { notFound } from "next/navigation"
 import { ResourceCard } from "@/components/ResourceCard"
 import Link from "next/link"
-import { Category } from "@//types/category"
 import { fetchCategory } from "../../DataCatalogActions"
 
 type ProviderLoaderProps = {
@@ -12,24 +10,12 @@ type ProviderLoaderProps = {
 		categoryId: string
 	}>
 }
-const page = async ({ params }: ProviderLoaderProps) => {
+export default async function Page({ params }: ProviderLoaderProps) {
 	const { categoryId } = await params
-	const category = await fetchCategory(categoryId)
-	if (!category) {
-		redirect("/not-found")
-	}
-	return (
-		<Suspense>
-			<CategoryPage category={category} />
-		</Suspense>
-	)
-}
+	const category = await fetchCategory(categoryId).catch(() => notFound())
+	if (!category) notFound()
+	console.log("Category:", category)
 
-type CategoryPageProps = {
-	category: Category
-}
-
-const CategoryPage = ({ category }: CategoryPageProps) => {
 	const DatasetCollections = category.resources.filter(
 		(resource) => resource.resource.type === "DATASET_COLLECTION"
 	)
@@ -124,5 +110,3 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
 		</div>
 	)
 }
-
-export default page
