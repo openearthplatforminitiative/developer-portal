@@ -54,6 +54,8 @@ export interface Partner {
 
 export interface ResourceTutorial {
 	_id: string
+	_createdAt: string
+	_updatedAt: string
 	title: string
 	slug: { current: string }
 	mainImage: string
@@ -132,13 +134,14 @@ export async function fetchRelevantResourceTutorialsForTutorial(
 	]{...}`
 	return sanityClient.fetch(query, { relevantResourceTitles, slug })
 }
+
 export async function fetchResourceTutorialBySlug(
 	slug: string
 ): Promise<ResourceTutorial> {
 	const query = groq`*[_type == "resource_tutorial" && slug.current == $slug][0]{..., blockContentWithCode{..., resourceTutorialLink->}}`
 	return sanityClient.fetch(query, { slug })
 }
-export async function fetchResourceTutorialsById(
+export async function fetchResourceTutorialById(
 	id: string
 ): Promise<ResourceTutorial> {
 	const query = groq`*[_type == "resource_tutorial" && _id == $id][0]{...}`

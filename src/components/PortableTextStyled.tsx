@@ -25,7 +25,7 @@ export default function PortableTextStyled({ value }: PortableTextProps) {
 
 	return valueGroups.map((group: any) =>
 		group[0]._type === "block" ? (
-			<div key={group[0]._key} className="prose py-4 break-words">
+			<div key={group[0]._key} className="prose break-words">
 				<PortableText
 					value={group}
 					components={PortableTextStyledComponents()}

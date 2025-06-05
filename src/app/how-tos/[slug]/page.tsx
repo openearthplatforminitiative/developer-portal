@@ -22,6 +22,7 @@ export default async function HowTosPage({
 	const { slug } = await params
 	const howto = await fetchResourceTutorialBySlug(slug)
 	if (!howto) notFound()
+	const lastUpdated = new Date(howto._updatedAt)
 	return (
 		<div className="w-full h-full lg:max-w-7xl px-8 lg:my-44 my-20">
 			<Link
@@ -35,6 +36,15 @@ export default async function HowTosPage({
 				<h1 className="leading-[48px] xs:leading-[64px] text-4xl xs:text-6xl">
 					{howto.title}
 				</h1>
+				{lastUpdated && (
+					<Typography variant="subtitle1">
+						Last updated: {lastUpdated.toLocaleDateString("en-US", {
+							year: "numeric",
+							month: "long",
+							day: "numeric"
+						})}
+					</Typography>
+				)}
 				<PortableTextStyled value={howto.body} />
 				<RelevantResources tutorial={howto} />
 				<RelevantTutorials tutorial={howto} />

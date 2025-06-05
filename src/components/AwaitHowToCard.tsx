@@ -1,6 +1,6 @@
 "use client"
 
-import { fetchResourceTutorialsById, ResourceTutorial } from "@/sanity/api"
+import { fetchResourceTutorialById, ResourceTutorial } from "@/sanity/api"
 import React, { useEffect, useState } from "react"
 import { HowToSmallerCard } from "./HowToSmallerCard"
 import { Skeleton } from "@mui/material"
@@ -12,11 +12,11 @@ export default function GetHowToCard({ tutorialId }: { tutorialId: string }) {
 	useEffect(() => {
 		async function loadTutorial() {
 			try {
-				const result = await fetchResourceTutorialsById(tutorialId)
+				const result = await fetchResourceTutorialById(tutorialId)
 				console.log(result)
 				if (result) setTutorial(result)
 			} catch (err) {
-				console.error("Failed to fetch tutorial", err)
+				setTutorial(undefined)
 			} finally {
 				setLoading(false)
 			}
