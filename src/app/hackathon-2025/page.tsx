@@ -152,41 +152,53 @@ const Page = () => {
 					onClick={() => setShowMoreInfo(!showMoreInfo)}
 					className="bg-neutral-95 hover:bg-neutral-80 rounded-full border-neutralvariant-50 text-neutral-0 normal-case shadow-none text-xl xs:w-auto xs:px-24 py-2"
 				>
-					{showMoreInfo ? (
-						"Hide info"
-					) : (
-						"Read more"
-					)}
+					{showMoreInfo ? "Hide info" : "Read more"}
 				</Button>
 				{showMoreInfo && (
 					<div className="prose mt-6">
 						<p>
-							We will post more information continuously, but for now, this is what you need to know.
+							We will post more information continuously, but for now, this is
+							what you need to know.
 						</p>
 
 						<h3>🗓️ Important dates – what and when:</h3>
 						<ul>
 							<li>
-								<b>1–2 July:</b> The Hackathon kicks off with a 2-day virtual UNLEASH Hack, hosted by innovation organization UNLEASH. These days are designed to equip you with tools, mindsets, and collaborative frameworks for developing actionable, data-driven sustainability solutions using the OpenEPI platform.
+								<b>1–2 July:</b> The Hackathon kicks off with a 2-day virtual
+								UNLEASH Hack, hosted by innovation organization UNLEASH. These
+								days are designed to equip you with tools, mindsets, and
+								collaborative frameworks for developing actionable, data-driven
+								sustainability solutions using the OpenEPI platform.
 							</li>
 							<li>
-								<b>3–26 July:</b> After the UNLEASH Hack, teams will enter Build Mode, working independently to prototype and refine their solution based on their chosen problem statement.
+								<b>3–26 July:</b> After the UNLEASH Hack, teams will enter Build
+								Mode, working independently to prototype and refine their
+								solution based on their chosen problem statement.
 							</li>
 							<li>
-								<b>27 July:</b> Submission deadline<br />
+								<b>27 July:</b> Submission deadline
+								<br />
 								Each team must submit:
 								<ul>
 									<li>A link to a GitHub repo containing their project code</li>
-									<li>A written description and documentation of the solution</li>
+									<li>
+										A written description and documentation of the solution
+									</li>
 								</ul>
 							</li>
 							<li>
-								<b>TBA:</b> Virtual Semi-Finals<br />
-								Selected teams will submit a short pitch and present their solution to a panel of judges.
+								<b>TBA:</b> Virtual Semi-Finals
+								<br />
+								Selected teams will submit a short pitch and present their
+								solution to a panel of judges.
 							</li>
 							<li>
-								<b>TBA:</b> Finale (In-person)<br />
-								Finalists will be invited to a fully-funded, two-day in-person Grand Finale event, where they’ll receive expert feedback and coaching before pitching their refined solutions. The overall winner and category awardees will be announced.
+								<b>TBA:</b> Finale (In-person)
+								<br />
+								Finalists will be invited to a fully-funded, two-day in-person
+								Grand Finale event, where they’ll receive expert feedback and
+								coaching before pitching their refined solutions. The overall
+								winner and category awardees will be announced.
 							</li>
 						</ul>
 
@@ -194,14 +206,19 @@ const Page = () => {
 						<ul>
 							<li>Participants may register as individuals or teams.</li>
 							<li>
-								Those without a team will be matched after the registration deadline to form diverse, interdisciplinary groups – ideally blending skills from software development, data science, environmental research, and UX/design.
+								Those without a team will be matched after the registration
+								deadline to form diverse, interdisciplinary groups – ideally
+								blending skills from software development, data science,
+								environmental research, and UX/design.
 							</li>
 						</ul>
 
 						<h3>💡 What’s the challenge?</h3>
 						<ul>
 							<li>
-								Participants are invited to create innovative digital solutions using open data from OpenEPI (and beyond) that contribute to one or more of the UN Sustainable Development Goals (SDGs).
+								Participants are invited to create innovative digital solutions
+								using open data from OpenEPI (and beyond) that contribute to one
+								or more of the UN Sustainable Development Goals (SDGs).
 							</li>
 							<li>Your solution must:</li>
 							<ul>
@@ -214,58 +231,95 @@ const Page = () => {
 						<h3>🏆 Awards and Recognition:</h3>
 						<ul>
 							<li>Main Prize: Best overall solution</li>
-							<li>Special Award: Best female-focused solution – recognizing solutions addressing women’s needs, particularly in the Global South</li>
-							<li>Bonus Award: Technical excellence – for outstanding use of OpenEPI&apos;s generic building blocks and collaborative, interdisciplinary work</li>
+							<li>
+								Special Award: Best female-focused solution – recognizing
+								solutions addressing women’s needs, particularly in the Global
+								South
+							</li>
+							<li>
+								Bonus Award: Technical excellence – for outstanding use of
+								OpenEPI&apos;s generic building blocks and collaborative,
+								interdisciplinary work
+							</li>
 						</ul>
 
 						<h3>🌍 Inclusion & Global Reach:</h3>
 						<ul>
 							<li>
-								While the hackathon is open to everyone, special focus is given to Sub-Saharan Africa, South America, and South-East Asia.
+								While the hackathon is open to everyone, special focus is given
+								to Sub-Saharan Africa, South America, and South-East Asia.
 							</li>
 							<li>
-								We especially encourage female developers and innovators to apply. Diversity is key – from your skills to your geography.
+								We especially encourage female developers and innovators to
+								apply. Diversity is key – from your skills to your geography.
 							</li>
 						</ul>
 
 						<h3>🧭 Purpose of the event:</h3>
 						<ul>
 							<li>Promote OpenEPI and grow its developer community</li>
-							<li>Foster innovation and real-world experimentation using open data</li>
+							<li>
+								Foster innovation and real-world experimentation using open data
+							</li>
 							<li>Build momentum for climate solutions aligned with SDGs</li>
-							<li>Test and improve the OpenEPI platform through real user feedback</li>
+							<li>
+								Test and improve the OpenEPI platform through real user feedback
+							</li>
 						</ul>
 
 						<h3>📍 Finale Location (TBD):</h3>
 						<p>
-							We aim to host the Grand Finale towards the end of August or beginning of September 2025
+							We aim to host the Grand Finale towards the end of August or
+							beginning of September 2025
 						</p>
 
 						<h3>📣 How to participate:</h3>
 						<ul>
 							<li>Register on: (either solo or with a team)</li>
-							<li>Get access to OpenEPI’s data catalogue and tech building blocks</li>
+							<li>
+								Get access to OpenEPI’s data catalogue and tech building blocks
+							</li>
 							<li>Attend the UNLEASH Hack and start building</li>
-							<li>Submit your solution, get selected, and prepare for the Grand Finale</li>
+							<li>
+								Submit your solution, get selected, and prepare for the Grand
+								Finale
+							</li>
 						</ul>
 
 						<h3>📬 Contact:</h3>
 						<p>
-							The Open Data Hackathon team uses Discord and email for all communications. Details will be shared after registration.
+							The Open Data Hackathon team uses Discord and email for all
+							communications. Details will be shared after registration.
 						</p>
 
 						<h3>💡 UNLEASH Hackathon host</h3>
 						<p>
-							UNLEASH, a globally recognized non-profit innovation organization, is a core partner of the Open Data Hackathon 2025. They bring deep expertise in innovation design and facilitation, having empowered over 9,000 young changemakers globally. As part of the partnership, UNLEASH will:
+							UNLEASH, a globally recognized non-profit innovation organization,
+							is a core partner of the Open Data Hackathon 2025. They bring deep
+							expertise in innovation design and facilitation, having empowered
+							over 9,000 young changemakers globally. As part of the
+							partnership, UNLEASH will:
 						</p>
 						<ul>
 							<li>Deliver the 2-day virtual UNLEASH Hack</li>
-							<li>Facilitate team innovation journeys, with trained facilitators offering ongoing guidance during the build phase</li>
-							<li>Host the Virtual Semi-Final, selecting finalists for the Grand Finale</li>
-							<li>Onboard all participants into the UNLEASH Innovation Hub, offering continued access to a global community, tools, and learning resources</li>
+							<li>
+								Facilitate team innovation journeys, with trained facilitators
+								offering ongoing guidance during the build phase
+							</li>
+							<li>
+								Host the Virtual Semi-Final, selecting finalists for the Grand
+								Finale
+							</li>
+							<li>
+								Onboard all participants into the UNLEASH Innovation Hub,
+								offering continued access to a global community, tools, and
+								learning resources
+							</li>
 						</ul>
 						<p>
-							This collaboration ensures that participants benefit from a world-class innovation experience, and that their ideas are supported not just during the hackathon, but long after it ends
+							This collaboration ensures that participants benefit from a
+							world-class innovation experience, and that their ideas are
+							supported not just during the hackathon, but long after it ends
 						</p>
 
 						<Image
