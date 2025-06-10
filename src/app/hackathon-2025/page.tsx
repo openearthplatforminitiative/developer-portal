@@ -20,7 +20,7 @@ const Page = () => {
 
 	return (
 		<>
-			<div className="w-full h-full max-w-[1000px] px-8 lg:mt-44 mt-20">
+			<div className="w-full h-full max-w-[1000px] px-8 lg:mt-44 mt-20 overflow-hidden">
 				<div className="flex flex-col mb-20 items-start lg:text-center lg:items-center">
 					<Typography className="text-2xl mb-8 relative">
 						OpenEPI <b>X</b> UNLEASH
@@ -91,7 +91,7 @@ const Page = () => {
 						height={300}
 						className="w-full max-w-96 mb-24 mx-auto"
 					/>
-					<div className="relative text-left mb-24 leading-normal mx-auto overflow-hidden">
+					<div className="relative text-left mb-24 leading-normal mx-auto overflow-x-visible">
 						<p>Important dates:</p>
 						<ul>
 							<li className="list-disc ml-6">
