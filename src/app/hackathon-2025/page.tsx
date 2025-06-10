@@ -91,7 +91,7 @@ const Page = () => {
 						height={300}
 						className="w-full max-w-96 mb-24 mx-auto"
 					/>
-					<div className="relative text-left mb-24 leading-normal mx-auto">
+					<div className="relative text-left mb-24 leading-normal mx-auto overflow-hidden">
 						<p>Important dates:</p>
 						<ul>
 							<li className="list-disc ml-6">
