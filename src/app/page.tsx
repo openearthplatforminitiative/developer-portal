@@ -55,6 +55,21 @@ const Home = () => {
 					</Box>
 				</Box>
 			</Box>
+			<div className="py-20">
+				<div className="flex flex-col gap-10 sm:w-full sm:max-w-7xl sm:mx-auto px-8">
+					<Typography className="text-3xl xs:text-4xl">
+						Open data Hackathon 2025
+					</Typography>
+					<Link href="/hackathon-2025">
+						<Button
+							variant="contained"
+							className="rounded-full normal-case shadow-none text-xl px-8 py-4 self-start"
+						>
+							Read more and register now!
+						</Button>
+					</Link>
+				</div>
+			</div>
 			{!session && (
 				<Box className="bg-neutral-95 py-20">
 					<Box className="flex flex-col-reverse lg:flex-row gap-14 sm:w-full sm:max-w-7xl sm:mx-auto px-8">
