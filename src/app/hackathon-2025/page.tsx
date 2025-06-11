@@ -227,7 +227,13 @@ const Page = () => {
 								<li>Be relevant, feasible, and well-documented</li>
 							</ul>
 						</ul>
-
+						<Image
+							src="hackathon/goals.svg"
+							alt="UN goals"
+							width={50}
+							height={50}
+							className="w-full max-w-2xl mx-auto"
+						/>
 						<h3>🏆 Awards and Recognition:</h3>
 						<ul>
 							<li>Main Prize: Best overall solution</li>
@@ -291,7 +297,10 @@ const Page = () => {
 							The Open Data Hackathon team uses Discord and email for all
 							communications. Details will be shared after registration.
 						</p>
-
+						<p>
+							If you have any questions, feel free to contact us at{" "}
+							<a href="mailto:hackathon@openepi.io">hackathon@openepi.io</a>
+						</p>
 						<h3>💡 UNLEASH Hackathon host</h3>
 						<p>
 							UNLEASH, a globally recognized non-profit innovation organization,
@@ -321,14 +330,6 @@ const Page = () => {
 							world-class innovation experience, and that their ideas are
 							supported not just during the hackathon, but long after it ends
 						</p>
-
-						<Image
-							src="hackathon/goals.svg"
-							alt="UN goals"
-							width={50}
-							height={50}
-							className="w-full max-w-2xl mx-auto"
-						/>
 					</div>
 				)}
 			</div>
