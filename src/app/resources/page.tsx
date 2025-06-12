@@ -139,6 +139,38 @@ const ResourcesPage = () => {
 					<Typography variant="h2" className="text-3xl xs:text-4xl">
 						Our preferred resources
 					</Typography>
+					<Accordion title="Backend">
+						<Box className="flex flex-1 flex-wrap gap-6">
+							<ExternalCard
+								header="Python"
+								subHeader=""
+								href="https://www.python.org"
+								imageUrl="/python.png"
+								alt="python logo"
+							/>
+							<ExternalCard
+								header="FastAPI"
+								subHeader=""
+								href="https://fastapi.tiangolo.com"
+								imageUrl="/fastapi.png"
+								alt="fastAPI logo"
+							/>
+							<ExternalCard
+								header="Pydantic"
+								subHeader=""
+								href="https://docs.pydantic.dev/latest/"
+								imageUrl="/pydantic.png"
+								alt="pydantic logo"
+							/>
+							<ExternalCard
+								header="SQLAlchemy"
+								subHeader=""
+								href="https://www.sqlalchemy.org"
+								imageUrl="/sqla.png"
+								alt="sqlalchemy logo"
+							/>
+						</Box>
+					</Accordion>
 					<Accordion title="Frontend">
 						<Box className="flex flex-wrap gap-6">
 							<ExternalCard
