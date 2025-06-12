@@ -13,7 +13,6 @@ export default function GetHowToCard({ tutorialId }: { tutorialId: string }) {
 		async function loadTutorial() {
 			try {
 				const result = await fetchResourceTutorialById(tutorialId)
-				console.log(result)
 				if (result) setTutorial(result)
 			} catch (err) {
 				setTutorial(undefined)

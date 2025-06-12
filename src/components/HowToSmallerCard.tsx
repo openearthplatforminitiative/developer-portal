@@ -10,7 +10,6 @@ type HowToCardProps = {
 }
 
 export const HowToSmallerCard = ({ tutorial }: HowToCardProps) => {
-	console.log("HowToSmallerCard", tutorial)
 	const builder = imageUrlBuilder(sanityClient)
 	return (
 		<Link key={tutorial._id} href={`/how-tos/${tutorial.slug.current}`}>

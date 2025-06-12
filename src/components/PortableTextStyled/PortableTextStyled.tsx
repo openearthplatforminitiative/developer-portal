@@ -2,7 +2,7 @@
 
 import { PortableText, PortableTextProps } from "@portabletext/react"
 import { useMemo } from "react"
-import { PortableTextStyledComponents } from "./PortableTextStyled/Components"
+import { PortableTextStyledComponents } from "./Components"
 
 export default function PortableTextStyled({ value }: PortableTextProps) {
 	const valueGroups = useMemo(() => {
@@ -23,20 +23,24 @@ export default function PortableTextStyled({ value }: PortableTextProps) {
 
 	if (!valueGroups?.length) return null
 
-	return valueGroups.map((group: any) =>
-		group[0]._type === "block" ? (
-			<div key={group[0]._key} className="prose break-words">
-				<PortableText
-					value={group}
-					components={PortableTextStyledComponents()}
-				/>
-			</div>
-		) : (
-			<PortableText
-				key={group[0]._key}
-				value={group}
-				components={PortableTextStyledComponents()}
-			/>
-		)
+	return (
+		<div className="prose max-w-none">
+			{valueGroups.map((group: any, index: number) =>
+				group[0]._type === "block" ? (
+					<div key={group[0]._key} className={`break-words max-w-3xl ${index == 0 ? "[&>*]:first:mt-0!" : ""}`}>
+						<PortableText
+							value={group}
+							components={PortableTextStyledComponents()}
+						/>
+					</div>
+				) : (
+					<PortableText
+						key={group[0]._key}
+						value={group}
+						components={PortableTextStyledComponents()}
+					/>
+				)
+			)}
+		</div>
 	)
 }

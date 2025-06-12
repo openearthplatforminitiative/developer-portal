@@ -9,23 +9,13 @@ import Link from "next/link"
 import { useMemo } from "react"
 import GetHowToCard from "../AwaitHowToCard"
 import CodeBlock from "../CodeBlock"
-import { sanityClient } from "@/sanity/api"
+import { sanityClient, SanityImage } from "@/sanity/api"
 import Image from "next/image"
+import { createIdFromString, getContentHeadings } from "@/lib/ContentHeadings"
 
 type Row = {
 	_key: string
 	cells: string[]
-}
-
-type SanityImage = {
-	_type: string
-	alt: string
-	caption: string
-	_key: string
-	asset: {
-		_ref: string
-		_type: string
-	}
 }
 
 export const PortableTextStyledComponents = () => {
@@ -34,6 +24,9 @@ export const PortableTextStyledComponents = () => {
 	const Components: Partial<PortableTextReactComponents> = useMemo(
 		() => ({
 			block: {
+				h2: ({ children }: any) => (
+					<h2 id={createIdFromString(children.toString())}>{children}</h2>
+				),
 				blockquote: ({ children }: any) => (
 					<blockquote className="ml-4 text-base italic">{children}</blockquote>
 				),
@@ -65,8 +58,8 @@ export const PortableTextStyledComponents = () => {
 					const language = value?.language ?? "plaintext"
 
 					return (
-						<div className="flex flex-col relative w-full h-fit">
-							<div className="px-6 pb-4 pt-2 bg-primary-10 text-primary-80 font-mono font-medium w-fit rounded-t-xl -mb-3">
+						<div className="not-prose flex flex-col relative w-full h-fit">
+							<div className="px-6 pb-2 pt-1 bg-primary-10 text-primary-80 font-mono font-medium w-fit rounded-t-xl -mb-3">
 								{language.toUpperCase()}
 							</div>
 							<CodeBlock codeString={code} language={language} />
@@ -80,8 +73,8 @@ export const PortableTextStyledComponents = () => {
 					}
 					const [headerRow, ...bodyRows] = rows
 					return (
-						<div className="w-full overflow-x-auto">
-							<table className="prose w-full my-4">
+						<div className="w-full overflow-x-auto max-w-full">
+							<table className="prose w-full max-w-full my-4">
 								<thead className="border-b border-neutral-80 font-bold">
 									<tr>
 										{headerRow.cells.map((cell, cellIndex) => {
@@ -91,7 +84,7 @@ export const PortableTextStyledComponents = () => {
 												<th
 													className={
 														cellIndex > 0 &&
-														cellIndex < headerRow.cells.length - 1
+															cellIndex < headerRow.cells.length - 1
 															? cellStyle + " text-center"
 															: cellStyle + " text-left"
 													}
@@ -142,7 +135,7 @@ export const PortableTextStyledComponents = () => {
 								loading="lazy"
 								height={height}
 								width={width}
-								className="rounded-xl"
+								className="rounded-xl object-cover"
 							/>
 							{value && value?.caption && (
 								<Tooltip placement="left-end" title={value.caption} arrow>

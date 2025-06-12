@@ -4,7 +4,7 @@ import {
 } from "@/sanity/api"
 import { Typography } from "@mui/material"
 import { Suspense } from "react"
-import { HowToCard } from "../../HowToCard"
+import { HowToCard } from "../../HowToArticles/HowToCard"
 import { Resource } from "@/types/resource"
 
 type ResourceTutorialsLoaderProps = {

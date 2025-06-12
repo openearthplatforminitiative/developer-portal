@@ -52,14 +52,25 @@ export interface Partner {
 	partnerLogo: string
 }
 
+export type SanityImage = {
+	_type: string
+	alt: string
+	caption: string
+	_key: string
+	asset: {
+		_ref: string
+		_type: string
+	}
+}
+
 export interface ResourceTutorial {
 	_id: string
 	_createdAt: string
 	_updatedAt: string
 	title: string
 	slug: { current: string }
-	mainImage: string
-	relevantResources: {
+	mainImage: SanityImage
+	relevantResources?: {
 		resources: { title: string; id: string }[]
 		includeResourceChildren?: boolean
 		includeResourceParents?: boolean
@@ -78,7 +89,7 @@ const config = {
 export const sanityClient = createClient(config)
 
 export async function fetchResourceTutorials(): Promise<ResourceTutorial[]> {
-	const query = `*[_type == "resource_tutorial"]{...}`
+	const query = groq`*[_type == "resource_tutorial"] | order(_createdAt desc) {...}`
 	return sanityClient.fetch(query)
 }
 export async function fetchLatestResourceTutorials(
