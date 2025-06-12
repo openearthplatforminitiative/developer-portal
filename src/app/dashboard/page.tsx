@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material"
 import { Application } from "./application"
 import { Suspense } from "react"
-import { CredentialsExample } from "../code-examples/CredentialsExample"
+import { CredentialsExample } from "@/components/code-examples/CredentialsExample"
 
 const Page = () => {
 	return (
