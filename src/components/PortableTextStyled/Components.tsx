@@ -11,7 +11,7 @@ import GetHowToCard from "../AwaitHowToCard"
 import CodeBlock from "../CodeBlock"
 import { sanityClient, SanityImage } from "@/sanity/api"
 import Image from "next/image"
-import { createIdFromString, getContentHeadings } from "@/lib/ContentHeadings"
+import { createIdFromString } from "@/lib/ContentHeadings"
 
 type Row = {
 	_key: string

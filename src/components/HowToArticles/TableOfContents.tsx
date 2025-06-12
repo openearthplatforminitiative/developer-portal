@@ -59,7 +59,7 @@ export const TableOfContents = ({ value }: TableOfContentsProps) => {
 	return (
 		<nav aria-label="Table of contents">
 			<p className="pt-2 mb-4 font-medium">Table of Contents</p>
-			<ol className={"pl-2 overflow-y-auto"}>
+			<ol className="pl-2 overflow-y-auto">
 				{headings.map((heading) => (
 					<li key={heading.id}>
 						<a

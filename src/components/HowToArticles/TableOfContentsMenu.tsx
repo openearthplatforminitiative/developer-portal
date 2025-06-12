@@ -2,7 +2,7 @@
 
 import { getContentHeadings } from "@/lib/ContentHeadings"
 import { Toc } from "@mui/icons-material"
-import { IconButton, Menu, MenuItem, Stack } from "@mui/material"
+import { IconButton, Menu, MenuItem } from "@mui/material"
 import { PortableTextProps } from "next-sanity"
 import { useEffect, useMemo, useState } from "react"
 

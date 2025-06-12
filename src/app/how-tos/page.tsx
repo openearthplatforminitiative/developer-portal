@@ -22,8 +22,8 @@ export default function HowTosPage() {
 					How-To Articles
 				</Typography>
 				<Typography className="text-xl xs:text-2xl">
-					Articles to help you get started with OpenEPI's data resources and its
-					features.
+					Articles to help you get started with OpenEPI&apos;s data resources
+					and its features.
 				</Typography>
 				<div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-6">
 					<Suspense
