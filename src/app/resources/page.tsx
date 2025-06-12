@@ -95,10 +95,7 @@ const ResourcesPage = () => {
 						How-To Articles
 					</Typography>
 					<HowToArticles />
-					<Link
-						href="/how-tos"
-						className="mt-2"
-					>
+					<Link href="/how-tos" className="mt-2">
 						<Button
 							className="rounded-full pointer-events-auto normal-case shadow-none text-xl px-8 py-4 translate-y-1/2"
 							variant="contained"

@@ -48,10 +48,11 @@ export default async function HowTosPage({
 				</h1>
 				{lastUpdated && (
 					<Typography variant="subtitle1">
-						Last updated: {lastUpdated.toLocaleDateString("en-US", {
+						Last updated:{" "}
+						{lastUpdated.toLocaleDateString("en-US", {
 							year: "numeric",
 							month: "long",
-							day: "numeric"
+							day: "numeric",
 						})}
 					</Typography>
 				)}
@@ -90,10 +91,11 @@ export default async function HowTosPage({
 				<hr />
 				{lastUpdated && (
 					<Typography variant="subtitle1">
-						Last updated: {lastUpdated.toLocaleDateString("en-US", {
+						Last updated:{" "}
+						{lastUpdated.toLocaleDateString("en-US", {
 							year: "numeric",
 							month: "long",
-							day: "numeric"
+							day: "numeric",
 						})}
 					</Typography>
 				)}
@@ -106,9 +108,9 @@ export default async function HowTosPage({
 }
 
 async function RelevantTutorials({ tutorial }: { tutorial: ResourceTutorial }) {
-	const relevantResourceTitles = tutorial.relevantResources?.resources?.map(
-		(resource) => resource.title
-	) ?? []
+	const relevantResourceTitles =
+		tutorial.relevantResources?.resources?.map((resource) => resource.title) ??
+		[]
 	const tutorials = await fetchRelevantResourceTutorialsForTutorial(
 		relevantResourceTitles,
 		tutorial.slug.current
@@ -145,9 +147,8 @@ async function LatestTutorials({ slug }: { slug: string }) {
 	)
 }
 async function RelevantResources({ tutorial }: { tutorial: ResourceTutorial }) {
-	const directResourcesIds = tutorial.relevantResources?.resources?.map(
-		(resource) => resource.id
-	) ?? []
+	const directResourcesIds =
+		tutorial.relevantResources?.resources?.map((resource) => resource.id) ?? []
 	const excludedResourceTypes =
 		tutorial.relevantResources?.excludedResourceTypes || []
 	const includeResourceChildren =

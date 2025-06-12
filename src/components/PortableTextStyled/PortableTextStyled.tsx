@@ -27,7 +27,10 @@ export default function PortableTextStyled({ value }: PortableTextProps) {
 		<div className="prose max-w-none">
 			{valueGroups.map((group: any, index: number) =>
 				group[0]._type === "block" ? (
-					<div key={group[0]._key} className={`break-words max-w-3xl ${index == 0 ? "[&>*]:first:mt-0!" : ""}`}>
+					<div
+						key={group[0]._key}
+						className={`break-words max-w-3xl ${index == 0 ? "[&>*]:first:mt-0!" : ""}`}
+					>
 						<PortableText
 							value={group}
 							components={PortableTextStyledComponents()}

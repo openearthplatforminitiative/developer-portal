@@ -84,7 +84,7 @@ export const PortableTextStyledComponents = () => {
 												<th
 													className={
 														cellIndex > 0 &&
-															cellIndex < headerRow.cells.length - 1
+														cellIndex < headerRow.cells.length - 1
 															? cellStyle + " text-center"
 															: cellStyle + " text-left"
 													}

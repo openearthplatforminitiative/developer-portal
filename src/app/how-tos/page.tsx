@@ -5,14 +5,11 @@ import { Suspense } from "react"
 import HowTosSkeleton from "./[slug]/loading"
 
 export default function HowTosPage() {
-
 	async function Content() {
 		const tutorials = await fetchResourceTutorials()
-		return (
-			tutorials.map((tutorial) => (
-				<HowToCard key={tutorial._id} tutorial={tutorial} />
-			))
-		)
+		return tutorials.map((tutorial) => (
+			<HowToCard key={tutorial._id} tutorial={tutorial} />
+		))
 	}
 
 	return (
@@ -29,13 +26,15 @@ export default function HowTosPage() {
 					features.
 				</Typography>
 				<div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-6">
-					<Suspense fallback={
-						<>
-							<HowTosSkeleton />
-							<HowTosSkeleton />
-							<HowTosSkeleton />
-						</>
-					}>
+					<Suspense
+						fallback={
+							<>
+								<HowTosSkeleton />
+								<HowTosSkeleton />
+								<HowTosSkeleton />
+							</>
+						}
+					>
 						<Content />
 					</Suspense>
 				</div>
