@@ -7,7 +7,6 @@ import { Close, FilterAltOutlined, Public } from "@mui/icons-material"
 import { useDataCatalog } from "./DataCatalogProvider"
 import { useCategories } from "@/hooks/useCategories"
 import { useProviders } from "@/hooks/usedProviders"
-import { useDraw } from "./DrawControl/DrawProvider"
 
 const resourceOptions: Option[] = [
 	{ label: "APIs", value: "API" },
@@ -34,12 +33,6 @@ export const DataCatalogFilters = () => {
 
 	const { setShowMap } = useDataCatalog()
 
-	const { features } = useDraw()
-
-	const selectedFeatures = useMemo(() => {
-		return features.filter((feature) => feature?.properties?.selected === true)
-	}, [features])
-
 	const {
 		types,
 		setTypes,
@@ -49,6 +42,7 @@ export const DataCatalogFilters = () => {
 		setCategories: setFilteredCategories,
 		providers: filteredProviders,
 		setProviders: setFilteredProviders,
+		selectedFeatures,
 		years,
 		setYears,
 	} = useDataCatalogFilters()

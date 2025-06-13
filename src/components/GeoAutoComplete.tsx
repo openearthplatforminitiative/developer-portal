@@ -25,13 +25,8 @@ export const DataCatalogGeoSearch = () => {
 	}, 300)
 
 	useEffect(() => {
-		if (abortControllerRef.current) {
-			abortControllerRef.current.abort()
-		}
-
 		if (!searchQuery) {
-			setOptions([])
-			return
+			return setOptions([])
 		}
 
 		setLoading(true)

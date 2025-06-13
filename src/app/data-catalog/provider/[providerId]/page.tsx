@@ -11,6 +11,11 @@ type ProviderLoaderProps = {
 		providerId: string
 	}>
 }
+
+export const revalidate = 600
+
+export const dynamicParams = true
+
 export default async function Page({ params }: ProviderLoaderProps) {
 	const { providerId } = await params
 	const provider = await fetchProvider(providerId).catch(() => notFound())
