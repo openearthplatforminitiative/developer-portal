@@ -7,7 +7,7 @@ import imageUrlBuilder from "@sanity/image-url"
 import { PortableTextReactComponents } from "next-sanity"
 import Link from "next/link"
 import { useMemo } from "react"
-import GetHowToCard from "../AwaitHowToCard"
+import ResourceTutorialLink from "./ResourceTutorialLink"
 import CodeBlock from "../CodeBlock"
 import { sanityClient, SanityImage } from "@/sanity/api"
 import Image from "next/image"
@@ -84,7 +84,7 @@ export const PortableTextStyledComponents = () => {
 												<th
 													className={
 														cellIndex > 0 &&
-														cellIndex < headerRow.cells.length - 1
+															cellIndex < headerRow.cells.length - 1
 															? cellStyle + " text-center"
 															: cellStyle + " text-left"
 													}
@@ -155,7 +155,7 @@ export const PortableTextStyledComponents = () => {
 					const { reference } = value
 					return (
 						<div className="not-prose max-w-96">
-							<GetHowToCard tutorialId={reference._ref} />
+							<ResourceTutorialLink tutorialId={reference._ref} />
 						</div>
 					)
 				},

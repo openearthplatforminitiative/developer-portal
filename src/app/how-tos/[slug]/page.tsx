@@ -7,6 +7,7 @@ import {
 	fetchLatestResourceTutorials,
 	fetchRelevantResourceTutorialsForTutorial,
 	fetchResourceTutorialBySlug,
+	fetchResourceTutorials,
 	ResourceTutorial,
 } from "@/sanity/api"
 import { ResourceSummary } from "@/types/resource"
@@ -20,6 +21,17 @@ import imageUrlBuilder from "@sanity/image-url"
 import { sanityClient } from "@/sanity/api"
 import { TableOfContents } from "@/components/HowToArticles/TableOfContents"
 import { TableOfContentsMenu } from "@/components/HowToArticles/TableOfContentsMenu"
+
+export const revalidate = 600
+
+export const dynamicParams = true
+
+export async function generateStaticParams() {
+	const howtos: ResourceTutorial[] = await fetchResourceTutorials()
+	return howtos.map((howto) => ({
+		slug: String(howto.slug.current),
+	}))
+}
 
 export default async function HowTosPage({
 	params,

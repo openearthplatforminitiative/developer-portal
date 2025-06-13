@@ -13,6 +13,10 @@ import { ResourceSpatialExtent } from "@/components/DataCatalog/Resource/Resourc
 import { ResourceAssociations } from "@/components/DataCatalog/Resource/ResourceAssociations"
 import ResourceTutorials from "@/components/DataCatalog/Resource/ResourceTutorials"
 
+export const revalidate = 600
+
+export const dynamicParams = true
+
 export default async function Page({
 	params,
 }: {

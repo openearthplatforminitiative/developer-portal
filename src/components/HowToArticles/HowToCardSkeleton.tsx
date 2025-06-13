@@ -1,6 +1,6 @@
 import { Skeleton } from "@mui/material"
 
-export const HowToArticleSkeleton = () => {
+export const HowToCardSkeleton = () => {
 	return (
 		<Skeleton
 			variant="rectangular"

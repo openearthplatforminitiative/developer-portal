@@ -35,64 +35,82 @@
               valueFrom: {
                 configMapKeyRef: {
                   name: 'dev-portal-config',
-                  key: 'api_domain'
-                }
-              }
+                  key: 'api_domain',
+                },
+              },
             },
             {
               name: 'AUTH_CLIENT_ID',
               valueFrom: {
                 configMapKeyRef: {
                   name: 'dev-portal-config',
-                  key: 'auth_client_id'
-                }
-              }
+                  key: 'auth_client_id',
+                },
+              },
             },
             {
               name: 'AUTH_CLIENT_SECRET',
               valueFrom: {
                 configMapKeyRef: {
-                  name: 'dev-portal-config',
-                  key: 'auth_client_secret'
-                }
-              }
+                  name: 'dev-portal-secrets',
+                  key: 'auth_client_secret',
+                },
+              },
             },
             {
               name: 'AUTH_CLIENT_ISSUER',
               valueFrom: {
                 configMapKeyRef: {
                   name: 'dev-portal-config',
-                  key: 'auth_client_issuer'
-                }
-              }
+                  key: 'auth_client_issuer',
+                },
+              },
             },
             {
               name: 'NEXTAUTH_URL',
               valueFrom: {
                 configMapKeyRef: {
                   name: 'dev-portal-config',
-                  key: 'nextauth_url'
-                }
-              }
+                  key: 'nextauth_url',
+                },
+              },
             },
             {
               name: 'NEXTAUTH_SECRET',
               valueFrom: {
                 configMapKeyRef: {
+                  name: 'dev-portal-secrets',
+                  key: 'nextauth_secret',
+                },
+              },
+            },
+            {
+              name: 'NEXT_PUBLIC_SANITY_DATASET',
+              valueFrom: {
+                configMapKeyRef: {
                   name: 'dev-portal-config',
-                  key: 'nextauth_secret'
-                }
-              }
+                  key: 'sanity_dataset',
+                },
+              },
+            },
+            {
+              name: 'NEXT_PUBLIC_SANITY_PROJECT_ID',
+              valueFrom: {
+                configMapKeyRef: {
+                  name: 'dev-portal-secrets',
+                  key: 'sanity_project_id',
+                },
+              },
             },
             {
               name: 'DATA_CATALOG_URL',
               valueFrom: {
                 configMapKeyRef: {
                   name: 'dev-portal-config',
-                  key: 'data_catalog_url'
-                }
-              }
-            }
+                  key: 'data_catalog_url',
+                },
+              },
+            },
           ],
         }],
       },

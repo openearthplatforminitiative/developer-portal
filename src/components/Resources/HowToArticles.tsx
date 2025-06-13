@@ -1,7 +1,7 @@
 import { fetchLatestResourceTutorials } from "@/sanity/api"
 import { Suspense } from "react"
 import { HowToCard } from "@/components/HowToArticles/HowToCard"
-import { HowToArticleSkeleton } from "../HowToArticles/skeleton"
+import { HowToCardSkeleton } from "../HowToArticles/HowToCardSkeleton"
 
 export const HowToArticles = () => {
 	return (
@@ -9,9 +9,9 @@ export const HowToArticles = () => {
 			<Suspense
 				fallback={
 					<>
-						<HowToArticleSkeleton />
-						<HowToArticleSkeleton />
-						<HowToArticleSkeleton />
+						<HowToCardSkeleton />
+						<HowToCardSkeleton />
+						<HowToCardSkeleton />
 					</>
 				}
 			>
