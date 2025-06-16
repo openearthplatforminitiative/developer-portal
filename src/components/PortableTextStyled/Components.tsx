@@ -39,17 +39,12 @@ export const PortableTextStyledComponents = () => {
 					</Link>
 				),
 			},
-			list: {
-				bullet: ({ children }: any) => (
-					<ul className="list-disc">{children}</ul>
-				),
-				number: ({ children }: any) => (
-					<ol className="list-decimal">{children}</ol>
-				),
-			},
 			listItem: {
 				bullet: ({ children }: any) => (
 					<li className="text-base list-disc">{children}</li>
+				),
+				number: ({ children }: any) => (
+					<ol className="list-decimal">{children}</ol>
 				),
 			},
 			types: {

@@ -29,7 +29,7 @@ export const dynamicParams = true
 export async function generateStaticParams() {
 	const howtos: ResourceTutorial[] = await fetchResourceTutorials()
 	return howtos.map((howto) => ({
-		slug: String(howto.slug.current),
+		slug: String(howto.slug.current)
 	}))
 }
 
