@@ -5,7 +5,11 @@ import React, { useEffect, useState } from "react"
 import { HowToSmallerCard } from "../HowToArticles/HowToSmallerCard"
 import { Skeleton } from "@mui/material"
 
-export default function ResourceTutorialLink({ tutorialId }: { tutorialId: string }) {
+export default function ResourceTutorialLink({
+	tutorialId,
+}: {
+	tutorialId: string
+}) {
 	const [tutorial, setTutorial] = useState<ResourceTutorial>()
 	const [loading, setLoading] = useState(true)
 

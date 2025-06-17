@@ -2,13 +2,15 @@ import { PortableText, PortableTextProps } from "@portabletext/react"
 import { PortableTextStyledComponents } from "./Components"
 
 export default function PortableTextStyled({ value }: PortableTextProps) {
-	const valueGroups =
-		!Array.isArray(value)
-			? []
-			: value.reduce(
+	const valueGroups = !Array.isArray(value)
+		? []
+		: value.reduce(
 				(acc: any, item: any) => {
 					const lastIdx = acc.length - 1
-					if (acc[lastIdx].length === 0 || acc[lastIdx][0]._type === item._type) {
+					if (
+						acc[lastIdx].length === 0 ||
+						acc[lastIdx][0]._type === item._type
+					) {
 						acc[lastIdx].push(item)
 					} else {
 						acc.push([item])

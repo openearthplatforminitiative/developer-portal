@@ -1,4 +1,9 @@
-import { ClientConfig, createClient, groq, PortableTextProps } from "next-sanity"
+import {
+	ClientConfig,
+	createClient,
+	groq,
+	PortableTextProps,
+} from "next-sanity"
 
 export type CustomButton = {
 	text: string
@@ -85,7 +90,7 @@ const config: ClientConfig = {
 	useCdn: false,
 	apiVersion: "2025-06-17",
 	perspective: process.env.NODE_ENV !== "production" ? "raw" : undefined,
-	token: process.env.NEXT_PUBLIC_SANITY_TOKEN
+	token: process.env.NEXT_PUBLIC_SANITY_TOKEN,
 }
 
 export const sanityClient = createClient(config)
