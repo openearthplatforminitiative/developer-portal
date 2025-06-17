@@ -108,7 +108,7 @@ export const fetchResource = async (
 		})
 		.then((data) => data)
 		.catch(() => {
-			throw new Error("Could not fetch categories")
+			throw new Error(`Could not fetch resource with ID: ${id}`)
 		})
 }
 

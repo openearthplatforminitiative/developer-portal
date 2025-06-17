@@ -1,25 +1,22 @@
-"use client"
-
 import { PortableText, PortableTextProps } from "@portabletext/react"
-import { useMemo } from "react"
 import { PortableTextStyledComponents } from "./Components"
 
 export default function PortableTextStyled({ value }: PortableTextProps) {
-	const valueGroups = useMemo(() => {
-		if (!Array.isArray(value)) return []
-		return value.reduce(
-			(acc: any, item: any) => {
-				const lastIdx = acc.length - 1
-				if (acc[lastIdx].length === 0 || acc[lastIdx][0]._type === item._type) {
-					acc[lastIdx].push(item)
-				} else {
-					acc.push([item])
-				}
-				return acc
-			},
-			[[]]
-		)
-	}, [value])
+	const valueGroups =
+		!Array.isArray(value)
+			? []
+			: value.reduce(
+				(acc: any, item: any) => {
+					const lastIdx = acc.length - 1
+					if (acc[lastIdx].length === 0 || acc[lastIdx][0]._type === item._type) {
+						acc[lastIdx].push(item)
+					} else {
+						acc.push([item])
+					}
+					return acc
+				},
+				[[]]
+			)
 
 	if (!valueGroups?.length) return null
 

@@ -21,15 +21,11 @@
       spec: {
         containers: [{
           name: 'developer-portal',
-          image: 'ghcr.io/openearthplatforminitiative/developer-portal:test4',
+          image: 'ghcr.io/openearthplatforminitiative/developer-portal:0.1.1',
           ports: [{
             containerPort: 3000,
           }],
           env: [
-            {
-              name: 'NEXT_PRIVATE_DEBUG_CACHE',
-              value: '1',
-            },
             {
               name: 'NODE_ENV',
               value: 'production',

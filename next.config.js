@@ -5,12 +5,6 @@ const nextConfig = {
 		unoptimized: true,
 		domains: ["cdn.sanity.io"],
 	},
-	expireTime: 900,
-	logging: {
-		fetches: {
-			fullUrl: true,
-		},
-	},
 	async redirects() {
 		return []
 	},

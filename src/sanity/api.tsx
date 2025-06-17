@@ -1,4 +1,4 @@
-import { createClient, groq, PortableTextProps } from "next-sanity"
+import { ClientConfig, createClient, groq, PortableTextProps } from "next-sanity"
 
 export type CustomButton = {
 	text: string
@@ -79,11 +79,13 @@ export interface ResourceTutorial {
 	body: PortableTextProps["value"]
 }
 
-const config = {
-	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
-	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+const config: ClientConfig = {
+	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
 	useCdn: false,
-	apiVersion: "2025-06-16",
+	apiVersion: "2025-06-17",
+	perspective: process.env.NODE_ENV !== "production" ? "raw" : undefined,
+	token: process.env.NEXT_PUBLIC_SANITY_TOKEN
 }
 
 export const sanityClient = createClient(config)
@@ -97,10 +99,10 @@ export async function fetchLatestResourceTutorials(
 	currentSlug?: string
 ): Promise<ResourceTutorial[]> {
 	if (!currentSlug) {
-		const query = `*[_type == "resource_tutorial"] | order(_createdAt desc)[0...$limit]{...}`
+		const query = groq`*[_type == "resource_tutorial"] | order(_createdAt desc)[0...$limit]{...}`
 		return sanityClient.fetch(query, { limit })
 	}
-	const query = `*[_type == "resource_tutorial" && slug.current != $currentSlug] | order(_createdAt desc)[0...$limit]{...}`
+	const query = groq`*[_type == "resource_tutorial" && slug.current != $currentSlug] | order(_createdAt desc)[0...$limit]{...}`
 	return sanityClient.fetch(query, { limit, currentSlug })
 }
 export async function fetchRelevantResourceTutorialsForResource(
@@ -142,7 +144,7 @@ export async function fetchRelevantResourceTutorialsForTutorial(
 	const query = groq`*[_type == "resource_tutorial" &&
 		count(relevantResources.resources[@.title in $relevantResourceTitles]) > 0 &&
 		slug.current != $slug
-	]{...}`
+	][0...1]{...}`
 	return sanityClient.fetch(query, { relevantResourceTitles, slug })
 }
 
