@@ -5,58 +5,6 @@ import {
 	PortableTextProps,
 } from "next-sanity"
 
-export type CustomButton = {
-	text: string
-	url: string
-}
-
-export interface Featured {
-	_id: string
-	title: string
-	description: string
-	buttons: CustomButton[]
-	promoted: boolean
-}
-
-export interface Article {
-	_id: string
-	_createAt: string
-	title: string
-	body: object[]
-	slug: string
-	mainImage: string
-	description: string
-	publishedAt: string
-}
-
-export interface ArticleObject {
-	articles: Article[]
-	total: number
-}
-
-interface CodeBlock {
-	code: string
-	language: string
-}
-
-export interface Document {
-	_id: string
-	title: string
-	slug: { current: string }
-	parentSlug?: { current: string }
-	parentTitle?: string
-	body: object[]
-	code_examples: CodeBlock[]
-}
-
-export interface Partner {
-	_id: string
-	title: string
-	url: string
-	description: string
-	partnerLogo: string
-}
-
 export type SanityImage = {
 	_type: string
 	alt: string
