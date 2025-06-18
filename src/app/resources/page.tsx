@@ -11,6 +11,8 @@ import { JavaLogo } from "@/icons/JavaLogo"
 import Accordion from "@/components/Accordion"
 import { HowToArticles } from "@/components/Resources/HowToArticles"
 
+export const revalidate = 60
+
 const ResourcesPage = () => {
 	return (
 		<Box className="w-full h-full lg:max-w-7xl px-8 lg:my-44 my-20">

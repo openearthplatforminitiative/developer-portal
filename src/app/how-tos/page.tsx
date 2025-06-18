@@ -4,6 +4,8 @@ import { Typography } from "@mui/material"
 import { Suspense } from "react"
 import HowTosSkeleton from "./[slug]/loading"
 
+export const revalidate = 60
+
 export default function HowTosPage() {
 	async function Content() {
 		const tutorials = await fetchResourceTutorials()
