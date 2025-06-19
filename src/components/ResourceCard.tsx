@@ -118,15 +118,19 @@ export const ResourceCard = ({ resource, isLoading }: ResourceCardProps) => {
 
 	return (
 		<div
-			className={`group h-full flex items-center justify-between gap-6 rounded-lg px-6 py-4 transition-colors ${isLoading ? "animate-pulse bg-neutral-90" : " bg-neutral-95 hover:bg-neutral-90 cursor-pointer"}`}
+			className={`group h-full rounded-lg transition-colors ${isLoading ? "animate-pulse bg-neutral-90" : " bg-neutral-95 hover:bg-neutral-90 cursor-pointer"}`}
 		>
 			<Link
-				className="flex flex-col justify-center gap-2 w-full h-full"
+				className="flex items-center justify-between gap-6 px-6 py-4 w-full h-full"
 				href={`/data-catalog/resource/${resource.id}`}
 			>
-				<Content />
+				<div
+					className="flex flex-col justify-center gap-2 w-full h-full"
+				>
+					<Content />
+				</div>
+				<ArrowForward className="transition group-hover:translate-x-2" />
 			</Link>
-			<ArrowForward className="transition group-hover:translate-x-2" />
 		</div>
 	)
 }
