@@ -44,7 +44,7 @@ const CodeBlock = ({ codeString, language }: CodeBlockProps) => {
 			<SyntaxHighlighter
 				language={language}
 				style={myCustomStyle}
-				className="p-6 break-all rounded-xl"
+				className="p-6 break-all rounded-xl text-base pr-12"
 				showLineNumbers={true} // see https://github.com/react-syntax-highlighter/react-syntax-highlighter/issues/376
 				lineNumberStyle={{ color: "#B5CCBA", WebkitUserSelect: "none" }}
 			>

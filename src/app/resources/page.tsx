@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
-import { Card } from "@mui/material"
+import { Button, Card } from "@mui/material"
 import { ExternalLinkIcon } from "@/icons/ExternalLinkIcon"
 import Link from "next/link"
 import { ExternalCard } from "@/components/ExternalCard.tsx"
@@ -9,6 +9,9 @@ import { JavascriptLogo } from "@/icons/JavascriptLogo"
 import InfoCard from "@/components/InfoCard"
 import { JavaLogo } from "@/icons/JavaLogo"
 import Accordion from "@/components/Accordion"
+import { HowToArticles } from "@/components/Resources/HowToArticles"
+
+export const revalidate = 60
 
 const ResourcesPage = () => {
 	return (
@@ -88,6 +91,20 @@ const ResourcesPage = () => {
 							</Card>
 						</Link>
 					</Box>
+				</Box>
+				<Box className="flex flex-col">
+					<Typography variant="h2" className="text-3xl xs:text-4xl w-fit mb-8">
+						How-To Articles
+					</Typography>
+					<HowToArticles />
+					<Link href="/how-tos" className="mt-2">
+						<Button
+							className="rounded-full pointer-events-auto normal-case shadow-none text-xl px-8 py-4 translate-y-1/2"
+							variant="contained"
+						>
+							Explore all our how-to articles
+						</Button>
+					</Link>
 				</Box>
 				<Box className="flex flex-col gap-8">
 					<Typography variant="h2" className="text-3xl xs:text-4xl">
