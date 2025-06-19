@@ -6,6 +6,7 @@ import { Typography } from "@mui/material"
 import { Suspense } from "react"
 import { HowToCard } from "../../HowToArticles/HowToCard"
 import { Resource } from "@/types/resource"
+import HowTosSkeleton from "@/app/how-tos/[slug]/loading"
 
 type ResourceTutorialsLoaderProps = {
 	resource: Resource
@@ -23,7 +24,15 @@ const ResourceTutorialsLoader = ({
 		resource.type
 	)
 	return (
-		<Suspense fallback={<p>Loading...</p>}>
+		<Suspense
+			fallback={
+				<>
+					<HowTosSkeleton />
+					<HowTosSkeleton />
+					<HowTosSkeleton />
+				</>
+			}
+		>
 			<ResourceTutorials tutorialsPromise={tutorialsPromise} />
 		</Suspense>
 	)
