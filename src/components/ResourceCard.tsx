@@ -124,9 +124,7 @@ export const ResourceCard = ({ resource, isLoading }: ResourceCardProps) => {
 				className="flex items-center justify-between gap-6 px-6 py-4 w-full h-full"
 				href={`/data-catalog/resource/${resource.id}`}
 			>
-				<div
-					className="flex flex-col justify-center gap-2 w-full h-full"
-				>
+				<div className="flex flex-col justify-center gap-2 w-full h-full">
 					<Content />
 				</div>
 				<ArrowForward className="transition group-hover:translate-x-2" />
