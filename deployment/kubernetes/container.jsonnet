@@ -21,7 +21,7 @@
       spec: {
         containers: [{
           name: 'developer-portal',
-          image: 'ghcr.io/openearthplatforminitiative/developer-portal:0.1.1',
+          image: 'ghcr.io/openearthplatforminitiative/developer-portal:0.1.2',
           ports: [{
             containerPort: 3000,
           }],
@@ -35,64 +35,64 @@
               valueFrom: {
                 configMapKeyRef: {
                   name: 'dev-portal-config',
-                  key: 'api_domain'
-                }
-              }
+                  key: 'api_domain',
+                },
+              },
             },
             {
               name: 'AUTH_CLIENT_ID',
               valueFrom: {
                 configMapKeyRef: {
                   name: 'dev-portal-config',
-                  key: 'auth_client_id'
-                }
-              }
+                  key: 'auth_client_id',
+                },
+              },
             },
             {
               name: 'AUTH_CLIENT_SECRET',
               valueFrom: {
                 configMapKeyRef: {
                   name: 'dev-portal-config',
-                  key: 'auth_client_secret'
-                }
-              }
+                  key: 'auth_client_secret',
+                },
+              },
             },
             {
               name: 'AUTH_CLIENT_ISSUER',
               valueFrom: {
                 configMapKeyRef: {
                   name: 'dev-portal-config',
-                  key: 'auth_client_issuer'
-                }
-              }
+                  key: 'auth_client_issuer',
+                },
+              },
             },
             {
               name: 'NEXTAUTH_URL',
               valueFrom: {
                 configMapKeyRef: {
                   name: 'dev-portal-config',
-                  key: 'nextauth_url'
-                }
-              }
+                  key: 'nextauth_url',
+                },
+              },
             },
             {
               name: 'NEXTAUTH_SECRET',
               valueFrom: {
                 configMapKeyRef: {
                   name: 'dev-portal-config',
-                  key: 'nextauth_secret'
-                }
-              }
+                  key: 'nextauth_secret',
+                },
+              },
             },
             {
               name: 'DATA_CATALOG_URL',
               valueFrom: {
                 configMapKeyRef: {
                   name: 'dev-portal-config',
-                  key: 'data_catalog_url'
-                }
-              }
-            }
+                  key: 'data_catalog_url',
+                },
+              },
+            },
           ],
         }],
       },
