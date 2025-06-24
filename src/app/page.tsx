@@ -62,7 +62,7 @@ const Home = () => {
 					</Typography>
 					<Typography className="text-xl xs:text-2xl">
 						Thank you to everyone who registered! The registration has now
-						closed, but if you have signed up, click below explore everything
+						closed, but if you have signed up, click below to explore everything
 						you need to know about the event, timeline, and resources.
 					</Typography>
 					<Link href="/hackathon-2025">

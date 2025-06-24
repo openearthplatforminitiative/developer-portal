@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material"
+import { Button, Link, Typography } from "@mui/material"
 import { HowToCard } from "./HowToCard"
 import { fetchLatestResourceTutorials } from "@/sanity/api"
 
@@ -14,6 +14,14 @@ export async function LatestTutorials({ slug }: { slug: string }) {
 					<HowToCard key={tutorial._id} tutorial={tutorial} />
 				))}
 			</div>
+			<Link href="/how-tos" className="mt-2">
+				<Button
+					className="rounded-full pointer-events-auto normal-case shadow-none text-xl px-8 py-4 translate-y-1/2"
+					variant="contained"
+				>
+					Explore all our how-to articles
+				</Button>
+			</Link>
 		</div>
 	)
 }

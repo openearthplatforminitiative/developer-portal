@@ -97,7 +97,7 @@ export async function fetchRelevantResourceTutorialsForTutorial(
 	const query = groq`*[_type == "resource_tutorial" &&
 		count(relevantResources.resources[@.title in $relevantResourceTitles]) > 0 &&
 		slug.current != $slug
-	][0...1]{...}`
+	][0...3]{...}`
 	return sanityClient.fetch(query, { relevantResourceTitles, slug })
 }
 
