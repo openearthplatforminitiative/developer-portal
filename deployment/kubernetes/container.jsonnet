@@ -21,7 +21,7 @@
       spec: {
         containers: [{
           name: 'developer-portal',
-          image: 'ghcr.io/openearthplatforminitiative/developer-portal:0.1.2',
+          image: 'ghcr.io/openearthplatforminitiative/developer-portal:0.3.3',
           ports: [{
             containerPort: 3000,
           }],
