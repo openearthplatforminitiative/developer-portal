@@ -18,8 +18,8 @@ export const HowToCard = ({ tutorial }: HowToCardProps) => {
 			<div className="group flex flex-col relative w-full h-full rounded-xl overflow-hidden cursor-pointer">
 				<Image
 					src={
-						tutorial.mainImage !== null
-							? builder.image(tutorial.mainImage).toString()
+						tutorial.mainImage
+							? builder.image(tutorial.mainImage)?.toString()
 							: "/article-placeholder.png"
 					}
 					alt={tutorial.title}

@@ -60,12 +60,17 @@ const Home = () => {
 					<Typography className="text-3xl xs:text-4xl">
 						Open data Hackathon 2025
 					</Typography>
+					<Typography className="text-xl xs:text-2xl">
+						Thank you to everyone who registered! The registration has now
+						closed, but if you have signed up, click below explore everything
+						you need to know about the event, timeline, and resources.
+					</Typography>
 					<Link href="/hackathon-2025">
 						<Button
 							variant="contained"
 							className="rounded-full normal-case shadow-none text-xl px-8 py-4 self-start"
 						>
-							Read more and register now!
+							Read more
 						</Button>
 					</Link>
 				</div>
