@@ -24,7 +24,11 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN npm run build
+RUN --mount=type=secret,id=NEXT_PUBLIC_SANITY_DATASET \
+  --mount=type=secret,id=NEXT_PUBLIC_SANITY_PROJECT_ID \
+  export NEXT_PUBLIC_SANITY_DATASET=$(cat /run/secrets/NEXT_PUBLIC_SANITY_DATASET) && \
+  export NEXT_PUBLIC_SANITY_PROJECT_ID=$(cat /run/secrets/NEXT_PUBLIC_SANITY_PROJECT_ID) && \
+  npm run build
 
 # Production image, copy all the files and run next
 FROM base AS runner
