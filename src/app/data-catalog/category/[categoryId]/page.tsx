@@ -10,11 +10,15 @@ type ProviderLoaderProps = {
 		categoryId: string
 	}>
 }
+
+export const revalidate = 600
+
+export const dynamicParams = true
+
 export default async function Page({ params }: ProviderLoaderProps) {
 	const { categoryId } = await params
 	const category = await fetchCategory(categoryId).catch(() => notFound())
 	if (!category) notFound()
-	console.log("Category:", category)
 
 	const DatasetCollections = category.resources.filter(
 		(resource) => resource.resource.type === "DATASET_COLLECTION"

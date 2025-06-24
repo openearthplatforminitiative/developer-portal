@@ -11,17 +11,21 @@ import Image from "next/image"
 import { ResourceOverview } from "@/components/DataCatalog/Resource/ResourceOverview"
 import { ResourceSpatialExtent } from "@/components/DataCatalog/Resource/ResourceSpatialExtent"
 import { ResourceAssociations } from "@/components/DataCatalog/Resource/ResourceAssociations"
+import ResourceTutorials from "@/components/DataCatalog/Resource/ResourceTutorials"
 
-type ResourceLoaderProps = {
-	params: Promise<{
-		resourceId: string
-	}>
-}
+export const revalidate = 600
 
-export default async function Page({ params }: ResourceLoaderProps) {
+export const dynamicParams = true
+
+export default async function Page({
+	params,
+}: {
+	params: Promise<{ resourceId: string }>
+}) {
 	const { resourceId } = await params
 	const resource = await fetchResource(resourceId).catch(() => notFound())
 	if (!resource) notFound()
+
 	return (
 		<div className="w-full lg:max-w-7xl px-8 lg:my-44 my-20">
 			<Link
@@ -41,6 +45,7 @@ export default async function Page({ params }: ResourceLoaderProps) {
 					/>
 				</div>
 			)}
+			<ResourceTutorials resource={resource} />
 			<ResourceAssociations resource={resource} />
 			<ResourceSpatialExtent resource={resource} />
 			{resource.examples && resource.examples.length > 0 && (
