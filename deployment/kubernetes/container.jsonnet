@@ -51,7 +51,7 @@
             {
               name: 'AUTH_CLIENT_SECRET',
               valueFrom: {
-                configMapKeyRef: {
+                secretKeyRef: {
                   name: 'dev-portal-secrets',
                   key: 'auth_client_secret',
                 },
@@ -78,7 +78,7 @@
             {
               name: 'NEXTAUTH_SECRET',
               valueFrom: {
-                configMapKeyRef: {
+                secretKeyRef: {
                   name: 'dev-portal-secrets',
                   key: 'nextauth_secret',
                 },
@@ -96,7 +96,7 @@
             {
               name: 'NEXT_PUBLIC_SANITY_PROJECT_ID',
               valueFrom: {
-                configMapKeyRef: {
+                secretKeyRef: {
                   name: 'dev-portal-secrets',
                   key: 'sanity_project_id',
                 },
