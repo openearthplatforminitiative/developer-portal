@@ -1,4 +1,4 @@
-# syntax=docker.io/docker/dockerfile:1
+# syntax=docker/dockerfile:1.4-labs
 
 FROM node:18-alpine AS base
 
