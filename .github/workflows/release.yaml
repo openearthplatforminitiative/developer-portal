@@ -12,6 +12,7 @@ on:
 jobs:
   checks:
     uses: ./.github/workflows/integration.yaml
+    secrets: inherit
 
   release:
     runs-on: ubuntu-latest
