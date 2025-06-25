@@ -4,6 +4,9 @@ import { fetchLatestResourceTutorials } from "@/sanity/api"
 
 export async function LatestTutorials({ slug }: { slug: string }) {
 	const tutorials = await fetchLatestResourceTutorials(3, slug)
+	if (!tutorials || tutorials.length === 0) {
+		return null
+	}
 	return (
 		<div>
 			<Typography variant="h2" className="mt-8 mb-6">

@@ -76,7 +76,7 @@ export default async function HowTosPage({
 						loading="lazy"
 						height={height}
 						width={width}
-						className="rounded-xl w-full object-cover"
+						className="rounded-xl w-full object-cover aspect-video"
 					/>
 					{howto.mainImage && howto.mainImage?.caption && (
 						<Tooltip placement="left-end" title={howto.mainImage.caption} arrow>
