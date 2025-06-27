@@ -44,7 +44,7 @@ const config: ClientConfig = {
 export const sanityClient = createClient(config)
 
 export async function fetchResourceTutorials(): Promise<ResourceTutorial[]> {
-	const query = groq`*[_type == "resource_tutorial"] | order(_createdAt desc) {...}`
+	const query = groq`*[_type == "resource_tutorial"] | order(_updatedAt desc) {...}`
 	return sanityClient.fetch(query)
 }
 export async function fetchLatestResourceTutorials(
@@ -52,10 +52,10 @@ export async function fetchLatestResourceTutorials(
 	currentSlug?: string
 ): Promise<ResourceTutorial[]> {
 	if (!currentSlug) {
-		const query = groq`*[_type == "resource_tutorial"] | order(_createdAt desc)[0...$limit]{...}`
+		const query = groq`*[_type == "resource_tutorial"] | order(_updatedAt desc)[0...$limit]{...}`
 		return sanityClient.fetch(query, { limit })
 	}
-	const query = groq`*[_type == "resource_tutorial" && slug.current != $currentSlug] | order(_createdAt desc)[0...$limit]{...}`
+	const query = groq`*[_type == "resource_tutorial" && slug.current != $currentSlug] | order(_updatedAt desc)[0...$limit]{...}`
 	return sanityClient.fetch(query, { limit, currentSlug })
 }
 export async function fetchRelevantResourceTutorialsForResource(

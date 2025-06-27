@@ -8,6 +8,7 @@ import {
 	DatasetOutlined,
 	ListAlt,
 	FileDownloadOutlined,
+	AutoStoriesOutlined,
 } from "@mui/icons-material"
 
 type ResourceLinksProps = {
@@ -85,7 +86,7 @@ export const ResourceLinks = ({ resource }: ResourceLinksProps) => {
 					externalLink={true}
 					header="Research Paper"
 					subHeader={`Explore the research paper for ${resource.title}`}
-					cardIcon={<OpenApiIcon />}
+					cardIcon={<AutoStoriesOutlined />}
 					href={resource.research_paper_url}
 				/>
 			)}
