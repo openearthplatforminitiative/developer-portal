@@ -37,7 +37,7 @@ const config: ClientConfig = {
 	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
 	useCdn: false,
 	apiVersion: "2025-06-17",
-	perspective: process.env.NODE_ENV !== "production" ? "raw" : undefined,
+	perspective: process.env.NODE_ENV === "development" ? "raw" : undefined,
 	token: process.env.NEXT_PUBLIC_SANITY_TOKEN,
 }
 
