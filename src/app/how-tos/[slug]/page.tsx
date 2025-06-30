@@ -31,7 +31,7 @@ export async function generateStaticParams() {
 		}))
 	} catch (err) {
 		console.error("Error in getStaticProps:", err);
-		return { notFound: true }
+		return []
 	}
 }
 
