@@ -2,8 +2,6 @@ import PortableTextStyled from "@/components/PortableTextStyled/PortableTextStyl
 import { BackIcon } from "@/icons/BackIcon"
 import {
 	fetchResourceTutorialBySlug,
-	fetchResourceTutorials,
-	ResourceTutorial,
 } from "@/sanity/api"
 import { Tooltip, Typography } from "@mui/material"
 import Link from "next/link"
@@ -24,10 +22,7 @@ export const revalidate = 600
 export const dynamicParams = true
 
 export async function generateStaticParams() {
-	const howtos: ResourceTutorial[] = await fetchResourceTutorials()
-	return howtos.map((howto) => ({
-		slug: String(howto.slug.current),
-	}))
+	return []
 }
 
 export default async function HowTosPage({
