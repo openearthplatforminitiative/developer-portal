@@ -30,7 +30,7 @@ export async function generateStaticParams() {
 			slug: String(howto.slug.current),
 		}))
 	} catch (err) {
-		console.error("Error in getStaticProps:", err);
+		console.error("Error in getStaticProps:", err)
 		return []
 	}
 }
