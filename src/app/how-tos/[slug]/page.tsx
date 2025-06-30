@@ -24,10 +24,15 @@ export const revalidate = 600
 export const dynamicParams = true
 
 export async function generateStaticParams() {
-	const howtos: ResourceTutorial[] = await fetchResourceTutorials()
-	return howtos.map((howto) => ({
-		slug: String(howto.slug.current),
-	}))
+	try {
+		const howtos: ResourceTutorial[] = await fetchResourceTutorials()
+		return howtos.map((howto) => ({
+			slug: String(howto.slug.current),
+		}))
+	} catch (err) {
+		console.error("Error in getStaticProps:", err);
+		return { notFound: true }
+	}
 }
 
 export default async function HowTosPage({

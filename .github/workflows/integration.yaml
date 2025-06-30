@@ -29,6 +29,7 @@ jobs:
           NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
           NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
           NODE_ENV: ${{ secrets.NODE_ENV }}
+          DEBUG: "*"
 
   format-check:
     name: Check formatting
