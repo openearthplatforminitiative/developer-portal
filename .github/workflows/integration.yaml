@@ -28,6 +28,7 @@ jobs:
         env:
           NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
           NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_TOKEN: ${{ secrets.NEXT_PUBLIC_SANITY_TOKEN }}
           NODE_ENV: ${{ secrets.NODE_ENV }}
 
   format-check:
