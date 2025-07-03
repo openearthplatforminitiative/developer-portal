@@ -104,7 +104,19 @@ export async function fetchRelevantResourceTutorialsForTutorial(
 export async function fetchResourceTutorialBySlug(
 	slug: string
 ): Promise<ResourceTutorial> {
-	const query = groq`*[_type == "resource_tutorial" && slug.current == $slug][0]{..., blockContentWithCode{..., resourceTutorialLink->}}`
+	const query = groq`
+		*[_type == "resource_tutorial" && slug.current == $slug]
+		[0]
+		{
+			...,
+			body[]{
+				...,
+				_type == "resourceTutorialLink" => {
+					...,
+					reference->{_id, title, slug, mainImage}
+				}
+			}
+		}`
 	return sanityClient.fetch(query, { slug })
 }
 export async function fetchResourceTutorialById(

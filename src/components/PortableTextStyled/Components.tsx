@@ -4,11 +4,11 @@ import { Tooltip } from "@mui/material"
 import imageUrlBuilder from "@sanity/image-url"
 import { PortableTextReactComponents } from "next-sanity"
 import Link from "next/link"
-import ResourceTutorialLink from "./ResourceTutorialLink"
 import CodeBlock from "../CodeBlock"
-import { sanityClient, SanityImage } from "@/sanity/api"
+import { ResourceTutorial, sanityClient, SanityImage } from "@/sanity/api"
 import Image from "next/image"
 import { createIdFromString } from "@/lib/ContentHeadings"
+import { HowToSmallerCard } from "../HowToArticles/HowToSmallerCard"
 
 type Row = {
 	_key: string
@@ -75,7 +75,7 @@ export const PortableTextStyledComponents = () => {
 											<th
 												className={
 													cellIndex > 0 &&
-													cellIndex < headerRow.cells.length - 1
+														cellIndex < headerRow.cells.length - 1
 														? cellStyle + " text-center"
 														: cellStyle + " text-left"
 												}
@@ -141,14 +141,19 @@ export const PortableTextStyledComponents = () => {
 			resourceTutorialLink: ({
 				value,
 			}: {
-				value: { reference: { _ref: string } }
+				value: { reference: ResourceTutorial & { _ref: string } }
 			}) => {
 				const { reference } = value
-				return (
-					<div className="not-prose max-w-96">
-						<ResourceTutorialLink tutorialId={reference._ref} />
-					</div>
-				)
+				try {
+					return (
+						<div className="not-prose max-w-96">
+							<HowToSmallerCard tutorial={reference} />
+						</div>
+					)
+				} catch (error) {
+					console.error("Error rendering resource tutorial link:", error)
+					return <p>Error loading tutorial</p>
+				}
 			},
 		},
 		marks: {
