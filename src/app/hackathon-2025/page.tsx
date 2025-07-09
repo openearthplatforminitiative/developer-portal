@@ -1,5 +1,7 @@
-import { Typography } from "@mui/material"
+import { DiscordIcon } from "@/icons/DiscordIcon"
+import { Button, Typography } from "@mui/material"
 import Image from "next/image"
+import Link from "next/link"
 
 const partners = [
 	"/hackathon/partners/norad.png",
@@ -95,10 +97,12 @@ const Page = () => {
 								</s>
 							</li>
 							<li className="list-disc ml-6">
-								UNLEASH Hack (kickoff): <b>1. - 2. July</b>
+								<s>
+									UNLEASH Hack (kickoff): <b>1. - 2. July</b>
+								</s>
 							</li>
 							<li className="list-disc ml-6">
-								Submission deadline: <b>27. July</b>
+								Submission deadline: <b>3. August</b>
 							</li>
 						</ul>
 
@@ -114,6 +118,25 @@ const Page = () => {
 			</div>
 			<div className="w-full px-8 flex flex-col items-center max-w-2xl mb-16">
 				<div className="prose mt-6">
+					<div className="flex flex-col">
+						<p>
+							To get regular updates, events information, support and more, please
+							join our Discord server.
+						</p>
+						<Link
+							href="https://discord.gg/R4ASSWRe7c"
+							target="_blank"
+							className="w-fit"
+						>
+							<Button
+								variant="contained"
+								className="bg-primary-main rounded-full border-neutralvariant-50 normal-case shadow-none text-xl px-8 py-4"
+								startIcon={<DiscordIcon />}
+							>
+								Join on Discord
+							</Button>
+						</Link>
+					</div>
 					<p>
 						We will post more information continuously, but for now, this is
 						what you need to know.
@@ -129,18 +152,19 @@ const Page = () => {
 							sustainability solutions using the OpenEPI platform.
 						</li>
 						<li>
-							<b>3–26 July:</b> After the UNLEASH Hack, teams will enter Build
+							<b>3 July – 2 August:</b> After the UNLEASH Hack, teams will enter Build
 							Mode, working independently to prototype and refine their solution
 							based on their chosen problem statement.
 						</li>
 						<li>
-							<b>27 July:</b> Submission deadline
+							<b>3 August:</b> Submission deadline
 							<br />
 							Each team must submit:
 							<ul>
 								<li>A link to a GitHub repo containing their project code</li>
 								<li>A written description and documentation of the solution</li>
 							</ul>
+							This should be sent to <a href="mailto:hackathon@openepi.io">hackathon@openepi.io</a>
 						</li>
 						<li>
 							<b>TBA:</b> Virtual Semi-Finals
