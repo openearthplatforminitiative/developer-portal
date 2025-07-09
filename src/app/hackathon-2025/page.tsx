@@ -120,8 +120,8 @@ const Page = () => {
 				<div className="prose mt-6">
 					<div className="flex flex-col">
 						<p>
-							To get regular updates, events information, support and more, please
-							join our Discord server.
+							To get regular updates, events information, support and more,
+							please join our Discord server.
 						</p>
 						<Link
 							href="https://discord.gg/R4ASSWRe7c"
@@ -152,9 +152,9 @@ const Page = () => {
 							sustainability solutions using the OpenEPI platform.
 						</li>
 						<li>
-							<b>3 July – 2 August:</b> After the UNLEASH Hack, teams will enter Build
-							Mode, working independently to prototype and refine their solution
-							based on their chosen problem statement.
+							<b>3 July – 2 August:</b> After the UNLEASH Hack, teams will enter
+							Build Mode, working independently to prototype and refine their
+							solution based on their chosen problem statement.
 						</li>
 						<li>
 							<b>3 August:</b> Submission deadline
@@ -164,7 +164,8 @@ const Page = () => {
 								<li>A link to a GitHub repo containing their project code</li>
 								<li>A written description and documentation of the solution</li>
 							</ul>
-							This should be sent to <a href="mailto:hackathon@openepi.io">hackathon@openepi.io</a>
+							This should be sent to{" "}
+							<a href="mailto:hackathon@openepi.io">hackathon@openepi.io</a>
 						</li>
 						<li>
 							<b>TBA:</b> Virtual Semi-Finals
