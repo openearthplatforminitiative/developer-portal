@@ -69,17 +69,16 @@ export const TableOfContentsMenu = ({ value }: TableOfContentsProps) => {
 	return (
 		<>
 			<IconButton
-				id="basic-button"
-				aria-controls={open ? "basic-menu" : undefined}
+				aria-controls={open ? "table-of-contents-menu" : undefined}
 				aria-haspopup="true"
 				aria-expanded={open ? "true" : undefined}
 				onClick={handleClick}
-				className="bg-neutral-90 rounded-full w-10 h-10 shadow-xl"
+				className="bg-neutral-90 text-3xl rounded-full w-14 h-14 shadow-xl"
 			>
-				<Toc />
+				<Toc fontSize="inherit" />
 			</IconButton>
 			<Menu
-				id="basic-menu"
+				id="table-of-contents-menu"
 				anchorEl={anchorEl}
 				anchorOrigin={{
 					vertical: "top",
@@ -91,20 +90,14 @@ export const TableOfContentsMenu = ({ value }: TableOfContentsProps) => {
 				}}
 				open={open}
 				onClose={handleClose}
-				slotProps={{
-					list: {
-						"aria-labelledby": "basic-button",
-					},
-				}}
 			>
 				{headings.map((heading) => (
 					<MenuItem key={heading.id} onClick={handleClose}>
 						<a
 							className={`py-1 block text-sm transition-colors mb-2 w-full
-                ${
-									currentHeading === heading.id
-										? "text-black font-medium"
-										: "text-gray-600"
+                ${currentHeading === heading.id
+									? "text-black font-medium"
+									: "text-gray-600"
 								}`}
 							href={`#${heading.id}`}
 							onClick={(event) => handleHeadingClick(event, heading.id)}

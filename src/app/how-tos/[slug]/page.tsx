@@ -14,6 +14,7 @@ import { TableOfContentsMenu } from "@/components/HowToArticles/TableOfContentsM
 import { RelevantTutorials } from "@/components/HowToArticles/RelevantTutorials"
 import { LatestTutorials } from "@/components/HowToArticles/LatestTutorials"
 import { RelevantResources } from "@/components/HowToArticles/RelevantResources"
+import { FeedbackMenu } from "@/components/FeedbackMenu"
 
 export const revalidate = 600
 
@@ -81,8 +82,11 @@ export default async function HowTosPage({
 						<PortableTextStyled value={howto.body} />
 					</div>
 				</div>
-				<div className="sticky self-end bottom-8 right-0  md:hidden">
-					<TableOfContentsMenu value={howto.body} />
+				<div className="sticky flex flex-col self-end bottom-8 gap-2">
+					<div className="md:hidden">
+						<TableOfContentsMenu value={howto.body} />
+					</div>
+					<FeedbackMenu />
 				</div>
 				<hr />
 				{lastUpdated && (
