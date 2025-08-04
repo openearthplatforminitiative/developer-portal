@@ -107,14 +107,10 @@ const Page = () => {
 								</s>
 							</li>
 							<li className="list-disc ml-6">
-								<s>
-									Virtual Semi-Finals: <b>11. August</b>
-								</s>
+								Virtual Semi-Finals: <b>11. August</b>
 							</li>
 							<li className="list-disc ml-6">
-								<s>
-									Finale (In-person): <b>TBA</b>
-								</s>
+								Finale (In-person): <b>TBA</b>
 							</li>
 						</ul>
 
