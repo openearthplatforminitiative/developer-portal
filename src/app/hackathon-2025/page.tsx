@@ -102,7 +102,19 @@ const Page = () => {
 								</s>
 							</li>
 							<li className="list-disc ml-6">
-								Submission deadline: <b>3. August</b>
+								<s>
+									Submission deadline: <b>3. August</b>
+								</s>
+							</li>
+							<li className="list-disc ml-6">
+								<s>
+									Virtual Semi-Finals: <b>11. August</b>
+								</s>
+							</li>
+							<li className="list-disc ml-6">
+								<s>
+									Finale (In-person): <b>TBA</b>
+								</s>
 							</li>
 						</ul>
 
@@ -168,7 +180,7 @@ const Page = () => {
 							<a href="mailto:hackathon@openepi.io">hackathon@openepi.io</a>
 						</li>
 						<li>
-							<b>TBA:</b> Virtual Semi-Finals
+							<b>11 August:</b> Virtual Semi-Finals
 							<br />
 							Selected teams will submit a short pitch and present their
 							solution to a panel of judges.
