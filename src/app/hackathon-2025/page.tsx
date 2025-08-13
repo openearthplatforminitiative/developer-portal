@@ -107,10 +107,12 @@ const Page = () => {
 								</s>
 							</li>
 							<li className="list-disc ml-6">
-								Virtual Semi-Finals: <b>11. August</b>
+								<s>
+									Virtual Semi-Finals: <b>11. August</b>
+								</s>
 							</li>
 							<li className="list-disc ml-6">
-								Finale (In-person): <b>TBA</b>
+								Innovators Arena at Norrsken, Kigali: <b>4. - 5. September</b>
 							</li>
 						</ul>
 
