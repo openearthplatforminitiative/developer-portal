@@ -21,8 +21,8 @@ const Home = () => {
 
 	return (
 		<div className="w-full">
-			<div className="flex flex-col bg-[url('/matt-benson-hero-unsplash.jpg')] bg-cover bg-center py-12 sm:py-48">
-				<div className="flex flex-col text-primary-99 w-full sm:max-w-7xl sm:mx-auto px-8 gap-12 pb-4 justify-center">
+			<div className="relative flex flex-col bg-primary-20 py-12 sm:py-48">
+				<div className="flex flex-col text-primary-99 w-full sm:max-w-7xl sm:mx-auto px-8 gap-12 pb-4 justify-center z-10">
 					<div className="flex flex-col gap-2 xs:gap-3">
 						<Typography
 							variant="h1"
@@ -76,6 +76,13 @@ const Home = () => {
 						</Link>
 					</div>
 				</div>
+				<Image
+					src="/hero_image.jpg"
+					alt="River running through jungle from Matt Benson, Unsplash"
+					layout="fill"
+					objectFit="cover"
+					className="absolute inset-0 brightness-75 blur-[1px]"
+				/>
 			</div>
 			<div className="bg-neutral-95 py-16">
 				<div className="flex flex-col gap-10 sm:w-full sm:max-w-7xl sm:mx-auto px-8">

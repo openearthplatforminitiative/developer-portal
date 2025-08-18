@@ -349,13 +349,4 @@ const Page = () => {
 	)
 }
 
-const IFrame = () => {
-	return (
-		<iframe
-			className="w-full max-w-[700px] h-[650px] mx-auto border-none"
-			src="https://forms.office.com/Pages/ResponsePage.aspx?id=nJI1Z7-dO0efxl-9zSyfxF765mave39GuuYWfo3Gl5hURFQ4TDJMMUMwRFRSSzhCT0ZMSzlYNFBKQS4u&embed=true"
-		/>
-	)
-}
-
 export default Page
