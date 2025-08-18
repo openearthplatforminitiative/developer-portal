@@ -15,6 +15,7 @@ import {
 	VerifiedUserOutlined,
 } from "@mui/icons-material"
 import { Categories } from "@/components/Categories"
+import heroImageSrc from "../../public/hero_image.jpg"
 
 const Home = () => {
 	const { data: session } = useSession()
@@ -77,11 +78,12 @@ const Home = () => {
 					</div>
 				</div>
 				<Image
-					src="/hero_image.jpg"
+					src={heroImageSrc}
 					alt="River running through jungle from Matt Benson, Unsplash"
 					layout="fill"
 					objectFit="cover"
-					className="absolute inset-0 brightness-75 blur-[1px]"
+					placeholder="blur"
+					className="inset-0 brightness-75 blur-[1px]"
 				/>
 			</div>
 			<div className="bg-neutral-95 py-16">
