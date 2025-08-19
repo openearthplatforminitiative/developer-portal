@@ -225,21 +225,6 @@ const Page = () => {
 						height={50}
 						className="w-full max-w-2xl mx-auto"
 					/>
-					<h3>🏆 Awards and Recognition:</h3>
-					<ul>
-						<li>Main Prize: Best overall solution</li>
-						<li>
-							Special Award: Best female-focused solution – recognizing
-							solutions addressing women’s needs, particularly in the Global
-							South
-						</li>
-						<li>
-							Bonus Award: Technical excellence – for outstanding use of
-							OpenEPI&apos;s generic building blocks and collaborative,
-							interdisciplinary work
-						</li>
-					</ul>
-
 					<h3>🌍 Inclusion & Global Reach:</h3>
 					<ul>
 						<li>
