@@ -184,7 +184,7 @@ const Page = () => {
 							solution to a panel of judges.
 						</li>
 						<li>
-							<b>TBA:</b> Finale (In-person)
+							<b>Norrsken House, Kigali, Rwanda:</b> Finale (In-person)
 							<br />
 							Finalists will be invited to a fully-funded, two-day in-person
 							Grand Finale event, where they’ll receive expert feedback and
@@ -249,10 +249,9 @@ const Page = () => {
 						</li>
 					</ul>
 
-					<h3>📍 Finale Location (TBD):</h3>
+					<h3>📍 Finale Location (Norrsken House, Kigali, Rwanda):</h3>
 					<p>
-						We aim to host the Grand Finale towards the end of August or
-						beginning of September 2025
+						The Grand Finale will take place the 4th and 5th of September 2025
 					</p>
 
 					<h3>📣 How to participate:</h3>
