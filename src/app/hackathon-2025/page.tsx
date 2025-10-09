@@ -92,24 +92,16 @@ const Page = () => {
 						<p>Important dates:</p>
 						<ul>
 							<li className="list-disc ml-6">
-								<s>
-									Application deadline: <b>22. June</b>
-								</s>
+								Application deadline: <b>22. June</b>
 							</li>
 							<li className="list-disc ml-6">
-								<s>
-									UNLEASH Hack (kickoff): <b>1. - 2. July</b>
-								</s>
+								UNLEASH Hack (kickoff): <b>1. - 2. July</b>
 							</li>
 							<li className="list-disc ml-6">
-								<s>
-									Submission deadline: <b>3. August</b>
-								</s>
+								Submission deadline: <b>3. August</b>
 							</li>
 							<li className="list-disc ml-6">
-								<s>
-									Virtual Semi-Finals: <b>11. August</b>
-								</s>
+								Virtual Semi-Finals: <b>11. August</b>
 							</li>
 							<li className="list-disc ml-6">
 								Innovators Arena at Norrsken, Kigali: <b>4. - 5. September</b>
