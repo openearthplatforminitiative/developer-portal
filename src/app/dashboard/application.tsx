@@ -2,7 +2,6 @@
 
 import { Box, Button, Skeleton, Typography } from "@mui/material"
 import { useCallback, useEffect, useState } from "react"
-import { ApplicationRegistrationForm } from "@/components/ApplicationRegistrationForm"
 import { ApplicationsTable } from "@/components/ApplicationsTable"
 import { getClients } from "./actions"
 import { type Application as ApplicationType } from "@/types/application"
@@ -20,10 +19,6 @@ export const Application = () => {
 		} else if (!clients.clients) {
 			setError("Could not fetch applications.")
 		} else setApplications(clients.clients)
-	}
-
-	const handleNewApplication = async (client: ApplicationType) => {
-		setApplications([...applications, client])
 	}
 
 	const handleDelete = (client_id: string) => {
@@ -79,7 +74,6 @@ export const Application = () => {
 					onUpdate={handleUpdate}
 				/>
 			)}
-			<ApplicationRegistrationForm onSuccess={handleNewApplication} />
 		</>
 	)
 }

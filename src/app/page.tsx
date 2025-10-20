@@ -1,5 +1,3 @@
-"use client"
-
 import Typography from "@mui/material/Typography"
 import InfoCard from "@/components/InfoCard"
 import { JavascriptLogo } from "@/icons/JavascriptLogo"
@@ -7,7 +5,6 @@ import { PythonLogo } from "@/icons/PythonLogo"
 import Button from "@mui/material/Button"
 import Link from "next/link"
 import { JavaLogo } from "@/icons/JavaLogo"
-import { signIn, useSession } from "next-auth/react"
 import Image from "next/image"
 import {
 	LightbulbOutlined,
@@ -18,8 +15,6 @@ import { Categories } from "@/components/Categories"
 import heroImageSrc from "../../public/hero_image.jpg"
 
 const Home = () => {
-	const { data: session } = useSession()
-
 	return (
 		<div className="w-full">
 			<div className="relative flex flex-col bg-primary-20 py-12 sm:py-48">
@@ -85,26 +80,6 @@ const Home = () => {
 					placeholder="blur"
 					className="inset-0 brightness-75 blur-[1px]"
 				/>
-			</div>
-			<div className="bg-neutral-95 py-16">
-				<div className="flex flex-col gap-10 sm:w-full sm:max-w-7xl sm:mx-auto px-8">
-					<Typography className="text-3xl xs:text-4xl">
-						Open data Hackathon 2025
-					</Typography>
-					<Typography className="text-xl xs:text-2xl">
-						Thank you to everyone who registered! The registration has now
-						closed, but if you have signed up, click below to explore everything
-						you need to know about the event, timeline, and resources.
-					</Typography>
-					<Link href="/hackathon-2025">
-						<Button
-							variant="contained"
-							className="rounded-full normal-case shadow-none text-xl px-8 py-4 self-start"
-						>
-							Read more
-						</Button>
-					</Link>
-				</div>
 			</div>
 			<div className="flex flex-col sm:w-full sm:max-w-7xl sm:mx-auto mt-16 px-8">
 				<div className="flex flex-col gap-8 mb-6">
@@ -175,17 +150,6 @@ const Home = () => {
 									Explore our data catalog
 								</Button>
 							</Link>
-							{!session && (
-								<Button
-									variant="outlined"
-									className="rounded-full normal-case shadow-none text-xl px-8 py-4 self-start w-full"
-									onClick={() =>
-										signIn("keycloak", { callbackUrl: "/dashboard" })
-									}
-								>
-									Register for increased rate limits
-								</Button>
-							)}
 						</div>
 					</div>
 					<Image

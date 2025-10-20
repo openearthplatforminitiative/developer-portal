@@ -73,27 +73,3 @@ export async function deleteClient(clientId: string) {
 			}
 		})
 }
-
-export async function createClient(clientName: string) {
-	const accessToken = await getAccessToken()
-	return fetch(
-		`https://${process.env.API_DOMAIN}/client-registration/clients/?client_name=${clientName}`,
-		{
-			method: "POST",
-			headers: {
-				Authorization: `Bearer ${accessToken}`,
-			},
-		}
-	)
-		.then(async (res) => res.json())
-		.catch((err) => {
-			console.error(err)
-			return {
-				errors: [
-					{
-						message: `Seems like the problem is on our side. Please try again later.`,
-					},
-				],
-			}
-		})
-}

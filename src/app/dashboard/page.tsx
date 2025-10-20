@@ -13,10 +13,8 @@ const Page = () => {
 				Dashboard
 			</Typography>
 			<Typography className="text-xl xs:text-2xl mb-20">
-				To avoid rate limits, you can register your application here. The client
-				id and client secret will be generated for you. These can be used to
-				generate a token to authenticate your requests in the authorization
-				header.
+				These can be used to generate a token to authenticate your requests in
+				the authorization header.
 			</Typography>
 			<Typography variant="h2" className="text-3xl xs:text-4xl w-fit mb-8">
 				Applications
