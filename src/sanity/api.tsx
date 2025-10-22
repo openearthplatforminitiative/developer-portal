@@ -1,9 +1,6 @@
-import {
-	ClientConfig,
-	createClient,
-	groq,
-	PortableTextProps,
-} from "next-sanity"
+import { ClientConfig, createClient } from "@sanity/client"
+import { PortableTextProps } from "@portabletext/react"
+import groq from "groq"
 
 export type SanityImage = {
 	_type: string

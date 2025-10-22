@@ -14,6 +14,7 @@ type ResourceProvider = {
 type ResourceCategory = {
 	category: CategorySummary
 	is_main_category: boolean
+	created_by: string
 }
 
 export type ResourceSummary = {
@@ -22,12 +23,14 @@ export type ResourceSummary = {
 	abstract: string
 	type: "API" | "DATASET" | "ML_MODEL" | "DATASET_COLLECTION"
 	icon: string
-	has_spatial_extent: boolean
+	has_spatial_extent?: boolean
 	spatial_extent_type?: "REGION" | "GLOBAL"
-	covers_all: boolean
-	intersects_all: boolean
-	covers_some: boolean
-	intersects_some: boolean
+	covers_all?: boolean
+	covers_some?: boolean
+	intersects_all?: boolean
+	intersects_some?: boolean
+	created_by: string
+	updated_by?: string
 }
 
 export type Resource = ResourceSummary & {
@@ -40,12 +43,13 @@ export type Resource = ResourceSummary & {
 	citations?: string
 	git_url?: string
 	documentation_url?: string
-	update_frequency?: string
+	maintenance_and_update_frequency?: string
+	contact?: string
 	release_date?: string
 	client_library: boolean
 	keywords: string[]
 	version: string
-	license: License
+	license?: License
 	parents?: ResourceSummary[]
 	children?: ResourceSummary[]
 	providers: ResourceProvider[]

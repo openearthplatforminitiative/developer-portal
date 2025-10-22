@@ -1,4 +1,6 @@
-export const Providers = [
+import { Provider } from "@/types/provider"
+
+export const Providers: Provider[] = [
 	{
 		id: "164dcab3-d124-4169-94f0-7b659a532c97",
 		name: "World Resources Institute",

@@ -3,7 +3,7 @@ import { Typography } from "@mui/material"
 import { notFound } from "next/navigation"
 import { ResourceCard } from "@/components/ResourceCard"
 import Link from "next/link"
-import { fetchCategory } from "../../DataCatalogActions"
+import { fetchCategories, fetchCategory } from "../../DataCatalogActions"
 
 type ProviderLoaderProps = {
 	params: Promise<{
@@ -11,9 +11,12 @@ type ProviderLoaderProps = {
 	}>
 }
 
-export const revalidate = 600
-
-export const dynamicParams = true
+export const generateStaticParams = async () => {
+	const categories = await fetchCategories()
+	return categories.map((category) => ({
+		categoryId: category.id,
+	}))
+}
 
 export default async function Page({ params }: ProviderLoaderProps) {
 	const { categoryId } = await params

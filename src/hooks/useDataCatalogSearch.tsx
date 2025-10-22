@@ -1,3 +1,5 @@
+"use client"
+
 import { Feature, Polygon, Point } from "geojson"
 import { useQuery } from "@tanstack/react-query"
 import { fetchDataCatalog } from "@/app/data-catalog/DataCatalogActions"

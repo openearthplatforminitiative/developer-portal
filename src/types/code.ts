@@ -1,7 +1,11 @@
 export type Code = {
 	id: string
-	language: "Java" | "Javascript" | "Python" | "Go" | "Bash"
+	language: "java" | "javascript" | "python" | "go" | "bash"
 	source: string
+	created_at?: string
+	updated_at?: string
+	created_by?: string
+	updated_by?: string
 }
 
 export type CodeExample = {
@@ -9,4 +13,8 @@ export type CodeExample = {
 	title: string
 	description?: string
 	code: Code[]
+	created_at?: string
+	updated_at?: string
+	created_by?: string
+	updated_by?: string
 }

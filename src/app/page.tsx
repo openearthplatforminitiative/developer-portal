@@ -1,5 +1,3 @@
-"use client"
-
 import Typography from "@mui/material/Typography"
 import InfoCard from "@/components/InfoCard"
 import { JavascriptLogo } from "@/icons/JavascriptLogo"
@@ -7,7 +5,6 @@ import { PythonLogo } from "@/icons/PythonLogo"
 import Button from "@mui/material/Button"
 import Link from "next/link"
 import { JavaLogo } from "@/icons/JavaLogo"
-import { signIn, useSession } from "next-auth/react"
 import Image from "next/image"
 import {
 	LightbulbOutlined,
@@ -18,8 +15,6 @@ import { Categories } from "@/components/Categories"
 import heroImageSrc from "../../public/hero_image.jpg"
 
 const Home = () => {
-	const { data: session } = useSession()
-
 	return (
 		<div className="w-full">
 			<div className="relative flex flex-col bg-primary-20 py-12 sm:py-48">
@@ -175,17 +170,6 @@ const Home = () => {
 									Explore our data catalog
 								</Button>
 							</Link>
-							{!session && (
-								<Button
-									variant="outlined"
-									className="rounded-full normal-case shadow-none text-xl px-8 py-4 self-start w-full"
-									onClick={() =>
-										signIn("keycloak", { callbackUrl: "/dashboard" })
-									}
-								>
-									Register for increased rate limits
-								</Button>
-							)}
 						</div>
 					</div>
 					<Image

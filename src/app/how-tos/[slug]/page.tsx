@@ -1,6 +1,6 @@
 import PortableTextStyled from "@/components/PortableTextStyled/PortableTextStyled"
 import { BackIcon } from "@/icons/BackIcon"
-import { fetchResourceTutorialBySlug } from "@/sanity/api"
+import { fetchResourceTutorialBySlug, fetchResourceTutorials } from "@/sanity/api"
 import { Tooltip, Typography } from "@mui/material"
 import Link from "next/link"
 import { notFound } from "next/navigation"
@@ -15,7 +15,12 @@ import { RelevantTutorials } from "@/components/HowToArticles/RelevantTutorials"
 import { LatestTutorials } from "@/components/HowToArticles/LatestTutorials"
 import { RelevantResources } from "@/components/HowToArticles/RelevantResources"
 
-export const revalidate = 600
+export const generateStaticParams = async () => {
+	const tutorials = await fetchResourceTutorials()
+	return tutorials.map((tutorial) => ({
+		slug: tutorial.slug.current,
+	}))
+}
 
 export default async function HowTosPage({
 	params,

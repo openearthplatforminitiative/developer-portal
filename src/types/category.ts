@@ -9,6 +9,7 @@ export type CategorySummary = {
 	title: string
 	abstract: string
 	icon: string
+	created_by: string
 }
 
 export type Category = CategorySummary & {
