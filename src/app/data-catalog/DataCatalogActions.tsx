@@ -4,7 +4,6 @@ import { Provider, ProviderSummary } from "@//types/provider"
 import { Category, CategorySummary } from "@//types/category"
 import { Pagination } from "@//types/pagination"
 import { Providers } from "@/data/providers"
-import { Resources } from "@/data/resources"
 import { Categories } from "@/data/categories"
 import {
 	booleanContains,
@@ -39,6 +38,7 @@ export const fetchDataCatalog = async (
 	limit: number
 ): Promise<Pagination<ResourceSummary>> => {
 	try {
+		const { Resources } = await import("@/data/resources")
 		let filteredResources = Resources.slice()
 
 		if (types.length > 0) {
@@ -207,6 +207,7 @@ export const fetchDataCatalog = async (
 export const fetchResource = async (
 	id: string
 ): Promise<Resource | undefined> => {
+	const { Resources } = await import("@/data/resources")
 	return Promise.resolve(Resources.find((resource) => resource.id === id))
 }
 
