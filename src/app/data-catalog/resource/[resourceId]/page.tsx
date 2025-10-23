@@ -14,12 +14,13 @@ import { ResourceAssociations } from "@/components/DataCatalog/Resource/Resource
 import ResourceTutorials from "@/components/DataCatalog/Resource/ResourceTutorials"
 
 export const generateStaticParams = async () => {
-	const resources = (await fetchDataCatalog([], [], [], [], [], [], [], 1, 100)).data
+	const resources = (await fetchDataCatalog([], [], [], [], [], [], [], 1, 100))
+		.data
 
 	return resources
 		? resources.map((resource) => ({
-			resourceId: resource.id,
-		}))
+				resourceId: resource.id,
+			}))
 		: []
 }
 

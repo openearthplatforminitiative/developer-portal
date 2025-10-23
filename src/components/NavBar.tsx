@@ -7,10 +7,7 @@ import Box from "@mui/material/Box"
 import { usePathname } from "next/navigation"
 import { IconButton, Menu, MenuItem } from "@mui/material"
 import { useState } from "react"
-import {
-	ArrowOutward,
-	Menu as BurgerIcon,
-} from "@mui/icons-material"
+import { ArrowOutward, Menu as BurgerIcon } from "@mui/icons-material"
 import { OpenEPILogo } from "@/icons/OpenEPILogo"
 
 const NavBar = () => {
@@ -24,13 +21,13 @@ const NavBar = () => {
 	const linkClassName = (path: string, primary?: boolean) => {
 		return currentRoute.startsWith(path)
 			? baseStyle +
-			(primary
-				? " bg-primary-40 text-neutral-100 hover:text-neutral-0"
-				: " bg-secondary-90")
+					(primary
+						? " bg-primary-40 text-neutral-100 hover:text-neutral-0"
+						: " bg-secondary-90")
 			: baseStyle +
-			(primary
-				? " bg-primary-40 text-neutral-100 hover:text-neutral-0"
-				: "")
+					(primary
+						? " bg-primary-40 text-neutral-100 hover:text-neutral-0"
+						: "")
 	}
 
 	const handleClose = () => {

@@ -3,7 +3,7 @@ const nextConfig = {
 	output: "export",
 	images: {
 		unoptimized: true,
-		domains: ["cdn.sanity.io"],
+		remotePatterns: [new URL("https://cdn.sanity.io")],
 	},
 }
 

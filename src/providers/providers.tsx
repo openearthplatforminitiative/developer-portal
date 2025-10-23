@@ -11,9 +11,7 @@ export const Providers = ({ children }: { children: ReactNode }) => {
 	return (
 		<ThemeRegistry options={{ key: "mui" }}>
 			<QueryClientProvider client={queryClient}>
-				<AlertProvider>
-					{children}
-				</AlertProvider>
+				<AlertProvider>{children}</AlertProvider>
 			</QueryClientProvider>
 		</ThemeRegistry>
 	)

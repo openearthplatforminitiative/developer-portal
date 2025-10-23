@@ -6,7 +6,12 @@ import { Pagination } from "@//types/pagination"
 import { Providers } from "@/data/providers"
 import { Resources } from "@/data/resources"
 import { Categories } from "@/data/categories"
-import { booleanContains, booleanIntersects, booleanWithin, polygon } from "@turf/turf"
+import {
+	booleanContains,
+	booleanIntersects,
+	booleanWithin,
+	polygon,
+} from "@turf/turf"
 import { RegionSpatialExtent } from "@/types/spatial-extent"
 
 export type SpatialTypes = "REGION" | "GLOBAL" | "NON_SPATIAL"
@@ -59,10 +64,16 @@ export const fetchDataCatalog = async (
 				if (spatial.includes("NON_SPATIAL")) {
 					return !resource.has_spatial_extent
 				}
-				if (spatial.includes("GLOBAL") && resource.spatial_extent_type === "GLOBAL") {
+				if (
+					spatial.includes("GLOBAL") &&
+					resource.spatial_extent_type === "GLOBAL"
+				) {
 					return true
 				}
-				if (spatial.includes("REGION") && resource.spatial_extent_type === "REGION") {
+				if (
+					spatial.includes("REGION") &&
+					resource.spatial_extent_type === "REGION"
+				) {
 					return true
 				}
 				return false
@@ -71,9 +82,12 @@ export const fetchDataCatalog = async (
 
 		if (features.length > 0) {
 			filteredResources = filteredResources.filter((resource) => {
-				if (!resource.spatial_extent || resource.spatial_extent.length === 0) return false
+				if (!resource.spatial_extent || resource.spatial_extent.length === 0)
+					return false
 
-				if (resource.spatial_extent.some((extent) => extent.type === "GLOBAL")) {
+				if (
+					resource.spatial_extent.some((extent) => extent.type === "GLOBAL")
+				) {
 					resource.covers_all = true
 					resource.covers_some = true
 					resource.intersects_all = true
@@ -92,10 +106,12 @@ export const fetchDataCatalog = async (
 						try {
 							const contains = geometry.features.some((resourceFeature) => {
 								if (resourceFeature.geometry.type === "MultiPolygon") {
-									return resourceFeature.geometry.coordinates.some((polygonCoords) => {
-										const polygonFeature = polygon(polygonCoords)
-										return booleanWithin(polygonFeature, resourceFeature)
-									})
+									return resourceFeature.geometry.coordinates.some(
+										(polygonCoords) => {
+											const polygonFeature = polygon(polygonCoords)
+											return booleanWithin(polygonFeature, resourceFeature)
+										}
+									)
 								}
 								return booleanContains(feature, resourceFeature)
 							})
@@ -112,8 +128,12 @@ export const fetchDataCatalog = async (
 						}
 					})
 
-					const coveredCount = featureCoverageResults.filter((r) => r.contains).length
-					const intersectingCount = featureCoverageResults.filter((r) => r.isIntersecting).length
+					const coveredCount = featureCoverageResults.filter(
+						(r) => r.contains
+					).length
+					const intersectingCount = featureCoverageResults.filter(
+						(r) => r.isIntersecting
+					).length
 
 					if (coveredCount === features.length) coversAll = true
 					if (coveredCount > 0) coversSome = true
@@ -132,7 +152,10 @@ export const fetchDataCatalog = async (
 
 		if (years.length > 0) {
 			filteredResources = filteredResources.filter((resource) => {
-				if (!resource.temporal_extent || resource.temporal_extent.length === 0) {
+				if (
+					!resource.temporal_extent ||
+					resource.temporal_extent.length === 0
+				) {
 					return false
 				}
 				return resource.temporal_extent.some((extent) => {

@@ -81,26 +81,6 @@ const Home = () => {
 					className="inset-0 brightness-75 blur-[1px]"
 				/>
 			</div>
-			<div className="bg-neutral-95 py-16">
-				<div className="flex flex-col gap-10 sm:w-full sm:max-w-7xl sm:mx-auto px-8">
-					<Typography className="text-3xl xs:text-4xl">
-						Open data Hackathon 2025
-					</Typography>
-					<Typography className="text-xl xs:text-2xl">
-						Thank you to everyone who registered! The registration has now
-						closed, but if you have signed up, click below to explore everything
-						you need to know about the event, timeline, and resources.
-					</Typography>
-					<Link href="/hackathon-2025">
-						<Button
-							variant="contained"
-							className="rounded-full normal-case shadow-none text-xl px-8 py-4 self-start"
-						>
-							Read more
-						</Button>
-					</Link>
-				</div>
-			</div>
 			<div className="flex flex-col sm:w-full sm:max-w-7xl sm:mx-auto mt-16 px-8">
 				<div className="flex flex-col gap-8 mb-6">
 					<Typography variant="h2" className="text-3xl xs:text-4xl">
