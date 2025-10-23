@@ -13,7 +13,6 @@ type HowToCardProps = {
 
 export const HowToCard = ({ tutorial }: HowToCardProps) => {
 	const builder = imageUrlBuilder(sanityClient)
-	console.log(tutorial.mainImage.asset)
 	return (
 		<Link key={tutorial._id} href={`/how-tos/${tutorial.slug.current}`}>
 			<div className="group flex flex-col relative w-full h-full rounded-xl overflow-hidden cursor-pointer">

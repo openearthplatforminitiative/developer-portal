@@ -24,7 +24,6 @@ async function importProviderById(id) {
 			}
 		)
 		const data = await provider.json()
-		console.log(data)
 		return data
 	} catch (error) {
 		throw new Error("Failed to import provider by ID: " + error.message)
@@ -34,7 +33,6 @@ async function importProviderById(id) {
 const providers = await importProviders()
 const detailedProviders = await Promise.all(
 	providers.map(async (provider) => {
-		console.log(provider.id)
 		const detailedProvider = await importProviderById(provider.id)
 		return detailedProvider
 	})

@@ -24,7 +24,6 @@ async function importCategoryById(id) {
 			}
 		)
 		const data = await category.json()
-		console.log(data)
 		return data
 	} catch (error) {
 		throw new Error("Failed to import category by ID: " + error.message)
@@ -34,7 +33,6 @@ async function importCategoryById(id) {
 const categories = await importCategories()
 const detailedCategories = await Promise.all(
 	categories.map(async (category) => {
-		console.log(category.id)
 		const detailedCategory = await importCategoryById(category.id)
 		return detailedCategory
 	})

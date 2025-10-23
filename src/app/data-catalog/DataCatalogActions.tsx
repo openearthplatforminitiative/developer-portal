@@ -197,7 +197,6 @@ export const fetchDataCatalog = async (
 			current_page: page,
 			data: filteredResources.slice(spliceFrom, spliceTo),
 		}
-		console.log(something)
 		return Promise.resolve(something)
 	} catch (error) {
 		return Promise.reject(error)

@@ -19,7 +19,6 @@ const snakeToPascal = (str) => {
 const read = "code-examples"
 const place = "app/code-examples"
 const files = fs.readdirSync(read)
-console.log(files)
 for (const directory of files) {
 	const dirName = directory
 	// read directory files

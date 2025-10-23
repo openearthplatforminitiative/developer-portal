@@ -63,9 +63,7 @@ export default async function HowTosPage({
 				<div className="relative w-fit">
 					<Image
 						src={
-							howto.mainImage
-								? builder.image(howto.mainImage).toString()
-								: ""
+							howto.mainImage ? builder.image(howto.mainImage).toString() : ""
 						}
 						alt={howto.mainImage.alt ?? ""}
 						placeholder="blur"
