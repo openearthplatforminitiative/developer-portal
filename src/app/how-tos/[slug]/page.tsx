@@ -63,12 +63,13 @@ export default async function HowTosPage({
 				<div className="relative w-fit">
 					<Image
 						src={
-							howto.mainImage.asset?._ref
-								? builder.image(howto.mainImage.asset._ref).toString()
+							howto.mainImage
+								? builder.image(howto.mainImage).toString()
 								: ""
 						}
 						alt={howto.mainImage.alt ?? ""}
-						loading="lazy"
+						placeholder="blur"
+						blurDataURL={howto.mainImage.asset.metadata.lqip}
 						height={height}
 						width={width}
 						className="rounded-xl w-full object-cover aspect-video"

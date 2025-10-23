@@ -13,6 +13,7 @@ type HowToCardProps = {
 
 export const HowToCard = ({ tutorial }: HowToCardProps) => {
 	const builder = imageUrlBuilder(sanityClient)
+	console.log(tutorial.mainImage.asset)
 	return (
 		<Link key={tutorial._id} href={`/how-tos/${tutorial.slug.current}`}>
 			<div className="group flex flex-col relative w-full h-full rounded-xl overflow-hidden cursor-pointer">
@@ -25,6 +26,8 @@ export const HowToCard = ({ tutorial }: HowToCardProps) => {
 					alt={tutorial.title}
 					width={500}
 					height={309}
+					blurDataURL={tutorial.mainImage.asset.metadata.lqip}
+					placeholder="blur"
 					className="rounded-xl object-cover w-full aspect-square group-hover:scale-105 transition-transform duration-800 ease-in-out"
 				/>
 				<div className="absolute flex flex-col justify-between items-start w-full bottom-0">

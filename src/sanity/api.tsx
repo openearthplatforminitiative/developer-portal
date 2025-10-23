@@ -8,6 +8,9 @@ export type SanityImage = {
 	caption: string
 	_key: string
 	asset: {
+		metadata: {
+			lqip: string
+		}
 		_ref: string
 		_type: string
 	}
@@ -41,7 +44,7 @@ const config: ClientConfig = {
 export const sanityClient = createClient(config)
 
 export async function fetchResourceTutorials(): Promise<ResourceTutorial[]> {
-	const query = groq`*[_type == "resource_tutorial"] | order(_updatedAt desc) {...}`
+	const query = groq`*[_type == "resource_tutorial"] | order(_updatedAt desc) {..., mainImage{..., asset->}}`
 	return sanityClient.fetch(query)
 }
 export async function fetchLatestResourceTutorials(
@@ -49,10 +52,10 @@ export async function fetchLatestResourceTutorials(
 	currentSlug?: string
 ): Promise<ResourceTutorial[]> {
 	if (!currentSlug) {
-		const query = groq`*[_type == "resource_tutorial"] | order(_updatedAt desc)[0...$limit]{...}`
+		const query = groq`*[_type == "resource_tutorial"] | order(_updatedAt desc)[0...$limit]{..., mainImage{..., asset->}}`
 		return sanityClient.fetch(query, { limit })
 	}
-	const query = groq`*[_type == "resource_tutorial" && slug.current != $currentSlug] | order(_updatedAt desc)[0...$limit]{...}`
+	const query = groq`*[_type == "resource_tutorial" && slug.current != $currentSlug] | order(_updatedAt desc)[0...$limit]{..., mainImage{..., asset->}}`
 	return sanityClient.fetch(query, { limit, currentSlug })
 }
 export async function fetchRelevantResourceTutorialsForResource(
@@ -79,7 +82,7 @@ export async function fetchRelevantResourceTutorialsForResource(
 				)
 			)
 		)
-	] | order(($resourceTitle in relevantResources.resources[].title) desc, count(relevantResources.resources[].title) asc, _createdAt asc){...}`
+	] | order(($resourceTitle in relevantResources.resources[].title) desc, count(relevantResources.resources[].title) asc, _createdAt asc){..., mainImage{..., asset->}}`
 	return sanityClient.fetch(query, {
 		resourceTitle,
 		parentsTitles,
@@ -94,7 +97,7 @@ export async function fetchRelevantResourceTutorialsForTutorial(
 	const query = groq`*[_type == "resource_tutorial" &&
 		count(relevantResources.resources[@.title in $relevantResourceTitles]) > 0 &&
 		slug.current != $slug
-	][0...3]{...}`
+	][0...3]{..., mainImage{..., asset->}}`
 	return sanityClient.fetch(query, { relevantResourceTitles, slug })
 }
 
@@ -105,12 +108,13 @@ export async function fetchResourceTutorialBySlug(
 		*[_type == "resource_tutorial" && slug.current == $slug]
 		[0]
 		{
-			...,
+			..., 
+			mainImage{..., asset->},
 			body[]{
 				...,
 				_type == "resourceTutorialLink" => {
 					...,
-					reference->{_id, title, slug, mainImage}
+					reference->{_id, title, slug, mainImage{..., asset->}}
 				}
 			}
 		}`
@@ -119,6 +123,6 @@ export async function fetchResourceTutorialBySlug(
 export async function fetchResourceTutorialById(
 	id: string
 ): Promise<ResourceTutorial> {
-	const query = groq`*[_type == "resource_tutorial" && _id == $id][0]{...}`
+	const query = groq`*[_type == "resource_tutorial" && _id == $id][0]{..., mainImage{..., asset->}}`
 	return sanityClient.fetch(query, { id })
 }
