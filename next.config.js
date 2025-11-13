@@ -1,12 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	output: "standalone",
+	output: "export",
 	images: {
 		unoptimized: true,
-		domains: ["cdn.sanity.io"],
-	},
-	async redirects() {
-		return []
+		remotePatterns: [new URL("https://cdn.sanity.io")],
 	},
 }
 

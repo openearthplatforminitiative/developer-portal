@@ -7,8 +7,10 @@ type ProviderResource = {
 export type ProviderSummary = {
 	id: string
 	name: string
+	short_name: string
 	description: string
 	provider_url: string
+	created_by: string
 }
 
 export type Provider = ProviderSummary & {

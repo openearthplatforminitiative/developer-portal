@@ -25,6 +25,8 @@ export const HowToCard = ({ tutorial }: HowToCardProps) => {
 					alt={tutorial.title}
 					width={500}
 					height={309}
+					blurDataURL={tutorial.mainImage.asset.metadata.lqip}
+					placeholder="blur"
 					className="rounded-xl object-cover w-full aspect-square group-hover:scale-105 transition-transform duration-800 ease-in-out"
 				/>
 				<div className="absolute flex flex-col justify-between items-start w-full bottom-0">

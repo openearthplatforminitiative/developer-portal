@@ -1,12 +1,12 @@
 "use client"
 
 import { Layer, Map, Source, StyleSpecification } from "react-map-gl/maplibre"
+import { Polygon, FeatureCollection, MultiPolygon } from "geojson"
 import "maplibre-gl/dist/maplibre-gl.css"
-import { Polygon, FeatureCollection } from "geojson"
 
 type LocationOption = {
 	id: string
-	geometry: FeatureCollection<Polygon>
+	geometry: FeatureCollection<Polygon | MultiPolygon>
 }
 
 export const ResourceMap = ({ id, geometry }: LocationOption) => {

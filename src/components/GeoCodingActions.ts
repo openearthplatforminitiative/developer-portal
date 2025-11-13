@@ -1,5 +1,3 @@
-"use server"
-
 import { GeocoderClient } from "openepi-client"
 
 export const geoCodingAction = async (searchQuery: string, lang: string) => {

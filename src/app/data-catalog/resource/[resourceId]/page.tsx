@@ -1,7 +1,7 @@
 import InfoCard from "@/components/InfoCard"
 import { BackIcon } from "@/icons/BackIcon"
 import { Card, Typography } from "@mui/material"
-import { fetchResource } from "../../DataCatalogActions"
+import { fetchDataCatalog, fetchResource } from "../../DataCatalogActions"
 import { Fragment } from "react"
 import { notFound } from "next/navigation"
 import { ArrowForward } from "@mui/icons-material"
@@ -13,9 +13,16 @@ import { ResourceSpatialExtent } from "@/components/DataCatalog/Resource/Resourc
 import { ResourceAssociations } from "@/components/DataCatalog/Resource/ResourceAssociations"
 import ResourceTutorials from "@/components/DataCatalog/Resource/ResourceTutorials"
 
-export const revalidate = 600
+export const generateStaticParams = async () => {
+	const resources = (await fetchDataCatalog([], [], [], [], [], [], [], 1, 100))
+		.data
 
-export const dynamicParams = true
+	return resources
+		? resources.map((resource) => ({
+				resourceId: resource.id,
+			}))
+		: []
+}
 
 export default async function Page({
 	params,

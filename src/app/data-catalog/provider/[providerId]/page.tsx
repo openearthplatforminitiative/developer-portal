@@ -1,6 +1,6 @@
 import { BackIcon } from "@/icons/BackIcon"
 import { Card, Typography } from "@mui/material"
-import { fetchProvider } from "../../DataCatalogActions"
+import { fetchProvider, fetchProviders } from "../../DataCatalogActions"
 import { notFound } from "next/navigation"
 import { ArrowOutward } from "@mui/icons-material"
 import Link from "next/link"
@@ -12,9 +12,12 @@ type ProviderLoaderProps = {
 	}>
 }
 
-export const revalidate = 600
-
-export const dynamicParams = true
+export const generateStaticParams = async () => {
+	const providers = await fetchProviders()
+	return providers.map((provider) => ({
+		providerId: provider.id,
+	}))
+}
 
 export default async function Page({ params }: ProviderLoaderProps) {
 	const { providerId } = await params

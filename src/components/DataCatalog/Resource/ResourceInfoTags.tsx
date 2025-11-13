@@ -47,9 +47,9 @@ export const ResourceInfoTags = ({ resource }: ResourceInfoTagsProps) => {
 					Released {new Date(resource.release_date).getFullYear()}
 				</div>
 			)}
-			{resource.update_frequency && (
+			{resource.maintenance_and_update_frequency && (
 				<div className="flex items-center gap-2 px-4 py-2 bg-neutral-90 rounded-full">
-					Updated {resource.update_frequency}
+					Updated {resource.maintenance_and_update_frequency}
 				</div>
 			)}
 			{temporalExtents && (

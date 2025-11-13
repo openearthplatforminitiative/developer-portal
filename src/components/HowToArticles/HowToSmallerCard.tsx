@@ -23,6 +23,8 @@ export const HowToSmallerCard = ({ tutorial }: HowToCardProps) => {
 					alt={tutorial.title}
 					width={100}
 					height={100}
+					placeholder="blur"
+					blurDataURL={tutorial.mainImage.asset.metadata.lqip}
 					className="object-cover h-full w-auto aspect-square rounded-l-xl"
 				/>
 				<div className="flex flex-row justify-between shrink items-start p-2 xs:p-4 gap-2">
